@@ -1,0 +1,51 @@
+#research{
+    text-align: center;
+    .research__header{
+        @include sectionHeader();
+    }
+
+    .research__mainContext{
+        padding: 0 2rem;
+        text-align: justify;
+        font-size: 1.25rem;
+        font-weight: normal;
+    }
+
+    .research__subContext{
+        .card{
+            border-radius: 20px;
+            margin: 5px 0;
+            box-shadow: 2px 2px 2px #000;
+
+            .research__boxImg{
+                padding: 5px;
+                width: 100%;
+                height: 100%;
+
+                img{
+                    width: 100%;
+                    height: 100%;
+                    object-fit: contain;
+                }
+            }
+
+            .research__content{
+                padding: 20px;
+                text-align: left;
+                
+                h3{
+                    font-size: 19px;
+                    font-weight: bold;
+                }
+
+                p{
+                    font-size: 14px;
+                    text-align: justify;
+                }
+                a{
+                    color:$Color3;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,41 @@
+// @import "./variables";
+// @import "./header";
+// @import "./jumbotron";
+// @import "./landingPage/mainContent";
+// @import "./templateIcon";
+// @import "./enrollment/enrollment";
+
+// @import "./contact";
+// @import "./footer";
+
+// Base
+@import "./base/variables";
+@import "./base/mixins";
+@import "./base/global";
+
+// Component
+@import "./components/jumbotron";
+@import "./components/button";
+@import "./components/contact";
+@import "./components/templateIcon";
+@import "./components/customAccordion";
+@import "./components/nav";
+
+// layouts
+@import "./layouts/header";
+@import "./layouts/footer";
+
+// pages
+@import "./pages/courses";  
+@import "./pages/mainContent";
+@import "./pages/enrollment";
+@import "./pages/howToAppy";
+@import "./pages/login";
+@import "./pages/registrasi";
+@import "./pages/scholarships";
+@import "./pages/profile";
+@import "./pages/research";
+@import "./pages/alumni";
+
+
+

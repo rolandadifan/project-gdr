@@ -1,0 +1,12 @@
+.btn__submit{
+    background: $Color3;
+}
+
+.btn__reset{
+    background: $Color5;
+}
+
+.btn__reset, .btn__submit{
+    color: $Color7;
+    border-radius: 35px;
+}

@@ -1,0 +1,14 @@
+footer{
+    padding: 15px;
+    background: $primaryColor;
+    color: $Color7;
+    text-align: center;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+@media(max-width:576px){
+    footer{
+        font-size: 12px;
+    }
+}

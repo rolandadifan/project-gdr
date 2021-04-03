@@ -1,0 +1,90 @@
+@mixin flexCenter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin styleTitle {
+    color: $Color4;
+            font-size: 24px;
+            font-weight: bold;
+            font-family: 'Playfair Display', sans-serif;
+
+            &::after{
+                content: "";
+                display: block;
+                width: 16%;
+                margin: 20px auto;
+                border-bottom: 2px solid #E3E3E3;
+    }
+
+    @media (max-width:576px) {
+        font-size: 20px;   
+    }
+}
+
+@mixin styleSubTitle{
+    font-size: 32px;
+    margin-bottom: 15px;
+    font-weight: bold;
+    color: $primaryColor;
+    text-transform: uppercase;
+
+    @media(max-width:576px) {
+        font-size: 24px;   
+    }
+}
+
+@mixin primaryButton{
+    background-color: $Color3;
+    color: $Color7;
+    font-weight: bold;
+    font-size: 14px;
+    border-radius: 7px;
+    padding: 10px 40px;
+    margin-right:20px;
+}
+
+@mixin sectionHeader {
+    margin-top: 20px;
+
+        h2{
+            @include styleTitle();
+        }
+
+        h4{
+            @include styleSubTitle();
+        }
+}
+
+@mixin progressBar($width) {
+    content: "";
+    position: absolute;
+    width: $width;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: $primaryColor;
+    border-radius: 75px;
+}
+
+@mixin progressBarHp($height){
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: $height;
+    top: 0;
+    left: 0;
+    background: $primaryColor;
+    border-radius: 20px;
+}
+
+@mixin addIconBefore($urlImg, $width, $height) {
+    content: "";
+    background-image: url($urlImg);
+    background-size: $width $height;
+    display: inline-block;
+    width: $width;
+    height: $height;
+    margin-right: 20px;
+}

@@ -1,0 +1,176 @@
+.registrasi{
+    .row{
+        .registrasi__gambar{
+            .registrasi__gambarBox{
+                background: $Color6;
+                border-radius: 12px;
+
+                .registrasi__gambarBox--content{
+                    padding: 60px 0;
+
+                    .registrasi__gambarBox--contentIllustration{
+                        width: 100%;
+                        padding: 0 1rem;
+
+                        img{
+                            width: 100%;
+                            height: 100%;
+                        }
+                    }
+                }
+            }
+        }
+
+        .registrasi__form{
+            .registrasi__formHeader{
+                margin-bottom: 50px;
+                h5{
+                    font-weight: 700;
+                    font-size:30px;
+                    font-family: 'Merriweather',sans-serif;
+                    color: $primaryColor;
+                }
+
+                p{
+                    color: #3B3B3B;
+                    font-weight: normal;
+                    font-size: 16px;
+                }
+                a{
+                    color: #EF7B39;
+                }
+            }
+
+            input{
+                border: none;
+                border-bottom: 1px solid #f4f4f4;
+
+                &:disabled{
+                    background: transparent;
+                }
+
+                &:hover,&:focus{
+                    outline: none;
+                    box-shadow: none;
+                }
+            }
+
+            label{
+                font-size: 14px;
+                font-weight: 300;
+                color: #6A6A6A;
+            }
+
+            .btn__dropdown{
+                border: none;
+                border-bottom: 1px solid #f4f4f4;
+
+                &:hover,&:focus{
+                    background: transparent;
+                    outline: none;
+                    box-shadow: none;
+                }
+            }
+
+            .group__form{
+                .form-check-input{
+                    &:checked{
+                        background-color: $Color14;
+                    }
+                }
+                label{
+                    font-weight: 500;
+                    font-size: 0.85rem;
+                }
+                .forgot__password{
+                    font-size: 0.85rem;
+                    color: $Color4;
+                }
+            }
+
+            .input-group-text{
+                border: none;
+                border-bottom:1px solid #f4f4f4;
+                background: transparent;
+
+                &:hover,&:focus{
+                    outline: none;
+                    box-shadow: none;
+                }
+            }
+
+            .btn{
+                border-top-left-radius: 0;
+                border-bottom-left-radius: 0;
+                font-size: 12px;
+                padding: 10px 0;
+            }
+        }
+    }
+}
+
+@media (max-width:576px){
+    .registrasi{
+        .row{
+    
+            .registrasi__form{
+                .registrasi__formHeader{
+                    margin-bottom: 20px;
+                    h5{
+                        font-size:24px;
+                    }
+    
+                    p{
+                        font-size: 14px;
+                    }
+                    a{
+                        color: #EF7B39;
+                    }
+                }
+    
+                .btn__dropdown{
+                    border: none;
+                    border-bottom: 1px solid #f4f4f4;
+    
+                    &:hover,&:focus{
+                        background: transparent;
+                        outline: none;
+                        box-shadow: none;
+                    }
+                }
+    
+                .group__form{
+                    label{
+                        font-weight: 500;
+                        font-size: 0.7rem;
+                    }
+                    .forgot__password{
+                        font-size: 0.7rem;
+                        color: $Color4;
+                    }
+                }
+    
+                .input-group-text{
+                    border: none;
+                    border-bottom:1px solid #f4f4f4;
+                    background: transparent;
+    
+                    &:hover,&:focus{
+                        outline: none;
+                        box-shadow: none;
+                    }
+                }
+    
+                .btn{
+                    border-top-left-radius: 0;
+                    border-bottom-left-radius: 0;
+                    font-size: 12px;
+                }
+            }
+
+            .registrasi__gambar{
+                order: -1!important;
+            }
+        }
+    }
+}

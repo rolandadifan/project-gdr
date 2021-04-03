@@ -1,0 +1,63 @@
+#howToApply{
+    text-align: center;
+
+    .howToApply__header{
+        @include sectionHeader();
+    }
+
+    .howToApply__subHeader{
+        text-align: left;
+        margin: 30px 0;
+        padding: 0 20px;
+
+        h6{
+            font-weight: 600;
+            font-size: 22px;
+        }
+
+        p{
+            text-align: justify;
+            font-weight: 400;
+            font-size: 16px;
+        }
+    }
+
+    .howToApply__context{
+        text-align: left;
+
+        .card__content{
+            
+            .row{
+                margin-bottom: 0.75rem;
+            }
+
+            h6{
+                margin-bottom: 6px;
+                font-weight: 600;
+                font-size: 18px;
+            }
+
+            p{
+                text-align: justify;
+                font-weight: 400;
+                font-size: 14px;
+            }
+
+            ol{
+                padding-left: 1rem;
+                li{
+                    font-size: 14px;
+                }
+            }
+        }
+
+    }
+}
+
+@media (max-width:576px) {
+    #howToApply{
+        #nav-tab{
+            justify-content: center;
+        }
+    }
+}

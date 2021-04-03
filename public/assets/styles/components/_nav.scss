@@ -1,0 +1,29 @@
+.nav-tabs{
+    border:none;
+
+    .nav-link{
+        border: none;
+
+        &:hover{
+            border: none;
+        }
+    }
+
+    .nav-link.active{
+        border: none;
+        font-weight: bold;
+
+        &::after{
+            content: "";
+            display: block;
+            margin-top: 2px;
+            width: 100%;
+            border-radius: 5px;
+            border-bottom: 5px solid $Color3;
+        }
+    }
+}
+
+.tab-content{
+    margin-top: 15px;
+}

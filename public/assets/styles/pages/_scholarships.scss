@@ -1,0 +1,158 @@
+// list scholarship
+#listScholarship{
+    text-align: center;
+
+    .listScholarship__header{
+        @include sectionHeader();
+    }
+
+    .listScholarship__subHeader{
+        text-align: left;
+
+        h5{
+            font-weight: 500;
+            font-size: 22px;
+        }
+
+        p{
+            font-size: 15px;
+        }
+    }
+
+    .listScholarship__context{
+        .card {
+            text-align: left;
+
+            h5{
+                color: $primaryColor;
+                font-weight: 500;
+                font-size: 14px;
+            }
+
+            .card__calender{
+                color: $Color5;
+                font-weight: 300;
+                font-size: 11px;
+            }
+
+            p{
+                font-weight: 400;
+                font-size: 12px;
+            }
+
+            .scholarship__readMore{
+                font-size: 12px;
+                color: $Color3;
+            }
+        }
+    }
+
+    
+}
+
+#detailScholarship{
+    text-align: center;
+
+    .detailScholarship__header{
+        @include sectionHeader();
+    }
+
+    .detailScholarship__context{
+        text-align: left;
+
+        .card{
+            .card__description{
+                font-size: 14px;
+                font-family: 'Poppins', sans-serif;
+                text-align: justify;
+            }
+
+            .card__programDetails{
+                h5{
+                    font-weight: 600;
+                }
+
+                ul{
+                    padding: 0;
+                    padding: 0 0.5rem;
+                    li{
+                        list-style-type: "-";
+                        font-size: 14px;
+                    }
+                }
+
+                h6{
+                    font-weight: 600;
+                    span{
+                        font-weight: normal;
+                        font-size: 14px;
+                    }
+                }
+
+            }
+
+            .card__note{
+                ul{
+                    li{
+                        padding: 0;
+                        &::marker{
+                            color: $primaryColor;
+                            font-size: 1.8rem;
+                        }
+                    }
+                }
+            }
+
+            .card__link{
+                a{
+                    color: $Color13;
+                    font-weight: 600;
+                    font-size: 16px;
+                }
+            }
+        }
+    }
+}
+
+.latestNews{
+    background: $Color6;
+    
+    .latestNews__header{
+        font-family: 'Poppins', sans-serif;
+        font-size: 20px;
+        font-weight: 600;
+    }
+
+    .latestNews__content{
+        .latestNews__col--header{
+            h6{
+                color: $primaryColor;
+                font-size: 18px;
+                font-weight: 500;
+            }
+            
+            p{
+                font-weight: 400;
+                color: $Color13;
+                font-size: 14px;
+            }
+        }
+
+        p{
+            font-size: 12px;
+            color: $Color8;
+        }
+
+        a{
+            font-size: 12px;
+            color: $Color3;
+        }
+
+
+        .col{
+            &:first-child{
+                border-right: 1px solid $Color15;
+            }
+        }
+    }
+}

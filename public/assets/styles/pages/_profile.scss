@@ -1,0 +1,248 @@
+#profile{
+    text-align: center;
+
+    .profile__header{
+        @include sectionHeader();
+    }
+
+    .event{
+        text-align: left;
+
+        .event__contents{
+            .card{
+                border-radius: 20px;
+                margin: 5px 0;
+                box-shadow: 2px 2px 2px #000;
+    
+                .event__boxImg{
+                    padding: 5px;
+                    width: 100%;
+                    height: 100%;
+    
+                    img{
+                        width: 100%;
+                        height: 100%;
+                        object-fit: contain;
+                    }
+                }
+    
+                .event__content{
+                    padding: 20px;
+                    
+                    h3{
+                        font-size: 19px;
+                        font-weight: bold;
+                    }
+    
+                    p{
+                        font-size: 14px;
+                        text-align: justify;
+                    }
+                    a{
+                        color:$Color3;
+                    }
+                }
+            }
+        }
+    }
+
+}
+
+.latestNews__profile{
+    background: $Color7;
+    
+    .latestNews__header{
+        font-family: 'Poppins', sans-serif;
+        font-size: 20px;
+        font-weight: 600;
+    }
+
+    .latestNews__content{
+        .latestNews__col--header{
+            h6{
+                color: $primaryColor;
+                font-size: 18px;
+                font-weight: 500;
+            }
+            
+            p{
+                font-weight: 400;
+                color: $Color13;
+                font-size: 14px;
+            }
+        }
+
+        p{
+            font-size: 12px;
+            color: $Color8;
+        }
+
+        a{
+            font-size: 12px;
+            color: $Color3;
+        }
+
+
+        .col{
+            &:first-child{
+                border-right: 1px solid $Color15;
+            }
+        }
+    }
+}
+
+.edit__profile{
+    h4{
+        color: $primaryColor;
+    }
+
+    .card{
+        border-bottom: 4px solid $primaryColor;
+        min-height: 430px;
+    }
+
+    form{
+        .card{
+            .card-header{
+                border-bottom: none;
+
+                .avatar-upload {
+                    position: relative;
+                    max-width: 205px;
+                    margin: 50px auto;
+                    .avatar-edit {
+                        position: absolute;
+                        right: 1.25rem;
+                        z-index: 1;
+                        top: 10px;
+                        input {
+                            display: none;
+                            + label {
+                                display: inline-block;
+                                width: 34px;
+                                height: 34px;
+                                margin-bottom: 0;
+                                border-radius: 100%;
+                                background: #FFFFFF;
+                                border: 1px solid transparent;
+                                box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
+                                cursor: pointer;
+                                font-weight: normal;
+                                transition: all .2s ease-in-out;
+                                &:hover {
+                                    background: #f1f1f1;
+                                    border-color: #d6d6d6;
+                                }
+                                &:after {
+                                    font-family: 'Font Awesome\ 5 Free' !important;
+                                    content: "\f083" !important;
+                                    font-weight: 900 !important;
+                                    color: #757575;
+                                    position: absolute;
+                                    top: 7px;
+                                    left: 0;
+                                    right: 0;
+                                    text-align: center;
+                                    margin: auto;
+                                }
+                            }
+                        }
+                    }
+                    .avatar-preview {
+                        width: 192px;
+                        height: 192px;
+                        position: relative;
+                        border-radius: 100%;
+                        border: 6px solid #F8F8F8;
+                        box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+                        > div {
+                            width: 100%;
+                            height: 100%;
+                            border-radius: 100%;
+                            background-size: cover;
+                            background-repeat: no-repeat;
+                            background-position: center;
+                        }
+                    }
+                }
+            }
+        }
+
+        .profile__content{
+            h5{
+                color: $primaryColor;
+            }
+
+            .card-body{
+                
+                input, textarea{
+                    border: none;
+                    border-bottom: 1px solid $Color6;
+
+                    &:disabled{
+                        border: 1px solid $Color9;
+                    }
+
+                    &:hover,&:focus{
+                        outline: none;
+                        box-shadow: none;
+                    }
+                }
+
+                input[type="radio"]{
+                    border: 1px solid $Color8;
+                }
+
+                input[type="tel"]{
+                    border: none;
+                    border-bottom: 1px solid $Color6;
+
+                    &:disabled{
+                        background: transparent;
+                    }
+                }
+
+                label{
+                    font-size: 12px;
+                    font-weight: 300;
+                    color: $Color8;
+                }
+
+                .btn__dropdown{
+                    border: none;
+                    border-bottom: 1px solid #f4f4f4;
+    
+                    &:hover,&:focus{
+                        background: transparent;
+                        outline: none;
+                        box-shadow: none;
+                    }
+                }
+
+                .noted{
+                    h6{
+                        font-style: italic;
+                        font-weight: 400;
+                        font-size: 16px;
+                    }
+                    p{
+                        font-size: 14px;
+                    }
+                }
+            
+            }
+        }
+
+        .btn__group{
+            .btn__cancel{
+                background: $Color6;
+                color: $Color3;
+            }
+
+            .btn__save{
+                background: $Color3;
+                color: $Color7;
+            }
+        }
+    }
+}

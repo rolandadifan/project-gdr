@@ -1,0 +1,112 @@
+.contact__gunadarma{
+    margin-top: 20px;
+    padding: 20px;
+    background: $Color6;
+
+    h5{
+        color: $primaryColor
+    }
+
+    .location {
+        p {
+            font-size: 13px;
+        }
+
+        a{
+            color: $Color3;
+            font-size: 15px;
+        }
+    }
+
+    .link{
+        .link__content{
+            ul{
+                list-style-type: square;
+
+                li {
+                    margin: 10px 0;
+
+                    &::marker{
+                        color: $Color2;
+                    }
+
+                    a{
+                        text-decoration: none;
+                        position: relative;
+
+                        &::after{
+                            content: url("./../images/icons/foreign.png");
+                            width: 15px;
+                            height: 15px;
+                            position: absolute;
+                            top: -5px;
+                            margin-left: 8px;
+                            filter: invert(100);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .email__gundar{
+        display: flex;
+        align-items: stretch;
+
+        .email__boxImg{
+            width: 50px;
+            height: 50px;
+            margin-right: 25px;
+
+            img{
+                width: inherit;
+                height: inherit;
+                object-fit: contain;
+            }
+        }
+    }
+
+    .telephone__gundar{
+        display: flex;
+        align-items: stretch;
+
+        .telephone__boxImg{
+            width: 50px;
+            height: 50px;
+            margin-right: 25px;
+
+            img{
+                width: inherit;
+                height: inherit;
+                object-fit: contain;
+            }
+        }
+    }
+}
+
+@media(max-width:992px){
+    .contact__gunadarma{
+        margin-top: 20px;
+        padding: 20px;
+        background: $Color6;
+    
+        h5{
+            color: $primaryColor
+        }
+    
+        .location {
+            p {
+                font-size: 13px;
+            }
+    
+            a{
+                color: $Color3;
+                font-size: 15px;
+            }
+        }
+    
+        .link{
+            margin: 20px;
+        }
+    }
+}

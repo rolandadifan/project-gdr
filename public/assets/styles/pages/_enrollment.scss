@@ -1,0 +1,419 @@
+.enrollmentLandingPage{
+    text-align: center;
+    min-height: 0;
+
+    .app__header{
+        @include sectionHeader();
+    }
+
+    .app__content{
+        margin-top: 40px;
+        text-align: left;
+        .app__stepGuide{
+            h6{
+                font-weight: 600;
+            }
+            ul{
+                li{
+                    list-style: none;
+                    
+                    .app__stepGuide-1,.app__stepGuide-2,.app__stepGuide-3{
+                        padding-left: 1.5rem;
+                        border-left: 1px solid $Color2;
+                        padding-bottom: .8rem;
+                        // position: relative;
+    
+                        &::before{
+                            content: "";
+                            display: inline-block;
+                            width: 25px;
+                            height: 25px;
+                            border-radius: 50%;
+                            position: relative;
+                            top: 0;
+                            left: 0;
+                            background: $Color2;
+                            transform: translate(-37px, 0);
+                        }
+    
+                        h5{
+                            margin-top: -2rem;
+                            color: $Color8;
+                        }
+    
+                        p{
+                            margin-bottom: 0;
+                        }
+                    }
+                }
+            }
+        }
+        
+        .app__button{
+            margin-top: 20px;
+            text-align: center;
+            margin-bottom: 30px;
+
+            button{
+                text-decoration: none;
+                @include primaryButton();
+            }
+        }
+    }
+
+
+}
+
+#startNewApp{
+    text-align: left;
+
+    h5{
+        font-weight: bold;
+    }
+
+    .wizard__progress{
+        height: 100px;
+        border-radius: 75px;
+        border: 1px solid $primaryColor;
+        // padding: 25px;
+        padding: 7px 5px;
+        text-align: center;
+        margin-bottom: 20px;
+
+        .row{
+            position: relative;
+            .col {
+                position: relative;
+                height: calc(100px - 15px);
+                padding: 15px;
+                z-index: 1;
+    
+                h6,p{
+                color: $primaryColor;
+                font-weight: bold;
+                }
+    
+                p{
+                    font-weight: lighter;
+                    font-size: 14px;
+                }
+            }
+        }
+
+        .row.progress__step-1{
+            &::after{
+                @include progressBar(35%)
+            }
+        }
+
+        .row.progress__step-2{
+            &::after{
+                @include progressBar(70%)
+            }
+        }
+
+        .row.progress__step-3{
+            &::after{
+                @include progressBar(100%)
+            }
+        }
+
+        .col.active{
+            h6,p{
+                color: $Color7;
+                font-weight: bold;
+            }
+        }
+    }
+
+    #formFile::before {
+        font-family: "Font Awesome 5 Free";
+        content: "\f1c1";
+        position: absolute;
+        z-index: 2;
+        display: block;
+        background-color: #eee;
+        width: 70px;
+        padding: 0 1.75rem;
+    }
+
+    .app__radioBox{
+        padding: 30px 42px;
+        background: $Color6;
+        border-radius: 25px;
+        margin-bottom: 20px;
+
+        h5{
+            margin-bottom: 20px;
+            font-weight: bolder;
+        }
+
+        p{
+            font-weight: 500;
+        }
+    }
+    
+    .confirm__button{
+        background: $Color6;
+        padding: 25px 32px;
+
+        p{
+            font-size: 14px;
+        }
+
+        .primary__button{
+            @include primaryButton();
+
+            a{
+                text-decoration: none;
+                color: $Color7;
+            }
+        }
+
+        .secondary__button{
+            font-size: 14px;
+            background: transparent;
+            border-radius: 12px;
+            color: $primaryColor;
+            padding: 10px 24px;
+            font-weight: 700;
+            text-transform: uppercase;
+            border: 1px solid $primaryColor;
+        }
+    }
+
+    .nav-link{
+        &::after{
+            content: "";
+            border-bottom: none;
+        }
+    }
+
+    .nav-link.active{
+        background-color: $primaryColor;
+        color: $Color7;
+        font-weight: 400;
+    }
+
+    .tab-content{
+        margin-top: 0;
+        .tab-pane{
+            border-radius: 8px;
+            padding: 30px;
+            background: $Color6;
+
+            form{
+                label{
+                    font-size: 16px;
+    
+                    span{
+                        font-weight: 600;
+                        color: crimson;
+                    }
+                }
+    
+                input,select {
+                    border: 1px solid $primaryColor;
+                    border-radius: 6px;
+                }
+    
+                input[type="file"]{
+                    border: 2px solid $primaryColor;
+                    border-radius: 10px;
+                }
+            }     
+
+            .disclaimer__content{
+                padding: 20px 40px;
+
+                h5{
+                    font-weight: 500;
+                }
+
+                .disclaimer__lists {
+
+                    .disclaimer__list--one,.disclaimer__list--two{
+                        padding-top: 10px;
+                        padding-bottom: 0;
+                        display: flex;
+                        justify-content: flex-start;
+                        align-items:baseline;
+
+                        p{
+                            text-align: justify
+                        }
+                    }
+
+                        .bi.bi-record-fill{
+                            width: 20px;
+                            height: 20px;
+                            color: $primaryColor;
+                    }
+                }
+
+                .disclaimer__list--one {
+                    margin-bottom: -10px;
+                }
+
+                // ul{
+                //     list-style: none;
+                //     padding: 0;
+
+                //     li{
+                //         font-size: 16px;
+                //         text-align: justify;
+
+                //         span{
+                //             font-weight: 600;
+                //         }
+
+                //         &::before{
+                //             content: ".";
+                //             color: $primaryColor;
+                //             display: inline-block;
+                //             font-size: 100px;
+                //             line-height: 0px;
+                //             margin-right: 10px;
+                //         }
+                //         p{
+                //             padding: 20px;
+                //         }
+                //     }
+                // }
+            }
+
+            #scholarshipHelp {
+                font-size: 12px;
+            }
+
+            .btn__save{
+                padding: 10px 30px;
+                background-color: $primaryColor;
+                color: $Color7;
+                border-radius: 12px;
+                text-transform: uppercase;
+            }
+        }
+
+        .form__identity h4, .form__residence h4, .form__study--information h4, .form__study--permitPeriod h4, .form__funding h4, .form__placeResidenceIndonesia h4, .form__passport h4, h4{
+            font-size: 20px;
+            font-weight: 600;
+            color: $primaryColor;
+
+            &::after{
+                content: "";
+                display: block;
+                width: 100%;
+                border-bottom: 1px solid $Color12;
+                margin-top: 4px;
+            }
+
+            &::before{
+                content: url($urlIcon1);
+                width: 100%; 
+                margin-right: 10px;   
+                // height: 100%;
+                // background-image: url($urlIcon1);
+            }
+        }
+    }
+}
+
+.nonDegreePermission{
+    form{
+        select{
+            padding: 0 !important;
+
+            option{
+                padding: 1.25rem 1rem;
+    
+                &::before{
+                    content: "";
+                    width: 0.75rem;
+                    height: 0.75rem;
+                    background-color: $primaryColor;
+                    margin: 6px 0.75rem 0 0;
+                    display: inline-block;
+                    border-radius: 50%;
+                    border: 1px solid grey;
+                }
+            }
+            option:checked{
+                background: $primaryColor !important;
+                color: $Color7;
+
+                &::before{
+                    content: "";
+                    background: $Color7;
+                }
+            }
+        }
+    }
+}
+
+@media(max-width:576px){
+    #startNewApp{
+        text-align: center;
+        .wizard__progress{
+            margin: auto;
+            border-radius: 20px;
+            width: 60%;
+            height: 250px;
+            margin-bottom: 20px;
+
+            .row.progress__step-1{
+    
+                &::after{
+                    @include progressBarHp(33.3%);
+                }
+            }
+
+            .row.progress__step-2{
+    
+                &::after{
+                    @include progressBarHp(66.6%);
+                }
+            }
+
+            .row.progress__step-3{
+                &::after{
+                    @include progressBarHp(92.6%);
+                }
+            }
+        }
+
+        .tab-content{
+            .tab-pane{
+                border-radius: 8px;
+                padding: 30px;
+                background: $Color6;
+    
+                form{
+                    label{
+                        font-size: 16px;
+        
+                        span{
+                            font-weight: 600;
+                            color: crimson;
+                        }
+                    }
+        
+                    input,select {
+                        border: 1px solid $primaryColor;
+                        border-radius: 6px;
+                    }
+        
+                    input[type="file"]{
+                        border: 2px solid $primaryColor;
+                        border-radius: 10px;
+                    }
+                }     
+    
+                .disclaimer__content{
+                    padding: 20px 0 0 0;
+                
+                }
+            }
+        }
+    }
+}
