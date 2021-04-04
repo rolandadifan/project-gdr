@@ -1,4 +1,4 @@
-<ul class="navbar-nav bg-gradient-success sidebar sidebar-dark accordion" id="accordionSidebar">
+<ul class="navbar-nav @if(Auth()->user()->role == 'sadmin') bg-gradient-success @else bg-gradient-info @endif sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
     <div class="nav-item">
@@ -35,7 +35,7 @@
     <li class="nav-item">
       <a class="nav-link" href="{{ route('user.index') }}">
         <i class="fas fa-fw fa-user"></i>
-        <span>Users Info</span></a>
+        <span>Students Info</span></a>
     </li>
 
     <!-- Nav Item - Utilities Collapse Menu -->
@@ -46,8 +46,19 @@
       </a>
       <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
-          <a class="collapse-item" href="utilities-color.html">List</a>
-          <a class="collapse-item" href="utilities-border.html">Add</a>
+          <a class="collapse-item" href="{{ route('course.index') }}">List</a>
+          {{-- <a class="collapse-item" href="utilities-border.html">Add</a> --}}
+            <div class="dropdown ml-3 my-2">
+              <button class="bg-light dropdown-toggle" style="border: none; background-color:transparent !important" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Add
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="{{ route('short.create') }}">Short Course</a>
+                <a class="dropdown-item" href="{{ route('course.create') }}">Course</a>
+                <a class="dropdown-item" href="#">Something else here</a>
+              </div>
+            </div>
+          <a class="collapse-item" href="utilities-border.html">Enrollment</a>
           <a class="collapse-item" href="cards.html">Requirment</a>
         </div>
       </div>

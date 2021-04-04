@@ -20,6 +20,15 @@
       crossorigin="anonymous"
     />
 
+    
+    <!-- swiper css -->
+    <link
+    rel="stylesheet"
+    href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
+    
+     <!-- splide js -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@2.4.21/dist/css/splide.min.css"/>
+
     {{-- ajax --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
 
@@ -32,16 +41,4 @@
             <!-- header -->
             <header>
               <!-- info gundar -->
-              <div class="info-gundar">
-                <div class="flex__container">
-                  <a href="http://staffsite.gunadarma.ac.id/" target="_blank"
-                    >Staffsite</a
-                  >
-                  <a href="https://studentsite.gunadarma.ac.id/" target="_blank"
-                    >Studensite</a
-                  >
-                  <a href="http://career.gunadarma.ac.id/" target="_blank"
-                    >CareerCenter</a
-                  >
-                </div>
-              </div>
+              

@@ -1,6 +1,5 @@
 @include('include.header')
-{{-- info gundar --}}
- @include('include.info')
+
 
       <!-- navigation bar -->
       @include('include.navbar')
@@ -10,9 +9,14 @@
 
     @yield('content')
     
-   
+   <!-- thumbnail -->
+    @include('include.thumbnail')
+
+    <!-- contact gunadarma -->
+    @include('include.contact')
     <!-- footer -->
     @include('include.footer')
+    
 
     @stack('prepend-script')
     @include('include.script')

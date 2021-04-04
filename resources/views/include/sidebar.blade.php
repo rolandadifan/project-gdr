@@ -62,13 +62,13 @@
                             <div class="accordion-body">
                               <ul>
                                 <li>
-                                  <a href="./pages/courses/short-course.html">Short Courses</a>
+                                  <a href="{{ route('scourse.index') }}">Short Courses</a>
                                 </li>
                                 <li>
-                                  <a href="./pages/courses/undergraduate/undergraduate.html">Undergraduate Courses</a>
+                                  <a href="{{ route('undergraduate.index') }}">Undergraduate Courses</a>
                                 </li>
                                 <li>
-                                  <a href="./pages/courses/postgraduate/postgraduate.html">Postgraduate Courses</a>
+                                  <a href="{{ route('postgraduate.index') }}">Postgraduate Courses</a>
                                 </li>
                               </ul>
                             </div>
@@ -77,7 +77,7 @@
 
                         <div class="accordion-item">
                           <a
-                            href="./pages/scholarship/list-scholarship.html"
+                            href="{{ route('scholarship.index') }}"
                             class="accordion-header"
                             id="scholarships"
                           >
@@ -92,7 +92,7 @@
 
                         <div class="accordion-item">
                           <a
-                            href="./pages/how-to-apply/index.html"
+                            href="{{ route('apply.index') }}"
                             class="accordion-header"
                             id="howToApplyParent"
                           >
@@ -220,7 +220,7 @@
               </div>
 
               <div class="accordion-item">
-                <a href="./pages/research/index.html" class="accordion-header" id="researchHeading">
+                <a href="{{ route('research.index') }}" class="accordion-header" id="researchHeading">
                   <button
                     class="accordion-button collapsed"
                     type="button"
@@ -231,7 +231,7 @@
               </div>
 
               <div class="accordion-item">
-                <a href="./pages/alumni/index.html" class="accordion-header" id="alumni">
+                <a href="{{ route('alumni.index') }}" class="accordion-header" id="alumni">
                   <button class="accordion-button collapsed" type="button">
                     Alumni
                   </button>

@@ -1,29 +1,35 @@
-
 /* admin */
-.btn-add-admin{
+.btn-add-admin {
     width: 200px;
 }
-.enam-dua{
+.enam-dua {
     width: 50px;
     background-color: whitesmoke;
 }
 
-
 /* about page */
-.edit-input-image-about{
+.edit-input-image-about {
     width: 375px;
     margin-left: 20px;
 }
 
-.label-about-image{
+.label-about-image {
     font-size: 30px !important;
 }
 
-.label-about-content{
+.label-about-content {
     font-size: 30px;
 }
 
-.btn-save-about-content{
+.btn-save-about-content {
     padding-left: 100px !important;
     padding-right: 100px !important;
 }
+
+/* profile */
+
+.profile-input {
+    width: 500px;
+}
+
+/* course */

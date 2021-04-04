@@ -8,8 +8,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
+  <link rel="icon" href="{{ asset('assets/images/Logo-Gunadarma-Universitas-Gunadarma.png') }}">
 
-  <title>Dashboard</title>
+  <title>Gunadarma University | Admin Site</title>
 
   <!-- Custom fonts for this template-->
   <link href="{{ asset('adminvendor/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">

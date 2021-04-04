@@ -11,6 +11,10 @@
 <script type="module" src="{{ asset('assets/scripts/main.js') }}"></script>
 <script src="{{ asset('assets/scripts/course.js') }}"></script>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@splidejs/splide@2.4.21/dist/js/splide.min.js"></script>
+<!-- splide grid -->
+<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide-extension-grid@0.2.0/dist/js/splide-extension-grid.min.js"></script>
+<!-- swiper js -->
 
 <script>
   const swiper = new Swiper('.swiper-container', {

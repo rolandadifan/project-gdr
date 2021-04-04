@@ -97,7 +97,7 @@
                                 <div class="row noted">
                                     <h6>Note:</h6>
                                     <p>Must be at least 8 characters long, uppercase,
-                                        lowercase, and numbers</p>
+                                        lowercase, numbers, and symbol</p>
                                 </div>
                             </div>
                         </div>
