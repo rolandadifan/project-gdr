@@ -14,132 +14,24 @@
                   class="row row-cols-lg-4 row-cols-1 row-cols-md-3 justify-content-center"
                 >
                   <!-- forloop di BE -->
+                  @forelse ($courses as $item)
                   <div class="col">
-                    <a href="./detail-course.html">
+                    <a href="{{ route('scourse.detail', $item->slug) }}">
                       <div class="card">
                         <img
-                          src="./../../assets/images/communication.png"
+                          src="{{ Storage::url($item->thumbnail) }}"
                           class="card-img-top"
                           alt="..."
                         />
                         <div class="card-body">
-                          <h5 class="card-title">Communications</h5>
+                          <h5 class="card-title">{{ $item->courseName }}</h5>
                         </div>
                       </div>
                     </a>
                   </div>
-                  <div class="col">
-                    <a href="#">
-                      <div class="card">
-                        <img
-                          src="./../../assets/images/communication.png"
-                          class="card-img-top"
-                          alt="..."
-                        />
-                        <div class="card-body">
-                          <h5 class="card-title">Communications</h5>
-                        </div>
-                      </div>
-                    </a>
-                  </div>
-                  <div class="col">
-                    <a href="#">
-                      <div class="card">
-                        <img
-                          src="./../../assets/images/communication.png"
-                          class="card-img-top"
-                          alt="..."
-                        />
-                        <div class="card-body">
-                          <h5 class="card-title">Communications</h5>
-                        </div>
-                      </div>
-                    </a>
-                  </div>
-                  <div class="col">
-                    <a href="#">
-                      <div class="card">
-                        <img
-                          src="./../../assets/images/communication.png"
-                          class="card-img-top"
-                          alt="..."
-                        />
-                        <div class="card-body">
-                          <h5 class="card-title">Communications</h5>
-                        </div>
-                      </div>
-                    </a>
-                  </div>
-                  <div class="col">
-                    <a href="#">
-                      <div class="card">
-                        <img
-                          src="./../../assets/images/computer-science.png"
-                          class="card-img-top"
-                          alt="..."
-                        />
-                        <div class="card-body">
-                          <h5 class="card-title">Computer Science</h5>
-                        </div>
-                      </div>
-                    </a>
-                  </div>
-                  <div class="col">
-                    <a href="#">
-                      <div class="card">
-                        <img
-                          src="./../../assets/images/industrial-engineering.png"
-                          class="card-img-top"
-                          alt="..."
-                        />
-                        <div class="card-body">
-                          <h5 class="card-title">industrial-engineering</h5>
-                        </div>
-                      </div>
-                    </a>
-                  </div>
-                  <div class="col">
-                    <a href="#">
-                      <div class="card">
-                        <img
-                          src="./../../assets/images/industrial-engineering.png"
-                          class="card-img-top"
-                          alt="..."
-                        />
-                        <div class="card-body">
-                          <h5 class="card-title">industrial-engineering</h5>
-                        </div>
-                      </div>
-                    </a>
-                  </div>
-                  <div class="col">
-                    <a href="#">
-                      <div class="card">
-                        <img
-                          src="./../../assets/images/industrial-engineering.png"
-                          class="card-img-top"
-                          alt="..."
-                        />
-                        <div class="card-body">
-                          <h5 class="card-title">industrial-engineering</h5>
-                        </div>
-                      </div>
-                    </a>
-                  </div>
-                  <div class="col">
-                    <a href="#">
-                      <div class="card">
-                        <img
-                          src="./../../assets/images/industrial-engineering.png"
-                          class="card-img-top"
-                          alt="..."
-                        />
-                        <div class="card-body">
-                          <h5 class="card-title">industrial-engineering</h5>
-                        </div>
-                      </div>
-                    </a>
-                  </div>
+                  @empty
+                  <h5 class="text-center">Course Not Available Right Now</h5>
+                  @endforelse
                   <!-- end for loop -->
                 </div>
 

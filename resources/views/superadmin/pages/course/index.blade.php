@@ -15,7 +15,7 @@
         @include('flashmessage.validation')
         @include('flashmessage.flash')
         <h1 class="mb-5">Course List</h1>
-        <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <ul class="nav nav-tabs mb-5" id="myTab" role="tablist">
             <li class="nav-item" role="presentation">
                 <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Short Course</a>
             </li>
@@ -30,6 +30,7 @@
               <tr>
                   <th>No</th>
                   <th>Name</th>
+                  <th>Status</th>
                   <th>Action</th>
               </tr>
           </thead>
@@ -38,20 +39,26 @@
               <tr>
                   <td>{{ $loop->iteration }}</td>
                   <td>{{ $item->courseName }}</td>
+                  <td>{{ $item->status }}</td>
                   <td>
                       <a href="{{ route('short.edit', $item->id) }}" class="btn btn-warning btn-sm">
                           <i class="fas fa-fw fa-edit"></i>
                       </a>
-                      <div class="dropdown d-inline">
-                        <button class="btn btn-sm btn-secondary" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                             <i class="fas fa-fw fa-eye"></i>
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#">Publish</a>
-                            <a class="dropdown-item" href="#">InActive</a>
-                        </div>
-                        </div>
-                      <form action="" class="d-inline" method="POST">
+                        <form action="{{ route('course.status.active', $item->id) }}" class="d-inline" method="POST">
+                        @method('put')
+                        @csrf
+                          <button type="submit" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="bottom" title="Make Active">
+                            <i class="fas fa-fw fa-check"></i>
+                          </button>
+                      </form>
+                        <form action="{{ route('course.status.inactive', $item->id) }}" class="d-inline" method="POST">
+                        @method('put')
+                        @csrf
+                          <button type="submit" class="btn btn-secondary btn-sm" data-toggle="tooltip" data-placement="bottom" title="Make InActive">
+                            <i class="fas fa-fw fa-times"></i>
+                          </button>
+                      </form>
+                      <form action="{{ route('course.destroy', $item->id) }}" class="d-inline" method="POST">
                         @method('delete')
                         @csrf
                           <button type="submit" class="btn btn-danger btn-sm">
@@ -70,6 +77,7 @@
               <tr>
                   <th>No</th>
                   <th>Name</th>
+                  <th>Status</th>
                   <th>Action</th>
               </tr>
           </thead>
@@ -78,20 +86,26 @@
               <tr>
                   <td>{{ $loop->iteration }}</td>
                   <td>{{ $cours->courseName }}</td>
+                  <td>{{ $cours->status }}</td>
                   <td>
                       <a href="{{ route('course.edit', $cours->id) }}" class="btn btn-warning btn-sm">
                           <i class="fas fa-fw fa-edit"></i>
                       </a>
-                      <div class="dropdown d-inline">
-                        <button class="btn btn-sm btn-secondary" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                             <i class="fas fa-fw fa-eye"></i>
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#">Publish</a>
-                            <a class="dropdown-item" href="#">InActive</a>
-                        </div>
-                        </div>
-                      <form action="" class="d-inline" method="POST">
+                     <form action="{{ route('course.status.active', $cours->id) }}" class="d-inline" method="POST">
+                        @method('put')
+                        @csrf
+                          <button type="submit" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="bottom" title="Make Active">
+                            <i class="fas fa-fw fa-check"></i>
+                          </button>
+                      </form>
+                        <form action="{{ route('course.status.inactive', $cours->id) }}" class="d-inline" method="POST">
+                        @method('put')
+                        @csrf
+                          <button type="submit" class="btn btn-secondary btn-sm" data-toggle="tooltip" data-placement="bottom" title="Make InActive">
+                            <i class="fas fa-fw fa-times"></i>
+                          </button>
+                      </form>
+                      <form action="{{ route('course.destroy', $cours->id) }}" class="d-inline" method="POST">
                         @method('delete')
                         @csrf
                           <button type="submit" class="btn btn-danger btn-sm">

@@ -160,7 +160,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row justify-content-center text-center mt-3 btn__group">
+                <div class="row mt-5 justify-content-center text-center mt-3 btn__group">
                     <div class="d-inline-block">
                         <input type="button" class="btn btn__cancel" value="Cancel">
                         <input type="submit" class="btn btn__save" value="Save changes">

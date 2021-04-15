@@ -22,8 +22,9 @@
           </div>
         @include('flashmessage.validation')
           @include('flashmessage.flash')
-        <form action="{{ route('course.store') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('course.update', $course->id) }}" method="POST" enctype="multipart/form-data">
           @csrf
+          @method('put')
             <div class="form-group">
                 <label for="name">name<span style="color: red">*</span></label>
                 <input type="text" class="form-control" name="courseName" value="{{ $course->courseName }}">
@@ -89,7 +90,7 @@
                 <div class="col-md-4">
                     <div class="form-group">
                         <label for="name">Grade AA<span style="color: red">*</span></label>
-                        <input type="number" class="form-control" name="gradeAA" value="{{  $course->gradeAA  }}">
+                        <input type="number" class="form-control" name="gradeAA" value="{{   $course->gradeAA  }}">
                     </div>
                 </div>
                 <div class="col-md-4">

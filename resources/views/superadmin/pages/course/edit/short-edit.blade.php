@@ -16,35 +16,47 @@
               <div class="col-md-9">
                   <h1 class="my-3">{{ $course->courseName }}</h1>
               </div>
-              <div class="col-md-3 mt-3">
-                  <a href="" class="btn btn-md btn-info btn-block">Publish</a>
+              <div class="col-md-3 mt-6">
+                @if ($course->status == 'inactive')
+                <form action="{{ route('course.status.active', $course->id) }}" method="POST">
+                  @csrf
+                  @method('put')
+                  <button type="submit" class="btn btn-md btn-warning btn-block">Make Active</button>
+                </form>
+                @else
+                 <form action="{{ route('course.status.inactive', $course->id) }}" method="POST">
+                  @csrf
+                  @method('put')
+                  <button type="submit" class="btn btn-md btn-danger btn-block">Make InActive</button>
+                </form>
+                @endif
               </div>
           </div>
         @include('flashmessage.validation')
           @include('flashmessage.flash')
-        <form action="{{ route('short.store') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('short.update', $course->id) }}" method="POST" enctype="multipart/form-data">
           @csrf
           <div class="form-group">
               <label for="name">Name Course<span style="color: red">*</span></label>
-              <input type="text" class="form-control" name="courseName" value="{{ $course->courseName }}" required>
+              <input type="text" class="form-control" name="courseName" value="{{ $course->courseName }}">
           </div>
           <div class="row">
             <div class="col-md-6">
                <div class="form-group">
                 <label for="name">Start Duration<span style="color: red">*</span></label>
-                <input type="date" class="form-control" name="startPeriode" value="{{ $course->startPeriode }}" required>  
+                <input type="date" class="form-control" name="startPeriode" value="{{ $course->startPeriode }}">  
               </div>
             </div>
             <div class="col-md-6">
                <div class="form-group">
                   <label for="name">End Duration<span style="color: red">*</span></label>
-                  <input type="date" class="form-control" name="endPeriode" value="{{ $course->endPeriode }}" required>
+                  <input type="date" class="form-control" name="endPeriode" value="{{ $course->endPeriode }}">
               </div>
             </div>
           </div>
           <div class="form-group">
               <label for="name">Information<span style="color: red">*</span></label>
-              <textarea type="text" class="form-control" name="information" required>{{ $course->information }}"</textarea>
+              <textarea type="text" class="form-control" name="information">{{ $course->information }}</textarea>
           </div>
           <div class="row">
               <div class="col-md-4">
@@ -59,11 +71,12 @@
                 </div>
               </div>
           </div>
-
-          <h3 class="mt-2">Detail</h3>
+          <h3 class="mt-5">Detail Info</h3>
+          <hr>
           <span>max detail 4</span>
           @foreach ($course->courseInfo as $courseDetail)
           <div class="row mt-3">
+            <input type="hidden" class="form-control" value="{{ $courseDetail->id }}" name="id[]">
             <div class="col-md-6">
               <div class="form-group">
                   <label for="name">Info Course Title</label>
@@ -73,7 +86,18 @@
             <div class="col-md-6">
               <div class="form-group">
                   <label for="name">Info Course Detail</label>
-                  <textarea type="text" class="form-control" name="info[]">{{ $courseDetail->info }} </textarea>
+                  @php
+                  if( $courseDetail->info == null){
+                   $string = null;
+                  }else {
+                     $courseinfo = json_decode( $courseDetail->info, true);
+                    $string = null;
+                    foreach ($courseinfo as $key) {
+                      $string .=  $key. ',';
+                    }
+                  }
+                  @endphp
+                  <textarea type="text" class="form-control" name="info[]" placeholder="seperated comma">{{ $string  }} </textarea>
               </div>
             </div>
           </div>

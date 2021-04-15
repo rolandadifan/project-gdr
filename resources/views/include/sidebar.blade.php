@@ -123,7 +123,7 @@
 
                         <div class="accordion-item">
                           <a
-                            href="./pages/enrollment/student-enrollment.html"
+                            href="{{ route('enrollment.index') }}"
                             class="accordion-header"
                             id="scholarships"
                           >

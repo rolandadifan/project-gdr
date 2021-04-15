@@ -1,4 +1,4 @@
-<ul class="navbar-nav @if(Auth()->user()->role == 'sadmin') bg-gradient-success @else bg-gradient-info @endif sidebar sidebar-dark accordion" id="accordionSidebar">
+<ul class="navbar-nav @if(Auth()->user()->role == 'sadmin')  @else bg-gradient-info @endif sidebar sidebar-dark accordion" id="accordionSidebar" style="background-color: #885A89 !important">
 
     <!-- Sidebar - Brand -->
     <div class="nav-item">
@@ -48,7 +48,7 @@
         <div class="bg-white py-2 collapse-inner rounded">
           <a class="collapse-item" href="{{ route('course.index') }}">List</a>
           {{-- <a class="collapse-item" href="utilities-border.html">Add</a> --}}
-            <div class="dropdown ml-3 my-2">
+            <div class="btn-group dropright ml-3 my-2">
               <button class="bg-light dropdown-toggle" style="border: none; background-color:transparent !important" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Add
               </button>
@@ -127,13 +127,13 @@
       <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#menu" aria-expanded="true" aria-controls="collapsePages">
         
         <i class="fas fa-fw fa-folder-minus"></i>
-        <span>Menu</span>
+        <span>Page</span>
       </a>
       <div id="menu" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
-          <a class="collapse-item" href="{{ route('page.index') }}">Single Menu</a>
-          <a class="collapse-item" href="{{ route('page.multi') }}">Multi Menu</a>
-          <a class="collapse-item" href="{{ route('page.create') }}">Add Menu</a>
+          <a class="collapse-item" href="{{ route('page.index') }}">Single Page</a>
+          <a class="collapse-item" href="{{ route('page.multi') }}">Multi Page</a>
+          <a class="collapse-item" href="{{ route('page.create') }}">Add Page</a>
         </div>
       </div>
     </li>

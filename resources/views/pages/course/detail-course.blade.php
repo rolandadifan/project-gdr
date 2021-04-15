@@ -5,7 +5,7 @@
 <main>
         <section id="shortCourses" class="p-2">
             <div class="shortCourses__header">
-              <h2>International Programs</h2>
+              <h2>{{ $course->courseName }}</h2>
               <h4>Short Courses</h4>
             </div>
             <div class="shortCourses__mainContent">
@@ -14,18 +14,16 @@
                   <div class="col">
                     <div class="shortCourses__boxImg">
                       <img
-                        src="{{ asset('assets/images/computer-science.png') }}"
+                        src="{{ asset(Storage::url($course->thumbnail)) }}"
                         alt="Basketball Park"
                       />
                     </div>
                   </div>
                   <div class="col">
                     <div class="shortCourses__mainContent--description">
-                      <h2>Computer Science</h2>
+                      <h2>{{ $course->courseName }}</h2>
                       <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit officia placeat ad eius eligendi sequi doloribus facere voluptatum, corporis magnam accusantium tempore cum consequatur omnis molestiae, aut, ab id vero?
-                        Obcaecati quisquam voluptatem amet magnam sapiente alias velit deserunt sit culpa tempore doloribus dignissimos laboriosam voluptate ipsa commodi dolores officia, odit eum maxime natus porro, quibusdam illum. Labore, dignissimos ipsam.
-                        
+                       {{ $course->information }}
                       </p>
                       <hr>
                     </div>
@@ -36,6 +34,13 @@
               <div class="accordion__courseShow">
                 <div class="container">
                   <div class="row row-cols-lg-2 row-cols-1 g-2">
+                    {{-- usingg loop --}}
+                   {{-- @php
+                    $courseinfo = json_decode( $courseDetail->info, true);
+                  @endphp
+                  @foreach ($courseinfo as $info)
+                  <textarea type="text" class="form-control" name="info[]">{{ $info }} </textarea>
+                  @endforeach --}}
                     <div class="col">
                       <div class="accordion__content">
                         <h2>Diploma</h2>
@@ -93,90 +98,22 @@
               <div class="splide">
                 <div class="splide__track">
                   <ul class="splide__list">
+                    @foreach ($courses as $items)
                     <li class="splide__slide">
-                      <a href="#">
+                      <a href="{{ route('scourse.detail', $items->slug) }}">
                         <div class="card">
                           <img
-                            src="{{ asset('assets/images/communication.png') }}"
+                            src="{{ asset(Storage::url($items->thumbnail)) }}"
                             class="card-img-top"
                             alt="..."
                           />
                           <div class="card-body">
-                            <h5 class="card-title">Communications</h5>
+                            <h5 class="card-title">{{ $items->courseName }}</h5>
                           </div>
                         </div>
                       </a>
                     </li>
-                    <li class="splide__slide">
-                      <a href="#">
-                      <div class="card">
-                        <img
-                          src="{{ asset('assets/images/computer-science.png') }}"
-                          class="card-img-top"
-                          alt="..."
-                        />
-                        <div class="card-body">
-                          <h5 class="card-title">Computer Science</h5>
-                        </div>
-                      </div>
-                    </a>
-                    </li>
-                    <li class="splide__slide">
-                      <a href="#">
-                      <div class="card">
-                        <img
-                          src="{{ asset('assets/images/computer-science.png') }}"
-                          class="card-img-top"
-                          alt="..."
-                        />
-                        <div class="card-body">
-                          <h5 class="card-title">Computer Science</h5>
-                        </div>
-                      </div>
-                    </a>
-                    </li>
-                    <li class="splide__slide">
-                      <a href="#">
-                      <div class="card">
-                        <img
-                          src="{{ asset('assets/images/computer-science.png') }}"
-                          class="card-img-top"
-                          alt="..."
-                        />
-                        <div class="card-body">
-                          <h5 class="card-title">Computer Science</h5>
-                        </div>
-                      </div>
-                    </a>
-                    </li>
-                    <li class="splide__slide">
-                      <a href="#">
-                      <div class="card">
-                        <img
-                          src="{{ asset('assets/images/computer-science.png') }}"
-                          class="card-img-top"
-                          alt="..."
-                        />
-                        <div class="card-body">
-                          <h5 class="card-title">Computer Science</h5>
-                        </div>
-                      </div>
-                    </a>
-                    </li>
-                    <li class="splide__slide">
-                      <a href="#">
-                      <div class="card">
-                        <img
-                          src="{{ asset('assets/images/computer-science.png') }}"
-                          class="card-img-top"
-                          alt="..."
-                        />
-                        <div class="card-body">
-                          <h5 class="card-title">Computer Science</h5>
-                        </div>
-                      </div>
-                    </a>
-                    </li>
+                    @endforeach
                   </ul>
                 </div>
               </div>

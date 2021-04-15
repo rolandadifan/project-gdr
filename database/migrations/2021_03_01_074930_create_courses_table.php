@@ -37,7 +37,7 @@ class CreateCoursesTable extends Migration
             $table->integer('gradB')->nullable();
             $table->integer('bppB')->nullable();
             $table->integer('sksB')->nullable();
-            $table->enum('status', ['pending', 'publish'])->default('pending');
+            $table->enum('status', ['active', 'inactive'])->default('inactive');
             $table->softDeletes();
             $table->timestamps();
         });

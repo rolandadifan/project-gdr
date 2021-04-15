@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app-2')
 @section('content')
 @include('include.jumbotron')
 @include('icon')
@@ -197,31 +197,4 @@
 
 @endsection
 @push('addon-script')
-<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-<!-- Initialize Swiper -->
-    <script>
-        const swiper = new Swiper('.swiper-container', {
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
-        });
-
-        const swiper2 = new Swiper('.swiper-container-2', {
-        effect: 'fade',
-        slidesPerView: 'auto',
-        autoplay: {
-        delay: 3000,
-        disableOnInteraction: false,
-        },
-        pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-        },
-        navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-        },
-    });
-    </script>
 @endpush

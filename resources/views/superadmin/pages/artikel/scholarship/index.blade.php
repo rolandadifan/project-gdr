@@ -20,21 +20,18 @@
             create
           </a>
         <table id="table-scholarship-info" class="table-responsive-md display" width="100%">
-          <thead>
+            <thead>
               <tr>
                   <th>No</th>
-                  <th>Nama</th>
-                  <th>No.Hp</th>
-                  <th>Role</th>
+                  <th>Name</th>
                   <th>Action</th>
               </tr>
           </thead>
           <tbody>
+              @foreach ($artikel as $item)
               <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
+                  <td>{{ $loop->iteration }}</td>
+                  <td>{{ $item->artikelName }}</td>
                   <td>
                       <a href="" class="btn btn-warning btn-sm">
                           <i class="fas fa-fw fa-edit"></i>
@@ -48,7 +45,7 @@
                       </form>
                   </td>
               </tr>
-          </tbody>
+              @endforeach
       </table>
       </div>
       
