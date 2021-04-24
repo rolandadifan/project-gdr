@@ -20,12 +20,8 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('telephone');
             $table->string('password');
-            $table->date('dateBirth')->nullable();
-            $table->enum('gender', ['male', 'female'])->nullable();
-            $table->string('address')->nullable();
-            $table->string('nationality')->nullable();
-            $table->string('avatar')->nullable();
             $table->enum('role', ['student', 'admin', 'sadmin'])->default('student');
+            
             $table->softDeletes();
             $table->rememberToken();
             $table->timestamps();

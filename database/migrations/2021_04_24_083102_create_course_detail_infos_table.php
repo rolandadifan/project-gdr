@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSubmenusTable extends Migration
+class CreateCourseDetailInfosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,10 @@ class CreateSubmenusTable extends Migration
      */
     public function up()
     {
-        Schema::create('submenus', function (Blueprint $table) {
+        Schema::create('course_detail_infos', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('page_id')->constrained('pages')->onDelete('cascade');
-            $table->string('name');
-            $table->string('slug');
-            $table->longText('content');
-            $table->enum('status', ['pending', 'publish'])->default('pending');
+            $table->foreignId('course_info_id')->constrained('course_infos');
+            $table->text('content');
             $table->timestamps();
         });
     }
@@ -31,6 +28,6 @@ class CreateSubmenusTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('submenus');
+        Schema::dropIfExists('course_detail_infos');
     }
 }

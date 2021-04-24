@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAboutsTable extends Migration
+class CreateUserPassportsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,12 @@ class CreateAboutsTable extends Migration
      */
     public function up()
     {
-        Schema::create('abouts', function (Blueprint $table) {
+        Schema::create('user_passports', function (Blueprint $table) {
             $table->id();
-            $table->string('thumbnail');
-            $table->string('content');
+            $table->foreignId('user_detail_id')->constrained('user_details');
+            $table->string('nomor');
+            $table->string('filling');
+            $table->date('expired');
             $table->timestamps();
         });
     }
@@ -28,6 +30,6 @@ class CreateAboutsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('abouts');
+        Schema::dropIfExists('user_passports');
     }
 }

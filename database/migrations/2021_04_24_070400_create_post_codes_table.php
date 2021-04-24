@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateArticlesTable extends Migration
+class CreatePostCodesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,10 @@ class CreateArticlesTable extends Migration
      */
     public function up()
     {
-        Schema::create('articles', function (Blueprint $table) {
+        Schema::create('post_codes', function (Blueprint $table) {
             $table->id();
-            $table->string('artikelName');
-            $table->string('slug');
-            $table->string('thumbnail');
-            $table->longText('content');
-            $table->enum('type',['news', 'event', 'scholarship']);
-            $table->softDeletes();
+            $table->foreignId('province_id')->constrained('provinces');
+            $table->tinyInteger('value');
             $table->timestamps();
         });
     }
@@ -32,6 +28,6 @@ class CreateArticlesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('articles');
+        Schema::dropIfExists('post_codes');
     }
 }

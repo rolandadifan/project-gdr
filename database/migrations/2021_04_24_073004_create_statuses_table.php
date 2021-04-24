@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCourseInfosTable extends Migration
+class CreateStatusesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,9 @@ class CreateCourseInfosTable extends Migration
      */
     public function up()
     {
-        Schema::create('course_infos', function (Blueprint $table) {
+        Schema::create('statuses', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('course_id')->constrained('courses')->onDelete('cascade');
-            $table->string('title')->nullable();
-            $table->text('info')->nullable();
+            $table->string('value')->nullable();
             $table->timestamps();
         });
     }
@@ -29,6 +27,6 @@ class CreateCourseInfosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('course_infos');
+        Schema::dropIfExists('statuses');
     }
 }
