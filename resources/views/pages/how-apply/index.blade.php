@@ -1,6 +1,9 @@
 @extends('layouts.app')
 @section('content')
-@include('include.jumbotron')
+@section('breadcrumb-title', 'How To Apply')
+@section('title-jumbotron', 'How To Apply')
+@section('s-title-jumbotron', 'Premium. Proven. Loved. Study at Gunadarma')
+@section('text-jumbotron', 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Culpa corrupti voluptas vel quisquam illum voluptate quod impedit ab nisi, esse mollitia ad aliquid delectus ea sit autem officiis. Reprehenderit, tenetur!')
 @include('icon')
   <main>
         <div class="container-fluid">

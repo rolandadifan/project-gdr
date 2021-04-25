@@ -16,7 +16,6 @@ class CreateCourseDetailsTable extends Migration
         Schema::create('course_details', function (Blueprint $table) {
             $table->id();
             $table->foreignId('course_id')->constrained('courses');
-            $table->string('slug',200)->nullable();
             $table->string('title',200)->nullable();
             $table->enum('degree', ['non', 'diploma', 'bachelor', 'master', 'doctor']);
             $table->string('duration',200)->nullable();

@@ -14,14 +14,16 @@ class CourseController extends Controller
      */
     public function index()
     {
-        $courses = Course::where('status', 'active')
-            ->where('typeDuration', 'short')
-            ->select('id', 'courseName', 'thumbnail', 'slug')
-            ->latest()
-            ->paginate(9);
-        return view('pages.course.short-course')->with([
-            'courses' => $courses
-        ]);
+        // $courses = Course::where('status', 'active')
+        //     ->where('typeDuration', 'short')
+        //     ->select('id', 'courseName', 'thumbnail', 'slug')
+        //     ->latest()
+        //     ->paginate(9);
+        // return view('pages.course.short-course')->with([
+        //     'courses' => $courses
+        // ]);
+
+        return view('pages.course.short-course');
     }
 
     public function detail($id)

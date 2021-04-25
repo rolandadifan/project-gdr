@@ -7,6 +7,7 @@
       @include('include.sidebar')
     </header>
 
+    @include('include.jumbotron')
     @yield('content')
     
    <!-- thumbnail -->

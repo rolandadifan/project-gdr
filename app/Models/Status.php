@@ -4,8 +4,16 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Course;
 
 class Status extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['value'];
+
+    // public function course()
+    // {
+    //     return $this->hasOne(Course::class);
+    // }
 }

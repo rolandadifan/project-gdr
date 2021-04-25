@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\UserDetail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -21,88 +23,126 @@ class UserController extends Controller
 
     public function viewProfile()
     {
-        return view('member.profile.edit-profile');
+        $user = UserDetail::where('user_id', Auth()->user()->id)->first();
+        return view('member.profile.edit-profile')->with([
+            'user' => $user
+        ]);
     }
 
+    
     public function update(Request $request)
     {
-        // if ($request->password == null) {
-        //     $data = $request->except(['password']);
-        //     if ($request->hasFile('avatar')) {
-        //         $file_path = Storage::url(Auth()->user()->avatar);
-        //         $path = str_replace('\\', '/', public_path());
-        //         // dd($path . $file_path);
-        //         if (file_exists($path . $file_path)) {
-        //             unlink($path . $file_path);
-        //         }
-        //         $data['avatar'] = $request->file('avatar')->store('profile', 'public');
-        //     }
-        //     $user = User::findOrFail(Auth()->user()->id);
-        //     $user->update($data);
-        //     Alert::success('Success', 'Your Profile Updated');
-        //     return back();
-        // } else {
-        //     $data = $request->validate([
-        //         'password' => 'string|confirmed|min:8|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/',
-        //         'password_confirmation' => 'required',
-        //     ]);
-        //     $data['password'] = bcrypt($request->password);
-        //     if ($request->hasFile('avatar')) {
-        //         $file_path = Storage::url(Auth()->user()->avatar);
-        //         $path = str_replace('\\', '/', public_path());
-        //         // dd($path . $file_path);
-        //         if (file_exists($path . $file_path)) {
-        //             unlink($path . $file_path);
-        //         }
-        //         $data['avatar'] = $request->file('avatar')->store('profile', 'public');
-        //     }
-        //     $user = User::findOrFail(Auth()->user()->id);
-        //     $user->update($data);
-        //     Alert::success('Success', 'Your Profile Updated');
-        //     return back();
-        // }
-        if ($request->password == null) {
-            $data = $request->except(['password']);
-            $file_path = Storage::url(Auth()->user()->avatar);
-            $path = str_replace('\\', '/', public_path());
-            if ($request->hasFile('avatar') && Auth()->user()->avatar == null) {
-                $data['avatar'] = $request->file('avatar')->store('profile', 'public');
-                $user = User::findOrFail(Auth()->user()->id);
-                $user->update($data);
-                return back()->with('status', 'successfuly updated');
-            } else if (!$request->hasFile('avatar')) {
-                $data = $request->except(['password', 'avatar']);
-                $user = User::findOrFail(Auth()->user()->id);
-                $user->update($data);
-                return back()->with('status', 'successfuly updated');
-            } else if (file_exists($path . $file_path)) {
-                unlink($path . $file_path);
-                $data['avatar'] = $request->file('avatar')->store('profile', 'public');
-                $user = User::findOrFail(Auth()->user()->id);
-                $user->update($data);
-                return back()->with('status', 'successfuly updated');
+        if($request->input('password') == null){
+            $request->except(['password']);
+            $user = User::findOrFail(Auth()->user()->id);
+            $user->update([
+                'name' => $request->input('name'),
+                'telephone' => $request->input('telephone'),
+                ]);
+            $user_detail = UserDetail::where('user_id', Auth()->user()->id)->first();
+            if(!$user_detail ){
+                    $data_avatar = $request->file('avatar')->store('profile', 'public');
+                    UserDetail::create([
+                        'user_id' => Auth()->user()->id,
+                        'status_id' => 1,
+                        'date_birth' => $request->input('date_birth'),
+                        'address' => $request->input('address'),
+                        'gender' => $request->input('gender'),
+                        'nationality' => $request->input('nationality'),
+                        'avatar' => $data_avatar
+                    ]);
+                    Alert::success('Success', 'Your Profile Updated');
+                    return back();
+            }else{
+                if($request->hasFile('avatar')){
+                    $file_path = Storage::url($user_detail->avatar);
+                    $path = str_replace('\\', '/', public_path());
+                    if (file_exists($path . $file_path)) {
+                        unlink($path . $file_path);
+                    }
+                    $data_avatar = $request->file('avatar')->store('profile', 'public');
+                    $user_detail->update([
+                       'user_id' => Auth()->user()->id,
+                        'status_id' => 1,
+                        'date_birth' => $request->input('date_birth'),
+                        'address' => $request->input('address'),
+                        'gender' => $request->input('gender'),
+                        'nationality' => $request->input('nationality'),
+                        'avatar' => $data_avatar 
+                    ]);
+                    Alert::success('Success', 'Your Profile Updated');
+                    return back();
+                }else if(!$request->hasFile('avatar')){
+                     $user_detail->update([
+                       'user_id' => Auth()->user()->id,
+                        'status_id' => 1,
+                        'date_birth' => $request->input('date_birth'),
+                        'address' => $request->input('address'),
+                        'gender' => $request->input('gender'),
+                        'nationality' => $request->input('nationality'),
+                    ]);
+                    Alert::success('Success', 'Your Profile Updated');
+                    return back();
+                }
             }
-            // $user = User::findOrFail(Auth()->user()->id);
-            // $user->update($data);
-            // return back()->with('status', 'successfuly updated');
-        } else {
-            $data = $request->validate([
+        }else{
+            $password = $request->validate([
                 'password' => 'string|confirmed|min:8|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/',
                 'password_confirmation' => 'required',
             ]);
-            $data['password'] = bcrypt($request->password);
-            if ($request->hasFile('avatar')) {
-                $file_path = Storage::url(Auth()->user()->avatar);
-                $path = str_replace('\\', '/', public_path());
-                // dd($path . $file_path);
-                if (file_exists($path . $file_path)) {
-                    unlink($path . $file_path);
+            $password= bcrypt($request->password);
+             $user = User::findOrFail(Auth()->user()->id);
+            $user->update([
+                'name' => $request->input('name'),
+                'telephone' => $request->input('telephone'),
+                'password' => $password
+            ]);
+            $user_detail = UserDetail::where('user_id', Auth()->user()->id)->first();
+            if(!$user_detail ){
+                    $data_avatar = $request->file('avatar')->store('profile', 'public');
+                    UserDetail::create([
+                        'user_id' => Auth()->user()->id,
+                        'status_id' => 1,
+                        'date_birth' => $request->input('date_birth'),
+                        'address' => $request->input('address'),
+                        'gender' => $request->input('gender'),
+                        'nationality' => $request->input('nationality'),
+                        'avatar' => $data_avatar
+                    ]);
+                    Alert::success('Success', 'Your Profile Updated');
+                    return back();
+            }else{
+                if($request->hasFile('avatar')){
+                    $file_path = Storage::url($user_detail->avatar);
+                    $path = str_replace('\\', '/', public_path());
+                    if (file_exists($path . $file_path)) {
+                        unlink($path . $file_path);
+                    }
+                    $data_avatar = $request->file('avatar')->store('profile', 'public');
+                    $user_detail->update([
+                       'user_id' => Auth()->user()->id,
+                        'status_id' => 1,
+                        'date_birth' => $request->input('date_birth'),
+                        'address' => $request->input('address'),
+                        'gender' => $request->input('gender'),
+                        'nationality' => $request->input('nationality'),
+                        'avatar' => $data_avatar 
+                    ]);
+                    Alert::success('Success', 'Your Profile Updated');
+                    return back();
+                }else if(!$request->hasFile('avatar')){
+                     $user_detail->update([
+                       'user_id' => Auth()->user()->id,
+                        'status_id' => 1,
+                        'date_birth' => $request->input('date_birth'),
+                        'address' => $request->input('address'),
+                        'gender' => $request->input('gender'),
+                        'nationality' => $request->input('nationality'),
+                    ]);
+                    Alert::success('Success', 'Your Profile Updated');
+                    return back();
                 }
-                $data['avatar'] = $request->file('avatar')->store('profile', 'public');
             }
-            $user = User::findOrFail(Auth()->user()->id);
-            $user->update($data);
-            return back()->with('status', 'successfuly updated');;
         }
     }
 }

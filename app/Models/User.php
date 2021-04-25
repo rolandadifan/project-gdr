@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Models\UserDetail;
 use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
@@ -22,11 +23,6 @@ class User extends Authenticatable
         'email',
         'password',
         'telephone',
-        'dateBirth',
-        'gender',
-        'address',
-        'nationality',
-        'avatar',
         'role',
     ];
 
@@ -48,4 +44,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function userDetail()
+    {
+        $this->hasOne(UserDetail::class);
+    }
 }

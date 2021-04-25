@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCoursesTable extends Migration
+class AddThumbnailToCourseDetailsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,8 @@ class CreateCoursesTable extends Migration
      */
     public function up()
     {
-        Schema::create('courses', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('status_id')->constrained('statuses');
-            $table->string('name',200);
-            $table->string('slug',200)->nullable();
-            $table->timestamps();
+        Schema::table('course_details', function (Blueprint $table) {
+            $table->string('thumbnail')->after('slug');
         });
     }
 
@@ -29,6 +25,8 @@ class CreateCoursesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('courses');
+        Schema::table('course_details', function (Blueprint $table) {
+            //
+        });
     }
 }

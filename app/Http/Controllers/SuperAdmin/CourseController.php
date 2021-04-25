@@ -5,6 +5,7 @@ namespace App\Http\Controllers\SuperAdmin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CourseLongRequest;
 use App\Models\Course;
+use App\Models\CourseDetail;
 use App\Models\CourseInfo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -16,11 +17,9 @@ class CourseController extends Controller
 {
     public function index()
     {
-        $shortCourse = Course::where('typeDuration', 'short')->orderBy('created_at')->select('id', 'courseName', 'status')->get();
-        $course = Course::where('typeDuration', 'long')->orderBy('created_at')->select('id', 'courseName', 'status')->get();
+        $shortCourse = Course::with('status')->get();
         return view('superadmin.pages.course.index')->with([
-            'shortCourse' => $shortCourse,
-            'course' => $course
+            'shortCourse' => $shortCourse
         ]);
     }
 
@@ -31,35 +30,30 @@ class CourseController extends Controller
 
     public function storeShortCourse(Request $request)
     {
-        $data = $request->validate([
-            'courseName' => 'required|string',
-            'startPeriode' => 'required|string',
-            'endPeriode' => 'required|string',
-            'information' => 'required|string',
-            'thumbnail' => 'required|max:300',
+        $course_name = $request->validate([
+            'name' => 'required|string',
         ]);
-        $data['courseName'] = $request->courseName;
-        $data['startPeriode'] = $request->startPeriode;
-        $data['slug'] = $request->slug;
-        $data['endPeriode'] = $request->endPeriode;
-        $data['information'] = $request->information;
-        $data['typeDuration'] = 'short';
-        // $data = $request->all();
-        $data['slug'] = Str::slug($request->courseName);
-        $data['thumbnail'] = $request->file('thumbnail')->store('course', 'public');
-        $course = Course::create($data);
+        $course_thumbnail = $request->validate([
+            'thumbnail' => 'image|required|max:300',
+        ]);
 
+        $course_name = $request->name;
+        $course_thumbnail = $request->file('thumbnail')->store('course', 'public');
+        $course_content = $request->content;
+        $course_slug = $request->slug;
+        $course_slug = Str::slug($course_name);
 
-        $title = $request->input('title');
-        $info = $request->input('info');
-        foreach ($title as $key => $titles) {
-            # code...
-            CourseInfo::create([
-                'course_id' => $course->id,
-                'title' => $titles,
-                'info' => $info[$key],
-            ]);
-        }
+        $course = Course::create([
+            'status_id' => 2,
+            'name' => $course_name,
+            'slug' =>  $course_slug
+        ]);
+
+        CourseDetail::create([
+            'course_id' => $course->id,
+            'thumbnail' =>  $course_thumbnail,
+            'content' => $course_content
+        ]);
 
         return back()->with('status', 'Course Successfuly Create');
     }
@@ -212,11 +206,11 @@ class CourseController extends Controller
     public function active($id)
     {
         $data = DB::table('courses')->where('id', $id)->first();
-        $status = $data->status;
+        $status = $data->status_id;
 
-        if ($status == 'inactive') {
+        if ($status == 2) {
             DB::table('courses')->where('id', $id)->update([
-                'status' => 'active'
+                'status_id' => 1
             ]);
             return back()->with('status', 'Course Active');
         } else {
@@ -227,11 +221,11 @@ class CourseController extends Controller
     public function inActive($id)
     {
         $data = DB::table('courses')->where('id', $id)->first();
-        $status = $data->status;
+        $status = $data->status_id;
 
-        if ($status == 'active') {
+        if ($status == 1) {
             DB::table('courses')->where('id', $id)->update([
-                'status' => 'inactive'
+                'status_id' => 2
             ]);
             return back()->with('status', 'Course InActive');
         } else {

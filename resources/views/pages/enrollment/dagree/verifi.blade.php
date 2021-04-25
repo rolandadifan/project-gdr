@@ -1,6 +1,9 @@
 @extends('layouts.app-2')
 @section('content')
-@include('include.jumbotron')
+@section('breadcrumb-title', 'Student Enrollment')
+@section('title-jumbotron', 'Student Enrollment')
+@section('s-title-jumbotron', 'Premium. Proven. Loved. Study at Gunadarma')
+@section('text-jumbotron', 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Culpa corrupti voluptas vel quisquam illum voluptate quod impedit ab nisi, esse mollitia ad aliquid delectus ea sit autem officiis. Reprehenderit, tenetur!')
 @include('icon')
     <!-- content pemilihan program degree or non degree -->
     <section id="startNewApp">

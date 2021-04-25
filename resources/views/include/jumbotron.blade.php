@@ -7,14 +7,14 @@
                         <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Short Courses</li>
+                                <li class="breadcrumb-item active" aria-current="page">@yield('breadcrumb-title')</li>
                             </ol>
                           </nav>
                     </div>
                     <div class="jumbotron__preview">
-                        <h2>Short Courses</h2>
-                        <h5>Premium. Proven. Loved. Study at Gunadarma</h5>
-                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Culpa corrupti voluptas vel quisquam illum voluptate quod impedit ab nisi, esse mollitia ad aliquid delectus ea sit autem officiis. Reprehenderit, tenetur!
+                        <h2>@yield('title-jumbotron')</h2>
+                        <h5>@yield('s-title-jumbotron')</h5>
+                        <p>@yield('text-jumbotron')
                         </p>
                     </div>
                     <div class="jumbotron__button--primary">

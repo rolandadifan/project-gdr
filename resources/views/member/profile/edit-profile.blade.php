@@ -16,13 +16,13 @@
                                         <label for="imageUpload"></label>
                                     </div>
                                     <div class="avatar-preview">
-                                        @if (Auth()->user()->avatar == null)
+                                        @if (!$user)
                                         <div id="imagePreview"
                                             style="background-image: url({{ asset('assets/images/avatar-default.png') }});">
                                         </div>
                                         @else
                                         <div id="imagePreview"
-                                            style="background-image: url({{ Storage::url(Auth()->user()->avatar)}});">
+                                            style="background-image: url({{ Storage::url($user->avatar)}});">
                                         </div>
                                         @endif
                                     </div>
@@ -50,19 +50,19 @@
                                 <div class="row">
                                     <div class="col">
                                         <label for="date" class="form-label">DD/MM/YYYY</label>
-                                        <input type="date" class="form-control" id="date" value="{{ Auth()->user()->dateBirth }}" name="dateBirth">
+                                        <input type="date" class="form-control" id="date" value="{{ !$user ? '' : $user->date_birth  }}" name="date_birth">
                                     </div>
                                     <div class="col">
                                         <label for="gender" class="form-label">Gender</label>
                                         <div class="mb-3">
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" {{ (Auth()->user()->gender=="female")? "checked" : "" }} type="radio" name="gender" id="female"
-                                                    value="female">
+                                                <input class="form-check-input" {{ ( !$user ? '' : $user->gender=="F")? "checked" : "" }} type="radio" name="gender" id="female"
+                                                    value="F">
                                                 <label class="form-check-label" for="female">Female</label>
                                             </div>
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" {{ (Auth()->user()->gender=="male")? "checked" : "" }} type="radio" name="gender" id="male"
-                                                    value="male">
+                                                <input class="form-check-input" {{ ( !$user ? '' : $user->gender=="M")? "checked" : "" }} type="radio" name="gender" id="male"
+                                                    value="M">
                                                 <label class="form-check-label" for="male">Male</label>
                                             </div>
                                         </div>
@@ -143,7 +143,7 @@
                                         <div class="mb-3">
                                             <label for="nationality" class="form-label">Nationality</label>
                                             <input type="text" class="form-control" id="nationality"
-                                                placeholder="Indonesia" name="nationality" value="{{ Auth()->user()->nationality }}"> 
+                                                placeholder="Indonesia" name="nationality" value="{{ !$user ? '' : $user->nationality }}"> 
                                         </div>
                                     </div>
                                     <div class="col">
@@ -151,7 +151,7 @@
                                             <label for="address">Address</label>
                                             <textarea class="form-control"
                                              id="address" style="height: 130px" name="address">
-                                             {{ Auth()->user()->address }}
+                                             {{ !$user ? '' : $user->address }}
                                             </textarea>
                                         </div>
                                     </div>

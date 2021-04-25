@@ -38,11 +38,14 @@
               @foreach ($shortCourse as $item)
               <tr>
                   <td>{{ $loop->iteration }}</td>
-                  <td>{{ $item->courseName }}</td>
-                  <td>{{ $item->status }}</td>
+                  <td>{{ $item->name }}</td>
+                  <td>{{ $item->status->value }}</td>
                   <td>
                       <a href="{{ route('short.edit', $item->id) }}" class="btn btn-warning btn-sm">
                           <i class="fas fa-fw fa-edit"></i>
+                      </a>
+                      <a href="" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="bottom" title="Add Info">
+                          <i class="fas fa-fw fa-plus"></i>
                       </a>
                         <form action="{{ route('course.status.active', $item->id) }}" class="d-inline" method="POST">
                         @method('put')
@@ -72,7 +75,7 @@
       </table>
         </div>
         <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-            <table id="table-course" class="table-responsive-md display mt-3" width="100%">
+            {{-- <table id="table-course" class="table-responsive-md display mt-3" width="100%">
           <thead>
               <tr>
                   <th>No</th>
@@ -116,7 +119,7 @@
               </tr>
               @endforeach
           </tbody>
-      </table>
+      </table> --}}
         </div>
         </div>
       </div>
