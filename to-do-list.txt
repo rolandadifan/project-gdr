@@ -1,0 +1,51 @@
+enrollment
+	choose type
+	form
+	document
+dinamis sidebar
+edit-profile
+profile
+scholarship
+	list
+	detail
+research
+	group / category
+	list
+	detail
+login - student
+register - student
+life at (theme sama)
+	why-study-gundar
+	student-life
+	graduation
+landing page
+	section-one video, text, button
+	section features / life-gundar (db, thumbnail, content)	
+	section testimony (db, photo, quote, major)
+how to apply
+short couses
+	list
+	pagination
+	recomendation
+	detail
+courses
+	diploma
+	bachelor
+	doctor
+	master
+	search
+	list by search
+news
+	list
+	highlight ( 3 )
+	detail
+event
+	list
+	hightlight ( 3 )
+	detail
+about
+	event list
+	news list
+footer
+header
+	
