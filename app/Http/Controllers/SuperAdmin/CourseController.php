@@ -7,19 +7,28 @@ use App\Http\Requests\CourseLongRequest;
 use App\Models\Course;
 use App\Models\CourseDetail;
 use App\Models\CourseInfo;
+use App\Models\CoursePrice;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
-
+use Illuminate\Database\Eloquent\Builder;
 
 class CourseController extends Controller
 {
     public function index()
     {
-        $shortCourse = Course::with('status')->get();
+        
+        $shortCourse = Course::with('status')->whereHas('courseDetail', function (Builder $query) {
+            $query->where('degree', 'non');
+        })->get();
+        $course = Course::with('status')->whereHas('courseDetail', function (Builder $query) {
+            $query->where('degree', '!=', 'non');
+        })->get();
+        
         return view('superadmin.pages.course.index')->with([
-            'shortCourse' => $shortCourse
+            'shortCourse' => $shortCourse,
+            'course' => $course
         ]);
     }
 
@@ -52,7 +61,8 @@ class CourseController extends Controller
         CourseDetail::create([
             'course_id' => $course->id,
             'thumbnail' =>  $course_thumbnail,
-            'content' => $course_content
+            'content' => $course_content,
+            'degree' => 'non',
         ]);
 
         return back()->with('status', 'Course Successfuly Create');
@@ -68,97 +78,49 @@ class CourseController extends Controller
 
     public function updateShortCourse(Request $request, $id)
     {
-        // $data = $request->all();
-        if (!$request->thumbnail || $request->thumbnail === null) {
-            $data = $request->validate([
-                'courseName' => 'string',
-                'startPeriode' => 'string',
-                'endPeriode' => 'string',
-                'information' => 'string',
-                'thumbnail' => 'max:300',
+        if($request->hasFile('thumbnail')){
+           $course = Course::findOrFail($id);
+            $course_name = $request->input('name');
+            $course_slug = Str::slug($course_name);
+            $course->update([
+                'name' => $course_name,
+                'slug' => $course_slug
             ]);
-            $data['courseName'] = $request->courseName;
-            $data['startPeriode'] = $request->startPeriode;
-            $data['endPeriode'] = $request->endPeriode;
-            $data['information'] = $request->information;
-            $data['typeDuration'] = 'short';
-            $data['slug'] = Str::slug($request->courseName);
-            $course = Course::findOrFail($id);
-            $course->update($data);
-
-            // $input['title'] = $request->title;
-            // $input['info'] = $request->info;
-
-            // foreach ($input['title'] as $key => $value) {
-            //     $data_info = CourseInfo::where('title', $input['title'][$key]);
-            //     $data_info->update([
-            //         'title' => $input['title'][$key],
-            //         'info' => $input['info'][$key],
-            //     ]);
-            // }
-
-            // $data_info['title'] = $request->title;
-            // $data_info['info'] = $request->info;
-            // $data_info['id'] = $request->id;
-
-
-            // $course_info = CourseInfo::where('id', $request->id)->get();
-            // $course_info->update([
-            //     'data_info' => $data_info
-            // ]);
-
-            if ($request->title) {
-                $title = $request->input('title');
-                $info = $request->input('info');
-                foreach ($title as $key => $ids) {
-                    # code...
-                    $course_info = CourseInfo::find($request->id[$key]);
-                    $course_info->title = $ids;
-                    // $course_info->info = $info[$key];
-                    $course_info->info = json_encode(explode(',', $info[$key]));
-                    $course_info->save();
-                }
-            }
-            return back()->with('status', 'Course Successfuly Updated');
-        } else {
-            $data = $request->validate([
-                'courseName' => 'string',
-                'startPeriode' => 'string',
-                'endPeriode' => 'string',
-                'information' => 'string',
-                'thumbnail' => 'max:300',
+    
+            $course_thumbnail = $request->validate([
+            'thumbnail' => 'image|required|max:300',
             ]);
-            $data['courseName'] = $request->courseName;
-            $data['startPeriode'] = $request->startPeriode;
-            $data['endPeriode'] = $request->endPeriode;
-            $data['information'] = $request->information;
-            $data['typeDuration'] = 'short';
-            $data['slug'] = Str::slug($request->courseName);
-            $course = Course::findOrFail($id);
-            $file_path = Storage::url($course->thumbnail);
+            $course_detail = CourseDetail::where('course_id', $course->id)->first();
+            $file_path = Storage::url($course_detail->thumbnail);
             $path = str_replace('\\', '/', public_path());
+            $course_content = $request->input('content');
+            $course_thumbnail = $request->file('thumbnail')->store('course', 'public');
             if (file_exists($path . $file_path)) {
                 unlink($path . $file_path);
-                $data['thumbnail'] = $request->file('thumbnail')->store('course', 'public');
-                $course->update($data);
             }
-            if ($request->title) {
-                $title = $request->input('title');
-                $info = $request->input('info');
-                foreach ($title as $key => $ids) {
-                    # code...
-                    $course_info = CourseInfo::find($request->id[$key]);
-                    $course_info->title = $ids;
-                    $course_info->info = $info[$key];
-                    $course_info->save();
-                }
-            }
+            $course_detail->update([
+                'content' => $course_content,
+                'thumbnail' => $course_thumbnail
+            ]);
+            return back()->with('status', 'Course Successfuly Updated');
 
-
-            // dd($test);
-
+        }else{
+            $course = Course::findOrFail($id);
+            $course_name = $request->input('name');
+            $course_slug = Str::slug($course_name);
+            $course->update([
+                'name' => $course_name,
+                'slug' => $course_slug
+            ]);
+    
+            $course_content = $request->input('content');
+            $course_detail = CourseDetail::where('course_id', $course->id)->first();
+            $course_detail->update([
+                'content' => $course_content,
+            ]);
             return back()->with('status', 'Course Successfuly Updated');
         }
+        
     }
 
     public function createCourseLong()
@@ -166,13 +128,84 @@ class CourseController extends Controller
         return view('superadmin.pages.course.create.long-course');
     }
 
-    public function storeCourse(CourseLongRequest $request)
+    public function storeCourse(Request $request)
     {
-        $data = $request->all();
-        $data['typeDuration'] = 'long';
-        $data['slug'] = Str::slug($request->courseName);
-        Course::create($data);
-        return back()->with('status', 'Course Successfuly Created');
+        try {
+            $course_name = $request->input('name');
+            $slug = Str::slug($course_name);
+            $course = Course::create([
+                'name' => $course_name,
+                'slug' => $slug,
+                'status_id' => 2
+            ]);
+    
+            $detail_duration = $request->input('duration');
+            $detail_degree = $request->degree;
+            $detail_campus = $request->input('campus');
+            $detail_deaken_student = $request->input('deaken_student');
+            $detail_key_dates = $request->input('key_dates');
+            $detail_content = $request->input('content');
+            $course_detail = CourseDetail::create([
+                'course_id' => $course->id,
+                'duration' => $detail_duration,
+                'key_dates' => $detail_key_dates,
+                'degree' => $detail_degree,
+                'campus' => $detail_campus,
+                'content' => $detail_content,
+                'deaken_student' => $detail_deaken_student,
+            ]);
+            
+            CoursePrice::upsert([
+                [
+                    'course_detail_id' => $course_detail->id,
+                    'name' => 'AA',
+                    'value' => $request->input('gradeAA'),
+                ],
+                [
+                    'course_detail_id' => $course_detail->id,
+                    'name' => 'AA_BPP',
+                    'value' => $request->input('bppAA')
+                ],
+                [
+                    'course_detail_id' => $course_detail->id,
+                    'name' => 'AA_SKS',
+                    'value' => $request->input('sksAA')
+                ],
+                [
+                    'course_detail_id' => $course_detail->id,
+                    'name' => 'A',
+                    'value' => $request->input('gradeA')
+                ],
+                [
+                    'course_detail_id' => $course_detail->id,
+                    'name' => 'A_BPP',
+                    'value' => $request->input('bppA')
+                ],
+                [
+                    'course_detail_id' => $course_detail->id,
+                    'name' => 'A_SKS',
+                    'value' => $request->input('sksA')
+                ],
+                [
+                    'course_detail_id' => $course_detail->id,
+                    'name' => 'B',
+                    'value' => $request->input('gradeB')
+                ],
+                [
+                    'course_detail_id' => $course_detail->id,
+                    'name' => 'B_BPP',
+                    'value' => $request->input('bppB')
+                ],
+                [
+                    'course_detail_id' => $course_detail->id,
+                    'name' => 'B_SKS',
+                    'value' => $request->input('sksB')
+                ]
+                ], ['course_detail_id', 'name', 'value']);
+            return back()->with('status', 'Course Successfuly Created');
+        } catch (\Throwable $th) {
+            return back()->with('error', 'Course Falied To Create');
+        }
     }
 
     public function editCourse($id)
