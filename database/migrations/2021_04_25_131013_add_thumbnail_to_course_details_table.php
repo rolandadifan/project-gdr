@@ -14,7 +14,7 @@ class AddThumbnailToCourseDetailsTable extends Migration
     public function up()
     {
         Schema::table('course_details', function (Blueprint $table) {
-            $table->string('thumbnail')->after('slug');
+            $table->string('thumbnail')->after('slug')->nullable();
         });
     }
 
