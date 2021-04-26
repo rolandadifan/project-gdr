@@ -18,7 +18,7 @@ class CreateArticleDetailsTable extends Migration
             $table->foreignId('article_id')->constrained('articles');
             $table->string('title')->nullable();
             $table->string('slug')->nullable();
-            $table->string('except')->nullable();
+            $table->string('excerpt')->nullable();
             $table->text('content')->nullable();
             $table->timestamps();
         });

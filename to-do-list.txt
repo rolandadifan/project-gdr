@@ -4,7 +4,7 @@ enrollment
 	document
 dinamis sidebar
 edit-profile
-profile
+V_profile
 scholarship
 	list
 	detail
@@ -12,8 +12,8 @@ research
 	group / category
 	list
 	detail
-login - student
-register - student
+V_login - student
+V_register - student
 life at (theme sama)
 	why-study-gundar
 	student-life
