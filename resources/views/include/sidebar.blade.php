@@ -237,6 +237,12 @@
                   </button>
                 </a>
               </div>
+              <div class="accordion-item">
+                <form action="{{ route('logout') }}" class="accordion-header" method="POST">
+                  @csrf
+                  <button type="submit" class="accordion-button collapsed">Logout</button>
+                </form>
+              </div>
             </div>
           </div>
         </div>

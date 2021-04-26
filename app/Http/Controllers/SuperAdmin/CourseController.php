@@ -60,7 +60,7 @@ class CourseController extends Controller
 
     public function editShortCourse($id)
     {
-        $course = Course::with('courseInfo')->select('id', 'courseName', 'thumbnail', 'typeDuration', 'information', 'startPeriode', 'endPeriode', 'status')->findOrFail($id);
+        $course = Course::with(['status', 'courseDetail'])->findOrFail($id);
         return view('superadmin.pages.course.edit.short-edit')->with([
             'course' => $course
         ]);

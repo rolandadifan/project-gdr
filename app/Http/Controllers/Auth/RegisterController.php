@@ -6,8 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class RegisterController extends Controller
 {
@@ -29,7 +31,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/';
+    protected $redirectTo = '/profile';
 
     /**
      * Create a new controller instance.
@@ -54,8 +56,10 @@ class RegisterController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/'],
             'telephone' => ['required', 'string'],
+            'codePhone' => 'string'
         ]);
     }
+    
 
     /**
      * Create a new user instance after a valid registration.
@@ -69,7 +73,15 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'telephone' => $data['telephone'],
+            'telephone' => $data['codePhone'] . $data['telephone'],
         ]);
+    }
+    
+    public function showRegistrationForm()
+    {
+        $country = DB::table('countries')
+        ->select('nicename as name', 'iso', 'phonecode')
+        ->get();
+        return view('auth.register')->with(['country' => $country]);
     }
 }

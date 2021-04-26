@@ -1,4 +1,5 @@
 @extends('layouts.landing')
+@include('sweetalert::alert')
 @section('content')
 <div class="jumbotron__profile">
         <div class="container-fluid p-5">
@@ -18,10 +19,10 @@
                             <div class="col">
                                 <div class="d-flex align-items-center">
                                     <div class="jumbotron__imgBx">
-                                         @if (Auth()->user()->avatar == null)
+                                         @if (!$user)
                                          <img src="{{ asset('assets/images/avatar-default.png')}}" alt="profile">
                                          @else
-                                         <img src="{{ Storage::url(Auth()->user()->avatar)}}" alt="profile">
+                                         <img src="{{ Storage::url($user->avatar)}}" alt="profile">
                                          @endif
                                     </div>
                                     <div class="jumbotron__profileContent px-4">

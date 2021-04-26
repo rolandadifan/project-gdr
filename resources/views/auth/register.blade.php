@@ -61,14 +61,14 @@
                                         <script>
                                         function chooseCountry(phonecode, iso) {
                                             console.log(document.getElementById("selected-country"))
-                                            document.getElementById("tel1").value = '+' + phonecode;
+                                            document.getElementById("tel1").value = phonecode;
                                             document.getElementById("selected-country").src = 'https://flagcdn.com/' +
                                                 iso + '.svg';
                                         }
                                         </script>
                                     </ul>
-                                    <input type="tel" id="tel1" name="tel1" maxlength="3" minlength="3" value="+62"
-                                        size="3" disabled class="text-center" />
+                                    <input type="tel" id="tel1" name="codePhone" maxlength="3" minlength="3" value="62"
+                                        size="3" readonly class="text-center" />
                                     <input type="tel" name="telephone" maxlength="11" class="form-control">
                                 </div>
                             </div>

@@ -149,10 +149,7 @@
                                     <div class="col">
                                         <div class="mb-3">
                                             <label for="address">Address</label>
-                                            <textarea class="form-control"
-                                             id="address" style="height: 130px" name="address">
-                                             {{ !$user ? '' : $user->address }}
-                                            </textarea>
+                                            <textarea class="form-control" id="address" style="height: 130px" name="address" rows="3">{{!$user ? '' : $user->address}}</textarea>
                                         </div>
                                     </div>
                                 </div>

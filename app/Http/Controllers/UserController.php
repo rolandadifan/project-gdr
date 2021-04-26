@@ -18,7 +18,10 @@ class UserController extends Controller
 
     public function profile()
     {
-        return view('member.profile.profile');
+        $user = UserDetail::where('user_id', Auth()->user()->id)->first();
+        return view('member.profile.profile')->with([
+            'user' => $user
+        ]);
     }
 
     public function viewProfile()
