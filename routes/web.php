@@ -74,9 +74,10 @@ Route::prefix('sadmin')->middleware(['auth', 'admin'])->group(function () {
     Route::get('/article/news', [ArticleController::class, 'NewsIndex'])->name('artikel.news');
     Route::get('/article/event', [ArticleController::class, 'EventIndex'])->name('artikel.event');
     Route::get('/article/scholarship', [ArticleController::class, 'ScholarshipIndex'])->name('artikel.scholarship');
+    Route::get('/article/research', [ArticleController::class, 'researchIndex'])->name('artikel.research');
     Route::get('/article/add', [ArticleController::class, 'create'])->name('artikel.create');
     Route::post('/article', [ArticleController::class, 'store'])->name('artikel.store');
-    Route::get('/article/detail/{id}', [ArticleController::class, 'edit'])->name('artikel.edit');
+    Route::get('/article/edit/{id}', [ArticleController::class, 'edit'])->name('artikel.edit');
     Route::put('/article/{id}', [ArticleController::class, 'update'])->name('artikel.update');
     Route::delete('/article/{id}', [ArticleController::class, 'destroy'])->name('artikel.destroy');
 
@@ -119,5 +120,3 @@ Route::get('/alumni', [\App\Http\Controllers\AlumniController::class, 'index'])-
 Route::get('/student-enrollment', [\App\Http\Controllers\EnrollmentController::class, 'index'])->name('enrollment.index');
 Route::get('/student-enrollment/register-data', [\App\Http\Controllers\EnrollmentController::class, 'input'])->name('enrollment.input');
 Route::get('/student-enrollment/verifi-data', [\App\Http\Controllers\EnrollmentController::class, 'verifi'])->name('enrollment.verifi');
-
-
