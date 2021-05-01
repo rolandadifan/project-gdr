@@ -205,13 +205,13 @@
                     <div class="accordion__child-menu">
                       <ul>
                         <li>
-                          <a href="#">Why study at Gunadarma</a>
+                          <a href="{{ route('life.why') }}">Why study at Gunadarma</a>
                         </li>
                         <li>
-                          <a href="#">Student life</a>
+                          <a href="{{ route('life.student') }}">Student life</a>
                         </li>
                         <li>
-                          <a href="#">Graduations</a>
+                          <a href="{{ route('life.graduation') }}">Graduations</a>
                         </li>
                       </ul>
                     </div>

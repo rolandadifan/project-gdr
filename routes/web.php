@@ -121,3 +121,7 @@ Route::get('/student-enrollment/register-data', [\App\Http\Controllers\Enrollmen
 Route::get('/student-enrollment/verifi-data', [\App\Http\Controllers\EnrollmentController::class, 'verifi'])->name('enrollment.verifi');
 
 
+// life campuses
+Route::get('/graduations', [\App\Http\Controllers\LifeCampussController::class, 'graduations'])->name('life.graduation');
+Route::get('/student-life', [\App\Http\Controllers\LifeCampussController::class, 'studenLife'])->name('life.student');
+Route::get('/why-study', [\App\Http\Controllers\LifeCampussController::class, 'whyStudy'])->name('life.why');

@@ -15,9 +15,9 @@ class CreateCoursePricesTable extends Migration
     {
         Schema::create('course_prices', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('course_detail_id')->constrained('course_details');
+            $table->foreignId('course_detail_id')->constrained('course_details')->onDelete('cascade');
             $table->string('name')->nullable();
-            $table->integer('value')->nullable();
+            $table->integer('value')->default(0);
             $table->timestamps();
         });
     }

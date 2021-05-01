@@ -1,0 +1,36 @@
+#whyStudy, #lifeStudent, #graduation{
+    margin: 0;
+    .whyStudy__header,.lifeStudent__header,.graduation__header{
+        text-align: center;
+        @include sectionHeader();
+    }
+}   	
+
+#whyStudy{
+    .whyStudy__info{
+        .whyStudy__info--header > h5{
+            font-weight: 600;
+            font-size: 20px;
+        }
+
+        .whyStudy__info--body > p{
+            font-size: 16px;
+            text-align: ju;
+        }
+    }
+}
+
+#lifeStudent{
+    .infoCard{
+        .infoCard__header{
+            font-size: 24px;
+            text-align: center;
+            font-weight: 600;
+        }
+        .infoCard__body{
+            font-size: 16px;
+            text-align: justify;
+        }
+    }
+}
+

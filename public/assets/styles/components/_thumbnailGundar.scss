@@ -1,0 +1,106 @@
+.thumbnailGundar{
+    background: $primaryColor;
+    min-height: 350px;
+    margin: 50px 0;
+    
+    .thumbnailGundar-left{
+        padding: 2rem 5rem;
+
+        h5{
+            color: $Color7;
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 1.25rem;
+
+            span{
+                color: $Color4;
+            }
+        }
+
+        .thumbnailGundarBtn{
+            a{
+                background: $Color3;
+                color: $Color7;
+            }
+        }
+    }
+    
+    .thumbnailGundar-right{
+        border-bottom: 6px dashed $Color7;
+        border-left: 6px dashed $Color7;
+
+        .thumbnailGundar__imgBx{
+            padding-right: 1rem;
+            img{
+                transform: translateY(3rem);
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+            }
+        }
+    }
+}
+
+@media(max-width:992px){
+    .thumbnailGundar{
+        .thumbnailGundar-right{
+            padding-bottom: 20px;
+            border: none;
+    
+            .thumbnailGundar__imgBx{ 
+                padding: 0; 
+                text-align: center;  
+                img{
+                    width: 80%;
+                    height: 60%;
+                    margin-left: 0;
+                    transform: translateY(0);
+                }
+            }
+        }
+    }
+}
+
+@media(max-width:768px){
+    .thumbnailGundar{
+                
+                .thumbnailGundar-left{
+                    text-align: center;
+        
+                    br{
+                        display: none;
+                    }
+            
+                    h5{
+                        color: $Color7;
+                        font-size: 20px;
+                        font-weight: 700;
+                        margin-bottom: 1.25rem;
+            
+                        span{
+                            color: $Color4;
+                        }
+                    }
+            
+                    .thumbnailGundarBtn{
+                        a{
+                            background: $Color3;
+                            color: $Color7;
+                        }
+                    }
+                }
+                
+                .thumbnailGundar-right{
+                    padding-bottom: 8px;
+                    border: none;
+            
+                    .thumbnailGundar__imgBx{ 
+                        padding: 0;   
+                        img{
+                            margin-left: 0;
+                            transform: translateY(0);
+                        }
+                    }
+                }
+            }
+}

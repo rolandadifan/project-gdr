@@ -204,35 +204,113 @@ class CourseController extends Controller
                 ], ['course_detail_id', 'name', 'value']);
             return back()->with('status', 'Course Successfuly Created');
         } catch (\Throwable $th) {
-            return back()->with('error', 'Course Falied To Create');
+            return $th->getMessage();
         }
     }
 
     public function editCourse($id)
     {
-        $course = Course::findorFail($id);
+        $price = [];
+        $course = Course::with(['courseDetail.prices'])->findorFail($id);
+        foreach ($course->courseDetail->prices as $priceArr) {
+            $price[$priceArr->name] = $priceArr->value;
+        };
         return view('superadmin.pages.course.edit.long-edit')->with([
-            'course' => $course
+            'course' => $course,
+            'price' => $price,
         ]);
     }
 
     public function updateLongCourse(Request $request, $id)
     {
-        $data = $request->all();
-        $course = Course::findOrFail($id);
-        $course->update($data);
-        return back()->with('status', 'Course Successfuly Updated');
+        try {
+             $course_name = $request->input('name');
+             $slug = Str::slug($course_name);
+
+             $course = Course::findOrFail($id);
+             $course->update([
+                 'name' => $course_name,
+                 'slug' =>  $slug 
+             ]);
+
+            $detail_duration = $request->input('duration');
+            $detail_degree = $request->degree;
+            $detail_campus = $request->input('campus');
+            $detail_deaken_student = $request->input('deaken_student');
+            $detail_key_dates = $request->input('key_dates');
+            $detail_content = $request->input('content');
+
+            $course_detail = CourseDetail::where('course_id', $course->id)->first();
+            $course_detail->update([
+                'duration' => $detail_duration,
+                'key_dates' => $detail_key_dates,
+                'degree' => $detail_degree,
+                'campus' => $detail_campus,
+                'content' => $detail_content,
+                'deaken_student' => $detail_deaken_student,
+            ]);
+        
+            
+            $priceAA = CoursePrice::where('course_detail_id', $course_detail->id)->where('name', 'AA')->first();
+            $priceAA->update([
+                    'value' => $request->input('gradeAA'),
+            ]);
+            $bppAA = CoursePrice::where('course_detail_id', $course_detail->id)->where('name', 'AA_BPP')->first();
+            $bppAA->update([
+                'value' => $request->input('bppAA'),
+            ]);
+            $sksAA = CoursePrice::where('course_detail_id', $course_detail->id)->where('name', 'AA_SKS')->first();
+            $sksAA->update([
+                'value' => $request->input('sksAA'),
+            ]);
+
+            $priceA = CoursePrice::where('course_detail_id', $course_detail->id)->where('name', 'A')->first();
+            $priceA->update([
+                'value' => $request->input('gradeA'),
+            ]);
+            $bppA = CoursePrice::where('course_detail_id', $course_detail->id)->where('name', 'A_BPP')->first();
+            $bppA->update([
+                'value' => $request->input('bppA'),
+            ]);
+            $sksA = CoursePrice::where('course_detail_id', $course_detail->id)->where('name', 'A_SKS')->first();
+            $sksA->update([
+                'value' => $request->input('sksA'),
+            ]);
+
+            $priceB = CoursePrice::where('course_detail_id', $course_detail->id)->where('name', 'B')->first();
+            $priceB->update([
+                'value' => $request->input('gradeB'),
+            ]);
+            $bppB = CoursePrice::where('course_detail_id', $course_detail->id)->where('name', 'B_BPP')->first();
+            $bppB->update([
+                'value' => $request->input('bppB'),
+            ]);
+            $sksB = CoursePrice::where('course_detail_id', $course_detail->id)->where('name', 'B_SKS')->first();
+            $sksB->update([
+                'value' => $request->input('sksB'),
+            ]);
+            
+    
+
+            return back()->with('status', 'Course Successfuly Updated');
+        } catch (\Throwable $th) {
+            return back()->with('error', 'Course Failed Updated');
+        }
     }
 
     public function destroy($id)
     {
-        $course = Course::findOrFail($id);
-        $file_path = Storage::url($course->thumbnail);
-        $path = str_replace('\\', '/', public_path());
-        if (file_exists($path . $file_path)) {
-            unlink($path . $file_path);
+        $course = Course::with('courseDetail')->findOrFail($id);
+        if(!$course->courseDetail->thumbnail){
+            $course->delete();
+        }else{
+            $file_path = Storage::url($course->courseDetail->thumbnail);
+            $path = str_replace('\\', '/', public_path());
+            if (file_exists($path . $file_path)) {
+                unlink($path . $file_path);
+            }
+            $course->delete();
         }
-        $course->delete();
         return back()->with('status', 'Course Successfuly Deleted');
     }
 

@@ -1,0 +1,44 @@
+.customCard__contents{
+    margin-top: 30px;
+    .card{
+        border-radius: 10px;
+        box-shadow: 2px 1px 6px #000;
+
+        .customCard__boxImg{
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+
+            img{
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+            }
+        }
+
+        .customCard__content{
+            width: 80%;
+            margin: 50px auto 0;
+            line-height: 2rem;
+            text-align: right;    
+
+            h2{
+                text-align: center;
+                color: $Color13;
+                font-size: 32px;
+                margin-bottom: 20px;
+                font-weight: 500;
+            }
+    
+            p{
+            text-align: justify;
+                font-size: 16px;
+            }
+    
+            // .primary__button{
+            //     @include primaryButton();
+            //     margin-bottom: 10px;
+            // }
+        }
+    }
+}

@@ -1,0 +1,39 @@
+.cardVideo,.cardVideoReverse{
+    margin: 16px 0;
+
+    .cardVideo__header{
+        font-weight: 600;
+        font-size: 20px;
+    }
+
+    .cardVideo__contentLeft{
+        text-align: justify;
+        font-size: 16px;
+    }
+
+    .cardVideo__contentRight{
+        .cardVideo__contentBox{
+            max-width: 600px;
+            height: 250px;
+            margin: 0 auto;
+            text-align: center;
+            // border-top-left-radius: 50%;
+            // border-bottom-right-radius: 50%;
+            // border: 1px solid rgba($color: #000000, $alpha: 0.6);
+
+            .cardVideo__content{
+                width: 100%;
+                height: 100%;
+                border-top-left-radius: 25%;
+                border-bottom-right-radius: 25%;
+                border: 1px solid rgba($color: #000000, $alpha: 0.6);
+            }
+        }
+    }
+}
+
+.cardVideoReverse{
+    .row{
+        flex-direction: row-reverse;
+    }
+}

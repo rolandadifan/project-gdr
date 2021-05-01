@@ -71,19 +71,19 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="name">Grade AA<span style="color: red">*</span></label>
-                                        <input type="number" class="form-control" name="gradeAA" required>
+                                        <input type="number" class="form-control" name="gradeAA" value="0">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="name">BPP<span style="color: red">*</span></label>
-                                        <input type="number" class="form-control" name="sksAA" required>
+                                        <input type="number" class="form-control" name="bppAA" value="0">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="name">SKS<span style="color: red">*</span></label>
-                                        <input type="number" class="form-control" name="bppAA" required>
+                                        <input type="number" class="form-control" name="sksAA" value="0">
                                     </div>
                                 </div>
                             </div>
@@ -92,19 +92,19 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="name">Grade A<span style="color: red">*</span></label>
-                                        <input type="number" class="form-control" name="gradeA" required>
+                                        <input type="number" class="form-control" name="gradeA" value="0">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="name">BPP<span style="color: red">*</span></label>
-                                        <input type="number" class="form-control" name="bppA" required>
+                                        <input type="number" class="form-control" name="bppA" value="0">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="name">SKS<span style="color: red">*</span></label>
-                                        <input type="number" class="form-control" name="sksA" required>
+                                        <input type="number" class="form-control" name="sksA" value="0">
                                     </div>
                                 </div>
                             </div>
@@ -113,19 +113,19 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="name">Grade B<span style="color: red">*</span></label>
-                                        <input type="number" class="form-control" name="gradeB" required>
+                                        <input type="number" class="form-control" name="gradeB" value="0">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="name">BPP<span style="color: red">*</span></label>
-                                        <input type="number" class="form-control" name="bppB" required>
+                                        <input type="number" class="form-control" name="bppB" value="0">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="name">SKS<span style="color: red">*</span></label>
-                                        <input type="number" class="form-control" name="sksB" required>
+                                        <input type="number" class="form-control" name="sksB" value="0">
                                     </div>
                                 </div>
                             </div>

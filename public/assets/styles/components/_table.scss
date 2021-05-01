@@ -1,0 +1,32 @@
+.tableApplication{
+    .app__table{
+        .table__app{
+            background: $primaryColor;
+            padding: 8px 0 2px 8px;
+            color: $Color7;
+            font-weight: 600;
+            font-size: 18px;
+        }
+
+        .table{
+            thead{
+                background: $Color6;
+            }
+
+            tbody{
+                // border: 1px solid $Color17;
+                vertical-align: middle;
+
+                .first__td{
+                    color: $Color10;
+                }
+
+                .btn__editAction{
+                    background: $Color3;
+                    color: $Color7;
+                    padding: 6px 20px;
+                }
+            }
+        }
+    }
+}

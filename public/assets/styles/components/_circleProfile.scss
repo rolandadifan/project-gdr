@@ -1,0 +1,38 @@
+.circleProfile{
+    margin-top: 50px;
+
+    .circleProfile__header{
+        font-size: 20px;
+        font-weight: 600;
+    }
+
+    .circleProfile__body{
+        .circleProfile__boxImg{
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            position: relative;
+            overflow: hidden;
+            margin: 10px auto;
+            
+
+            .circleProfile__image{
+                height: 100%;
+                width: auto;
+                object-fit: contain;
+                object-position: center right
+            }
+        }
+
+        .circleProfile__title{
+            font-size: 18px;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .circleProfile__mainBody{
+            font-size: 16px;
+            text-align: justify;
+        }
+    }
+}

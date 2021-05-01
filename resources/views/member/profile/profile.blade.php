@@ -42,7 +42,8 @@
             </div>
         </div>
     </div>
-     <div class="container-fluid">
+     <main>
+        <div class="container-fluid">
             <div id="profile" class="p-2">
                 <div class="profile__header">
                     <h2>International Programs</h2>
@@ -53,7 +54,7 @@
                         <div class="row rows-cols-1 g-3 justify-content-center align-items-center">
                             <div class="col">
                                 <!-- App management landing page -->
-                                <div class="applicationManagement">
+                                <div class="tableApplication">
                                     <div class="app__content">
                                         <div class="container">
                                             <div class="row align-items-center">
@@ -71,12 +72,24 @@
                                                                         <th scope="col">Status</th>
                                                                         <th scope="col">Started</th>
                                                                         <th scope="col">Submitted</th>
+                                                                        <th scope="col">Action</th>
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody>
-                                                                    <tr>
-                                                                        <td colspan="4">You have not yet started an
+                                                                    <!-- <tr>
+                                                                        <td colspan="5">You have not yet started an
                                                                             application using this account.</td>
+                                                                    </tr> -->
+                                                                    <tr>
+                                                                        <td class="first__td">Study permit for more than 3 months</td>
+                                                                        <td>In Progress</td>
+                                                                        <td>02/17/2021</td>
+                                                                        <td>02/18/2021</td>
+                                                                        <td>
+                                                                            <button class="btn btn__editAction">
+                                                                                Edit
+                                                                            </button>
+                                                                        </td>
                                                                     </tr>
                                                                 </tbody>
                                                             </table>
@@ -152,6 +165,7 @@
                 </div>
             </div>
         </div>
+
         <!-- latest news -->
         <div class="container latestNews__profile p-4">
             <div class="latestNews__header mb-3">
@@ -182,6 +196,6 @@
                 </div>
             </div>
         </div>
-        @include('include.contact')
-    </div>
+    </main>
+
 @endsection

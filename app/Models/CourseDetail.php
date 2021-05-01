@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Course;
+use App\Models\CoursePrice;
 
 class CourseDetail extends Model
 {
@@ -14,6 +15,11 @@ class CourseDetail extends Model
 
     public function course()
     {
-        $this->belongsTo(Course::class);
+        return $this->belongsTo(Course::class);
+    }
+
+    public function prices()
+    {
+        return $this->hasMany(CoursePrice::class);
     }
 }

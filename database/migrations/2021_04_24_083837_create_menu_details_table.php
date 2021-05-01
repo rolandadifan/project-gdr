@@ -15,7 +15,7 @@ class CreateMenuDetailsTable extends Migration
     {
         Schema::create('menu_details', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('menu_id')->constrained('menus');
+            $table->foreignId('menu_id')->constrained('menus')->onDelete('cascade');
             $table->foreignId('status_id')->constrained('statuses');
             $table->string('title');
             $table->string('slug');
