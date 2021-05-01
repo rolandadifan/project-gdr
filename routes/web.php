@@ -80,6 +80,8 @@ Route::prefix('sadmin')->middleware(['auth', 'admin'])->group(function () {
     Route::get('/article/edit/{id}', [ArticleController::class, 'edit'])->name('artikel.edit');
     Route::put('/article/{id}', [ArticleController::class, 'update'])->name('artikel.update');
     Route::delete('/article/{id}', [ArticleController::class, 'destroy'])->name('artikel.destroy');
+    Route::put('/articles/status-active/{id}', [App\Http\Controllers\SuperAdmin\ArticleController::class, 'active'])->name('artikel.status.active');
+    Route::put('/articles/status-inactive/{id}', [App\Http\Controllers\SuperAdmin\ArticleController::class, 'inactive'])->name('artikel.status.inactive');
 
     //about
     Route::get('/about-edit', [AboutController::class, 'index'])->name('about.edit');
@@ -105,7 +107,7 @@ Route::get('/short-course/{id}', [App\Http\Controllers\CourseController::class, 
 
 //scholarship
 Route::get('/scholarship', [\App\Http\Controllers\ScholarshipController::class, 'index'])->name('scholarship.index');
-Route::get('/scholarship/detail', [\App\Http\Controllers\ScholarshipController::class, 'detail'])->name('scholarship.detail');
+Route::get('/scholarship/detail/{id}', [\App\Http\Controllers\ScholarshipController::class, 'detail'])->name('scholarship.detail');
 
 //apply info
 Route::get('/how-to-apply', [\App\Http\Controllers\ApplyInfoController::class, 'index'])->name('apply.index');

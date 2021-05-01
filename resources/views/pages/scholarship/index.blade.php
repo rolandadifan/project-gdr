@@ -20,48 +20,25 @@
                 <div class="listScholarship__context">
                     <div class="container-fluid">
                         <div class="row rows-cols-md-3 rows-cols-sm-2 rows-cols-1 g-3 justify-content-center align-items-center">
+                            @forelse ( $article as $item)
                             <div class="col">
                                 <div class="card">
-                                    <img src="./../../assets/images/list-scholarship.png" class="card-img-top p-2 rounded" alt="scholarship">
+                                    <img src="{{ Storage::url($item->articleDetail->thumbnail) }}" class="card-img-top p-2 rounded" alt="scholarship">
                                     <div class="card-body">
-                                      <h5 class="card-title">Gunadarma University International School 2021</h5>
+                                      <h5 class="card-title">{{ $item->articleDetail->title }}</h5>
                                       <div class="d-flex align-items-baseline card__calender">
                                         <i class="far fa-calendar-alt"></i>
-                                        <p class="px-2">Tuesday, March 8th, 2021</p>
+                                        <p class="px-2">{{ date('F d, Y, l', strtotime($item->created_at)) }}</p>
                                       </div>
-                                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                      <a href="{{ route('scholarship.detail') }}" class="scholarship__readMore">Read more..</a>
+                                      <p class="card-text">{{ $item->articleDetail->excerpt }}</p>
+                                      <a href="{{ route('scholarship.detail', $item->articleDetail->slug) }}" class="scholarship__readMore">Read more..</a>
                                     </div>
                                   </div>
                             </div>
-                            <div class="col">
-                                <div class="card">
-                                    <img src="./../../assets/images/list-scholarship.png" class="card-img-top p-2 rounded" alt="scholarship">
-                                    <div class="card-body">
-                                      <h5 class="card-title">Gunadarma University International School 2021</h5>
-                                      <div class="d-flex align-items-baseline card__calender">
-                                        <i class="far fa-calendar-alt"></i>
-                                        <p class="px-2">Tuesday, March 8th, 2021</p>
-                                      </div>
-                                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                      <a href="{{ route('scholarship.detail') }}" class="scholarship__readMore">Read more..</a>
-                                    </div>
-                                  </div>
-                            </div>
-                            <div class="col">
-                                <div class="card">
-                                    <img src="./../../assets/images/list-scholarship.png" class="card-img-top p-2 rounded" alt="scholarship">
-                                    <div class="card-body">
-                                      <h5 class="card-title">Gunadarma University International School 2021</h5>
-                                      <div class="d-flex align-items-baseline card__calender ">
-                                        <i class="far fa-calendar-alt"></i>
-                                        <p class="px-2">Tuesday, March 8th, 2021</p>
-                                      </div>
-                                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                      <a href="{{ route('scholarship.detail') }}" class="scholarship__readMore">Read more..</a>
-                                    </div>
-                                  </div>
-                            </div>
+                            @empty
+                                <h2 class="text-center">Data Not Found</h2>
+                            @endforelse
+
                         </div>
                     </div>
                 </div>

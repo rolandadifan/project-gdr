@@ -24,6 +24,7 @@
                 <tr>
                     <th>No</th>
                     <th>Name</th>
+                    <th>Status</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -32,10 +33,29 @@
                 <tr>
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $item->articleDetail->title }}</td>
+                    <td>{{ $item->status->value }}</td>
                     <td>
                         <a href="{{ route('artikel.edit', $item->id) }}" class="btn btn-warning btn-sm">
                             <i class="fas fa-fw fa-edit"></i>
                         </a>
+                         <form action="{{ route('artikel.status.active', $item->id) }}" class="d-inline"
+                                    method="POST">
+                                    @method('put')
+                                    @csrf
+                                    <button type="submit" class="btn btn-info btn-sm" data-toggle="tooltip"
+                                        data-placement="bottom" title="Make Active">
+                                        <i class="fas fa-fw fa-check"></i>
+                                    </button>
+                                </form>
+                        <form action="{{ route('artikel.status.inactive', $item->id) }}" class="d-inline"
+                                    method="POST">
+                                    @method('put')
+                                    @csrf
+                                    <button type="submit" class="btn btn-secondary btn-sm" data-toggle="tooltip"
+                                        data-placement="bottom" title="Make InActive">
+                                        <i class="fas fa-fw fa-times"></i>
+                                    </button>
+                        </form>
                         <form action="{{ route('artikel.destroy', $item->id) }}" class="d-inline" method="POST">
                             @method('delete')
                             @csrf

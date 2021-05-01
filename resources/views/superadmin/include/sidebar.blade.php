@@ -90,7 +90,6 @@
                 <a class="collapse-item" href="{{ route('artikel.research') }}">Research</a>
                 <a class="collapse-item" href="{{ route('artikel.news') }}">News</a>
                 <a class="collapse-item" href="{{ route('artikel.event') }}">Event</a>
-                <a class="collapse-item" href="{{ route('artikel.create') }}">Add</a>
             </div>
         </div>
     </li>
