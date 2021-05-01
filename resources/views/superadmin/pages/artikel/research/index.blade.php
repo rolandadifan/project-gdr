@@ -14,12 +14,12 @@
     <div class="card py-3 px-3">
         @include('flashmessage.validation')
         @include('flashmessage.flash')
-        <h1 class="mb-5">Article Event Info</h1>
+        <h1 class="mb-5">Article Research Info</h1>
         <a class="btn btn-primary btn-add-admin align-self-end mb-3" href="{{ route('artikel.create') }}">
             <i class="fas fa-fw fa-plus"></i>
             create
         </a>
-        <table id="table-event-info" class="table-responsive-md display" width="100%">
+        <table id="table-scholarship-info" class="table-responsive-md display" width="100%">
             <thead>
                 <tr>
                     <th>No</th>
@@ -60,7 +60,7 @@
 @push('addon-script')
 <script>
 // data table
-$('#table-event-info').DataTable({
+$('#table-scholarship-info').DataTable({
     responsive: true
 });
 // multi select
