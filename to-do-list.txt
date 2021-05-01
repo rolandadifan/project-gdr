@@ -23,6 +23,11 @@ landing page
 	section features / life-gundar (db, thumbnail, content)	
 	section testimony (db, photo, quote, major)
 how to apply
+	list
+	client
+	create
+	delete
+	edit
 short couses
 	list
 	pagination
@@ -48,4 +53,18 @@ about
 	news list
 footer
 header
-	
+alumni
+	client
+	list
+	create
+	delete
+	edit
+location
+	client
+	list
+	create
+	delete
+	edit
+setting
+	list
+	edit
