@@ -87,6 +87,7 @@
                         <tr>
                             <th>No</th>
                             <th>Name</th>
+                            <th>Degree</th>
                             <th>Status</th>
                             <th>Action</th>
                         </tr>
@@ -96,6 +97,7 @@
                         <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $cours->name }}</td>
+                            <td>{{ $cours->courseDetail->degree }}</td>
                             <td>{{ $cours->status->value }}</td>
                             <td>
                                 <a href="{{ route('course.edit', $cours->id) }}" class="btn btn-warning btn-sm">
