@@ -34,24 +34,136 @@
             <div class="table-responsive">
                 <table class="table table-bordered table--info" id="dynamic_field">
                     <tr>
-                        <td width="10%">
-                            <button type="button" name="add" id="add"
-                                class="btn btn-block btn-success add--info--btn">Add
-                                Info</button>
+                        <td width="130px">
+                            <div class="btn btn-block btn-success">Info 1</div>
                         </td>
                         <td>
-                            <input type="text" name="name[]" placeholder="Enter your Name"
-                                class="form-control name_list" />
-                            <table class="table table-bordered mt-3 table--detail" id="dynamic_field_info">
+                            <input type="text" name="info1" class="form-control info1" />
+                            <table class="table table-bordered mt-3">
                                 <tr>
-                                    <td width="10%">
-                                        <button type="button" name="add" id="add"
-                                            class="btn btn-block btn-success add--detail--btn">Add
-                                            Detail</button>
+                                    <td width="200px">
+                                        <div class="btn btn-block btn-success">Info 1 Detail 1</div>
                                     </td>
                                     <td>
-                                        <input type="text" name="name[]" placeholder="Enter your Name"
-                                            class="form-control name_list" />
+                                        <input type="text" name="info1detail1" class="form-control info1detail1" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="btn btn-block btnsccess">Info 1 Detail 2</div>
+                                    </td>
+                                    <td>
+                                        <input type="text" name="info1detail2" class="form-control info1detail2" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="btn btn-block btn-success">Info 1 Detail 3</div>
+                                    </td>
+                                    <td>
+                                        <input type="text" name="info1detail3" class="form-control info1detail3" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="130px">
+                            <div class="btn btn-block btn-success">Info 2</div>
+                        </td>
+                        <td>
+                            <input type="text" name="info2" class="form-control info2" />
+                            <table class="table table-bordered mt-3">
+                                <tr>
+                                    <td width="200px">
+                                        <div class="btn btn-block btn-success">Info 2 Detail 1</div>
+                                    </td>
+                                    <td>
+                                        <input type="text" name="info2detail1" class="form-control info2detail1" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="btn btn-block btn-success">Info 2 Detail 2</div>
+                                    </td>
+                                    <td>
+                                        <input type="text" name="info2detail2" class="form-control info2detail2" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="btn btn-block btn-success">Info 2 Detail 3</div>
+                                    </td>
+                                    <td>
+                                        <input type="text" name="info2detail3" class="form-control info2detail3" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="130px">
+                            <div class="btn btn-block btn-success">Info 3</div>
+                        </td>
+                        <td>
+                            <input type="text" name="info3" class="form-control info3" />
+                            <table class="table table-bordered mt-3">
+                                <tr>
+                                    <td width="200px">
+                                        <div class="btn btn-block btn-success">Info 3 Detail 1</div>
+                                    </td>
+                                    <td>
+                                        <input type="text" name="info3detail1" class="form-control info3detail1" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="btn btn-block btn-success">Info 3 Detail 2</div>
+                                    </td>
+                                    <td>
+                                        <input type="text" name="info3detail2" class="form-control info3detail2" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="btn btn-block btn-success">Info 3 Detail 3</div>
+                                    </td>
+                                    <td>
+                                        <input type="text" name="info3detail3" class="form-control info3detail3" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="130px">
+                            <div class="btn btn-block btn-success">Info 4</div>
+                        </td>
+                        <td>
+                            <input type="text" name="info4" class="form-control info4" />
+                            <table class="table table-bordered mt-3">
+                                <tr>
+                                    <td width="200px">
+                                        <div class="btn btn-block btn-success">Info 4 Detail 1</div>
+                                    </td>
+                                    <td>
+                                        <input type="text" name="info4detail1" class="form-control info4detail1" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="btn btn-block btn-success">Info 4 Detail 2</div>
+                                    </td>
+                                    <td>
+                                        <input type="text" name="info4detail2" class="form-control info4detail2" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="btn btn-block btn-success">Info 4 Detail 3</div>
+                                    </td>
+                                    <td>
+                                        <input type="text" name="info4detail3" class="form-control info4detail3" />
                                     </td>
                                 </tr>
                             </table>
@@ -59,7 +171,7 @@
                     </tr>
                 </table>
             </div>
-            <button class="btn btn-md btn-success btn-block">Save</button>
+            <button class="btn btn-md btn-success btn-block btn-save">Save</button>
         </form>
     </div>
 
@@ -72,42 +184,87 @@
 
 @push('addon-script')
 <script>
-// function removeDetailRow(e) {
-//     $(e).parent().parent().remove();
-//     detail_counter--;
-// }
+$(document).ready(function() {
+    $('.info1detail1,.info1detail2,.info1detail3,.info1').bind("keyup keypress change", function(e) {
+        const input1 = $('.info1detail1').val().length;
+        const input2 = $('.info1detail2').val().length;
+        const input3 = $('.info1detail3').val().length;
+        const sumDtl1 = input1 + input2 + input3;
+        const masterDetail1 = $('.info1').val().length;
 
-// function removeInfoRow(e) {
-//     $(e).parent().parent().remove();
-//     info_counter--;
-// }
-// var max_info = 4; //maximum input boxes allowed
-// var max_detail = 3; //maximum input boxes allowed
-// var wrapper = $(".table--detail"); //Fields wrapper
-// var add_detail_btn = $(".add--detail--btn"); //Add detail_btn ID
-// var add_info_btn = $(".add--info--btn"); //Add detail_btn ID
+        if (sumDtl1 > 0 && masterDetail1 === 0) {
+            $('.info1.text-danger').remove()
+            $('.info1detail1,.info1detail2,.info1detail3').unbind('keyup keypress change')
+            $('.btn-save').attr("disabled", 'disabled')
+            $('.info1').after(
+                '<div class="info1 text-danger">Mohon diperbaiki info tidak boleh kosong jika detail terisi</div>'
+            )
+        } else {
+            $('.btn-save').removeAttr("disabled")
+            $('.info1.text-danger').remove()
+            $('.info1detail1,.info1detail2,.info1detail3,.info1').bind('keyup keypress change')
+        }
+    });
+    $('.info2detail1, .info2detail2, .info2detail3, .info2').bind("keyup keypress change", function(e) {
+        const input1 = $('.info2detail1').val().length;
+        const input2 = $('.info2detail2').val().length;
+        const input3 = $('.info2detail3').val().length;
+        const sumDtl2 = input1 + input2 + input3;
+        const masterDetail2 = $('.info2').val().length;
 
-// var detail_counter = 1; //initlal text box count
-// var info_counter = 1; //initlal text box count
+        if (sumDtl2 > 0 && masterDetail2 === 0) {
+            $('.info2.text-danger').remove()
+            $('.info2detail1,.info2detail2,.info2detail3').unbind('keyup keypress change')
+            $('.btn-save').attr("disabled", 'disabled')
+            $('.info2').after(
+                '<div class="info2 text-danger">Mohon diperbaiki info tidak boleh kosong jika detail terisi</div>'
+            )
+        } else {
+            $('.btn-save').removeAttr("disabled")
+            $('.info2.text-danger').remove()
+            $('.info2detail1,.info2detail2,.info2detail3,.info2').bind('keyup keypress change')
+        }
+    });
+    $('.info3detail1, .info3detail2, .info3detail3, .info3').bind("keyup keypress change", function(e) {
+        const input1 = $('.info3detail1').val().length;
+        const input2 = $('.info3detail2').val().length;
+        const input3 = $('.info3detail3').val().length;
+        const sumDtl3 = input1 + input2 + input3;
+        const masterDetail3 = $('.info3').val().length;
 
-// $(add_detail_btn).click(function(e) { //on add input detail_btn click
-//     e.preventDefault();
-//     if (detail_counter < max_detail) { //max input box allowed
-//         detail_counter++; //text box increment
-//         $('.table--detail > tbody:last-child').append(
-//             '<tr><td width="10%"><div onclick="removeDetailRow(this)" id="#remove--field" class="btn btn-block btn-success">Remove Detail</div></td><td><input type="text" name="name[]" placeholder="Enter your Name" class="form-control name_list" /></td></tr>'
-//         ); //add input box
-//     }
-// });
+        if (sumDtl3 > 0 && masterDetail3 === 0) {
+            $('.info3.text-danger').remove()
+            $('.info3detail1,.info3detail2,.info3detail3').unbind('keyup keypress change')
+            $('.btn-save').attr("disabled", 'disabled')
+            $('.info3').after(
+                '<div class="info3 text-danger">Mohon diperbaiki info tidak boleh kosong jika detail terisi</div>'
+            )
+        } else {
+            $('.btn-save').removeAttr("disabled")
+            $('.info3.text-danger').remove()
+            $('.info3detail1,.info3detail2,.info3detail3,.info3').bind('keyup keypress change')
+        }
+    });
+    $('.info4detail1, .info4detail2, .info4detail3, .info4').bind("keyup keypress change", function(e) {
+        const input1 = $('.info4detail1').val().length;
+        const input2 = $('.info4detail2').val().length;
+        const input3 = $('.info4detail3').val().length;
+        const sumDtl4 = input1 + input2 + input3;
+        const masterDetail4 = $('.info4').val().length;
 
-// $(add_info_btn).click(function(e) { //on add input detail_btn click
-//     e.preventDefault();
-//     if (info_counter < max_info) { //max input box allowed
-//         info_counter++; //text box increment
-//         $('.table--info > tbody:last-child').append(
-//             '<tr><td width="10%"><div onclick="removeInfoRow(this)" id="#remove--field" class="btn btn-block btn-success">Remove Info</div></td> <td ><input type="text"name="name[]"placeholder="Enter your Name"class="form-control name_list"/><table class="table table-bordered mt-3 table--detail"id="dynamic_field_info" ><tr ><td width="10%" ><button type="button"name="add"id="add"class="btn btn-block btn-success add--detail--btn"> Add Detail </button> </td> <td ><input type="text"name="name[]"placeholder="Enter your Name"class="form-control name_list" / ></td> </tr> </table> </td> </tr>'
-//         ); //add input box
-//     }
-// });
+        if (sumDtl4 > 0 && masterDetail4 === 0) {
+            $('.info4.text-danger').remove()
+            $('.info4detail1,.info4detail2,.info4detail3').unbind('keyup keypress change')
+            $('.btn-save').attr("disabled", 'disabled')
+            $('.info4').after(
+                '<div class="info4 text-danger">Mohon diperbaiki info tidak boleh kosong jika detail terisi</div>'
+            )
+        } else {
+            $('.btn-save').removeAttr("disabled")
+            $('.info4.text-danger').remove()
+            $('.info4detail1,.info4detail2,.info4detail3,.info4').bind('keyup keypress change')
+        }
+    });
+});
 </script>
 @endpush
