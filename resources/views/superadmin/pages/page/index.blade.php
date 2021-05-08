@@ -13,6 +13,10 @@
       <!-- Content Row -->
       <div class="card py-3 px-3">
         <h1 class="mb-5">Menu Info</h1>
+        <a class="btn btn-primary btn-add-admin align-self-end mb-3" href="{{ route('page.create') }}">
+            <i class="fas fa-fw fa-plus"></i>
+            create
+        </a>
         <table id="table-menu-info" class="table-responsive-md display" width="100%">
             <thead>
                 <tr>
@@ -25,7 +29,7 @@
             <tbody>
                 <tr>
                     <td>1</td>
-                    <td>about</td>
+                    <td>test</td>
                     <td>pending</td>
                     <td>
                         <a href="" class="btn btn-warning btn-sm">

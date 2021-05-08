@@ -4396,4 +4396,219 @@ section .gundarGraduates__join .join__container .container .primary__button {
   font-size: 16px;
   text-align: justify;
 }
+
+#aboutGundar .aboutGundar__header, #aboutGundar .aboutGundarNews__header, #aboutGundar .aboutGundarEvent__header, #aboutGundar .news__header, #aboutGundar .details__header, #aboutGundarNews .aboutGundar__header, #aboutGundarNews .aboutGundarNews__header, #aboutGundarNews .aboutGundarEvent__header, #aboutGundarNews .news__header, #aboutGundarNews .details__header, #aboutGundarEvent .aboutGundar__header, #aboutGundarEvent .aboutGundarNews__header, #aboutGundarEvent .aboutGundarEvent__header, #aboutGundarEvent .news__header, #aboutGundarEvent .details__header, #news .aboutGundar__header, #news .aboutGundarNews__header, #news .aboutGundarEvent__header, #news .news__header, #news .details__header, #details .aboutGundar__header, #details .aboutGundarNews__header, #details .aboutGundarEvent__header, #details .news__header, #details .details__header {
+  text-align: center;
+  margin-top: 20px;
+}
+
+#aboutGundar .aboutGundar__header h2, #aboutGundar .aboutGundarNews__header h2, #aboutGundar .aboutGundarEvent__header h2, #aboutGundar .news__header h2, #aboutGundar .details__header h2, #aboutGundarNews .aboutGundar__header h2, #aboutGundarNews .aboutGundarNews__header h2, #aboutGundarNews .aboutGundarEvent__header h2, #aboutGundarNews .news__header h2, #aboutGundarNews .details__header h2, #aboutGundarEvent .aboutGundar__header h2, #aboutGundarEvent .aboutGundarNews__header h2, #aboutGundarEvent .aboutGundarEvent__header h2, #aboutGundarEvent .news__header h2, #aboutGundarEvent .details__header h2, #news .aboutGundar__header h2, #news .aboutGundarNews__header h2, #news .aboutGundarEvent__header h2, #news .news__header h2, #news .details__header h2, #details .aboutGundar__header h2, #details .aboutGundarNews__header h2, #details .aboutGundarEvent__header h2, #details .news__header h2, #details .details__header h2 {
+  color: #D1B590;
+  font-size: 24px;
+  font-weight: bold;
+  font-family: 'Playfair Display', sans-serif;
+}
+
+#aboutGundar .aboutGundar__header h2::after, #aboutGundar .aboutGundarNews__header h2::after, #aboutGundar .aboutGundarEvent__header h2::after, #aboutGundar .news__header h2::after, #aboutGundar .details__header h2::after, #aboutGundarNews .aboutGundar__header h2::after, #aboutGundarNews .aboutGundarNews__header h2::after, #aboutGundarNews .aboutGundarEvent__header h2::after, #aboutGundarNews .news__header h2::after, #aboutGundarNews .details__header h2::after, #aboutGundarEvent .aboutGundar__header h2::after, #aboutGundarEvent .aboutGundarNews__header h2::after, #aboutGundarEvent .aboutGundarEvent__header h2::after, #aboutGundarEvent .news__header h2::after, #aboutGundarEvent .details__header h2::after, #news .aboutGundar__header h2::after, #news .aboutGundarNews__header h2::after, #news .aboutGundarEvent__header h2::after, #news .news__header h2::after, #news .details__header h2::after, #details .aboutGundar__header h2::after, #details .aboutGundarNews__header h2::after, #details .aboutGundarEvent__header h2::after, #details .news__header h2::after, #details .details__header h2::after {
+  content: "";
+  display: block;
+  width: 16%;
+  margin: 20px auto;
+  border-bottom: 2px solid #E3E3E3;
+}
+
+@media (max-width: 576px) {
+  #aboutGundar .aboutGundar__header h2, #aboutGundar .aboutGundarNews__header h2, #aboutGundar .aboutGundarEvent__header h2, #aboutGundar .news__header h2, #aboutGundar .details__header h2, #aboutGundarNews .aboutGundar__header h2, #aboutGundarNews .aboutGundarNews__header h2, #aboutGundarNews .aboutGundarEvent__header h2, #aboutGundarNews .news__header h2, #aboutGundarNews .details__header h2, #aboutGundarEvent .aboutGundar__header h2, #aboutGundarEvent .aboutGundarNews__header h2, #aboutGundarEvent .aboutGundarEvent__header h2, #aboutGundarEvent .news__header h2, #aboutGundarEvent .details__header h2, #news .aboutGundar__header h2, #news .aboutGundarNews__header h2, #news .aboutGundarEvent__header h2, #news .news__header h2, #news .details__header h2, #details .aboutGundar__header h2, #details .aboutGundarNews__header h2, #details .aboutGundarEvent__header h2, #details .news__header h2, #details .details__header h2 {
+    font-size: 20px;
+  }
+}
+
+#aboutGundar .aboutGundar__header h4, #aboutGundar .aboutGundarNews__header h4, #aboutGundar .aboutGundarEvent__header h4, #aboutGundar .news__header h4, #aboutGundar .details__header h4, #aboutGundarNews .aboutGundar__header h4, #aboutGundarNews .aboutGundarNews__header h4, #aboutGundarNews .aboutGundarEvent__header h4, #aboutGundarNews .news__header h4, #aboutGundarNews .details__header h4, #aboutGundarEvent .aboutGundar__header h4, #aboutGundarEvent .aboutGundarNews__header h4, #aboutGundarEvent .aboutGundarEvent__header h4, #aboutGundarEvent .news__header h4, #aboutGundarEvent .details__header h4, #news .aboutGundar__header h4, #news .aboutGundarNews__header h4, #news .aboutGundarEvent__header h4, #news .news__header h4, #news .details__header h4, #details .aboutGundar__header h4, #details .aboutGundarNews__header h4, #details .aboutGundarEvent__header h4, #details .news__header h4, #details .details__header h4 {
+  font-size: 32px;
+  margin-bottom: 15px;
+  font-weight: bold;
+  color: #885A89;
+  text-transform: uppercase;
+}
+
+@media (max-width: 576px) {
+  #aboutGundar .aboutGundar__header h4, #aboutGundar .aboutGundarNews__header h4, #aboutGundar .aboutGundarEvent__header h4, #aboutGundar .news__header h4, #aboutGundar .details__header h4, #aboutGundarNews .aboutGundar__header h4, #aboutGundarNews .aboutGundarNews__header h4, #aboutGundarNews .aboutGundarEvent__header h4, #aboutGundarNews .news__header h4, #aboutGundarNews .details__header h4, #aboutGundarEvent .aboutGundar__header h4, #aboutGundarEvent .aboutGundarNews__header h4, #aboutGundarEvent .aboutGundarEvent__header h4, #aboutGundarEvent .news__header h4, #aboutGundarEvent .details__header h4, #news .aboutGundar__header h4, #news .aboutGundarNews__header h4, #news .aboutGundarEvent__header h4, #news .news__header h4, #news .details__header h4, #details .aboutGundar__header h4, #details .aboutGundarNews__header h4, #details .aboutGundarEvent__header h4, #details .news__header h4, #details .details__header h4 {
+    font-size: 24px;
+  }
+}
+
+#aboutGundar .aboutGundar__body {
+  margin-top: 20px;
+  text-align: justify;
+}
+
+#aboutGundar .aboutGundar__body p {
+  font-size: 16px;
+}
+
+#aboutGundar .aboutGundar__body a {
+  color: #EF7B39;
+  font-weight: 600;
+}
+
+#aboutGundar .aboutGundar__body .aboutGundar__boxImg {
+  width: 100%;
+  height: 100%;
+  text-align: right;
+}
+
+#aboutGundar .aboutGundar__body .aboutGundar__boxImg img {
+  width: 95%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+#news .news__body .swiper-container {
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  margin-bottom: 40px;
+}
+
+#news .news__body .swiper-container .swiper-wrapper .swiper-slide {
+  padding: 32px 16px;
+  border: 1px solid #885A89;
+  border-radius: 12px;
+  font-size: 18px;
+  background: #fff;
+  /* Center slide text vertically */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  gap: 10px;
+}
+
+#news .news__body .swiper-container .swiper-wrapper .swiper-slide .contentNews {
+  text-align: justify;
+}
+
+#news .news__body .swiper-container .swiper-wrapper .swiper-slide .contentNews .newsContent__boxImage {
+  width: 100%;
+  height: 100vh;
+  margin-bottom: 16px;
+}
+
+#news .news__body .swiper-container .swiper-wrapper .swiper-slide .contentNews .newsContent__boxImage img {
+  border-radius: 12px;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.beritaLainnya {
+  margin: 16px 0;
+}
+
+.beritaLainnya .card {
+  border-radius: 20px;
+  margin: 10px 0;
+  -webkit-box-shadow: 1.2px 1.2px 1.2px #000;
+          box-shadow: 1.2px 1.2px 1.2px #000;
+}
+
+.beritaLainnya .card .beritaLainnya__boxImg {
+  padding: 5px;
+  width: 100%;
+  height: 100%;
+}
+
+.beritaLainnya .card .beritaLainnya__boxImg img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+.beritaLainnya .card .beritaLainnya__content {
+  padding: 20px;
+  text-align: left;
+}
+
+.beritaLainnya .card .beritaLainnya__content h3 {
+  font-size: 19px;
+  font-weight: bold;
+}
+
+.beritaLainnya .card .beritaLainnya__content p {
+  font-size: 14px;
+  text-align: justify;
+}
+
+.beritaLainnya .card .beritaLainnya__content a {
+  color: #EF7B39;
+}
+
+#aboutGundarNews .aboutGundarNews__body .card, #aboutGundarNews .aboutGundarEvent__body .card, #aboutGundarNews .details__body .card, #aboutGundarEvent .aboutGundarNews__body .card, #aboutGundarEvent .aboutGundarEvent__body .card, #aboutGundarEvent .details__body .card, #details .aboutGundarNews__body .card, #details .aboutGundarEvent__body .card, #details .details__body .card {
+  border: none;
+}
+
+#aboutGundarNews .aboutGundarNews__body .card .card__header img, #aboutGundarNews .aboutGundarEvent__body .card .card__header img, #aboutGundarNews .details__body .card .card__header img, #aboutGundarEvent .aboutGundarNews__body .card .card__header img, #aboutGundarEvent .aboutGundarEvent__body .card .card__header img, #aboutGundarEvent .details__body .card .card__header img, #details .aboutGundarNews__body .card .card__header img, #details .aboutGundarEvent__body .card .card__header img, #details .details__body .card .card__header img {
+  max-height: 250px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center center;
+     object-position: center center;
+}
+
+#aboutGundarNews .aboutGundarNews__body .card .card-body, #aboutGundarNews .aboutGundarEvent__body .card .card-body, #aboutGundarNews .details__body .card .card-body, #aboutGundarEvent .aboutGundarNews__body .card .card-body, #aboutGundarEvent .aboutGundarEvent__body .card .card-body, #aboutGundarEvent .details__body .card .card-body, #details .aboutGundarNews__body .card .card-body, #details .aboutGundarEvent__body .card .card-body, #details .details__body .card .card-body {
+  padding-left: 0;
+}
+
+#aboutGundarNews .aboutGundarNews__body .card .card-body h5, #aboutGundarNews .aboutGundarEvent__body .card .card-body h5, #aboutGundarNews .details__body .card .card-body h5, #aboutGundarEvent .aboutGundarNews__body .card .card-body h5, #aboutGundarEvent .aboutGundarEvent__body .card .card-body h5, #aboutGundarEvent .details__body .card .card-body h5, #details .aboutGundarNews__body .card .card-body h5, #details .aboutGundarEvent__body .card .card-body h5, #details .details__body .card .card-body h5 {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+#aboutGundarNews .aboutGundarNews__body .card .card-body p, #aboutGundarNews .aboutGundarEvent__body .card .card-body p, #aboutGundarNews .details__body .card .card-body p, #aboutGundarEvent .aboutGundarNews__body .card .card-body p, #aboutGundarEvent .aboutGundarEvent__body .card .card-body p, #aboutGundarEvent .details__body .card .card-body p, #details .aboutGundarNews__body .card .card-body p, #details .aboutGundarEvent__body .card .card-body p, #details .details__body .card .card-body p {
+  text-align: justify;
+  font-size: 14px;
+}
+
+#aboutGundarNews .aboutGundarNews__body .card .card-body a, #aboutGundarNews .aboutGundarEvent__body .card .card-body a, #aboutGundarNews .details__body .card .card-body a, #aboutGundarEvent .aboutGundarNews__body .card .card-body a, #aboutGundarEvent .aboutGundarEvent__body .card .card-body a, #aboutGundarEvent .details__body .card .card-body a, #details .aboutGundarNews__body .card .card-body a, #details .aboutGundarEvent__body .card .card-body a, #details .details__body .card .card-body a {
+  font-size: 14px;
+  color: #EF7B39;
+  font-weight: 600;
+}
+
+#details .details__body .card {
+  border: none;
+}
+
+#details .details__body .card .card__boxImg {
+  width: 80%;
+  height: 100%;
+  margin: 16px auto;
+}
+
+#details .details__body .card .card__boxImg img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+#details .details__body .card .card__body h5 {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+#details .details__body .card .card__body p {
+  padding: 6px;
+  font-size: 16px;
+  text-align: justify;
+}
 /*# sourceMappingURL=styles.css.map */

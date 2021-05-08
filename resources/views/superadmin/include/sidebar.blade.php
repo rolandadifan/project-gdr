@@ -122,8 +122,8 @@
         </a>
         <div id="menu" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="{{ route('page.index') }}">Single Page</a>
-                <a class="collapse-item" href="{{ route('page.multi') }}">Multi Page</a>
+                <a class="collapse-item" href="{{ route('page.index') }}">Menu Page</a>
+                <a class="collapse-item" href="{{ route('page.multi') }}">How To Apply</a>
                 <a class="collapse-item" href="{{ route('page.create') }}">Add Page</a>
             </div>
         </div>

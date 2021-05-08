@@ -1,13 +1,13 @@
 <?php
 
 use App\Http\Controllers\Admin\DashboardAdminController;
-use App\Http\Controllers\superAdmin\AboutController;
+use App\Http\Controllers\SuperAdmin\AboutController;
 use App\Http\Controllers\SuperAdmin\DashboardSuperAdminController;
 use App\Http\Controllers\SuperAdmin\AdminController;
-use App\Http\Controllers\superadmin\ArticleController;
-use App\Http\Controllers\superadmin\PageController;
-use App\Http\Controllers\superadmin\UserController;
-use App\Http\Controllers\superadmin\ProfileController;
+use App\Http\Controllers\SuperAdmin\ArticleController;
+use App\Http\Controllers\SuperAdmin\PageController;
+use App\Http\Controllers\SuperAdmin\UserController;
+use App\Http\Controllers\SuperAdmin\ProfileController;
 use App\Http\Controllers\LandingController;
 use Illuminate\Support\Facades\Route;
 
@@ -90,6 +90,9 @@ Route::prefix('sadmin')->middleware(['auth', 'admin'])->group(function () {
     Route::get('/pages-info', [PageController::class, 'index'])->name('page.index');
     Route::get('/pages-multi-info', [PageController::class, 'submenu'])->name('page.multi');
     Route::get('/pages-setting', [PageController::class, 'create'])->name('page.create');
+    Route::post('/pages-single-create', [PageController::class, 'single'])->name('page.single');
+    Route::post('/pages-under-create', [PageController::class, 'under'])->name('page.under');
+    Route::post('/pages-post-create', [PageController::class, 'postg'])->name('page.postg');
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -128,3 +131,10 @@ Route::get('/student-enrollment/verifi-data', [\App\Http\Controllers\EnrollmentC
 Route::get('/graduations', [\App\Http\Controllers\LifeCampussController::class, 'graduations'])->name('life.graduation');
 Route::get('/student-life', [\App\Http\Controllers\LifeCampussController::class, 'studenLife'])->name('life.student');
 Route::get('/why-study', [\App\Http\Controllers\LifeCampussController::class, 'whyStudy'])->name('life.why');
+
+
+//about
+Route::get('/abouts', [\App\Http\Controllers\AboutController::class, 'abouts'])->name('page.about');
+Route::get('/news', [\App\Http\Controllers\AboutController::class, 'news'])->name('page.news');
+Route::get('/events', [\App\Http\Controllers\AboutController::class, 'event'])->name('page.event');
+Route::get('/artikel-detail', [\App\Http\Controllers\AboutController::class, 'detail'])->name('page.detail');
