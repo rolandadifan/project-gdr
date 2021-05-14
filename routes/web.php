@@ -85,6 +85,8 @@ Route::prefix('sadmin')->middleware(['auth', 'admin'])->group(function () {
 
     //about
     Route::get('/about-edit', [AboutController::class, 'index'])->name('about.edit');
+    Route::post('/about-add', [AboutController::class, 'edit'])->name('about.add');
+    Route::post('/about-add-photo', [AboutController::class, 'changeThumbnail'])->name('about.photo');
 
     //pages
     Route::get('/pages-info', [PageController::class, 'index'])->name('page.index');

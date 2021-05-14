@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Article;
+use App\Models\Setting;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 
@@ -10,7 +11,18 @@ class AboutController extends Controller
 {
     public function abouts()
     {
-        return view('pages.about.index');
+        $about = Setting::where('key', 'about')->first();
+         $news = Article::with(['articleDetail'])->where('status_id', '1')->orderBy('created_at', 'DESC')->whereHas('articleType', function (Builder $query) {
+            $query->where('name', 'news');
+        })->limit(3)->get();
+        $event = Article::with(['articleDetail'])->where('status_id', '1')->orderBy('created_at', 'DESC')->whereHas('articleType', function (Builder $query) {
+            $query->where('name', 'event');
+        })->limit(3)->get();
+        return view('pages.about.index')->with([
+            'about' => $about,
+            'news' => $news,
+            'event' => $event
+        ]);
     }
 
     public function news()
@@ -21,9 +33,13 @@ class AboutController extends Controller
         $newsAll = Article::with(['articleDetail'])->where('status_id', '1')->whereHas('articleType', function (Builder $query) {
             $query->where('name', 'news');
         })->paginate(3);
+         $article = Article::with(['articleDetail'])->where('status_id', '1')->whereHas('articleType', function (Builder $query) {
+            $query->where('name', 'research');
+        })->limit(2)->get();
         return view('pages.artikel.news')->with([
             'news' => $news,
-            'newsAll' => $newsAll
+            'newsAll' => $newsAll,
+            'article' => $article
         ]);
     }
 
@@ -35,9 +51,13 @@ class AboutController extends Controller
         $eventAll = Article::with(['articleDetail'])->where('status_id', '1')->whereHas('articleType', function (Builder $query) {
             $query->where('name', 'event');
         })->paginate(3);
+         $article = Article::with(['articleDetail'])->where('status_id', '1')->whereHas('articleType', function (Builder $query) {
+            $query->where('name', 'research');
+        })->limit(2)->get();
         return view('pages.artikel.event')->with([
             'event' => $event,
-            'eventAll' => $eventAll
+            'eventAll' => $eventAll,
+            'article' => $article
         ]);
     }
 

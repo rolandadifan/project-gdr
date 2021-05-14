@@ -29,8 +29,8 @@
             </div>
         </div>
   </main>
+  @if ($article->articleType->name == 'news')
   <main>
-      @if ($article->articleType->name == 'news')
       <div class="container">
         <div id="details" class="p-2">
             <div class="details">
@@ -62,40 +62,42 @@
             </div>
         </div>
     </div>
-      @else
-      <div class="container">
-        <div id="details" class="p-2">
-            <div class="details">
-                <h5>More Event</h5>
-            </div>
-
-            <div class="details__body">
-                <!-- looping di BE -->
-                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 justify-content-center gx-2">
-
-                    @forelse ($event as $ev)
-                    <div class="col">
-                        <div class="card">
-                            <div class="card__header">
-                                <img class="card-img-top" src="{{ Storage::url($ev->articleDetail->thumbnail) }}">
-                            </div>
-                            <div class="card-body">
-                                <h5>{{ $ev->articleDetail->title }}</h5>
-                                <p class="card-text">{{ $ev->articleDetail->excerpt }}</p>
-                                <a href="{{ route('page.detail', $ev->articleDetail->slug) }}">Read More...</a>
-                            </div>
-                        </div>
-                    </div>
-                    @empty
-                        <p class="text-center">no data found</p>
-                    @endforelse
-
-                </div>
-            </div>
-        </div>
-    </div>
+    </main>
+    @else
+    <main>
+        <div class="container">
+          <div id="details" class="p-2">
+              <div class="details">
+                  <h5>More Event</h5>
+              </div>
+  
+              <div class="details__body">
+                  <!-- looping di BE -->
+                  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 justify-content-center gx-2">
+  
+                      @forelse ($event as $ev)
+                      <div class="col">
+                          <div class="card">
+                              <div class="card__header">
+                                  <img class="card-img-top" src="{{ Storage::url($ev->articleDetail->thumbnail) }}">
+                              </div>
+                              <div class="card-body">
+                                  <h5>{{ $ev->articleDetail->title }}</h5>
+                                  <p class="card-text">{{ $ev->articleDetail->excerpt }}</p>
+                                  <a href="{{ route('page.detail', $ev->articleDetail->slug) }}">Read More...</a>
+                              </div>
+                          </div>
+                      </div>
+                      @empty
+                          <p class="text-center">no data found</p>
+                      @endforelse
+  
+                  </div>
+              </div>
+          </div>
+      </div>
+    </main>
       @endif
-</main>
 
 <!-- end dinamis -->
 
