@@ -18,36 +18,25 @@
                     <!-- Swiper -->
                     <div class="swiper-container" id="swiper-container">
                         <div class="swiper-wrapper">
+                            @forelse ($news as $item)
                             <div class="swiper-slide">
                                 <div class="row contentNews">
                                     <div class="col">
                                         <div class="newsContent__boxImage">
-                                            <img src="./../../assets/images/imageNews.png" alt="">
+                                            <img src="{{ Storage::url($item->articleDetail->thumbnail) }}" alt="">
                                         </div>
                                         <div class="newsContent__body">
-                                            <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h5>
-                                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repudiandae sunt maxime ex id voluptas repellat porro eaque, atque aspernatur voluptatem, non earum. Consequatur perspiciatis cumque quis repellat, vel odio. Fuga.</p>
+                                            <h5>{{ $item->articleDetail->title }}</h5>
+                                            <p>{{ $item->articleDetail->excerpt }}</p>
 
-                                            <a href="#">Read more...</a>
+                                            <a href="{{ route('page.detail', $item->articleDetail->slug) }}">Read more...</a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="swiper-slide">
-                                <div class="row contentNews">
-                                <div class="col">
-                                    <div class="newsContent__boxImage">
-                                        <img src="./../../assets/images/imageNews.png" alt="">
-                                    </div>
-                                    <div class="newsContent__body">
-                                        <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h5>
-                                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repudiandae sunt maxime ex id voluptas repellat porro eaque, atque aspernatur voluptatem, non earum. Consequatur perspiciatis cumque quis repellat, vel odio. Fuga.</p>
-
-                                        <a href="#">Read more...</a>
-                                    </div>
-                                </div>
-                                </div>
-                            </div>
+                            @empty
+                                <p class="text-center">No Data Found</p>
+                            @endforelse
 
                         </div>
                         <!-- Add Pagination -->
@@ -64,84 +53,35 @@
                 <h5>Berita Lainnya</h5>
             </div>
             <div class="container-fluid beritaLainnya__body">
+                @forelse ($newsAll as $new)
+                    
                 <div class="card">
                     <div class="row row-cols-md-2 align-items-center">
                     <div class="col-md-5">
                         <div class="beritaLainnya__boxImg">
-                        <img src="./../../assets/images/Mask Group 10.png" />
+                        <img src="{{ Storage::url($new->articleDetail->thumbnail) }}" />
                         </div>
                     </div>
                     <div class="col-md-7">
                         <div class="beritaLainnya__content">
                         <h3>
-                            The Importance of Implementing Social Distancing to
-                            Prevent COVID-19
+                            {{ $new->articleDetail->title }}
                         </h3>
                         <p>
-                            Lorem ipsum, dolor sit amet consectetur adipisicing
-                            elit. Saepe et blanditiis quia earum alias quisquam,
-                            molestias totam consectetur illo similique aliquam
-                            quidem illum consequatur nobis repudiandae sapiente,
-                            fuga veritatis. Minima.
+                            {{ $new->articleDetail->excerpt }}
                         </p>
-                        <a href="#">Read More...</a>
+                        <a href="{{ route('page.detail', $new->articleDetail->slug) }}">Read More...</a>
                         </div>
                     </div>
                     </div>
                 </div>
-                <div class="card">
-                    <div class="row row-cols-md-2 align-items-center">
-                    <div class="col-md-5">
-                        <div class="beritaLainnya__boxImg">
-                        <img src="./../../assets/images/Mask Group 11.png" />
-                        </div>
-                    </div>
-                    <div class="col-md-7">
-                        <div class="beritaLainnya__content">
-                        <h3>
-                            The Importance of Implementing Social Distancing to
-                            Prevent COVID-19
-                        </h3>
-                        <p>
-                            Lorem ipsum, dolor sit amet consectetur adipisicing
-                            elit. Saepe et blanditiis quia earum alias quisquam,
-                            molestias totam consectetur illo similique aliquam
-                            quidem illum consequatur nobis repudiandae sapiente,
-                            fuga veritatis. Minima.
-                        </p>
-                        <a href="#">Read More...</a>
-                        </div>
-                    </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="row row-cols-md-2 align-items-center">
-                    <div class="col-md-5">
-                        <div class="beritaLainnya__boxImg">
-                        <img src="./../../assets/images/Mask Group 11.png" />
-                        </div>
-                    </div>
-                    <div class="col-md-7">
-                        <div class="beritaLainnya__content">
-                        <h3>
-                            The Importance of Implementing Social Distancing to
-                            Prevent COVID-19
-                        </h3>
-                        <p>
-                            Lorem ipsum, dolor sit amet consectetur adipisicing
-                            elit. Saepe et blanditiis quia earum alias quisquam,
-                            molestias totam consectetur illo similique aliquam
-                            quidem illum consequatur nobis repudiandae sapiente,
-                            fuga veritatis. Minima.
-                        </p>
-                        <a href="#">Read More...</a>
-                        </div>
-                    </div>
-                    </div>
-                </div>
+                @empty
+                    <p class="text-center">No Data Found</p>
+                @endforelse
             </div>
         </div>
     </main>
+    {{ $newsAll->links() }}
 
      <!-- latest event -->
      <div class="container-fluid my-5 latestNews p-4">

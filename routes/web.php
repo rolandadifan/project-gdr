@@ -137,4 +137,4 @@ Route::get('/why-study', [\App\Http\Controllers\LifeCampussController::class, 'w
 Route::get('/abouts', [\App\Http\Controllers\AboutController::class, 'abouts'])->name('page.about');
 Route::get('/news', [\App\Http\Controllers\AboutController::class, 'news'])->name('page.news');
 Route::get('/events', [\App\Http\Controllers\AboutController::class, 'event'])->name('page.event');
-Route::get('/artikel-detail', [\App\Http\Controllers\AboutController::class, 'detail'])->name('page.detail');
+Route::get('/artikel/{id}', [\App\Http\Controllers\AboutController::class, 'detail'])->name('page.detail');

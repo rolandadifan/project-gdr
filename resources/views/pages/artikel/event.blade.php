@@ -5,12 +5,12 @@
 @section('s-title-jumbotron', 'Premium. Proven. Loved. Study at Gunadarma')
 @section('text-jumbotron', 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Culpa corrupti voluptas vel quisquam illum voluptate quod impedit ab nisi, esse mollitia ad aliquid delectus ea sit autem officiis. Reprehenderit, tenetur!')
 @include('icon')
-  <main>
+<main>
     <div class="container-fluid">
         <div id="news" class="p-2">
             <div class="news__header">
                 <h2>International Programs</h2>
-                <h4>Event</h4>
+                <h4>Events</h4>
             </div>
             <div class="news__body">
                 <div class="container">
@@ -18,36 +18,25 @@
                     <!-- Swiper -->
                     <div class="swiper-container" id="swiper-container">
                         <div class="swiper-wrapper">
+                            @forelse ($event as $item)
                             <div class="swiper-slide">
                                 <div class="row contentNews">
                                     <div class="col">
                                         <div class="newsContent__boxImage">
-                                            <img src="./../../assets/images/imageNews.png" alt="">
+                                            <img src="{{ Storage::url($item->articleDetail->thumbnail) }}" alt="">
                                         </div>
                                         <div class="newsContent__body">
-                                            <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h5>
-                                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repudiandae sunt maxime ex id voluptas repellat porro eaque, atque aspernatur voluptatem, non earum. Consequatur perspiciatis cumque quis repellat, vel odio. Fuga.</p>
+                                            <h5>{{ $item->articleDetail->title }}</h5>
+                                            <p>{{ $item->articleDetail->excerpt }}</p>
 
-                                            <a href="#">Read more...</a>
+                                            <a href="{{ route('page.detail', $item->articleDetail->slug) }}">Read more...</a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="swiper-slide">
-                                <div class="row contentNews">
-                                <div class="col">
-                                    <div class="newsContent__boxImage">
-                                        <img src="./../../assets/images/imageNews.png" alt="">
-                                    </div>
-                                    <div class="newsContent__body">
-                                        <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h5>
-                                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repudiandae sunt maxime ex id voluptas repellat porro eaque, atque aspernatur voluptatem, non earum. Consequatur perspiciatis cumque quis repellat, vel odio. Fuga.</p>
-
-                                        <a href="#">Read more...</a>
-                                    </div>
-                                </div>
-                                </div>
-                            </div>
+                            @empty
+                                <p class="text-center">No Data Found</p>
+                            @endforelse
 
                         </div>
                         <!-- Add Pagination -->
@@ -64,84 +53,35 @@
                 <h5>Berita Lainnya</h5>
             </div>
             <div class="container-fluid beritaLainnya__body">
+                @forelse ($eventAll as $event)
+                    
                 <div class="card">
                     <div class="row row-cols-md-2 align-items-center">
                     <div class="col-md-5">
                         <div class="beritaLainnya__boxImg">
-                        <img src="./../../assets/images/Mask Group 10.png" />
+                        <img src="{{ Storage::url($event->articleDetail->thumbnail) }}" />
                         </div>
                     </div>
                     <div class="col-md-7">
                         <div class="beritaLainnya__content">
                         <h3>
-                            The Importance of Implementing Social Distancing to
-                            Prevent COVID-19
+                            {{ $event->articleDetail->title }}
                         </h3>
                         <p>
-                            Lorem ipsum, dolor sit amet consectetur adipisicing
-                            elit. Saepe et blanditiis quia earum alias quisquam,
-                            molestias totam consectetur illo similique aliquam
-                            quidem illum consequatur nobis repudiandae sapiente,
-                            fuga veritatis. Minima.
+                            {{ $event->articleDetail->excerpt }}
                         </p>
-                        <a href="#">Read More...</a>
+                        <a href="{{ route('page.detail', $event->articleDetail->slug) }}">Read More...</a>
                         </div>
                     </div>
                     </div>
                 </div>
-                <div class="card">
-                    <div class="row row-cols-md-2 align-items-center">
-                    <div class="col-md-5">
-                        <div class="beritaLainnya__boxImg">
-                        <img src="./../../assets/images/Mask Group 11.png" />
-                        </div>
-                    </div>
-                    <div class="col-md-7">
-                        <div class="beritaLainnya__content">
-                        <h3>
-                            The Importance of Implementing Social Distancing to
-                            Prevent COVID-19
-                        </h3>
-                        <p>
-                            Lorem ipsum, dolor sit amet consectetur adipisicing
-                            elit. Saepe et blanditiis quia earum alias quisquam,
-                            molestias totam consectetur illo similique aliquam
-                            quidem illum consequatur nobis repudiandae sapiente,
-                            fuga veritatis. Minima.
-                        </p>
-                        <a href="#">Read More...</a>
-                        </div>
-                    </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="row row-cols-md-2 align-items-center">
-                    <div class="col-md-5">
-                        <div class="beritaLainnya__boxImg">
-                        <img src="./../../assets/images/Mask Group 11.png" />
-                        </div>
-                    </div>
-                    <div class="col-md-7">
-                        <div class="beritaLainnya__content">
-                        <h3>
-                            The Importance of Implementing Social Distancing to
-                            Prevent COVID-19
-                        </h3>
-                        <p>
-                            Lorem ipsum, dolor sit amet consectetur adipisicing
-                            elit. Saepe et blanditiis quia earum alias quisquam,
-                            molestias totam consectetur illo similique aliquam
-                            quidem illum consequatur nobis repudiandae sapiente,
-                            fuga veritatis. Minima.
-                        </p>
-                        <a href="#">Read More...</a>
-                        </div>
-                    </div>
-                    </div>
-                </div>
+                @empty
+                    <p class="text-center">No Data Found</p>
+                @endforelse
             </div>
         </div>
     </main>
+    {{ $eventAll->links() }}
 
      <!-- latest event -->
      <div class="container-fluid my-5 latestNews p-4">
