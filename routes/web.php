@@ -1,13 +1,13 @@
 <?php
 
 use App\Http\Controllers\Admin\DashboardAdminController;
-use App\Http\Controllers\superAdmin\AboutController;
+use App\Http\Controllers\SuperAdmin\AboutController;
 use App\Http\Controllers\SuperAdmin\DashboardSuperAdminController;
 use App\Http\Controllers\SuperAdmin\AdminController;
-use App\Http\Controllers\superadmin\ArticleController;
-use App\Http\Controllers\superadmin\PageController;
-use App\Http\Controllers\superadmin\UserController;
-use App\Http\Controllers\superadmin\ProfileController;
+use App\Http\Controllers\SuperAdmin\ArticleController;
+use App\Http\Controllers\SuperAdmin\PageController;
+use App\Http\Controllers\SuperAdmin\UserController;
+use App\Http\Controllers\SuperAdmin\ProfileController;
 use App\Http\Controllers\LandingController;
 use Illuminate\Support\Facades\Route;
 
@@ -80,14 +80,21 @@ Route::prefix('sadmin')->middleware(['auth', 'admin'])->group(function () {
     Route::get('/article/edit/{id}', [ArticleController::class, 'edit'])->name('artikel.edit');
     Route::put('/article/{id}', [ArticleController::class, 'update'])->name('artikel.update');
     Route::delete('/article/{id}', [ArticleController::class, 'destroy'])->name('artikel.destroy');
+    Route::put('/articles/status-active/{id}', [App\Http\Controllers\SuperAdmin\ArticleController::class, 'active'])->name('artikel.status.active');
+    Route::put('/articles/status-inactive/{id}', [App\Http\Controllers\SuperAdmin\ArticleController::class, 'inactive'])->name('artikel.status.inactive');
 
     //about
     Route::get('/about-edit', [AboutController::class, 'index'])->name('about.edit');
+    Route::post('/about-add', [AboutController::class, 'edit'])->name('about.add');
+    Route::post('/about-add-photo', [AboutController::class, 'changeThumbnail'])->name('about.photo');
 
     //pages
     Route::get('/pages-info', [PageController::class, 'index'])->name('page.index');
     Route::get('/pages-multi-info', [PageController::class, 'submenu'])->name('page.multi');
     Route::get('/pages-setting', [PageController::class, 'create'])->name('page.create');
+    Route::post('/pages-single-create', [PageController::class, 'single'])->name('page.single');
+    Route::post('/pages-under-create', [PageController::class, 'under'])->name('page.under');
+    Route::post('/pages-post-create', [PageController::class, 'postg'])->name('page.postg');
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -105,7 +112,7 @@ Route::get('/short-course/{id}', [App\Http\Controllers\CourseController::class, 
 
 //scholarship
 Route::get('/scholarship', [\App\Http\Controllers\ScholarshipController::class, 'index'])->name('scholarship.index');
-Route::get('/scholarship/detail', [\App\Http\Controllers\ScholarshipController::class, 'detail'])->name('scholarship.detail');
+Route::get('/scholarship/detail/{id}', [\App\Http\Controllers\ScholarshipController::class, 'detail'])->name('scholarship.detail');
 
 //apply info
 Route::get('/how-to-apply', [\App\Http\Controllers\ApplyInfoController::class, 'index'])->name('apply.index');
@@ -126,3 +133,10 @@ Route::get('/student-enrollment/verifi-data', [\App\Http\Controllers\EnrollmentC
 Route::get('/graduations', [\App\Http\Controllers\LifeCampussController::class, 'graduations'])->name('life.graduation');
 Route::get('/student-life', [\App\Http\Controllers\LifeCampussController::class, 'studenLife'])->name('life.student');
 Route::get('/why-study', [\App\Http\Controllers\LifeCampussController::class, 'whyStudy'])->name('life.why');
+
+
+//about
+Route::get('/abouts', [\App\Http\Controllers\AboutController::class, 'abouts'])->name('page.about');
+Route::get('/news', [\App\Http\Controllers\AboutController::class, 'news'])->name('page.news');
+Route::get('/events', [\App\Http\Controllers\AboutController::class, 'event'])->name('page.event');
+Route::get('/artikel/{id}', [\App\Http\Controllers\AboutController::class, 'detail'])->name('page.detail');

@@ -64,7 +64,7 @@
                     </div>
                 </div>
                 <a class="collapse-item" href="utilities-border.html">Enrollment</a>
-                <a class="collapse-item" href="cards.html">Requirment</a>
+                
             </div>
         </div>
     </li>
@@ -90,28 +90,52 @@
                 <a class="collapse-item" href="{{ route('artikel.research') }}">Research</a>
                 <a class="collapse-item" href="{{ route('artikel.news') }}">News</a>
                 <a class="collapse-item" href="{{ route('artikel.event') }}">Event</a>
-                <a class="collapse-item" href="{{ route('artikel.create') }}">Add</a>
             </div>
         </div>
     </li>
 
     <!-- Nav Item - Tables -->
-    <li class="nav-item">
+
+    {{-- <li class="nav-item">
         <a class="nav-link" href="{{ route('about.edit') }}">
             <i class="fas fa-fw fa-info-circle"></i>
             <span>About</span></a>
+    </li> --}}
+
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePagesactivity" aria-expanded="true"
+            aria-controls="collapsePages">
+            <i class="fas fa-fw fa-running"></i>
+            <span>Campus Activity</span>
+        </a>
+        <div id="collapsePagesactivity" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item" href="#">Why Study At Gunadarma</a>
+                <a class="collapse-item" href="#">Student Life</a>
+                <a class="collapse-item" href="#">Graduation</a>
+            </div>
+        </div>
     </li>
 
     <li class="nav-item">
-        <a class="nav-link" href="tables.html">
-            <i class="fas fa-fw fa-running"></i>
-            <span>Campus Activity</span></a>
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePagesInfo" aria-expanded="true"
+            aria-controls="collapsePages">
+            <i class="fas fa-fw fa-info-circle"></i>
+            <span>Info</span>
+        </a>
+        <div id="collapsePagesInfo" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item" href="{{ route('about.edit') }}">About</a>
+                <a class="collapse-item" href="{{ route('page.multi') }}">How To Apply</a>
+                <a class="collapse-item" href="cards.html">Requirment</a>
+            </div>
+        </div>
     </li>
 
     <li class="nav-item">
         <a class="nav-link" href="tables.html">
             <i class="fas fa-fw fa-comment"></i>
-            <span>review</span></a>
+            <span>Alumni</span></a>
     </li>
 
     <li class="nav-item">
@@ -119,12 +143,11 @@
             aria-controls="collapsePages">
 
             <i class="fas fa-fw fa-folder-minus"></i>
-            <span>Page</span>
+            <span>Setting</span>
         </a>
         <div id="menu" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="{{ route('page.index') }}">Single Page</a>
-                <a class="collapse-item" href="{{ route('page.multi') }}">Multi Page</a>
+                <a class="collapse-item" href="{{ route('page.index') }}">Menu Page</a>
                 <a class="collapse-item" href="{{ route('page.create') }}">Add Page</a>
             </div>
         </div>

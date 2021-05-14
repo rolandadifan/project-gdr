@@ -12,7 +12,7 @@ class Article extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['status_id', 'type_id'];
+    protected $fillable = ['status_id', 'type_id','group'];
 
     public function articleDetail()
     {

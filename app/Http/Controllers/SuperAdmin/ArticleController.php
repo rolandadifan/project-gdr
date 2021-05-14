@@ -7,10 +7,12 @@ use App\Http\Requests\ArtikelRequest;
 use App\Models\Article;
 use App\Models\ArticleType;
 use App\Models\ArticleDetail;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\DB;
 
 class ArticleController extends Controller
 {
@@ -73,6 +75,7 @@ class ArticleController extends Controller
             // master
             $article['type_id'] = $request->type;
             $article['status_id'] = 2;
+            $article['group'] = $request->group;
             $article_master = Article::create($article);
 
             // $data = $request->all();
@@ -103,6 +106,7 @@ class ArticleController extends Controller
             // master
             $article['type_id'] = $request->type;
             $article['status_id'] = 2;
+            $article['group'] = $request->input('group');
             $article_master = Article::findOrFail($id);
             $article_master->update($article);
 
@@ -154,5 +158,36 @@ class ArticleController extends Controller
         }
         $artikel->delete();
         return back()->with('status', 'Article Successfuly Deleted');
+    }
+
+
+    public function active($id)
+    {
+        $data = DB::table('articles')->where('id', $id)->first();
+        $status = $data->status_id;
+
+        if ($status == 2) {
+            DB::table('articles')->where('id', $id)->update([
+                'status_id' => 1
+            ]);
+            return back()->with('status', 'Articles Active');
+        } else {
+            return back()->with('error', 'Status Already Active');
+        }
+    }
+
+    public function inActive($id)
+    {
+        $data = DB::table('articles')->where('id', $id)->first();
+        $status = $data->status_id;
+
+        if ($status == 1) {
+            DB::table('articles')->where('id', $id)->update([
+                'status_id' => 2
+            ]);
+            return back()->with('status', 'Articles InActive');
+        } else {
+            return back()->with('error', 'Status Already InActive');
+        }
     }
 }

@@ -168,13 +168,13 @@
                     <div class="accordion__child-menu">
                       <ul>
                         <li>
-                          <a href="#">About</a>
+                          <a href="{{ route('page.about') }}">About</a>
                         </li>
                         <li>
-                          <a href="#">News</a>
+                          <a href="{{ route('page.news') }}">News</a>
                         </li>
                         <li>
-                          <a href="#">Event</a>
+                          <a href="{{ route('page.event') }}">Event</a>
                         </li>
                       </ul>
                     </div>

@@ -50,7 +50,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <div class="btn btn-block btn-success">Info 1 Detail 2</div>
+                                        <div class="btn btn-block btnsccess">Info 1 Detail 2</div>
                                     </td>
                                     <td>
                                         <input type="text" name="info1detail2" class="form-control info1detail2" />

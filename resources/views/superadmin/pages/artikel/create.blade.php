@@ -23,18 +23,21 @@
                     <label for="exampleFormControlSelect1">Type Article</label>
                     <select class="form-control" name="type" id="exampleFormControlSelect1" required>
                         @foreach ($tipe as $article_type)
-                        <option value="{{ $article_type->id }}" @php if(ucfirst($defaultType)===ucfirst($article_type->
-                            name)){
-                            echo 'selected';
-                            }
-                            @endphp
-                            >
-                            {{ ucfirst($article_type->name) }}
-                        </option>
+                            @if(ucfirst($defaultType)===ucfirst($article_type->name))
+                                <option value="{{ $article_type->id }}">
+                                        {{ ucfirst($article_type->name) }}
+                                </option>
+                            @endif
                         @endforeach
                     </select>
                 </div>
             </div>
+            @if ($defaultType==='research')
+            <div class="form-group" style="width: 400px">
+                <label for="">Research Type</label>
+                <input type="text" name="group" id="" class="form-control" required>
+            </div>
+            @endif
             <div class="form-group" style="width: 400px">
                 <label for="">Thumbnail</label>
                 <input type="file" name="thumbnail" id="" class="form-control" required>

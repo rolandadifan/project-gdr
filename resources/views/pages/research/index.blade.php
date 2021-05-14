@@ -40,21 +40,15 @@
                     <div class="container-fluid">
                         <nav>
                             <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                                <button class="nav-link active" id="research-group-tab" data-bs-toggle="tab"
+                                @forelse ($article as $item)
+                                <button class="nav-link" id="research-group-tab" data-bs-toggle="tab"
                                     data-bs-target="#research-group" type="button" role="tab"
                                     aria-controls="research-group" aria-selected="true">
-                                    Research Group
+                                    {{ $item->group }}
                                 </button>
-                                <button class="nav-link" id="research-industry-tab" data-bs-toggle="tab"
-                                    data-bs-target="#research-industry" type="button" role="tab"
-                                    aria-controls="research-industry" aria-selected="false">
-                                    Research and Industry
-                                </button>
-                                <button class="nav-link" id="responses-covid-tab" data-bs-toggle="tab"
-                                    data-bs-target="#responses-covid" type="button" role="tab"
-                                    aria-controls="responses-covid" aria-selected="false">
-                                    Responses COVID-19
-                                </button>
+                                @empty
+                                    <h3>Data not found</h3>
+                                @endforelse
                             </div>
                         </nav>
                         <div class="tab-content" id="nav-tabContent">

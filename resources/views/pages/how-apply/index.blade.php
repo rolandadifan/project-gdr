@@ -21,7 +21,7 @@
                         However, if you want to study online for the entire duration of your course, select Cloud Campus
                         as your campus when applying.</p>
 
-                    <h5>What are you applying for?</h5>
+                    <h5>Setting are you applying for?</h5>
                     <p>Choose your study type to find out how to apply for your course. If you’re unsure which study
                         type is right for you, we can help
                         you find out:</p>
@@ -52,69 +52,7 @@
                                 aria-labelledby="single-tab">
                                 <div class="card bg-light p-5 text-justify">
                                     <div class="card__content">
-                                        <div class="row">
-                                            <div class="col">
-                                                <h6>Using a single unit as a pathway to a course</h6>
-                                                <p>If you complete a non-award unit successfully, it may be counted as
-                                                    credit towards a degree course at Deakin.
-                                                    If you enjoy your single-unit study experience at Deakin and decide
-                                                    to apply for an award course, submit a course
-                                                    application and include your completed unit on a recognition of
-                                                    prior learning application.</p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col">
-                                                <h6>How to apply</h6>
-                                                <p>To apply for single-unit/non-award study, submit your application
-                                                    online via the Deakin Course and Scholarship
-                                                    applicant portal. Apply for multiple units in one trimester in a
-                                                    single application if you like and you’ll be notified
-                                                    of the outcome by email. To study units in a subsequent trimester,
-                                                    you’ll have to submit another online application.</p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col">
-                                                <h6>Application dates</h6>
-                                                <p>Applications for Trimester 1 close 28 February 2021.</p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col">
-                                                <h6>Fees</h6>
-                                                <p>Deakin charges fees for single-unit/non-award enrolments as they
-                                                    aren’t Commonwealth supported places. The
-                                                    cost of each unit depends on the government-classified area of study
-                                                    to which the unit belongs. To find information
-                                                    about specific unit fees check our non-award information for
-                                                    domestic and international students.</p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col">
-                                                <h6>Rights and responsibilities</h6>
-                                                <p>Just like a degree student, you’ll be expected to complete all
-                                                    administrative, academic and examination
-                                                    requirements to get formal recognition that you’ve completed the
-                                                    unit properly. Once enrolled, you’ll have the
-                                                    same rights and responsibilities as other Deakin students.</p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col">
-                                                <h6>Computing requirements</h6>
-                                                <p>At Deakin, we make extensive use of technology in our teaching. To
-                                                    study at Deakin you are required to have:
-                                                </p>
-                                                <ol>
-                                                    <li>access to a device such as a desktop computer or laptop
-                                                    </li>
-                                                    <li>connectivity to the internet</li>
-                                                    <li>capability to use Deakin’s online learning environments.</li>
-                                                </ol>
-                                            </div>
-                                        </div>
+                                      {!! $single ? $single->value : 'no data here' !!}
                                     </div>
                                 </div>
                             </div>
@@ -122,69 +60,7 @@
                                 aria-labelledby="undergraduate-tab">
                                 <div class="card bg-light p-5 text-justify">
                                     <div class="card__content">
-                                        <div class="row">
-                                            <div class="col">
-                                                <h6>Using a single unit as a pathway to a course</h6>
-                                                <p>If you complete a non-award unit successfully, it may be counted as
-                                                    credit towards a degree course at Deakin.
-                                                    If you enjoy your single-unit study experience at Deakin and decide
-                                                    to apply for an award course, submit a course
-                                                    application and include your completed unit on a recognition of
-                                                    prior learning application.</p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col">
-                                                <h6>How to apply</h6>
-                                                <p>To apply for single-unit/non-award study, submit your application
-                                                    online via the Deakin Course and Scholarship
-                                                    applicant portal. Apply for multiple units in one trimester in a
-                                                    single application if you like and you’ll be notified
-                                                    of the outcome by email. To study units in a subsequent trimester,
-                                                    you’ll have to submit another online application.</p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col">
-                                                <h6>Application dates</h6>
-                                                <p>Applications for Trimester 1 close 28 February 2021.</p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col">
-                                                <h6>Fees</h6>
-                                                <p>Deakin charges fees for single-unit/non-award enrolments as they
-                                                    aren’t Commonwealth supported places. The
-                                                    cost of each unit depends on the government-classified area of study
-                                                    to which the unit belongs. To find information
-                                                    about specific unit fees check our non-award information for
-                                                    domestic and international students.</p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col">
-                                                <h6>Rights and responsibilities</h6>
-                                                <p>Just like a degree student, you’ll be expected to complete all
-                                                    administrative, academic and examination
-                                                    requirements to get formal recognition that you’ve completed the
-                                                    unit properly. Once enrolled, you’ll have the
-                                                    same rights and responsibilities as other Deakin students.</p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col">
-                                                <h6>Computing requirements</h6>
-                                                <p>At Deakin, we make extensive use of technology in our teaching. To
-                                                    study at Deakin you are required to have:
-                                                </p>
-                                                <ol>
-                                                    <li>access to a device such as a desktop computer or laptop
-                                                    </li>
-                                                    <li>connectivity to the internet</li>
-                                                    <li>capability to use Deakin’s online learning environments.</li>
-                                                </ol>
-                                            </div>
-                                        </div>
+                                        {!! $under ? $under->value : 'no data here' !!}
                                     </div>
                                 </div>
                             </div>
@@ -192,69 +68,7 @@
                                 aria-labelledby="postgraduate-tab">
                                 <div class="card bg-light p-5 text-justify">
                                     <div class="card__content">
-                                        <div class="row">
-                                            <div class="col">
-                                                <h6>Using a single unit as a pathway to a course</h6>
-                                                <p>If you complete a non-award unit successfully, it may be counted as
-                                                    credit towards a degree course at Deakin.
-                                                    If you enjoy your single-unit study experience at Deakin and decide
-                                                    to apply for an award course, submit a course
-                                                    application and include your completed unit on a recognition of
-                                                    prior learning application.</p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col">
-                                                <h6>How to apply</h6>
-                                                <p>To apply for single-unit/non-award study, submit your application
-                                                    online via the Deakin Course and Scholarship
-                                                    applicant portal. Apply for multiple units in one trimester in a
-                                                    single application if you like and you’ll be notified
-                                                    of the outcome by email. To study units in a subsequent trimester,
-                                                    you’ll have to submit another online application.</p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col">
-                                                <h6>Application dates</h6>
-                                                <p>Applications for Trimester 1 close 28 February 2021.</p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col">
-                                                <h6>Fees</h6>
-                                                <p>Deakin charges fees for single-unit/non-award enrolments as they
-                                                    aren’t Commonwealth supported places. The
-                                                    cost of each unit depends on the government-classified area of study
-                                                    to which the unit belongs. To find information
-                                                    about specific unit fees check our non-award information for
-                                                    domestic and international students.</p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col">
-                                                <h6>Rights and responsibilities</h6>
-                                                <p>Just like a degree student, you’ll be expected to complete all
-                                                    administrative, academic and examination
-                                                    requirements to get formal recognition that you’ve completed the
-                                                    unit properly. Once enrolled, you’ll have the
-                                                    same rights and responsibilities as other Deakin students.</p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col">
-                                                <h6>Computing requirements</h6>
-                                                <p>At Deakin, we make extensive use of technology in our teaching. To
-                                                    study at Deakin you are required to have:
-                                                </p>
-                                                <ol>
-                                                    <li>access to a device such as a desktop computer or laptop
-                                                    </li>
-                                                    <li>connectivity to the internet</li>
-                                                    <li>capability to use Deakin’s online learning environments.</li>
-                                                </ol>
-                                            </div>
-                                        </div>
+                                        {!! $postg ? $postg->value : 'no data here' !!}
                                     </div>
                                 </div>
                             </div>

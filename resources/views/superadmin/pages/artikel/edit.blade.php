@@ -35,10 +35,16 @@
                     </select>
                 </div>
             </div>
+            @if ($data->articleType->name ==='research')
+            <div class="form-group" style="width: 400px">
+                <label for="">Research Type</label>
+                <input type="text" name="group" id="" value="{{ $data->group }}" class="form-control" required>
+            </div>
+            @endif
             <div class="form-group" style="width: 400px">
                 <label for="">Thumbnail</label>
                 <img src="{{ Storage::url($data->articleDetail->thumbnail) }}" height="200px" />
-                <input type="file" name="thumbnail" id="" class="form-control" required>
+                <input type="file" name="thumbnail" id="" class="form-control">
                 <span style="font-size: 16px">Maksimal file 300kb</span>
             </div>
             <div class="form-group">

@@ -1,0 +1,200 @@
+#aboutGundar,#aboutGundarNews,#aboutGundarEvent, #news ,#details{
+    .aboutGundar__header,.aboutGundarNews__header,.aboutGundarEvent__header, .news__header, .details__header{
+        text-align:center;
+        @include sectionHeader();
+    }
+}
+
+// about gundar (index)
+#aboutGundar{
+    .aboutGundar__body{
+        margin-top: 20px;
+        text-align: justify;
+
+        p{
+            font-size: 16px;
+        }
+
+        a{
+            color: $Color3;
+            font-weight: 600;
+        }
+
+        .aboutGundar__boxImg{
+            width: 100%;
+            height: 100%;
+            text-align: right;
+
+            img{
+                width: 95%;
+                object-fit: contain;
+            }
+        }
+    }
+}
+
+// news/event
+#news{
+    .news__body{
+        .swiper-container {
+            overflow: hidden;
+            width: 100%;
+            height: 100%;
+            margin-bottom: 40px;
+            
+            .swiper-wrapper{
+
+                .swiper-slide {
+                padding: 32px 16px;
+                border: 1px solid $primaryColor;
+                border-radius: 12px;
+                font-size: 18px;
+                background: #fff;
+            
+                  /* Center slide text vertically */
+                  display: -webkit-box;
+                  display: -ms-flexbox;
+                  display: -webkit-flex;
+                  display: inline-flex;
+                  -webkit-box-pack: center;
+                  -ms-flex-pack: center;
+                  -webkit-justify-content: center;
+                  justify-content: center;
+                  -webkit-box-align: center;
+                  -ms-flex-align: center;
+                  -webkit-align-items: center;
+                  align-items: center;
+                gap: 10px;
+
+    
+                  .contentNews{
+                      text-align: justify;
+
+                      .newsContent__boxImage{
+                          width: 100%;
+                          height: 100vh;
+                          margin-bottom: 16px;
+                          
+                          img{
+                              border-radius: 12px;
+                              width: 100%;
+                              height: 100%;
+                              object-fit: cover;
+                          }
+                      }
+                  }
+                }
+            }
+          }
+
+    }
+}
+
+// berita lain di news/event
+.beritaLainnya{
+    margin: 16px 0;
+
+    .card{
+        border-radius: 20px;
+        margin: 10px 0;
+        box-shadow: 1.2px 1.2px 1.2px #000;
+
+        .beritaLainnya__boxImg{
+            padding: 5px;
+            width: 100%;
+            height: 100%;
+
+            img{
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+            }
+        }
+
+        .beritaLainnya__content{
+            padding: 20px;
+            text-align: left;
+            
+            h3{
+                font-size: 19px;
+                font-weight: bold;
+            }
+
+            p{
+                font-size: 14px;
+                text-align: justify;
+            }
+            a{
+                color:$Color3;
+            }
+        }
+    }
+}
+
+// index
+#aboutGundarNews, #aboutGundarEvent, #details{
+    .aboutGundarNews__body, .aboutGundarEvent__body, .details__body{
+        .card{
+            border: none;
+            .card__header{
+                img{
+                    max-height: 250px;
+                    object-fit: cover;
+                    object-position: center center;
+                }
+            }
+            .card-body{
+                padding-left: 0;
+                h5{
+                    font-size: 16px;
+                    font-weight: 600;
+                }
+    
+                p{
+                    text-align: justify;
+                    font-size: 14px;
+                }
+    
+                a{
+                    font-size: 14px;
+                    color: $Color3;
+                    font-weight: 600;
+                }
+            }
+        }
+    }
+}
+
+// detail news or event
+#details{
+    .details__body{
+        .card{
+            border: none;
+
+            .card__boxImg{
+                width: 80%;
+                height: 100%;
+                margin: 16px auto;
+
+                img{
+                    width: 100%;
+                    height: 100%;
+                    object-fit: contain;
+                }
+            }
+
+            .card__body{
+                h5{
+                    font-size: 24px;
+                    font-weight: 600;
+                }
+
+                p{
+                    padding: 6px;
+                    font-size: 16px;
+                    text-align: justify;
+                }
+            }
+        }
+    }
+}
