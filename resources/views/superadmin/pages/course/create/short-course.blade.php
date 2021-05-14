@@ -185,6 +185,7 @@
 @push('addon-script')
 <script>
 $(document).ready(function() {
+    var errCount = 0;
     $('.info1detail1,.info1detail2,.info1detail3,.info1').bind("keyup keypress change", function(e) {
         const input1 = $('.info1detail1').val().length;
         const input2 = $('.info1detail2').val().length;
@@ -199,19 +200,23 @@ $(document).ready(function() {
             $('.info1').after(
                 '<div class="info1 text-danger">Mohon diperbaiki info tidak boleh kosong jika detail terisi</div>'
             )
+            errCount++
         } else {
-            $('.btn-save').removeAttr("disabled")
+            errCount--
             $('.info1.text-danger').remove()
             $('.info1detail1,.info1detail2,.info1detail3,.info1').bind('keyup keypress change')
         }
+
+        if (errCount === 0) {
+            $('.btn-save').removeAttr("disabled")
+        }
     });
-    $('.info2detail1, .info2detail2, .info2detail3, .info2').bind("keyup keypress change", function(e) {
+    $('.info2detail1,.info2detail2,.info2detail3,.info2').bind("keyup keypress change", function(e) {
         const input1 = $('.info2detail1').val().length;
         const input2 = $('.info2detail2').val().length;
         const input3 = $('.info2detail3').val().length;
         const sumDtl2 = input1 + input2 + input3;
         const masterDetail2 = $('.info2').val().length;
-
         if (sumDtl2 > 0 && masterDetail2 === 0) {
             $('.info2.text-danger').remove()
             $('.info2detail1,.info2detail2,.info2detail3').unbind('keyup keypress change')
@@ -219,10 +224,15 @@ $(document).ready(function() {
             $('.info2').after(
                 '<div class="info2 text-danger">Mohon diperbaiki info tidak boleh kosong jika detail terisi</div>'
             )
+            errCount++
         } else {
-            $('.btn-save').removeAttr("disabled")
+            errCount--
             $('.info2.text-danger').remove()
             $('.info2detail1,.info2detail2,.info2detail3,.info2').bind('keyup keypress change')
+        }
+
+        if (errCount === 0) {
+            $('.btn-save').removeAttr("disabled")
         }
     });
     $('.info3detail1, .info3detail2, .info3detail3, .info3').bind("keyup keypress change", function(e) {
@@ -239,10 +249,15 @@ $(document).ready(function() {
             $('.info3').after(
                 '<div class="info3 text-danger">Mohon diperbaiki info tidak boleh kosong jika detail terisi</div>'
             )
+            errCount++
         } else {
-            $('.btn-save').removeAttr("disabled")
+            errCount--
             $('.info3.text-danger').remove()
             $('.info3detail1,.info3detail2,.info3detail3,.info3').bind('keyup keypress change')
+        }
+
+        if (errCount === 0) {
+            $('.btn-save').removeAttr("disabled")
         }
     });
     $('.info4detail1, .info4detail2, .info4detail3, .info4').bind("keyup keypress change", function(e) {
@@ -259,10 +274,15 @@ $(document).ready(function() {
             $('.info4').after(
                 '<div class="info4 text-danger">Mohon diperbaiki info tidak boleh kosong jika detail terisi</div>'
             )
+            errCount++
         } else {
-            $('.btn-save').removeAttr("disabled")
+            errCount--
             $('.info4.text-danger').remove()
             $('.info4detail1,.info4detail2,.info4detail3,.info4').bind('keyup keypress change')
+        }
+
+        if (errCount === 0) {
+            $('.btn-save').removeAttr("disabled")
         }
     });
 });
