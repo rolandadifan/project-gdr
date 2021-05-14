@@ -33,3 +33,28 @@
 }
 
 /* course */
+
+/* student-life */
+.why-choose-photo {
+    border-radius: 50%;
+    max-width: 100%;
+    width: 200px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.why-choose-video {
+    max-width: 100%;
+    max-width: 400px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.student-info-photo {
+    display: block;
+    max-width: 100%;
+    width: 250px;
+    margin-left: auto;
+    margin-right: auto;
+}

@@ -95,6 +95,16 @@ Route::prefix('sadmin')->middleware(['auth', 'admin'])->group(function () {
     Route::post('/pages-single-create', [PageController::class, 'single'])->name('page.single');
     Route::post('/pages-under-create', [PageController::class, 'under'])->name('page.under');
     Route::post('/pages-post-create', [PageController::class, 'postg'])->name('page.postg');
+
+    //student life
+    Route::get('/why-study', [App\Http\Controllers\SuperAdmin\LifeCampusController::class, 'whyStudy'])->name('student.info');
+    Route::get('/graduation', [App\Http\Controllers\SuperAdmin\LifeCampusController::class, 'graduation'])->name('student.graduation');
+    Route::get('/student-life', [App\Http\Controllers\SuperAdmin\LifeCampusController::class, 'studentLife'])->name('student.life');
+
+    //alumni
+    Route::get('/alumni-info', [App\Http\Controllers\SuperAdmin\AlumniController::class, 'index'])->name('alumni-info.index');
+    Route::get('/alumni-info-create', [App\Http\Controllers\SuperAdmin\AlumniController::class, 'create'])->name('alumni-info.create');
+    Route::get('/alumni-info-edit', [App\Http\Controllers\SuperAdmin\AlumniController::class, 'edit'])->name('alumni-info.edit');
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

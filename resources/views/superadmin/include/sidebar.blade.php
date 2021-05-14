@@ -1,5 +1,5 @@
 <ul class="navbar-nav @if(Auth()->user()->role == 'sadmin')  @else bg-gradient-info @endif sidebar sidebar-dark accordion"
-    id="accordionSidebar" style="background-color: #885A89 !important">
+    id="accordionSidebar" style="background-color: #885A89 !important;">
 
     <!-- Sidebar - Brand -->
     <div class="nav-item">
@@ -110,9 +110,9 @@
         </a>
         <div id="collapsePagesactivity" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="#">Why Study At Gunadarma</a>
-                <a class="collapse-item" href="#">Student Life</a>
-                <a class="collapse-item" href="#">Graduation</a>
+                <a class="collapse-item" href="{{ route('student.info') }}">Why Study At Gunadarma</a>
+                <a class="collapse-item" href="{{ route('student.life') }}">Student Life</a>
+                <a class="collapse-item" href="{{ route('student.graduation') }}">Graduation</a>
             </div>
         </div>
     </li>
@@ -134,9 +134,16 @@
 
     <li class="nav-item">
         <a class="nav-link" href="tables.html">
+            <i class="fas fa-fw fa-graduation-cap"></i>
+            <span>Graduation Schedule</span></a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('alumni-info.index') }}">
             <i class="fas fa-fw fa-comment"></i>
             <span>Alumni</span></a>
     </li>
+
 
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#menu" aria-expanded="true"
