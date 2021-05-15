@@ -14,8 +14,12 @@ class ScholarshipController extends Controller
         $article = Article::with(['articleDetail'])->where('status_id', '1')->whereHas('articleType', function (Builder $query) {
             $query->where('name', 'scholarship');
         })->get();
+         $articles = Article::with(['articleDetail'])->where('status_id', '1')->whereHas('articleType', function (Builder $query) {
+            $query->where('name', 'research');
+        })->limit(2)->get();
         return view('pages.scholarship.index')->with([
-            'article' =>  $article
+            'article' =>  $article,
+            'articles' => $articles
         ]);
     }
 
@@ -24,9 +28,12 @@ class ScholarshipController extends Controller
         $article = Article::with(['articleType'])->where('status_id', '1')->whereHas('articleDetail', function (Builder $query) use($id) {
             $query->where('slug', $id);
         })->firstOrFail();
-
+         $articles = Article::with(['articleDetail'])->where('status_id', '1')->whereHas('articleType', function (Builder $query) {
+            $query->where('name', 'research');
+        })->limit(2)->get();
         return view('pages.scholarship.detail')->with([
-            'article' =>  $article
+            'article' =>  $article,
+            'articles' => $articles
         ]);
     }
 }

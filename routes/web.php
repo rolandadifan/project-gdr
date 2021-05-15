@@ -95,6 +95,8 @@ Route::prefix('sadmin')->middleware(['auth', 'admin'])->group(function () {
     Route::post('/pages-single-create', [PageController::class, 'single'])->name('page.single');
     Route::post('/pages-under-create', [PageController::class, 'under'])->name('page.under');
     Route::post('/pages-post-create', [PageController::class, 'postg'])->name('page.postg');
+    Route::post('/pages-menu', [PageController::class, 'menuStore'])->name('page.menu');
+
 
     //student life
     Route::get('/why-study', [App\Http\Controllers\SuperAdmin\LifeCampusController::class, 'whyStudy'])->name('student.info');

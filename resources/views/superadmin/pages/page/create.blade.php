@@ -13,16 +13,28 @@
       <!-- Content Row -->
       <div class="card py-3 px-3">
         <h1 class="mb-5">Create Menu</h1>
+         @include('flashmessage.validation')
+        @include('flashmessage.flash')
         <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item" role="presentation">
               <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Single Menu</a>
             </li>
-            {{-- <li class="nav-item" role="presentation">
-              <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">With Submenu</a>
-            </li> --}}
           </ul>
           <div class="tab-content" id="myTabContent">
-            @include('superadmin.pages.page.form-single-menu')
+            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+              <form action="{{ route('page.menu') }}" method="POST" class="mt-5">
+                @csrf
+                  <div class="form-group">
+                      <label for="">Menu Name</label>
+                      <input type="text" name="title" id="" class="form-control">
+                  </div>
+                  <div class="form-group">
+                      <label for="">Content</label>
+                      <textarea name="content" id="menu-edit" class="form-control" rows="10"></textarea>
+                  </div>
+                  <button type="submit" class="btn btn-success btn-md btn-block">Submit</button>
+              </form>
+            </div>
             {{-- @include('superadmin.pages.page.form-submenu') --}}
             
           </div>
@@ -38,7 +50,8 @@
 
 @push('addon-script')
 <script>
-      CKEDITOR.replace( 'menu-edit' );
-      CKEDITOR.replace( 'submenu-edit' );
+      // CKEDITOR.replace( 'menu-edit' );
+      var textarea = document.getElementById('menu-edit')
+      CKEDITOR.replace(textarea);
 </script>
 @endpush

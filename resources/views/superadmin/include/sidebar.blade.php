@@ -1,4 +1,4 @@
-<ul class="navbar-nav @if(Auth()->user()->role == 'sadmin')  @else bg-gradient-info @endif sidebar sidebar-dark accordion"
+<ul class="navbar-nav position-custome @if(Auth()->user()->role == 'sadmin')  @else bg-gradient-info @endif sidebar sidebar-dark accordion"
     id="accordionSidebar" style="background-color: #885A89 !important;">
 
     <!-- Sidebar - Brand -->
