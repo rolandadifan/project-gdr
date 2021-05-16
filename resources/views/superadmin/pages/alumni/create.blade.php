@@ -19,7 +19,7 @@
         <button class="btn btn-primary" style="width: 200px;margin-bottom:4rem"
             onclick="location.href = '/sadmin/alumni-info'">Back to
             List</button>
-        <form action="{{ route('alumni-info.store') }}" method="POST">
+        <form action="{{ route('alumni-info.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="row">
                 <div class="col-md-6">
@@ -54,6 +54,22 @@
                     <div class="form-group">
                         <label for="predicate">Predicate</label>
                         <input name='predicate' type="text" class="form-control">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="isTop">Is top 3</label>
+                        <select name='isTop' class="form-control" id="isTop">
+                            <option value='0'>Tidak</option>
+                            <option value='1'>Ya</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="">Thumbnail</label>
+                        <input type="file" name="thumbnail" id="" class="form-control" required>
+                        <span style="font-size: 16px">Maksimal file 300kb</span>
                     </div>
                 </div>
             </div>

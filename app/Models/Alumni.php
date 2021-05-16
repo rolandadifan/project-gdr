@@ -11,7 +11,7 @@ class Alumni extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id', 'course_id', 'name', 'predicate', 'review'];
+    protected $fillable = ['user_id', 'course_id', 'name', 'predicate', 'is_top', 'thumbnail', 'review'];
 
     public function user()
     {

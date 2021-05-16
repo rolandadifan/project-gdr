@@ -16,6 +16,8 @@ class AddNameToAlumnisTable extends Migration
         Schema::table('alumnis', function (Blueprint $table) {
             $table->string('name')->nullable()->after('course_id');
             $table->string('predicate')->nullable()->after('name');
+            $table->string('thumbnail')->nullable()->after('predicate');
+            $table->string('is_top')->nullable()->after('thumbnail');
             //
         });
     }

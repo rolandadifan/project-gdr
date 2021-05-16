@@ -10,12 +10,14 @@ use App\Models\Article;
 use App\Models\ArticleType;
 use App\Models\ArticleDetail;
 use App\Models\Page;
+use App\Models\Alumni;
 use Illuminate\Database\Eloquent\Builder;
 
 class LandingController extends Controller
 {
     public function index()
     {
+        $testimonies = Alumni::with('user','user.userDetail','course')->get();
         $landingTitle = Setting::where('key','landing-title')->first();
         $landingExcerpt = Setting::where('key','landing-excerpt')->first();
         $landingButtonText1 = Setting::where('key','landing-button-text-1')->first();
@@ -73,7 +75,8 @@ class LandingController extends Controller
             'content3'          => $content3,
             'title4'            => $title4,
             'icon4'             => $icon4,
-            'content4'          => $content4
+            'content4'          => $content4,
+            'testimonies'       => $testimonies,
         ]);
     }
 }
