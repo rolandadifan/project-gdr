@@ -33,7 +33,7 @@
                     <td>{{ $item->title }}</td>
                     <td>{{ $item->status->value }}</td>
                     <td>
-                        <a href="" class="btn btn-warning btn-sm">
+                        <a href="{{ route('page.edit', $item->id) }}" class="btn btn-warning btn-sm">
                             <i class="fas fa-fw fa-edit"></i>
                         </a>
                         <form action="" class="d-inline"

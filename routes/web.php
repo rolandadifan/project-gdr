@@ -88,14 +88,21 @@ Route::prefix('sadmin')->middleware(['auth', 'admin'])->group(function () {
     Route::post('/about-add', [AboutController::class, 'edit'])->name('about.add');
     Route::post('/about-add-photo', [AboutController::class, 'changeThumbnail'])->name('about.photo');
 
-    //pages
-    Route::get('/pages-info', [PageController::class, 'index'])->name('page.index');
+    //page info
     Route::get('/pages-multi-info', [PageController::class, 'submenu'])->name('page.multi');
     Route::get('/pages-setting', [PageController::class, 'create'])->name('page.create');
     Route::post('/pages-single-create', [PageController::class, 'single'])->name('page.single');
     Route::post('/pages-under-create', [PageController::class, 'under'])->name('page.under');
     Route::post('/pages-post-create', [PageController::class, 'postg'])->name('page.postg');
+
+
+    //pages
+    Route::get('/pages-info', [PageController::class, 'index'])->name('page.index');
     Route::post('/pages-menu', [PageController::class, 'menuStore'])->name('page.menu');
+    Route::get('/pages-menu/{id}', [PageController::class, 'editMneu'])->name('page.edit');
+    Route::put('/pages-menu/{id}', [PageController::class, 'updateMneu'])->name('page.update');
+    Route::put('/pages-menu/active/{id}', [PageController::class, 'activeMenu'])->name('page.active');
+    Route::put('/pages-menu/inactive/{id}', [PageController::class, 'inActiveMenu'])->name('page.inactive');
 
 
     //student life

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\MenuDetail;
 use App\Models\Setting;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
 class PageController extends Controller
@@ -51,6 +52,60 @@ class PageController extends Controller
 
         return back()->with('status', 'Success Create Page');
     }
+
+    public function editMneu($id)
+    {
+        $menu = MenuDetail::findOrFail($id);
+        return view('superadmin.pages.page.edit')->with([
+            'menu' => $menu 
+        ]);
+    }
+
+    public function updateMneu(Request $request,$id)
+    {
+         $title = $request->title;
+        $slug = Str::slug($title);
+        $content = $request->content;
+        $menu = MenuDetail::findOrFail($id);
+
+        $menu->update([
+            'title' => $title,
+            'slug' => $slug,
+            'content' => $content
+        ]);
+        return back()->with('status' , 'Successfully Edit Menu');
+    }
+
+    public function activeMenu($id)
+    {
+        $data = DB::table('menu_details')->where('id', $id)->first();
+        $status = $data->status_id;
+
+        if ($status == 2) {
+            DB::table('menu_details')->where('id', $id)->update([
+                'status_id' => 1
+            ]);
+            return back()->with('status', 'Menu Active');
+        } else {
+            return back()->with('error', 'Status Already Active');
+        }
+    }
+
+    public function inActiveMenu($id)
+    {
+        $data = DB::table('menu_details')->where('id', $id)->first();
+        $status = $data->status_id;
+
+        if ($status == 1) {
+            DB::table('menu_details')->where('id', $id)->update([
+                'status_id' => 2
+            ]);
+            return back()->with('status', 'Menu InActive');
+        } else {
+            return back()->with('error', 'Status Already InActive');
+        }
+    }
+
 
     public function single(Request $request)
     {
