@@ -7,11 +7,11 @@
         <img src="{{Storage::url($landingBgSection1->thumbnail)}}" alt="Jumbotron" />
     </div>
     <div class="jumbotron__content">
-        <h2>{{$landingTitle->value}}</h2>
-        <p>{{$landingExcerpt->value}}</p>
+        <h2>{!!$landingTitle->value!!}</h2>
+        <p>{!!$landingExcerpt->value!!}</p>
         <div class="jumbotron__button">
             <button type="button" class="btn primary__button" style="text-transform: capitalize;">
-                {{$landingButtonText1->value}}
+                {!!$landingButtonText1->value!!}
             </button>
             <button type="button" class="btn secondary__button">
                 <a href="./pages/courses/short-course.html" class="text-white text-decoration-none">Program Study</a>

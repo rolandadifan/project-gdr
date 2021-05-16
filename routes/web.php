@@ -6,6 +6,7 @@ use App\Http\Controllers\SuperAdmin\DashboardSuperAdminController;
 use App\Http\Controllers\SuperAdmin\AdminController;
 use App\Http\Controllers\SuperAdmin\ArticleController;
 use App\Http\Controllers\SuperAdmin\PageController;
+use App\Http\Controllers\SuperAdmin\SettingController;
 use App\Http\Controllers\SuperAdmin\UserController;
 use App\Http\Controllers\SuperAdmin\ProfileController;
 use App\Http\Controllers\LandingController;
@@ -87,6 +88,11 @@ Route::prefix('sadmin')->middleware(['auth', 'admin'])->group(function () {
     Route::get('/about-edit', [AboutController::class, 'index'])->name('about.edit');
     Route::post('/about-add', [AboutController::class, 'edit'])->name('about.add');
     Route::post('/about-add-photo', [AboutController::class, 'changeThumbnail'])->name('about.photo');
+
+    //setting
+    Route::get('/setting', [SettingController::class, 'index'])->name('setting.index');
+    Route::get('/setting/edit/{id}', [SettingController::class, 'edit'])->name('setting.edit');
+    Route::put('/setting/{id}', [SettingController::class, 'update'])->name('setting.update');
 
     //pages
     Route::get('/pages-info', [PageController::class, 'index'])->name('page.index');
