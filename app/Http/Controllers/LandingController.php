@@ -9,6 +9,7 @@ use App\Models\CourseDetail;
 use App\Models\Article;
 use App\Models\ArticleType;
 use App\Models\ArticleDetail;
+use App\Models\Page;
 use Illuminate\Database\Eloquent\Builder;
 
 class LandingController extends Controller
@@ -47,7 +48,11 @@ class LandingController extends Controller
             $query->where('name', 'research');
         })->with('status', 'articleType', 'articleDetail')->get();
         $rgroups = Article::select('group')->distinct()->get();
+         $about = Page::where('key', 'about')->first();
+         $sit = Page::where('key', 'sit')->first();
         return view('welcome')->with([
+            'about' => $about,
+            'sit' => $sit,
             'landingTitle'      => $landingTitle,
             'landingExcerpt'    => $landingExcerpt,
             'landingButtonText1'=> $landingButtonText1,

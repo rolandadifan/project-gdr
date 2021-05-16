@@ -4,14 +4,14 @@
 <div class="jumbotron">
     <div class="jumbotron__overlay"></div>
     <div class="jumbotron__background">
-        <img src="{{Storage::url($landingBgSection1->thumbnail)}}" alt="Jumbotron" />
+        <img src="{{$landingBgSection1->thumbnail == null ?  asset('assets/images/jumbotron-min.png') : Storage::url($landingBgSection1->thumbnail) }}" alt="Jumbotron" />
     </div>
     <div class="jumbotron__content">
-        <h2>{!!$landingTitle->value!!}</h2>
-        <p>{!!$landingExcerpt->value!!}</p>
+        <h2>{!!$landingTitle ? $landingTitle->value : 'GET YOUR DEGREE WITH US' !!}</h2>
+        <p>{!!$landingExcerpt ? $landingExcerpt->value : 'Beside providing you with new knowledge and raining in chosen disciplines Our university also gives you opportunity to benefit from spending your free time by planning' !!}</p>
         <div class="jumbotron__button">
             <button type="button" class="btn primary__button" style="text-transform: capitalize;">
-                {!!$landingButtonText1->value!!}
+                {!!$landingButtonText1 ? $landingButtonText1->value : 'start a journey' !!}
             </button>
             <button type="button" class="btn secondary__button">
                 <a href="./pages/courses/short-course.html" class="text-white text-decoration-none">Program Study</a>
@@ -75,14 +75,23 @@
         <div class="container">
             <div class="row row-cols-md-2 row-cols-1 g-lg-0 align-items-center">
                 <div class="col">
+                      @php
+                       if($about){
+                           $abouts = json_decode($about->value);
+                       }else {
+                           $abouts = '';
+                       }
+                    @endphp
                     <p>
-                        {{$about->value}}
+                        {{ $abouts ? $abouts->excerpt : 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora aliquam ad distinctio voluptatibus autem. Asperiores, dolor. Distinctio sunt repudiandae maiores facilis perspiciatis, iusto minima repellat laborum. Sapiente ullam sint placeat.
+                        Libero quia recusandae asperiores. Laborum ad alias possimus explicabo eum illum fugit omnis rerum sed quasi velit aliquid ipsa provident ab delectus, culpa, libero ex, dignissimos dolorum? Incidunt, velit repellat.
+                        Animi pariatur deleniti eum laboriosam, tempore omnis accusamus eius ab hic quae error natus sint repudiandae, nesciunt assumenda nisi adipisci rem commodi consequatur dignissimos atque ut! Laudantium quidem exercitationem libero!'}}
                     </p>
-                    <a href="#">Read More...</a>
+                    <a href="{{ route('page.about') }}">Read More...</a>
                 </div>
                 <div class="col">
                     <div class="about__boxImg">
-                        <img src="{{Storage::url($about->thumbnail)}}" alt="{{$about->key}}" />
+                         <img src="{{ !$about || $about->thumbnail == null  ? asset('assets/images/pict.png')  :  Storage::url($about->thumbnail) }}" alt="Gunadarma" />
                     </div>
                 </div>
             </div>
@@ -101,20 +110,27 @@
             <div class="row row-cols-1 g-0 align-items-center">
                 <div class="col-md-5">
                     <div class="lifeGunadarma__boxImg">
-                        <img src="./assets/images/gunadarma-life.png" alt="Basketball Park" />
+                        <img src="{{ !$sit ||$sit->thumbnail == null ? asset('assets/images/gunadarma-life.png') : Storage::url($sit->thumbnail ) }}" alt="Basketball Park" />
                     </div>
                 </div>
                 <div class="col-md-7">
                     <div class="lifeGunadarma__content">
-                        <h2>Sport Center</h2>
+                         @php
+                       if($sit){
+                           $sits = json_decode($sit->value);
+                       }else {
+                           $sits = '';
+                       }
+                        @endphp
+                        <h2>{{ $sits ? $sits->title : 'Sport Center' }}</h2>
                         <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                            {{ $sits ? $sits->content : 'Lorem ipsum dolor sit amet consectetur adipisicing elit.
                             Sapiente saepe blanditiis quae fugit minus, omnis tenetur
                             dolor excepturi quibusdam eveniet veniam accusantium impedit
                             harum corrupti consequuntur perspiciatis repellendus velit
-                            odio!
+                            odio!' }}
                         </p>
-                        <a href="#" class="btn primary__button">See More</a>
+                        <a href="{{ route('life.student') }}" class="btn primary__button">See More</a>
                     </div>
                 </div>
             </div>

@@ -15,10 +15,10 @@
                <div class="">
                    <div class="image-profile">
                        <div class="d-flex flex-column">
-                           @if (Auth()->user()->avatar == null)
+                           @if (!$users || $users->avatar == null )
                             <img src="{{ asset('assets/images/avatar-default.png') }}" width="200" class="rounded ml-3" alt="profile">
                            @else
-                            <img src="{{ Storage::url(Auth()->user()->avatar)}}" width="200" class="rounded ml-3" alt="profile">
+                            <img src="{{ Storage::url($users->avatar)}}" width="200" class="rounded ml-3" alt="profile">
                            @endif
                            <input type="file" name="avatar" accept=".png, .jpg, .jpeg" class="my-3 ml-3">
                        </div>
@@ -39,7 +39,7 @@
                    </div>
                    <div class="form-group">
                        <label for="name">Address</label>
-                       <textarea type="text" class="form-control profile-input" name="address" id="">{{ Auth()->user()->address }}</textarea>
+                       <textarea type="text" class="form-control profile-input" name="address" id="">{{ Auth()->user()->userDetail->address }}</textarea>
                    </div>
                    <div class="form-group">
                        <label for="name">Password</label>

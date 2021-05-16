@@ -133,7 +133,7 @@
     </li>
 
     <li class="nav-item">
-        <a class="nav-link" href="tables.html">
+        <a class="nav-link" href="{{ route('schedules.index') }}">
             <i class="fas fa-fw fa-graduation-cap"></i>
             <span>Graduation Schedule</span></a>
     </li>

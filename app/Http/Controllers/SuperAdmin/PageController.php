@@ -4,6 +4,7 @@ namespace App\Http\Controllers\superadmin;
 
 use App\Http\Controllers\Controller;
 use App\Models\MenuDetail;
+use App\Models\Page;
 use App\Models\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -21,9 +22,9 @@ class PageController extends Controller
 
     public function submenu()
     {
-        $single = Setting::where('key', 'sigle-unit')->first();
-        $under = Setting::where('key', 'under-unit')->first();
-        $postg = Setting::where('key', 'post-unit')->first();
+        $single = Page::where('key', 'sigle-unit')->first();
+        $under = Page::where('key', 'under-unit')->first();
+        $postg = Page::where('key', 'post-unit')->first();
         return view('superadmin.pages.page.submenu')->with([
             'single' => $single,
             'under' => $under,
@@ -109,7 +110,7 @@ class PageController extends Controller
 
     public function single(Request $request)
     {
-        $page = Setting::where('key', 'sigle-unit')->first();
+        $page = Page::where('key', 'sigle-unit')->first();
         if($page){
             $data = $request->all();
             $page->update($data);
@@ -117,7 +118,7 @@ class PageController extends Controller
         }else{
             $data_key = $request->input('key');
             $data_value = $request->input('value');
-            Setting::create([
+            Page::create([
                 'key' => $data_key,
                 'value' => $data_value
             ]);
@@ -127,7 +128,7 @@ class PageController extends Controller
 
     public function under(Request $request)
     {
-        $page = Setting::where('key', 'under-unit')->first();
+        $page = Page::where('key', 'under-unit')->first();
         if($page){
             $data = $request->all();
             $page->update($data);
@@ -135,7 +136,7 @@ class PageController extends Controller
         }else{
             $data_key = $request->input('key');
             $data_value = $request->input('value');
-            Setting::create([
+            Page::create([
                 'key' => $data_key,
                 'value' => $data_value
             ]);
@@ -145,7 +146,7 @@ class PageController extends Controller
 
     public function postg(Request $request)
     {
-        $page = Setting::where('key', 'post-unit')->first();
+        $page = Page::where('key', 'post-unit')->first();
         if($page){
             $data = $request->all();
             $page->update($data);
@@ -153,7 +154,7 @@ class PageController extends Controller
         }else{
             $data_key = $request->input('key');
             $data_value = $request->input('value');
-            Setting::create([
+            Page::create([
                 'key' => $data_key,
                 'value' => $data_value
             ]);
