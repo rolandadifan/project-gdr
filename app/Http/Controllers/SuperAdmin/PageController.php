@@ -42,7 +42,7 @@ class PageController extends Controller
         $status = 1;
         $slug = Str::slug($title);
         $content = $request->content;
- 
+
         MenuDetail::create([
             'title' => $title,
             'status_id' => $status,

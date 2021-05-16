@@ -6,6 +6,7 @@ use App\Http\Controllers\SuperAdmin\DashboardSuperAdminController;
 use App\Http\Controllers\SuperAdmin\AdminController;
 use App\Http\Controllers\SuperAdmin\ArticleController;
 use App\Http\Controllers\SuperAdmin\PageController;
+use App\Http\Controllers\SuperAdmin\SettingController;
 use App\Http\Controllers\SuperAdmin\UserController;
 use App\Http\Controllers\SuperAdmin\ProfileController;
 use App\Http\Controllers\LandingController;
@@ -88,11 +89,13 @@ Route::prefix('sadmin')->middleware(['auth', 'admin'])->group(function () {
     Route::post('/about-add', [AboutController::class, 'edit'])->name('about.add');
     Route::post('/about-add-photo', [AboutController::class, 'changeThumbnail'])->name('about.photo');
 
-    //page info
+    Route::put('/setting/{id}', [SettingController::class, 'update'])->name('setting.update');
+
+    //pages
+    Route::get('/pages-info', [PageController::class, 'index'])->name('page.index');
     Route::get('/pages-multi-info', [PageController::class, 'submenu'])->name('page.multi');
     Route::get('/pages-setting', [PageController::class, 'create'])->name('page.create');
     Route::post('/pages-single-create', [PageController::class, 'single'])->name('page.single');
-    Route::post('/pages-under-create', [PageController::class, 'under'])->name('page.under');
     Route::post('/pages-post-create', [PageController::class, 'postg'])->name('page.postg');
 
 

@@ -64,7 +64,7 @@
                     </div>
                 </div>
                 <a class="collapse-item" href="utilities-border.html">Enrollment</a>
-                
+
             </div>
         </div>
     </li>
@@ -98,13 +98,13 @@
 
     {{-- <li class="nav-item">
         <a class="nav-link" href="{{ route('about.edit') }}">
-            <i class="fas fa-fw fa-info-circle"></i>
-            <span>About</span></a>
+    <i class="fas fa-fw fa-info-circle"></i>
+    <span>About</span></a>
     </li> --}}
 
     <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePagesactivity" aria-expanded="true"
-            aria-controls="collapsePages">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePagesactivity"
+            aria-expanded="true" aria-controls="collapsePages">
             <i class="fas fa-fw fa-running"></i>
             <span>Campus Activity</span>
         </a>
@@ -118,8 +118,8 @@
     </li>
 
     <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePagesInfo" aria-expanded="true"
-            aria-controls="collapsePages">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePagesInfo"
+            aria-expanded="true" aria-controls="collapsePages">
             <i class="fas fa-fw fa-info-circle"></i>
             <span>Info</span>
         </a>
@@ -150,7 +150,7 @@
             aria-controls="collapsePages">
 
             <i class="fas fa-fw fa-folder-minus"></i>
-            <span>Setting</span>
+            <span>Pages</span>
         </a>
         <div id="menu" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
@@ -160,6 +160,12 @@
         </div>
     </li>
 
+
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('setting.index') }}">
+            <i class="fas fa-fw fa-cog"></i>
+            <span>Settings</span></a>
+    </li>
 
     <!- - Divider -->
         <hr class="sidebar-divider d-none d-md-block">
