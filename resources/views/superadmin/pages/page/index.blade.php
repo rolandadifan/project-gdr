@@ -1,5 +1,6 @@
 @extends('superadmin.layouts.admin')
 @section('content')
+@include('sweetalert::alert')
 
 
 <!-- Topbar -->
@@ -12,7 +13,9 @@
 
     <!-- Content Row -->
     <div class="card py-3 px-3">
-        <h1 class="mb-5">Settings</h1>
+        <h1 class="mb-5">Pages</h1>
+         @include('flashmessage.validation')
+        @include('flashmessage.flash')
         <table id="table-menu-info" class="table-responsive-md display" width="100%">
             <thead>
                 <tr>
@@ -29,10 +32,10 @@
                     <td>{{ $item->title }}</td>
                     <td>{{ $item->status->value }}</td>
                     <td>
-                        <a href="" class="btn btn-warning btn-sm">
+                        <a href="{{ route('page.edit', $item->id) }}" class="btn btn-warning btn-sm">
                             <i class="fas fa-fw fa-edit"></i>
                         </a>
-                        <form action="" class="d-inline" method="POST">
+                        <form action="{{ route('page.active', $item->id) }}" class="d-inline" method="POST">
                             @method('put')
                             @csrf
                             <button type="submit" class="btn btn-info btn-sm" data-toggle="tooltip"
@@ -40,7 +43,7 @@
                                 <i class="fas fa-fw fa-check"></i>
                             </button>
                         </form>
-                        <form action="" class="d-inline" method="POST">
+                        <form action="{{ route('page.inactive', $item->id) }}" class="d-inline" method="POST">
                             @method('put')
                             @csrf
                             <button type="submit" class="btn btn-secondary btn-sm" data-toggle="tooltip"

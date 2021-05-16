@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Article;
+use App\Models\Page;
 use App\Models\Setting;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
@@ -11,7 +12,7 @@ class AboutController extends Controller
 {
     public function abouts()
     {
-        $about = Setting::where('key', 'about')->first();
+        $about = Page::where('key', 'about')->first();
          $news = Article::with(['articleDetail'])->where('status_id', '1')->orderBy('created_at', 'DESC')->whereHas('articleType', function (Builder $query) {
             $query->where('name', 'news');
         })->limit(3)->get();

@@ -23,10 +23,10 @@
                   <label for="exampleInputPassword1">Password</label>
                   <input type="password" name="password" class="form-control" required>
                 </div>
-                <div class="form-group">
+                {{-- <div class="form-group">
                     <label for="exampleInputEmail1">Address</label>
                     <input type="text" name="address" class="form-control" required>
-                  </div>
+                  </div> --}}
                 <div class="form-group">
                     <label for="exampleInputEmail1">No Hp</label>
                     <div class="d-flex">

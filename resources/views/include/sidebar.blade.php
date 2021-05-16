@@ -237,12 +237,28 @@
                   </button>
                 </a>
               </div>
+
+              
+
+              @forelse ($menu_detail as $item)
+               <div class="accordion-item">
+                <a href="" class="accordion-header" id="alumni">
+                  <button class="accordion-button collapsed" type="button">
+                     {{  $item->title }}
+                  </button>
+                </a>
+              </div>
+              @empty
+                  
+              @endforelse
+
               <div class="accordion-item">
-                <form action="{{ route('logout') }}" class="accordion-header" method="POST">
+                <form action="{{ route('logout') }}" class="accordion-header" id="alumni" method="POST">
                   @csrf
                   <button type="submit" class="accordion-button collapsed">Logout</button>
                 </form>
               </div>
+
             </div>
           </div>
         </div>

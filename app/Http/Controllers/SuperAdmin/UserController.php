@@ -4,7 +4,10 @@ namespace App\Http\Controllers\superadmin;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\UserDetail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class UserController extends Controller
 {
@@ -30,5 +33,7 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         $user->update($data);
         return redirect()->route('user.index')->with('status', 'successfully updated');
+
+     
     }
 }

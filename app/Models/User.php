@@ -47,6 +47,11 @@ class User extends Authenticatable
 
     public function userDetail()
     {
-        $this->hasOne(UserDetail::class);
+       return $this->hasOne(UserDetail::class);
     }
+
+    // public function userDetails()
+    // {
+    //     $this->hasOne(UserDetail::class);
+    // }
 }
