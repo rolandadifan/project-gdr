@@ -10,7 +10,8 @@ class PageController extends Controller
 {
     public function index()
     {
-        return view('superadmin.pages.page.index');
+        $settings = Setting::get();
+        return view('superadmin.pages.page.index')->with(['settings'=>$settings]);
     }
 
     public function submenu()

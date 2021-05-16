@@ -2,64 +2,62 @@
 @section('content')
 
 
-    <!-- Topbar -->
-    
-    <!-- End of Topbar -->
+<!-- Topbar -->
 
-    <!-- Begin Page Content -->
-    
-    <div class="container-fluid">
+<!-- End of Topbar -->
 
-      <!-- Content Row -->
-      <div class="card py-3 px-3">
-        <h1 class="mb-5">Menu Info</h1>
-        <a class="btn btn-primary btn-add-admin align-self-end mb-3" href="{{ route('page.create') }}">
-            <i class="fas fa-fw fa-plus"></i>
-            create
-        </a>
+<!-- Begin Page Content -->
+
+<div class="container-fluid">
+
+    <!-- Content Row -->
+    <div class="card py-3 px-3">
+        <h1 class="mb-5">Settings</h1>
         <table id="table-menu-info" class="table-responsive-md display" width="100%">
             <thead>
                 <tr>
                     <th>No</th>
-                    <th>Name</th>
-                    <th>status</th>
+                    <th>Key</th>
+                    <th>Value</th>
                     <th>Action</th>
                 </tr>
             </thead>
             <tbody>
+                @php $i = 0; @endphp
+                @foreach ($settings as $setting)
                 <tr>
-                    <td>1</td>
-                    <td>test</td>
-                    <td>pending</td>
+                    <td>{{++$i}}</td>
+                    <td>{{$setting->key}}</td>
                     <td>
                         <a href="" class="btn btn-warning btn-sm">
                             <i class="fas fa-fw fa-edit"></i>
                         </a>
                         <form action="" class="d-inline" method="POST">
-                          @method('delete')
-                          @csrf
+                            @method('delete')
+                            @csrf
                             <button type="submit" class="btn btn-danger btn-sm">
-                              <i class="fas fa-fw fa-trash"></i>
+                                <i class="fas fa-fw fa-trash"></i>
                             </button>
                         </form>
                     </td>
                 </tr>
+                @endforeach
             </tbody>
         </table>
-      </div>
-      
-
     </div>
-    <!-- /.container-fluid -->
 
-  
+
+</div>
+<!-- /.container-fluid -->
+
+
 @include('superadmin.pages.user.create')
 @endsection
 
 @push('addon-script')
 <script>
-     $('#table-menu-info').DataTable({
-        responsive: true
-    });
+$('#table-menu-info').DataTable({
+    responsive: true
+});
 </script>
 @endpush
