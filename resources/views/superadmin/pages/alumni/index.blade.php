@@ -24,39 +24,21 @@
                 <tr>
                     <th>No</th>
                     <th>Name</th>
-                    <th>Status</th>
+                    <th>Course</th>
                     <th>Action</th>
                 </tr>
             </thead>
             <tbody>
-        
+                @foreach ($alumnus as $alumni)
                 <tr>
-                    <td>test</td>
-                    <td>test</td>
-                    <td>test</td>
+                    <td>{{$loop->iteration }}</td>
+                    <td>{{$alumni->user->name ?? $alumni->name}}</td>
+                    <td>{{$alumni->course->name ?? $alumni->predicate}}</td>
                     <td>
-                        <a href="" class="btn btn-warning btn-sm">
+                        <a href="{{ route('alumni-info.edit', $alumni->id) }}" class="btn btn-warning btn-sm">
                             <i class="fas fa-fw fa-edit"></i>
                         </a>
-                         <form action="" class="d-inline"
-                                    method="POST">
-                                    @method('put')
-                                    @csrf
-                                    <button type="submit" class="btn btn-info btn-sm" data-toggle="tooltip"
-                                        data-placement="bottom" title="Make Active">
-                                        <i class="fas fa-fw fa-check"></i>
-                                    </button>
-                                </form>
-                        <form action="" class="d-inline"
-                                    method="POST">
-                                    @method('put')
-                                    @csrf
-                                    <button type="submit" class="btn btn-secondary btn-sm" data-toggle="tooltip"
-                                        data-placement="bottom" title="Make InActive">
-                                        <i class="fas fa-fw fa-times"></i>
-                                    </button>
-                        </form>
-                        <form action="" class="d-inline" method="POST">
+                        <form action="{{ route('alumni-info.destroy', $alumni->id) }}" class="d-inline" method="POST">
                             @method('delete')
                             @csrf
                             <button type="submit" class="btn btn-danger btn-sm">
@@ -65,6 +47,7 @@
                         </form>
                     </td>
                 </tr>
+                @endforeach
             </tbody>
         </table>
     </div>

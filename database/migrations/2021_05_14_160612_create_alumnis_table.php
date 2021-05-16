@@ -15,8 +15,8 @@ class CreateAlumnisTable extends Migration
     {
         Schema::create('alumnis', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
-            $table->foreignId('course_id')->constrained('courses')->onDelete('cascade');
+            $table->foreignId('user_id')->nullable()->constrained('users')->onDelete('cascade');
+            $table->foreignId('course_id')->nullable()->constrained('courses')->onDelete('cascade');
             $table->string('review');
             $table->timestamps();
         });

@@ -103,7 +103,6 @@ Route::prefix('sadmin')->middleware(['auth', 'admin'])->group(function () {
     Route::post('/pages-post-create', [PageController::class, 'postg'])->name('page.postg');
     Route::post('/pages-menu', [PageController::class, 'menuStore'])->name('page.menu');
 
-
     //student life
     Route::get('/why-study', [App\Http\Controllers\SuperAdmin\LifeCampusController::class, 'whyStudy'])->name('student.info');
     Route::get('/graduation', [App\Http\Controllers\SuperAdmin\LifeCampusController::class, 'graduation'])->name('student.graduation');
@@ -111,8 +110,11 @@ Route::prefix('sadmin')->middleware(['auth', 'admin'])->group(function () {
 
     //alumni
     Route::get('/alumni-info', [App\Http\Controllers\SuperAdmin\AlumniController::class, 'index'])->name('alumni-info.index');
+    Route::post('/alumni-info', [App\Http\Controllers\SuperAdmin\AlumniController::class, 'store'])->name('alumni-info.store');
     Route::get('/alumni-info-create', [App\Http\Controllers\SuperAdmin\AlumniController::class, 'create'])->name('alumni-info.create');
-    Route::get('/alumni-info-edit', [App\Http\Controllers\SuperAdmin\AlumniController::class, 'edit'])->name('alumni-info.edit');
+    Route::get('/alumni-info/edit/{id}', [App\Http\Controllers\SuperAdmin\AlumniController::class, 'edit'])->name('alumni-info.edit');
+    Route::put('/alumni-info/{id}', [App\Http\Controllers\SuperAdmin\AlumniController::class, 'update'])->name('alumni-info.update');
+    Route::delete('/alumni-info/{id}', [App\Http\Controllers\SuperAdmin\AlumniController::class, 'destroy'])->name('alumni-info.destroy');
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

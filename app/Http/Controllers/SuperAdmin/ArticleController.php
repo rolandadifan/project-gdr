@@ -160,7 +160,6 @@ class ArticleController extends Controller
         return back()->with('status', 'Article Successfuly Deleted');
     }
 
-
     public function active($id)
     {
         $data = DB::table('articles')->where('id', $id)->first();
