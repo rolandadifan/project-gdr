@@ -23,15 +23,31 @@
                 </tr>
             </thead>
             <tbody>
-                @php $i = 0; @endphp
-                @foreach ($settings as $setting)
+                @foreach ($menu as $item)
                 <tr>
-                    <td>{{++$i}}</td>
-                    <td>{{$setting->key}}</td>
+                    <td>{{ $loop->iteration }}</td>
+                    <td>{{ $item->title }}</td>
+                    <td>{{ $item->status->value }}</td>
                     <td>
                         <a href="" class="btn btn-warning btn-sm">
                             <i class="fas fa-fw fa-edit"></i>
                         </a>
+                        <form action="" class="d-inline" method="POST">
+                            @method('put')
+                            @csrf
+                            <button type="submit" class="btn btn-info btn-sm" data-toggle="tooltip"
+                                data-placement="bottom" title="Make Active">
+                                <i class="fas fa-fw fa-check"></i>
+                            </button>
+                        </form>
+                        <form action="" class="d-inline" method="POST">
+                            @method('put')
+                            @csrf
+                            <button type="submit" class="btn btn-secondary btn-sm" data-toggle="tooltip"
+                                data-placement="bottom" title="Make InActive">
+                                <i class="fas fa-fw fa-times"></i>
+                            </button>
+                        </form>
                         <form action="" class="d-inline" method="POST">
                             @method('delete')
                             @csrf

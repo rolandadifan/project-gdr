@@ -1,4 +1,4 @@
-<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+{{-- <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
     <form action="" class="mt-5">
         <div class="form-group">
             <label for="">Menu Name</label>
@@ -9,4 +9,4 @@
             <textarea name="menu-edit" id="" class="form-control" rows="10"></textarea>
         </div>
     </form>
-</div>
+</div> --}}

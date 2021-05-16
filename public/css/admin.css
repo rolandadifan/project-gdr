@@ -1,4 +1,14 @@
 /* admin */
+/* .position-custome {
+    height: 100%;
+    width: 160px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+} */
 .btn-add-admin {
     width: 200px;
 }
@@ -33,3 +43,28 @@
 }
 
 /* course */
+
+/* student-life */
+.why-choose-photo {
+    border-radius: 50%;
+    max-width: 100%;
+    width: 200px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.why-choose-video {
+    max-width: 100%;
+    max-width: 400px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.student-info-photo {
+    display: block;
+    max-width: 100%;
+    width: 250px;
+    margin-left: auto;
+    margin-right: auto;
+}

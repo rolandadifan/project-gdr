@@ -31,36 +31,28 @@
             </div>
         </div>
 
-        <!-- latest news -->
-        <div class="container-fluid my-5 latestNews p-4">
-            <div class="latestNews__header mb-3">
-                <h4>Latest News</h4>
-            </div>
-            <div class="row rows-cols-1 rows-cols-md-2 latestNews__content">
-                <div class="col">
-                    <div class="latestNews__col--header">
-                        <h6>COVID-19</h6>
-                        <p>The Importance of Implementing Social Distancing to Prevent COVID-19</p>
-                    </div>
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quod a sint nobis corrupti nesciunt,
-                        minus voluptas labore error! Autem quia rem in cumque eaque excepturi ipsum veritatis,
-                        distinctio soluta nemo!</p>
-
-                    <a href="#">Read more..</a>
-                </div>
-                <div class="col">
-                    <div class="latestNews__col--header">
-                        <h6>University</h6>
-                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed m. </p>
-                    </div>
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quod a sint nobis corrupti nesciunt,
-                        minus voluptas labore error! Autem quia rem in cumque eaque excepturi ipsum veritatis,
-                        distinctio soluta nemo!</p>
-
-                    <a href="#">Read more..</a>
-                </div>
-            </div>
+        <!-- latest event -->
+     <div class="container-fluid my-5 latestNews p-4">
+        <div class="latestNews__header mb-3">
+            <h4>Latest Event</h4>
         </div>
+        <div class="row rows-cols-1 rows-cols-md-2 latestNews__content">
+            @forelse ($articles as $ar)
+            <div class="col">
+                <div class="latestNews__col--header">
+                    <h6>{{ $ar->group }}</h6>
+                    <p>{{ $ar->articleDetail->title }}</p>
+                </div>
+                <p>{{$ar->articleDetail->excerpt}}</p>
+
+                <a href="{{ route('page.detail',$ar->articleDetail->slug ) }}">Read more..</a>
+            </div>
+            @empty
+                 <p class="text-center">No Data Found</p>
+            @endforelse
+           
+        </div>
+    </div>
     </main>
 
 @endsection
