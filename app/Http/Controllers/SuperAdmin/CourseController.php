@@ -39,6 +39,8 @@ class CourseController extends Controller
 
     public function storeShortCourse(Request $request)
     {
+
+        
         $course_name = $request->validate([
             'name' => 'required|string',
         ]);

@@ -21,7 +21,7 @@ class UserController extends Controller
 
     public function edit($id)
     {
-        $user = User::findOrFail($id);
+        $user = User::with('userDetail')->findOrFail($id);
         return view('superadmin.pages.user.member.info')->with([
             'user' => $user
         ]);
@@ -29,9 +29,26 @@ class UserController extends Controller
 
     public function update(Request $request, $id)
     {
-        $data = $request->all();
+        $name = $request->name;
+        $telephone = $request->telephone;
+        $address = $request->address;
         $user = User::findOrFail($id);
-        $user->update($data);
+        $user->update([
+            'name' => $name,
+            'telephone' => $telephone
+        ]);
+        $user_detail = UserDetail::where('user_id', $user->id)->first();
+        if(!$user_detail){
+            UserDetail::create([
+                'user_id' => $user->id,
+                'status_id' => 1,
+                'address' => $address
+            ]);
+        }else{
+            $user_detail->update([
+                'address' => $address
+            ]);
+        }
         return redirect()->route('user.index')->with('status', 'successfully updated');
 
      

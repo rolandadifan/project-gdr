@@ -171,6 +171,12 @@ Route::prefix('sadmin')->middleware(['auth', 'admin'])->group(function () {
     Route::put('/schedules-info/{id}', [App\Http\Controllers\SuperAdmin\SchedulesController::class, 'update'])->name('schedules.update');
     Route::delete('/schedules-info/{id}', [App\Http\Controllers\SuperAdmin\SchedulesController::class, 'destroy'])->name('schedules.destroy');
 
+    //requirment
+    Route::get('/requirment-info', [App\Http\Controllers\SuperAdmin\AboutController::class, 'requirmentIndex'])->name('requirment.index');
+    Route::post('/requirment-info/step-1', [App\Http\Controllers\SuperAdmin\AboutController::class, 'reqirmentStoreStepOne'])->name('requirment.step-one');
+    Route::post('/requirment-info/step-2', [App\Http\Controllers\SuperAdmin\AboutController::class, 'reqirmentStoreStepTwo'])->name('requirment.step-two');
+    Route::post('/requirment-info/step-3', [App\Http\Controllers\SuperAdmin\AboutController::class, 'reqirmentStoreStepThree'])->name('requirment.step-three');
+
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

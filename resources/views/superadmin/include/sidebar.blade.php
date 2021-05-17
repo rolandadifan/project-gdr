@@ -127,7 +127,7 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item" href="{{ route('about.edit') }}">About</a>
                 <a class="collapse-item" href="{{ route('page.multi') }}">How To Apply</a>
-                <a class="collapse-item" href="cards.html">Requirment</a>
+                <a class="collapse-item" href="{{ route('requirment.index') }}">Requirment</a>
             </div>
         </div>
     </li>
