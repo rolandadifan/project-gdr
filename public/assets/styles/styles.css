@@ -774,7 +774,7 @@ html::-webkit-scrollbar {
 
 header .info-gundar {
   background: #885A89;
-  padding: 22px 80px 22px 0;
+  padding: 5px 80px 5px 0;
   text-align: right;
   font-weight: 500;
   width: 100%;
@@ -782,13 +782,17 @@ header .info-gundar {
 
 header .info-gundar a {
   color: #FFF;
-  font-size: 19px;
+  font-size: 12px;
+  letter-spacing: 1px;
   margin-right: 50px;
   position: relative;
 }
 
 header .info-gundar a::after {
-  content: url("./../images/icons/foreign.png");
+  content: "";
+  background: url("./../images/icons/foreign.png");
+  background-repeat: no-repeat;
+  background-size: contain;
   width: 15px;
   height: 15px;
   position: absolute;
@@ -2860,7 +2864,7 @@ section .gundarGraduates__join .join__container .container .primary__button {
 }
 
 .login .row .login__gambar .login__gambarBox .login__gambarBox--content {
-  padding: 60px 0;
+  padding: 2rem 3rem 2rem 0;
 }
 
 .login .row .login__gambar .login__gambarBox .login__gambarBox--content .login__gambarBox--contentIllustration {
@@ -2880,18 +2884,18 @@ section .gundarGraduates__join .join__container .container .primary__button {
 .login .row .login__form .login__formHeader h5 {
   font-weight: 700;
   font-size: 30px;
-  font-family: 'Merriweather',sans-serif;
+  font-family: "Merriweather", sans-serif;
   color: #885A89;
 }
 
 .login .row .login__form .login__formHeader p {
-  color: #3B3B3B;
+  color: #3b3b3b;
   font-weight: normal;
   font-size: 16px;
 }
 
 .login .row .login__form .login__formHeader a {
-  color: #EF7B39;
+  color: #ef7b39;
 }
 
 .login .row .login__form input {
@@ -2912,7 +2916,7 @@ section .gundarGraduates__join .join__container .container .primary__button {
 .login .row .login__form label {
   font-size: 14px;
   font-weight: 300;
-  color: #6A6A6A;
+  color: #6a6a6a;
 }
 
 .login .row .login__form .btn__dropdown {
@@ -2961,7 +2965,7 @@ section .gundarGraduates__join .join__container .container .primary__button {
     font-size: 14px;
   }
   .login .row .login__form .login__formHeader a {
-    color: #EF7B39;
+    color: #ef7b39;
   }
   .login .row .login__form .btn__dropdown {
     border: none;
@@ -2999,7 +3003,7 @@ section .gundarGraduates__join .join__container .container .primary__button {
 }
 
 .registrasi .row .registrasi__gambar .registrasi__gambarBox .registrasi__gambarBox--content {
-  padding: 60px 0;
+  padding: 2rem 0 2rem 3rem;
 }
 
 .registrasi .row .registrasi__gambar .registrasi__gambarBox .registrasi__gambarBox--content .registrasi__gambarBox--contentIllustration {
@@ -3019,18 +3023,18 @@ section .gundarGraduates__join .join__container .container .primary__button {
 .registrasi .row .registrasi__form .registrasi__formHeader h5 {
   font-weight: 700;
   font-size: 30px;
-  font-family: 'Merriweather',sans-serif;
+  font-family: "Merriweather", sans-serif;
   color: #885A89;
 }
 
 .registrasi .row .registrasi__form .registrasi__formHeader p {
-  color: #3B3B3B;
+  color: #3b3b3b;
   font-weight: normal;
   font-size: 16px;
 }
 
 .registrasi .row .registrasi__form .registrasi__formHeader a {
-  color: #EF7B39;
+  color: #ef7b39;
 }
 
 .registrasi .row .registrasi__form input {
@@ -3051,7 +3055,7 @@ section .gundarGraduates__join .join__container .container .primary__button {
 .registrasi .row .registrasi__form label {
   font-size: 14px;
   font-weight: 300;
-  color: #6A6A6A;
+  color: #6a6a6a;
 }
 
 .registrasi .row .registrasi__form .btn__dropdown {
@@ -3110,7 +3114,7 @@ section .gundarGraduates__join .join__container .container .primary__button {
     font-size: 14px;
   }
   .registrasi .row .registrasi__form .registrasi__formHeader a {
-    color: #EF7B39;
+    color: #ef7b39;
   }
   .registrasi .row .registrasi__form .btn__dropdown {
     border: none;

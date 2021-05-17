@@ -1,19 +1,23 @@
 header {
     .info-gundar {
         background: $primaryColor;
-        padding: 22px 80px 22px 0;
+        padding: 5px 80px 5px 0;
         text-align: right;
         font-weight: 500;
         width: 100%;
 
         a {
             color: $Color7;
-            font-size: 19px;
+            font-size: 12px;
+            letter-spacing: 1px;
             margin-right: 50px;
             position: relative;
 
             &::after {
-                content: url("./../images/icons/foreign.png");
+                content: "";
+                background: url("./../images/icons/foreign.png");
+                background-repeat: no-repeat;
+                background-size: contain;
                 width: 15px;
                 height: 15px;
                 position: absolute;
