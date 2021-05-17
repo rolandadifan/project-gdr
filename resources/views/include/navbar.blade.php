@@ -1,4 +1,4 @@
-<div class="nav-bar pt-3 pb-4" style="background: white;z-index: 99;">
+<div class="nav-bar pt-3" style="background: white;z-index: 99;">
     <ul class="nav-bar__menus">
         <li class="nav-bar__menu" id="sidebar_menu">
             <span class="nav-bar__menu-1" id="sidebarCall">Menu</span>
@@ -13,14 +13,10 @@
                 <p>{{$telephone->value}}</p>
             </div>
         </li>
-        <li class="nav-bar__menu">
-            <div class="nav-bar__addresInfo">
+        <li class="nav-bar__menu" style="width: 20%;">
+            <div class="nav-bar__addresInfo" style="font-size: 11px;">
                 <p>Address</p>
-                <div class="row">
-                    <div class="col-md-10">
-                        <p>{{$location->value}}</p>
-                    </div>
-                </div>
+                {!!$location->value!!}
             </div>
         </li>
     </ul>
