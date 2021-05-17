@@ -1,4 +1,7 @@
 header {
+    .no-after:after {
+        background: none !important;
+    }
     .info-gundar {
         background: $primaryColor;
         padding: 5px 80px 5px 0;
@@ -9,8 +12,8 @@ header {
         a {
             color: $Color7;
             font-size: 12px;
-            letter-spacing: 1px;
-            margin-right: 50px;
+            letter-spacing: 0.5px;
+            margin-right: 2rem;
             position: relative;
 
             &::after {
@@ -22,17 +25,32 @@ header {
                 height: 15px;
                 position: absolute;
                 top: 2px;
-                margin-left: 8px;
+                margin-left: 3px;
                 line-height: 0;
             }
         }
     }
+    .videoWrapper {
+        position: relative;
+        padding-bottom: 56.25%;
+        /* 16:9 */
+        padding-top: 25px;
+        height: 0;
+    }
 
+    .videoWrapper iframe {
+        position: absolute;
+        top: -10rem;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -99;
+    }
     .nav-bar {
         padding: 5px;
 
         .nav-bar__menus {
-            display: flex;
+            display: flex !important;
             justify-content: space-evenly;
             align-items: center;
             list-style: none;
@@ -176,7 +194,6 @@ header {
 
                     .accordion-button {
                         border: none;
-                        font-weight: 600;
                         color: $Color10;
 
                         &:focus {
@@ -263,7 +280,7 @@ header {
 @media (max-width: 992px) {
     header {
         .info-gundar {
-            padding: 20px 10px;
+            padding: 5px;
             display: flex;
             justify-content: center;
             align-items: flex-end;
@@ -275,7 +292,6 @@ header {
 
                 &::after {
                     top: 0;
-                    margin-left: 8px;
                 }
             }
         }
@@ -384,6 +400,10 @@ header {
 
 @media (max-width: 576px) {
     header {
+        .info-gundar a {
+            margin-right: 8.7vw;
+        }
+
         .nav-bar {
             padding: 10px;
             .nav-bar__menus {
