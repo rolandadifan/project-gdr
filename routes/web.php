@@ -162,7 +162,7 @@ Route::prefix('sadmin')->middleware(['auth', 'admin'])->group(function () {
     Route::get('/alumni-info/edit/{id}', [App\Http\Controllers\SuperAdmin\AlumniController::class, 'edit'])->name('alumni-info.edit');
     Route::put('/alumni-info/{id}', [App\Http\Controllers\SuperAdmin\AlumniController::class, 'update'])->name('alumni-info.update');
     Route::delete('/alumni-info/{id}', [App\Http\Controllers\SuperAdmin\AlumniController::class, 'destroy'])->name('alumni-info.destroy');
-    Route::get('/alumni-info-edit', [App\Http\Controllers\SuperAdmin\AlumniController::class, 'edit'])->name('alumni-info.edit');
+    // Route::get('/alumni-info-edit', [App\Http\Controllers\SuperAdmin\AlumniController::class, 'edit'])->name('alumni-info.edit');
 
     //schedules
     Route::get('/schedules-info', [App\Http\Controllers\SuperAdmin\SchedulesController::class, 'index'])->name('schedules.index');

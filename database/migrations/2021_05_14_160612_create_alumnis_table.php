@@ -17,6 +17,8 @@ class CreateAlumnisTable extends Migration
             $table->id();
             $table->foreignId('user_id')->nullable()->constrained('users')->onDelete('cascade');
             $table->foreignId('course_id')->nullable()->constrained('courses')->onDelete('cascade');
+            $table->string('predicate')->nullable();
+            $table->string('thumbnail')->nullable();
             $table->string('review');
             $table->timestamps();
         });
