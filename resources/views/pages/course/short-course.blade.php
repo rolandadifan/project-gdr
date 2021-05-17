@@ -22,12 +22,12 @@
                     <a href="{{ route('scourse.detail', $item->slug) }}">
                       <div class="card">
                         <img
-                          src="{{ Storage::url($item->thumbnail) }}"
+                          src="{{Storage::url($item->courseDetail->thumbnail)}}"
                           class="card-img-top"
                           alt="..."
                         />
                         <div class="card-body">
-                          <h5 class="card-title">{{ $item->courseName }}</h5>
+                          <h5 class="card-title">{{$item->name}}</h5>
                         </div>
                       </div>
                     </a>
@@ -41,19 +41,7 @@
                 <!-- pagination -->
                 <nav aria-label="paginationCourses" class="mt-3">
                     <ul class="pagination justify-content-center">
-                      <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Previous">
-                          <span aria-hidden="true">&laquo; Prev</span>
-                        </a>
-                      </li>
-                      <li class="page-item"><a class="page-link" href="#">1</a></li>
-                      <li class="page-item"><a class="page-link" href="#">2</a></li>
-                      <li class="page-item"><a class="page-link" href="#">3</a></li>
-                      <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Next">
-                          <span aria-hidden="true">Next &raquo;</span>
-                        </a>
-                      </li>
+                      {{ $courses->links('vendor.pagination.bootstrap-4') }}
                     </ul>
                   </nav>
               </div>

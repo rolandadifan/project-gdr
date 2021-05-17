@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Course;
 use App\Models\CoursePrice;
+use App\Models\CourseInfo;
 
 class CourseDetail extends Model
 {
@@ -21,5 +22,10 @@ class CourseDetail extends Model
     public function prices()
     {
         return $this->hasMany(CoursePrice::class);
+    }
+
+    public function infos()
+    {
+        return $this->hasMany(CourseInfo::class);
     }
 }

@@ -8,7 +8,7 @@
 <main>
         <section id="shortCourses" class="p-2">
             <div class="shortCourses__header">
-              <h2>{{ $course->courseName }}</h2>
+              <h2>{{ $course->name }}</h2>
               <h4>Short Courses</h4>
             </div>
             <div class="shortCourses__mainContent">
@@ -17,16 +17,16 @@
                   <div class="col">
                     <div class="shortCourses__boxImg">
                       <img
-                        src="{{ asset(Storage::url($course->thumbnail)) }}"
+                        src="{{ asset(Storage::url($course->courseDetail->thumbnail)) }}"
                         alt="Basketball Park"
                       />
                     </div>
                   </div>
                   <div class="col">
                     <div class="shortCourses__mainContent--description">
-                      <h2>{{ $course->courseName }}</h2>
+                      <h2>{{ $course->name }}</h2>
                       <p>
-                       {{ $course->information }}
+                       {{ $course->courseDetail->content }}
                       </p>
                       <hr>
                     </div>
@@ -44,49 +44,35 @@
                   @foreach ($courseinfo as $info)
                   <textarea type="text" class="form-control" name="info[]">{{ $info }} </textarea>
                   @endforeach --}}
-                    <div class="col">
-                      <div class="accordion__content">
-                        <h2>Diploma</h2>
-                          <ul>
-                            <li>
-                              Computer Technical D3
-                            </li>
-                            <li>
-                              Informatics Management D3
-                            </li>
-                          </ul>
-                      </div>
-                    </div>
-                    <div class="col">
-                      <div class="accordion__content">
-                        <h2>Diploma</h2>
+                  @foreach ($course->courseDetail->infos as $info)
+                  @isset($info)
+                  @php
+                      $infos = json_decode($info->info)
+                  @endphp
+                  <div class="col">
+                    <div class="accordion__content">
+                      <h2>{{ strtoupper($info->title) ?? '' }}</h2>
                         <ul>
+                          @isset($infos->detail1)
                           <li>
-                            Computer Technical D3
+                            {{ $infos->detail1 }}
                           </li>
-                        </ul>
-                      </div>
-                    </div>
-                    <div class="col">
-                      <div class="accordion__content">
-                        <h2>Diploma</h2>
-                        <ul>
+                          @endisset
+                          @isset( $infos->detail2)
                           <li>
-                            Computer Technical D3
+                            {{ $infos->detail2 }}
                           </li>
-                        </ul>
-                      </div>
-                    </div>
-                    <div class="col">
-                      <div class="accordion__content">
-                        <h2>Diploma</h2>
-                        <ul>
+                          @endisset
+                          @isset( $infos->detail3)
                           <li>
-                            Computer Technical D3
+                            {{ $infos->detail3 }}
                           </li>
+                          @endisset
                         </ul>
-                      </div>
                     </div>
+                  </div>
+                  @endisset
+                  @endforeach
                   </div>
 
                   <button class="primary__button btn">Apply</button>
@@ -101,17 +87,17 @@
               <div class="splide">
                 <div class="splide__track">
                   <ul class="splide__list">
-                    @foreach ($courses as $items)
+                    @foreach ($courses as $itm)
                     <li class="splide__slide">
-                      <a href="{{ route('scourse.detail', $items->slug) }}">
+                      <a href="{{ route('scourse.detail', $itm->slug) }}">
                         <div class="card">
                           <img
-                            src="{{ asset(Storage::url($items->thumbnail)) }}"
+                            src="{{ asset(Storage::url($itm->courseDetail->thumbnail)) }}"
                             class="card-img-top"
                             alt="..."
                           />
                           <div class="card-body">
-                            <h5 class="card-title">{{ $items->courseName }}</h5>
+                            <h5 class="card-title">{{ $itm->name }}</h5>
                           </div>
                         </div>
                       </a>

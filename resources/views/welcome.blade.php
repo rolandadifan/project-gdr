@@ -50,10 +50,9 @@
     <div class="interProgram__context">
         <div class="container-fluid">
             <div class="row row-cols-lg-4 row-cols-1 row-cols-md-3 justify-content-center">
-                <!-- forloop di BE -->
                 @forelse ($courses as $course)
                 <div class="col">
-                    <a href="#">
+                    <a href="{{ route('scourse.detail', $course->slug) }}">
                         <div class="card">
                             <img src="{{Storage::url($course->courseDetail->thumbnail)}}" class="card-img-top"
                                 alt="{{$course->slug}}" />
@@ -64,8 +63,9 @@
                     </a>
                 </div>
                 @empty
-                <div class="col">No data found</div>
+                <p class="text-center">Course Not Available Right Now</p>
                 @endforelse
+
                 @forelse ($shortCourses as $shortCourse)
                 <div class="col">
                     <a href="#">
@@ -79,13 +79,13 @@
                     </a>
                 </div>
                 @empty
-                <div class="col">No data found</div>
+                <p class="text-center">Short Course Not Available Right Now</p>
                 @endforelse
                 <!-- end for loop -->
             </div>
             <div class="interProgram__allCourse">
                 <button class="btn primary__button">
-                    <a href="./pages/courses/short-course.html" class="text-white">All Courses</a>
+                    <a href="{{ route('scourse.index') }}" class="text-white">All Courses</a>
                 </button>
             </div>
         </div>

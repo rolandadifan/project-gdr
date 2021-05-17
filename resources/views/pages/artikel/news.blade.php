@@ -81,7 +81,12 @@
             </div>
         </div>
     </main>
-    {{ $newsAll->links() }}
+    <nav aria-label="paginationCourses" class="mt-3">
+        <ul class="pagination justify-content-center">
+            {{ $newsAll->links('vendor.pagination.bootstrap-4') }}
+        </ul>
+    </nav>
+    {{-- {{ $newsAll->links() }} --}}
 
      <!-- latest event -->
      <div class="container-fluid my-5 latestNews p-4">
