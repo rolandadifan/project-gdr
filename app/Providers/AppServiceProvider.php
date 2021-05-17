@@ -28,15 +28,26 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(191);
 
+        view()->composer('include.navbar', function($menu){
+        $logo = Setting::where('key','logo')->first();
+        $telephone = Setting::where('key','telephone')->first();
+        $location = Setting::where('key','location')->first();
+            $menu->with([
+                'logo' => $logo,
+                'telephone' => $telephone,
+                'location' => $location
+            ]);
+        });
+
         view()->composer('include.sidebar', function($menu){
             $menu_detail = MenuDetail::where('status_id', 1)->get();
             $menu->with([
                 'menu_detail' => $menu_detail
             ]);
         });
-    
+
         view()->composer('icon', function($view){
-             // landing points
+        // landing points
         $title1 = Setting::where('key','landing-point-title-1')->first();
         $icon1 = Setting::where('key','landing-point-icon-1')->first();
         $content1 = Setting::where('key','landing-point-content-1')->first();

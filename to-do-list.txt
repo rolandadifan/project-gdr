@@ -19,7 +19,7 @@ V_life at (theme sama)
 	V_why-study-gundar
 	V_student-life
 	V_graduation
-landing page
+V_landing page
 	V_section-one video, text, button
 	V_section features / life-gundar (db, thumbnail, content)
 	V_section testimony (db, photo, quote, major)
@@ -30,7 +30,7 @@ V_how to apply
 	V_delete
 	V_edit
 short couses
-	list
+	V_list
 	pagination
 	recomendation
 	detail
