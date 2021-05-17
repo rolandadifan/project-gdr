@@ -4,8 +4,36 @@
 <div class="jumbotron">
     <div class="jumbotron__overlay"></div>
     <div class="jumbotron__background">
+        @if(isset($landingVidSection1->value))
+        <style>
+        .videoWrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            /* 16:9 */
+            padding-top: 25px;
+            height: 0;
+        }
+
+        .videoWrapper iframe {
+            position: absolute;
+            top: -10rem;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -99;
+        }
+        </style>
+        <div class="videoWrapper">
+            <iframe frameborder="0" style="width: 100vw;height: -webkit-fill-available;"
+                src="https://www.youtube.com/embed/{{$landingVidSection1->value}}?autoplay=1&mute=1&loop=1&rel=0&controls=0&showinfo=0&modestbranding=1&autohide=1&showinfo=0&playlist={{$landingVidSection1->value}}"
+                allowfullscreen>
+                Your browser does not support the video.
+            </iframe>
+        </div>
+        @else
         <img src="{{$landingBgSection1->thumbnail == null ?  asset('assets/images/jumbotron-min.png') : Storage::url($landingBgSection1->thumbnail) }}"
             alt="Jumbotron" />
+        @endif
     </div>
     <div class="jumbotron__content">
         <h2>{!!$landingTitle ? $landingTitle->value : 'GET YOUR DEGREE WITH US' !!}</h2>
@@ -24,7 +52,12 @@
 </div>
 
 <!-- Courses -->
-<section id="interProgram" class="p-2">
+<section id="interProgram" class="p-2" style="background-color: white;
+    z-index: 2;
+    position: relative;
+    margin-top: -2rem;
+    left: 0;
+    width: 100vw;">
     <div class="interProgram__header">
         <h2>International Programs</h2>
         <h4>COURSES</h4>

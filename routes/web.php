@@ -163,6 +163,14 @@ Route::prefix('sadmin')->middleware(['auth', 'admin'])->group(function () {
     Route::put('/alumni-info/{id}', [App\Http\Controllers\SuperAdmin\AlumniController::class, 'update'])->name('alumni-info.update');
     Route::delete('/alumni-info/{id}', [App\Http\Controllers\SuperAdmin\AlumniController::class, 'destroy'])->name('alumni-info.destroy');
 
+    //alumni
+    Route::get('/location', [App\Http\Controllers\SuperAdmin\LocationController::class, 'index'])->name('location.index');
+    Route::post('/location', [App\Http\Controllers\SuperAdmin\LocationController::class, 'store'])->name('location.store');
+    Route::get('/location-create', [App\Http\Controllers\SuperAdmin\LocationController::class, 'create'])->name('location.create');
+    Route::get('/location/edit/{id}', [App\Http\Controllers\SuperAdmin\LocationController::class, 'edit'])->name('location.edit');
+    Route::put('/location/{id}', [App\Http\Controllers\SuperAdmin\LocationController::class, 'update'])->name('location.update');
+    Route::delete('/location/{id}', [App\Http\Controllers\SuperAdmin\LocationController::class, 'destroy'])->name('location.destroy');
+
     //schedules
     Route::get('/schedules-info', [App\Http\Controllers\SuperAdmin\SchedulesController::class, 'index'])->name('schedules.index');
     Route::get('/schedules-info/create', [App\Http\Controllers\SuperAdmin\SchedulesController::class, 'create'])->name('schedules.create');

@@ -22,6 +22,7 @@ class LandingController extends Controller
         $landingExcerpt = Setting::where('key','landing-excerpt')->first();
         $landingButtonText1 = Setting::where('key','landing-button-text-1')->first();
         $landingBgSection1 = Setting::where('key','landing-bg-section-1')->first();
+        $landingVidSection1 = Setting::where('key','landing-video-section-1')->first();
         $about = Setting::where('key','about')->first();
         // landing points
         $title1 = Setting::where('key','landing-point-title-1')->first();
@@ -58,6 +59,7 @@ class LandingController extends Controller
             'landingTitle'      => $landingTitle,
             'landingExcerpt'    => $landingExcerpt,
             'landingButtonText1'=> $landingButtonText1,
+            'landingVidSection1'=> $landingVidSection1,
             'landingBgSection1' => $landingBgSection1,
             'rgroups'           => $rgroups,
             'researchs'         => $researchs,

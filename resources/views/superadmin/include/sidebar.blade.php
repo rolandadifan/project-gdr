@@ -144,6 +144,13 @@
             <span>Alumni</span></a>
     </li>
 
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('location.index') }}">
+            <i class="fas fa-fw fa-map"></i>
+            <span>Location</span>
+        </a>
+    </li>
+
 
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#menu" aria-expanded="true"
@@ -167,12 +174,12 @@
             <span>Settings</span></a>
     </li>
 
-    <!- - Divider -->
-        <hr class="sidebar-divider d-none d-md-block">
+    <!-- Divider -->
+    <hr class="sidebar-divider d-none d-md-block">
 
-        <!-- Sidebar Toggler (Sidebar) -->
-        <div class="text-center d-none d-md-inline">
-            <button class="rounded-circle border-0" id="sidebarToggle"></button>
-        </div>
+    <!-- Sidebar Toggler (Sidebar) -->
+    <div class="text-center d-none d-md-inline">
+        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+    </div>
 
 </ul>

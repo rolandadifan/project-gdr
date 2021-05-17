@@ -2,69 +2,70 @@ enrollment
 	choose type
 	form
 	document
-dinamis sidebar
-edit-profile
+V_dinamis sidebar
+    template page
+V_edit-profile
 V_profile
-scholarship
-	list
-	detail
-research
-	group / category
-	list
-	detail
+V_scholarship
+	V_list
+	V_detail
+V_research
+	V_group / category
+	V_list
+	V_detail
 V_login - student
 V_register - student
-life at (theme sama)
-	why-study-gundar
-	student-life
-	graduation
-landing page
-	section-one video, text, button
-	section features / life-gundar (db, thumbnail, content)	
-	section testimony (db, photo, quote, major)
-how to apply
-	list
-	client
-	create
-	delete
-	edit
+V_life at (theme sama)
+	V_why-study-gundar
+	V_student-life
+	V_graduation
+V_landing page
+	V_section-one video, text, button
+	V_section features / life-gundar (db, thumbnail, content)
+	V_section testimony (db, photo, quote, major)
+V_how to apply
+	V_list
+	V_client
+	V_create
+	V_delete
+	V_edit
 short couses
-	list
+	V_list
 	pagination
 	recomendation
 	detail
-courses
-	diploma
-	bachelor
-	doctor
-	master
+V_courses
+	V_diploma
+	V_bachelor
+	V_doctor
+	V_master
 	search
 	list by search
-news
-	list
-	highlight ( 3 )
-	detail
-event
-	list
-	hightlight ( 3 )
-	detail
-about
-	event list
-	news list
+V_news
+	V_list
+	V_highlight ( 3 )
+	V_detail
+V_event
+	V_list
+	V_hightlight ( 3 )
+	V_detail
+V_about
+	V_event list
+	V_news list
 footer
 header
-alumni
+V_alumni
 	client
-	list
-	create
-	delete
-	edit
-location
+	V_list
+	V_create
+	V_delete
+	V_edit
+V_location
 	client
-	list
-	create
-	delete
-	edit
-setting
-	list
-	edit
+	V_list
+	V_create
+	V_delete
+	V_edit
+V_setting
+	V_list
+	V_edit
