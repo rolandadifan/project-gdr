@@ -1,19 +1,23 @@
-header{
-    .info-gundar{
+header {
+    .info-gundar {
         background: $primaryColor;
-        padding: 22px 80px 22px 0;
+        padding: 5px 80px 5px 0;
         text-align: right;
         font-weight: 500;
         width: 100%;
 
-        a{
+        a {
             color: $Color7;
-            font-size: 19px;
+            font-size: 12px;
+            letter-spacing: 1px;
             margin-right: 50px;
             position: relative;
 
-            &::after{
-                content: url('./../images/icons/foreign.png');
+            &::after {
+                content: "";
+                background: url("./../images/icons/foreign.png");
+                background-repeat: no-repeat;
+                background-size: contain;
                 width: 15px;
                 height: 15px;
                 position: absolute;
@@ -24,27 +28,27 @@ header{
         }
     }
 
-    .nav-bar{
+    .nav-bar {
         padding: 5px;
 
-        .nav-bar__menus{
+        .nav-bar__menus {
             display: flex;
             justify-content: space-evenly;
             align-items: center;
             list-style: none;
             font-weight: 600;
 
-            .nav-bar__menu{
+            .nav-bar__menu {
                 margin-bottom: 0;
                 &:nth-child(1) {
-                    flex-basis: 30%;
+                    flex-basis: 35%;
                     font-size: 20px;
                     color: $Color10;
                     cursor: pointer;
 
-                    &::before{
+                    &::before {
                         content: "";
-                        background-image: url('./../images/icons/menu-bar.png');
+                        background-image: url("./../images/icons/menu-bar.png");
                         background-size: 40px 12px;
                         object-fit: contain;
                         display: inline-block;
@@ -55,45 +59,55 @@ header{
                     }
                 }
 
-                &:nth-child(2){
+                &:nth-child(2) {
                     margin-bottom: 0;
-                    img{
-                    object-fit: contain;
-                    width: 200px;
-                    height: 80px;
+                    img {
+                        object-fit: contain;
+                        width: 200px;
+                        height: 80px;
                     }
                 }
 
-                &:nth-child(3){
+                &:nth-child(3) {
                     display: flex;
                     align-items: center;
 
-                    &::before{
-                        @include addIconBefore("./../images/icons/phone-call.png",28px ,28px)
+                    &::before {
+                        @include addIconBefore(
+                            "./../images/icons/phone-call.png",
+                            28px,
+                            28px
+                        );
                     }
                 }
 
-                &:nth-child(4){
+                &:nth-child(4) {
                     display: flex;
                     align-items: center;
 
-                    p:nth-child(1){
+                    p:nth-child(1) {
                         font-size: 14px;
                     }
 
-                    &::before{
-                        @include addIconBefore("./../images/icons/placeholder.png",20px ,28px)
+                    &::before {
+                        @include addIconBefore(
+                            "./../images/icons/placeholder.png",
+                            20px,
+                            28px
+                        );
+                        width: 40px;
+                        background-repeat: no-repeat;
                     }
                 }
 
-                p{
+                p {
                     margin-bottom: 0;
                 }
             }
         }
     }
 
-    .sidebar{
+    .sidebar {
         height: 100%;
         width: 0;
         position: fixed;
@@ -103,15 +117,15 @@ header{
         overflow-x: hidden;
         transition: 0.5s ease-in-out;
 
-        &::-webkit-scrollbar{
+        &::-webkit-scrollbar {
             display: none;
         }
 
-        .row{
+        .row {
             min-height: 100vh;
         }
 
-        .sidebar__left{
+        .sidebar__left {
             position: relative;
             background: $Color7;
             padding: 30px 0 20px 8px;
@@ -123,7 +137,7 @@ header{
             //     right: 20px;
             //     font-size: 30px;
             // }
-            .sidebar__closeBtn{
+            .sidebar__closeBtn {
                 position: absolute;
                 top: 15px;
                 right: 20px;
@@ -131,82 +145,85 @@ header{
                 cursor: pointer;
             }
 
-            .sidebar__logo{
+            .sidebar__logo {
                 text-align: center;
                 margin-bottom: 20px;
 
-                img{
+                img {
                     object-fit: contain;
                     width: 250px;
                     height: 100px;
                 }
             }
 
-            .sidebar__menu{
-                .accordion-item{
+            .sidebar__menu {
+                .accordion-item {
                     margin-bottom: 10px;
 
-                    a{
+                    a {
                         text-decoration: none;
                     }
 
-                    &:nth-child(2) .accordion-button:after,&:nth-child(5) .accordion-button:after,&:nth-child(6) .accordion-button:after,{
+                    &:nth-child(2) .accordion-button:after,
+                    &:nth-child(5) .accordion-button:after,
+                    &:nth-child(6) .accordion-button:after {
                         background: none;
                     }
 
-                    .accordion-body{
+                    .accordion-body {
                         padding: 1rem 0 0 0.8rem;
                     }
 
-                    .accordion-button{
+                    .accordion-button {
                         border: none;
                         font-weight: 600;
                         color: $Color10;
 
-                        &:focus{
+                        &:focus {
                             outline: none;
                             box-shadow: none;
                         }
                     }
 
-                    .accordion-button:not(.collapsed){
+                    .accordion-button:not(.collapsed) {
                         border-top-left-radius: 25px;
                         border-bottom-left-radius: 25px;
                         background: $Color5;
                         font-weight: 700;
                     }
 
-                    .accordion__child-menu{
-                        .accordion__subMenu:after{
+                    .accordion__child-menu {
+                        .accordion__subMenu:after {
                             background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23212529'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e") !important;
                         }
 
-                        .accordion-button:not(.collapsed){
+                        .accordion-button:not(.collapsed) {
                             background: transparent;
                             border-left: 5px solid $Color3;
                             border-radius: 0;
                         }
 
-                        .accordion-button.collapsed{
-                            &:hover,&:active{
-                                border-left: 5px solid #EF7B39;
+                        .accordion-button.collapsed {
+                            &:hover,
+                            &:active {
+                                border-left: 5px solid #ef7b39;
                                 border-radius: 0;
                             }
                         }
 
-                        .accordion-button{
+                        .accordion-button {
                             color: #000;
                         }
 
-                        ul{
+                        ul {
                             list-style: none;
                             padding-left: 10px;
 
-                            li{
+                            li {
                                 padding: 15px;
                                 transition: 0.8s;
-                                
-                                &:hover{
+
+                                &:hover {
                                     background: $Color3;
 
                                     a {
@@ -216,134 +233,141 @@ header{
                             }
                         }
 
-                        a{
+                        a {
                             color: #000;
                             text-decoration: none;
                         }
 
-                        .accordion-item{
-                            &:nth-child(3) .accordion-button:after, &:nth-child(4) .accordion-button:after, &:nth-child(5) .accordion-button:after{
+                        .accordion-item {
+                            &:nth-child(3) .accordion-button:after,
+                            &:nth-child(4) .accordion-button:after,
+                            &:nth-child(5) .accordion-button:after {
                                 background: none;
                             }
                         }
                     }
                 }
-                
-                .show{
+
+                .show {
                     background: #fff;
                 }
             }
         }
 
-        .sidebar__right{
-            background: rgba(0,0,0,.4);
+        .sidebar__right {
+            background: rgba(0, 0, 0, 0.4);
         }
     }
 }
 
-@media(max-width:992px){
-    header{
-        .info-gundar{
+@media (max-width: 992px) {
+    header {
+        .info-gundar {
             padding: 20px 10px;
             display: flex;
             justify-content: center;
             align-items: flex-end;
             flex-direction: column;
-    
-            a{
+
+            a {
                 font-size: 12px;
                 position: relative;
-    
-                &::after{
+
+                &::after {
                     top: 0;
                     margin-left: 8px;
                 }
             }
         }
 
-        .nav-bar{
-
-            .nav-bar__menus{
+        .nav-bar {
+            .nav-bar__menus {
                 padding: 0;
-    
-                .nav-bar__menu{
+
+                .nav-bar__menu {
                     &:nth-child(1) {
                         flex: 0 1 auto;
-                        &::before{
+                        &::before {
                             background-size: 25px 10px;
                             width: 25px;
                             height: 10px;
                         }
                     }
-    
-                    &:nth-child(2){
-                        flex: 0 1 auto;
-                        img{
-                        width: 150px;
-                        }
-                    }
-    
-                    &:nth-child(3){
-                        flex: 0 1 auto;
-                        p{
-                            font-size:12px;
-                        }
-    
-                        &::before{
-                            @include addIconBefore("./../images/icons/phone-call.png",20px ,20px)
-                        }
-                    }
-    
-                    &:nth-child(4){
-                        flex: 0 1 auto;
 
-                        p{
+                    &:nth-child(2) {
+                        flex: 0 1 auto;
+                        img {
+                            width: 150px;
+                        }
+                    }
+
+                    &:nth-child(3) {
+                        flex: 0 1 auto;
+                        p {
                             font-size: 12px;
                         }
-    
-                        &::before{
-                            @include addIconBefore("./../images/icons/placeholder.png",20px ,25px);
+
+                        &::before {
+                            @include addIconBefore(
+                                "./../images/icons/phone-call.png",
+                                20px,
+                                20px
+                            );
+                        }
+                    }
+
+                    &:nth-child(4) {
+                        flex: 0 1 auto;
+
+                        p {
+                            font-size: 12px;
+                        }
+
+                        &::before {
+                            @include addIconBefore(
+                                "./../images/icons/placeholder.png",
+                                20px,
+                                25px
+                            );
                         }
                     }
                 }
             }
         }
-    
 
-        .sidebar{
-            .sidebar__left{
+        .sidebar {
+            .sidebar__left {
                 padding: 15px;
 
-                .sidebar__logo{
+                .sidebar__logo {
                     margin-bottom: 10px;
-    
-                    img{
+
+                    img {
                         object-fit: contain;
                         width: 200px;
                         height: 100px;
                     }
                 }
 
-                .sidebar__menu{
-                    
-                    .accordion__child-menu{
-                        .accordion-button:not(.collapsed){
+                .sidebar__menu {
+                    .accordion__child-menu {
+                        .accordion-button:not(.collapsed) {
                             background: transparent;
-                            border-left: 5px solid #EF7B39;
+                            border-left: 5px solid #ef7b39;
                             border-radius: 0;
                         }
 
-                        .accordion-button{
+                        .accordion-button {
                             font-size: 14px;
                         }
 
-                        ul{
-
-                            li{
+                        ul {
+                            li {
                                 font-size: 12px;
-                                
-                                &:hover, &:active{
-                                    background: #EF7B39;
+
+                                &:hover,
+                                &:active {
+                                    background: #ef7b39;
 
                                     a {
                                         color: #fff;
@@ -358,56 +382,62 @@ header{
     }
 }
 
-@media(max-width:576px){
-    header{
-
-        .nav-bar{
+@media (max-width: 576px) {
+    header {
+        .nav-bar {
             padding: 10px;
-            .nav-bar__menus{
+            .nav-bar__menus {
                 // justify-content: flex-start;
                 align-items: center !important;
                 flex-flow: column-reverse;
                 padding: 0;
 
-                .nav-bar__menu{
+                .nav-bar__menu {
                     &:nth-child(1) {
-
-                        &::before{
+                        &::before {
                             background-size: 25px 10px;
                             width: 25px;
                             height: 10px;
                         }
                     }
 
-                    &:nth-child(2){
+                    &:nth-child(2) {
                         margin-bottom: 10px;
-                        img{
-                        width: 160px;
+                        img {
+                            width: 160px;
                         }
                     }
 
-                    &:nth-child(3){
+                    &:nth-child(3) {
                         align-self: flex-start;
                         margin-bottom: 10px;
-                        p{
-                            font-size:13px;
-                        }
-
-                        &::before{
-                            @include addIconBefore("./../images/icons/phone-call.png",20px ,20px)
-                        }
-                    }
-
-                    &:nth-child(4){
-                        align-self: flex-start;
-                        margin-bottom: 10px;
-
-                        p{
+                        p {
                             font-size: 13px;
                         }
 
-                        &::before{
-                            @include addIconBefore("./../images/icons/placeholder.png",20px ,25px)
+                        &::before {
+                            @include addIconBefore(
+                                "./../images/icons/phone-call.png",
+                                20px,
+                                20px
+                            );
+                        }
+                    }
+
+                    &:nth-child(4) {
+                        align-self: flex-start;
+                        margin-bottom: 10px;
+
+                        p {
+                            font-size: 13px;
+                        }
+
+                        &::before {
+                            @include addIconBefore(
+                                "./../images/icons/placeholder.png",
+                                20px,
+                                25px
+                            );
                         }
                     }
                 }

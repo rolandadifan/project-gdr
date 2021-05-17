@@ -1,7 +1,7 @@
 @extends('layouts.landing')
 @section('content')
 <!-- jumbotron -->
-<div class="jumbotron">
+<div class="jumbotron" style="z-index: -1;">
     <div class="jumbotron__overlay"></div>
     <div class="jumbotron__background">
         @if(isset($landingVidSection1->value))
