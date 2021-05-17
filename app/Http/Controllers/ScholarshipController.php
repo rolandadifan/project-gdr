@@ -13,7 +13,7 @@ class ScholarshipController extends Controller
     {
         $article = Article::with(['articleDetail'])->where('status_id', '1')->whereHas('articleType', function (Builder $query) {
             $query->where('name', 'scholarship');
-        })->get();
+        })->paginate(6);
          $articles = Article::with(['articleDetail'])->where('status_id', '1')->whereHas('articleType', function (Builder $query) {
             $query->where('name', 'research');
         })->limit(2)->get();

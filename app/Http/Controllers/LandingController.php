@@ -44,9 +44,9 @@ class LandingController extends Controller
         $shortCourse = Course::with('status')->whereHas('courseDetail', function (Builder $query) {
             $query->where('degree', 'non');
         })->first();
-        $courses = Course::with('status')->whereHas('courseDetail', function (Builder $query) {
-            $query->where('degree', '!=', 'non');
-        })->take(2)->get();
+        $courses = Course::where('status_id', 1)->whereHas('courseDetail', function (Builder $query) {
+            $query->where('degree', 'non')->orderBy('created_at', 'DESC');
+        })->limit(3)->get();
         $researchs = Article::whereHas('articleType', function (Builder $query) {
             $query->where('name', 'research');
         })->with('status', 'articleType', 'articleDetail')->get();

@@ -60,12 +60,63 @@ class CourseController extends Controller
             'slug' =>  $course_slug
         ]);
 
-        CourseDetail::create([
+        $course_detail = CourseDetail::create([
             'course_id' => $course->id,
             'thumbnail' =>  $course_thumbnail,
             'content' => $course_content,
             'degree' => 'non',
         ]);
+
+        $data_info1 = [
+            'detail1' => $request->info1detail1,
+            'detail2' => $request->info1detail2,
+            'detail3' => $request->info1detail3,
+        ];
+
+        $data_info2 = [
+            'detail1' => $request->info2detail1,
+            'detail2' => $request->info2detail2,
+            'detail3' => $request->info2detail3,
+        ];
+
+        $data_info3 = [
+            'detail1' => $request->info3detail1,
+            'detail2' => $request->info3detail2,
+            'detail3' => $request->info3detail3,
+        ];
+
+        $data_info4 = [
+            'detail1' => $request->info4detail1,
+            'detail2' => $request->info4detail2,
+            'detail3' => $request->info4detail3,
+        ];
+
+        CourseInfo::upsert([
+            [
+                'course_detail_id' => $course_detail->id,
+                'key' => 'info1',
+                'title' => $request->info1,
+                'info' => json_encode($data_info1),
+            ],
+            [
+                'course_detail_id' => $course_detail->id,
+                'key' => 'info2',
+                'title' => $request->info2,
+                'info' => json_encode($data_info2),
+            ],
+            [
+                'course_detail_id' => $course_detail->id,
+                'key' => 'info3',
+                'title' => $request->info3,
+                'info' => json_encode($data_info3),
+            ],
+            [
+                'course_detail_id' => $course_detail->id,
+                'key' => 'info4',
+                'title' => $request->info4,
+                'info' => json_encode($data_info4),
+            ],
+        ],['course_detail_id','key', 'title', 'info']);
 
         return back()->with('status', 'Course Successfuly Create');
     }
@@ -73,8 +124,15 @@ class CourseController extends Controller
     public function editShortCourse($id)
     {
         $course = Course::with(['status', 'courseDetail'])->findOrFail($id);
+        $info = [];
+        $course_info = CourseInfo::where('course_detail_id', $course->courseDetail->id)->get();
+        foreach( $course_info as $csr){
+            $info[$csr->key] = $csr->title;
+            $info[$csr->key . 'Detail'] = json_decode($csr->info);
+        };
         return view('superadmin.pages.course.edit.short-edit')->with([
-            'course' => $course
+            'course' => $course,
+            'info' => $info
         ]);
     }
 
@@ -104,6 +162,88 @@ class CourseController extends Controller
                 'content' => $course_content,
                 'thumbnail' => $course_thumbnail
             ]);
+
+            $data_info1 = [
+                'detail1' => $request->info1detail1,
+                'detail2' => $request->info1detail2,
+                'detail3' => $request->info1detail3,
+            ];
+
+            $data_info2 = [
+                'detail1' => $request->info2detail1,
+                'detail2' => $request->info2detail2,
+                'detail3' => $request->info2detail3,
+            ];
+
+            $data_info3 = [
+                'detail1' => $request->info3detail1,
+                'detail2' => $request->info3detail2,
+                'detail3' => $request->info3detail3,
+            ];
+
+            $data_info4 = [
+                'detail1' => $request->info4detail1,
+                'detail2' => $request->info4detail2,
+                'detail3' => $request->info4detail3,
+            ];
+
+            $course_info1 = CourseInfo::where('course_detail_id', $course_detail->id)->where('key', 'info1')->first();
+            if($course_info1){
+                $course_info1->update([
+                    'title' => $request->info1,
+                    'info' => json_encode($data_info1)
+                ]);
+            }else{
+                 CourseInfo::create([
+                        'course_detail_id' => $course_detail->id,
+                        'key' => 'info1',
+                        'title' => $request->info1,
+                        'info' => json_encode($data_info1),
+                 ]);
+            }
+            $course_info2 = CourseInfo::where('course_detail_id', $course_detail->id)->where('key', 'info2')->first();
+            if($course_info2){
+                $course_info2->update([
+                    'title' => $request->info2,
+                    'info' => json_encode($data_info2)
+                ]);
+            }else{
+                 CourseInfo::create([
+                        'course_detail_id' => $course_detail->id,
+                        'key' => 'info2',
+                        'title' => $request->info2,
+                        'info' => json_encode($data_info2)
+                 ]);
+            }
+            $course_info3 = CourseInfo::where('course_detail_id', $course_detail->id)->where('key', 'info3')->first();
+            if($course_info3){
+                $course_info3->update([
+                    'title' => $request->info3,
+                    'info' => json_encode($data_info3)
+                ]);
+            }else{
+                 CourseInfo::create([
+                        'course_detail_id' => $course_detail->id,
+                        'key' => 'info3',
+                        'title' => $request->info3,
+                        'info' => json_encode($data_info3)
+                 ]);
+            }
+            $course_info4 = CourseInfo::where('course_detail_id', $course_detail->id)->where('key', 'info4')->first();
+            if($course_info4){
+                $course_info4->update([
+                    'title' => $request->info4,
+                    'info' => json_encode($data_info4)
+                ]);
+            }else{
+                CourseInfo::create([
+                        'course_detail_id' => $course_detail->id,
+                        'key' => 'info4',
+                        'title' => $request->info4,
+                        'info' => json_encode($data_info4)
+                 ]);
+            }
+
             return back()->with('status', 'Course Successfuly Updated');
 
         }else{
@@ -120,6 +260,88 @@ class CourseController extends Controller
             $course_detail->update([
                 'content' => $course_content,
             ]);
+
+             $data_info1 = [
+                'detail1' => $request->info1detail1,
+                'detail2' => $request->info1detail2,
+                'detail3' => $request->info1detail3,
+            ];
+
+            $data_info2 = [
+                'detail1' => $request->info2detail1,
+                'detail2' => $request->info2detail2,
+                'detail3' => $request->info2detail3,
+            ];
+
+            $data_info3 = [
+                'detail1' => $request->info3detail1,
+                'detail2' => $request->info3detail2,
+                'detail3' => $request->info3detail3,
+            ];
+
+            $data_info4 = [
+                'detail1' => $request->info4detail1,
+                'detail2' => $request->info4detail2,
+                'detail3' => $request->info4detail3,
+            ];
+
+            $course_info1 = CourseInfo::where('course_detail_id', $course_detail->id)->where('key', 'info1')->first();
+            if($course_info1){
+                $course_info1->update([
+                    'title' => $request->info1,
+                    'info' => json_encode($data_info1)
+                ]);
+            }else{
+                 CourseInfo::create([
+                        'course_detail_id' => $course_detail->id,
+                        'key' => 'info1',
+                        'title' => $request->info1,
+                        'info' => json_encode($data_info1),
+                 ]);
+            }
+            $course_info2 = CourseInfo::where('course_detail_id', $course_detail->id)->where('key', 'info2')->first();
+            if($course_info2){
+                $course_info2->update([
+                    'title' => $request->info2,
+                    'info' => json_encode($data_info2)
+                ]);
+            }else{
+                 CourseInfo::create([
+                        'course_detail_id' => $course_detail->id,
+                        'key' => 'info2',
+                        'title' => $request->info2,
+                        'info' => json_encode($data_info2)
+                 ]);
+            }
+            $course_info3 = CourseInfo::where('course_detail_id', $course_detail->id)->where('key', 'info3')->first();
+            if($course_info3){
+                $course_info3->update([
+                    'title' => $request->info3,
+                    'info' => json_encode($data_info3)
+                ]);
+            }else{
+                 CourseInfo::create([
+                        'course_detail_id' => $course_detail->id,
+                        'key' => 'info3',
+                        'title' => $request->info3,
+                        'info' => json_encode($data_info3)
+                 ]);
+            }
+            $course_info4 = CourseInfo::where('course_detail_id', $course_detail->id)->where('key', 'info4')->first();
+            if($course_info4){
+                $course_info4->update([
+                    'title' => $request->info4,
+                    'info' => json_encode($data_info4)
+                ]);
+            }else{
+                CourseInfo::create([
+                        'course_detail_id' => $course_detail->id,
+                        'key' => 'info4',
+                        'title' => $request->info4,
+                        'info' => json_encode($data_info4)
+                 ]);
+            }
+            
             return back()->with('status', 'Course Successfuly Updated');
         }
         
