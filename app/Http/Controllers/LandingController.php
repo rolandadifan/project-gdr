@@ -10,16 +10,19 @@ use App\Models\Article;
 use App\Models\ArticleType;
 use App\Models\ArticleDetail;
 use App\Models\Page;
+use App\Models\Alumni;
 use Illuminate\Database\Eloquent\Builder;
 
 class LandingController extends Controller
 {
     public function index()
     {
+        $testimonies = Alumni::with('user','user.userDetail','course')->get();
         $landingTitle = Setting::where('key','landing-title')->first();
         $landingExcerpt = Setting::where('key','landing-excerpt')->first();
         $landingButtonText1 = Setting::where('key','landing-button-text-1')->first();
         $landingBgSection1 = Setting::where('key','landing-bg-section-1')->first();
+        $landingVidSection1 = Setting::where('key','landing-video-section-1')->first();
         $about = Setting::where('key','about')->first();
         // landing points
         $title1 = Setting::where('key','landing-point-title-1')->first();
@@ -56,6 +59,7 @@ class LandingController extends Controller
             'landingTitle'      => $landingTitle,
             'landingExcerpt'    => $landingExcerpt,
             'landingButtonText1'=> $landingButtonText1,
+            'landingVidSection1'=> $landingVidSection1,
             'landingBgSection1' => $landingBgSection1,
             'rgroups'           => $rgroups,
             'researchs'         => $researchs,
@@ -73,7 +77,8 @@ class LandingController extends Controller
             'content3'          => $content3,
             'title4'            => $title4,
             'icon4'             => $icon4,
-            'content4'          => $content4
+            'content4'          => $content4,
+            'testimonies'       => $testimonies,
         ]);
     }
 }

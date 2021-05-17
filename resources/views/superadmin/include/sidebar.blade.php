@@ -127,7 +127,7 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item" href="{{ route('about.edit') }}">About</a>
                 <a class="collapse-item" href="{{ route('page.multi') }}">How To Apply</a>
-                <a class="collapse-item" href="cards.html">Requirment</a>
+                <a class="collapse-item" href="{{ route('requirment.index') }}">Requirment</a>
             </div>
         </div>
     </li>
@@ -142,6 +142,13 @@
         <a class="nav-link" href="{{ route('alumni-info.index') }}">
             <i class="fas fa-fw fa-comment"></i>
             <span>Alumni</span></a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('location.index') }}">
+            <i class="fas fa-fw fa-map"></i>
+            <span>Location</span>
+        </a>
     </li>
 
 
@@ -167,12 +174,12 @@
             <span>Settings</span></a>
     </li>
 
-    <!- - Divider -->
-        <hr class="sidebar-divider d-none d-md-block">
+    <!-- Divider -->
+    <hr class="sidebar-divider d-none d-md-block">
 
-        <!-- Sidebar Toggler (Sidebar) -->
-        <div class="text-center d-none d-md-inline">
-            <button class="rounded-circle border-0" id="sidebarToggle"></button>
-        </div>
+    <!-- Sidebar Toggler (Sidebar) -->
+    <div class="text-center d-none d-md-inline">
+        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+    </div>
 
 </ul>

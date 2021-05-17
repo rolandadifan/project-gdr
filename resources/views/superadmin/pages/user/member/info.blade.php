@@ -13,11 +13,11 @@
                <div class="">
                    <div class="image-profile">
                        <div class="d-flex flex-column">
-                           @if ($user->avatar == null)
-                            <img src="{{ asset('assets/images/avatar-default.png') }}" width="200" class="rounded ml-3" alt="profile">
+                           @isset($user->userDetail->avatar)
+                           <img src="{{ Storage::url($user->userDetail->avatar)}}" width="200" class="rounded ml-3" alt="profile">
                            @else
-                            <img src="{{ Storage::url($user->avatar)}}" width="200" class="rounded ml-3" alt="profile">
-                           @endif
+                           <img src="{{ asset('assets/images/avatar-default.png') }}" width="200" class="rounded ml-3" alt="profile">
+                           @endisset
                        </div>
                    </div>
                </div>
@@ -36,7 +36,7 @@
                    </div>
                    <div class="form-group">
                        <label for="name">Address</label>
-                       <textarea type="text" class="form-control profile-input" name="address" id="">{{ $user->address }}</textarea>
+                       <textarea type="text" class="form-control profile-input" name="address" id="">{{ $user->userDetail ? $user->userDetail->address : ''  }}</textarea>
                    </div>
                </div>
             </div>

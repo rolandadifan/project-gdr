@@ -162,7 +162,18 @@ Route::prefix('sadmin')->middleware(['auth', 'admin'])->group(function () {
     Route::get('/alumni-info/edit/{id}', [App\Http\Controllers\SuperAdmin\AlumniController::class, 'edit'])->name('alumni-info.edit');
     Route::put('/alumni-info/{id}', [App\Http\Controllers\SuperAdmin\AlumniController::class, 'update'])->name('alumni-info.update');
     Route::delete('/alumni-info/{id}', [App\Http\Controllers\SuperAdmin\AlumniController::class, 'destroy'])->name('alumni-info.destroy');
+<<<<<<< HEAD
     // Route::get('/alumni-info-edit', [App\Http\Controllers\SuperAdmin\AlumniController::class, 'edit'])->name('alumni-info.edit');
+=======
+
+    //alumni
+    Route::get('/location', [App\Http\Controllers\SuperAdmin\LocationController::class, 'index'])->name('location.index');
+    Route::post('/location', [App\Http\Controllers\SuperAdmin\LocationController::class, 'store'])->name('location.store');
+    Route::get('/location-create', [App\Http\Controllers\SuperAdmin\LocationController::class, 'create'])->name('location.create');
+    Route::get('/location/edit/{id}', [App\Http\Controllers\SuperAdmin\LocationController::class, 'edit'])->name('location.edit');
+    Route::put('/location/{id}', [App\Http\Controllers\SuperAdmin\LocationController::class, 'update'])->name('location.update');
+    Route::delete('/location/{id}', [App\Http\Controllers\SuperAdmin\LocationController::class, 'destroy'])->name('location.destroy');
+>>>>>>> bc2f92e8f17915a1f82c0b36efa33932c3ba1558
 
     //schedules
     Route::get('/schedules-info', [App\Http\Controllers\SuperAdmin\SchedulesController::class, 'index'])->name('schedules.index');
@@ -171,6 +182,12 @@ Route::prefix('sadmin')->middleware(['auth', 'admin'])->group(function () {
     Route::get('/schedules-info/{id}', [App\Http\Controllers\SuperAdmin\SchedulesController::class, 'edit'])->name('schedules.edit');
     Route::put('/schedules-info/{id}', [App\Http\Controllers\SuperAdmin\SchedulesController::class, 'update'])->name('schedules.update');
     Route::delete('/schedules-info/{id}', [App\Http\Controllers\SuperAdmin\SchedulesController::class, 'destroy'])->name('schedules.destroy');
+
+    //requirment
+    Route::get('/requirment-info', [App\Http\Controllers\SuperAdmin\AboutController::class, 'requirmentIndex'])->name('requirment.index');
+    Route::post('/requirment-info/step-1', [App\Http\Controllers\SuperAdmin\AboutController::class, 'reqirmentStoreStepOne'])->name('requirment.step-one');
+    Route::post('/requirment-info/step-2', [App\Http\Controllers\SuperAdmin\AboutController::class, 'reqirmentStoreStepTwo'])->name('requirment.step-two');
+    Route::post('/requirment-info/step-3', [App\Http\Controllers\SuperAdmin\AboutController::class, 'reqirmentStoreStepThree'])->name('requirment.step-three');
 
 });
 

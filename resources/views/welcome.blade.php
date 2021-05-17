@@ -4,11 +4,42 @@
 <div class="jumbotron">
     <div class="jumbotron__overlay"></div>
     <div class="jumbotron__background">
-        <img src="{{$landingBgSection1->thumbnail == null ?  asset('assets/images/jumbotron-min.png') : Storage::url($landingBgSection1->thumbnail) }}" alt="Jumbotron" />
+        @if(isset($landingVidSection1->value))
+        <style>
+        .videoWrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            /* 16:9 */
+            padding-top: 25px;
+            height: 0;
+        }
+
+        .videoWrapper iframe {
+            position: absolute;
+            top: -10rem;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -99;
+        }
+        </style>
+        <div class="videoWrapper">
+            <iframe frameborder="0" style="width: 100vw;height: -webkit-fill-available;"
+                src="https://www.youtube.com/embed/{{$landingVidSection1->value}}?autoplay=1&mute=1&loop=1&rel=0&controls=0&showinfo=0&modestbranding=1&autohide=1&showinfo=0&playlist={{$landingVidSection1->value}}"
+                allowfullscreen>
+                Your browser does not support the video.
+            </iframe>
+        </div>
+        @else
+        <img src="{{$landingBgSection1->thumbnail == null ?  asset('assets/images/jumbotron-min.png') : Storage::url($landingBgSection1->thumbnail) }}"
+            alt="Jumbotron" />
+        @endif
     </div>
     <div class="jumbotron__content">
         <h2>{!!$landingTitle ? $landingTitle->value : 'GET YOUR DEGREE WITH US' !!}</h2>
-        <p>{!!$landingExcerpt ? $landingExcerpt->value : 'Beside providing you with new knowledge and raining in chosen disciplines Our university also gives you opportunity to benefit from spending your free time by planning' !!}</p>
+        <p>{!!$landingExcerpt ? $landingExcerpt->value : 'Beside providing you with new knowledge and raining in chosen
+            disciplines Our university also gives you opportunity to benefit from spending your free time by planning'
+            !!}</p>
         <div class="jumbotron__button">
             <button type="button" class="btn primary__button" style="text-transform: capitalize;">
                 {!!$landingButtonText1 ? $landingButtonText1->value : 'start a journey' !!}
@@ -21,7 +52,12 @@
 </div>
 
 <!-- Courses -->
-<section id="interProgram" class="p-2">
+<section id="interProgram" class="p-2" style="background-color: white;
+    z-index: 2;
+    position: relative;
+    margin-top: -2rem;
+    left: 0;
+    width: 100vw;">
     <div class="interProgram__header">
         <h2>International Programs</h2>
         <h4>COURSES</h4>
@@ -75,12 +111,12 @@
         <div class="container">
             <div class="row row-cols-md-2 row-cols-1 g-lg-0 align-items-center">
                 <div class="col">
-                      @php
-                       if($about){
-                           $abouts = json_decode($about->value);
-                       }else {
-                           $abouts = '';
-                       }
+                    @php
+                    if($about){
+                    $abouts = json_decode($about->value);
+                    }else {
+                    $abouts = '';
+                    }
                     @endphp
                     <p>
                         {{ $abouts ? $abouts->excerpt : 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora aliquam ad distinctio voluptatibus autem. Asperiores, dolor. Distinctio sunt repudiandae maiores facilis perspiciatis, iusto minima repellat laborum. Sapiente ullam sint placeat.
@@ -91,7 +127,8 @@
                 </div>
                 <div class="col">
                     <div class="about__boxImg">
-                         <img src="{{ !$about || $about->thumbnail == null  ? asset('assets/images/pict.png')  :  Storage::url($about->thumbnail) }}" alt="Gunadarma" />
+                        <img src="{{ !$about || $about->thumbnail == null  ? asset('assets/images/pict.png')  :  Storage::url($about->thumbnail) }}"
+                            alt="Gunadarma" />
                     </div>
                 </div>
             </div>
@@ -110,17 +147,18 @@
             <div class="row row-cols-1 g-0 align-items-center">
                 <div class="col-md-5">
                     <div class="lifeGunadarma__boxImg">
-                        <img src="{{ !$sit ||$sit->thumbnail == null ? asset('assets/images/gunadarma-life.png') : Storage::url($sit->thumbnail ) }}" alt="Basketball Park" />
+                        <img src="{{ !$sit ||$sit->thumbnail == null ? asset('assets/images/gunadarma-life.png') : Storage::url($sit->thumbnail ) }}"
+                            alt="Basketball Park" />
                     </div>
                 </div>
                 <div class="col-md-7">
                     <div class="lifeGunadarma__content">
-                         @php
-                       if($sit){
-                           $sits = json_decode($sit->value);
-                       }else {
-                           $sits = '';
-                       }
+                        @php
+                        if($sit){
+                        $sits = json_decode($sit->value);
+                        }else {
+                        $sits = '';
+                        }
                         @endphp
                         <h2>{{ $sits ? $sits->title : 'Sport Center' }}</h2>
                         <p>
@@ -240,54 +278,23 @@
         <div class="gundarGraduates__slider">
             <div class="swiper-container">
                 <div class="swiper-wrapper">
+                    @foreach($testimonies as $testimony)
                     <div class="swiper-slide">
-                        <div class="card">
+                        <div class="card" style='width: 350px;'>
                             <div class="card__boxImg">
-                                <img src="./assets/images/Mask Group 10.png" />
+                                <img
+                                    src="{{Storage::url($testimony->thumbnail ?? $testimony->user->userDetail->avatar)}}" />
                             </div>
                             <div class="card-body">
-                                <h5 class="card-title">Kim Taehyun</h5>
-                                <p class="card-text">
-                                    "It was glorious and i could Not stop to say who for Every
-                                    single moment, Thank you"
-                                </p>
+                                <h5 class="card-title">{{$testimony->name ?? $testimony->user->name}}</h5>
+                                <p class="card-text">{{$testimony->review}}</p>
                                 <hr />
-                                <p class="card__course">COMMUNICATIONS</p>
+                                <p class="card__course" style='text-transform:uppercase'>
+                                    {{$testimony->predicate ?? $testimony->course->name}}</p>
                             </div>
                         </div>
                     </div>
-                    <div class="swiper-slide">
-                        <div class="card">
-                            <div class="card__boxImg">
-                                <img src="./assets/images/Mask Group 10.png" />
-                            </div>
-                            <div class="card-body">
-                                <h5 class="card-title">Kim Namjoon</h5>
-                                <p class="card-text">
-                                    "It was glorious and i could Not stop to say who for Every
-                                    single moment, Thank you"
-                                </p>
-                                <hr />
-                                <p class="card__course">COMPUTER SCIENCE</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="card">
-                            <div class="card__boxImg">
-                                <img src="./assets/images/Mask Group 10.png" />
-                            </div>
-                            <div class="card-body">
-                                <h5 class="card-title">Fernando</h5>
-                                <p class="card-text">
-                                    "It was glorious and i could Not stop to say who for Every
-                                    single moment, Thank you"
-                                </p>
-                                <hr />
-                                <p class="card__course">INDUSTRIAL ENGINEERING</p>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
 
                 <!-- Add Pagination -->
@@ -319,9 +326,12 @@
     </div>
 </section>
 
-<!-- contact gunadarma -->
+<!-- contac
+t gunadarma -->
 @include('include.contact')
 </div>
+
+
 
 
 @endsection

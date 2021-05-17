@@ -14,8 +14,8 @@
     <div class="card py-3 px-3">
         @include('flashmessage.validation')
         @include('flashmessage.flash')
-        <h1 class="mb-5">How To Apply Info</h1>
-        <a class="btn btn-primary btn-add-admin align-self-end mb-3" href="{{ route('schedules.create') }}">
+        <h1 class="mb-5">Locations</h1>
+        <a class="btn btn-primary btn-add-admin align-self-end mb-3" href="{{ route('location.create') }}">
             <i class="fas fa-fw fa-plus"></i>
             create
         </a>
@@ -23,22 +23,28 @@
             <thead>
                 <tr>
                     <th>No</th>
-                    <th>Phase</th>
-                    <th>Date</th>
+                    <th>Campus</th>
+                    <th>Address</th>
+                    <th>Phone</th>
+                    <th>Ext</th>
+                    <th>Fax</th>
                     <th>Action</th>
                 </tr>
             </thead>
             <tbody>
-                {{-- @foreach ($schedule as $item)  --}}
-                {{-- <tr>
-                    <td>{{ $loop->iteration }}</td>
-                    <td>{{ $item->phase }}</td>
-                    <td>{{ $item->date }}</td>
+                @foreach ($locations as $location)
+                <tr>
+                    <td>{{$loop->iteration }}</td>
+                    <td>{{$location->campus}}</td>
+                    <td>{{$location->address}}</td>
+                    <td>{{$location->phone}}</td>
+                    <td>{{$location->ext}}</td>
+                    <td>{{$location->fax}}</td>
                     <td>
-                        <a href="{{ route('schedules.edit', $item->id) }}" class="btn btn-warning btn-sm">
+                        <a href="{{ route('location.edit', $location->id) }}" class="btn btn-warning btn-sm">
                             <i class="fas fa-fw fa-edit"></i>
                         </a>
-                        <form action="{{ route('schedules.destroy', $item->id) }}" class="d-inline" method="POST">
+                        <form action="{{ route('location.destroy', $location->id) }}" class="d-inline" method="POST">
                             @method('delete')
                             @csrf
                             <button type="submit" class="btn btn-danger btn-sm">
@@ -46,8 +52,8 @@
                             </button>
                         </form>
                     </td>
-                </tr> --}}
-                {{-- @endforeach --}}
+                </tr>
+                @endforeach
             </tbody>
         </table>
     </div>

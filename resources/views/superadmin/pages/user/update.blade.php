@@ -35,7 +35,7 @@
         <div class="form-group">
             <label for="address">Address</label>
             {{-- <input type="text" name="address" class="form-control"  required> --}}
-            <textarea name="address" class="form-control" cols="30" rows="5">{{ $user->address }}</textarea>
+            <textarea name="address" class="form-control" cols="30" rows="5">{{ $user->userDetail->address }}</textarea>
           </div>
         <div class="form-group">
             <label for="telephone">No Hp</label>
@@ -44,7 +44,7 @@
           <div class="form-group">
             <label for="role">Role</label>
             <select class="form-control" name="role">
-              <option value="{{ $user->role }}">{{ $user->role }}</option>
+              <option value="{{ $user->role }}">{{ $user->role == 'sadmin' ? 'Super Admin' : 'Admin' }}</option>
               <option value="admin">Admin</option>
               <option value="sadmin">Super Admin</option>
             </select>

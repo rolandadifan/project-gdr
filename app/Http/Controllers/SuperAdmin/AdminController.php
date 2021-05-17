@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Superadmin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AdminReqeust;
 use App\Models\User;
+use App\Models\UserDetail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -44,7 +45,7 @@ class AdminController extends Controller
     }
 
     public function edit($id){
-        $user = User::findOrFail($id);
+        $user = User::with('userDetail')->findOrFail($id);
         return view('superadmin.pages.user.update')->with([
             'user' => $user
         ]);
@@ -52,20 +53,28 @@ class AdminController extends Controller
 
     public function update(Request $request, $id)
     {
+        $name = $request->name;
+        $telephone = $request->telephone;
+        $address = $request->address;
+        $role = $request->role;
         $user = User::findOrFail($id);
-        $password = $request->password;
-        $passwordhash = bcrypt($password);
-
         $user->update([
-            'name' => $request->name,
-             'email' => $request->email,
-             'password' => $passwordhash,
-             'address' => $request->address,
-             'telephone' => $request->telephone,
-             'role' => $request->role,
+            'name' => $name,
+            'telephone' => $telephone,
+            'role' => $role
         ]);
-
-        $user->save();
+        $user_detail = UserDetail::where('user_id', $user->id)->first();
+        if(!$user_detail){
+            UserDetail::create([
+                'user_id' => $user->id,
+                'status_id' => 1,
+                'address' => $address
+            ]);
+        }else{
+            $user_detail->update([
+                'address' => $address
+            ]);
+        }
         return redirect()->back()->with('status','successfuly update');
     }
 

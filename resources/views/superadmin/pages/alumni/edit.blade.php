@@ -18,7 +18,7 @@
         <button class="btn btn-primary" style="width: 200px;margin-bottom:4rem"
             onclick="location.href = '/sadmin/alumni-info'">Back to
             List</button>
-        <form action="{{ route('alumni-info.update', $alumni->id) }}" method="POST">
+        <form action="{{ route('alumni-info.update', $alumni->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('put')
             <div class="row">
@@ -56,6 +56,25 @@
                     <div class="form-group">
                         <label for="predicate">Predicate</label>
                         <input name='predicate' type="text" class="form-control" value={{$alumni->predicate}}>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="isTop">Is top 3</label>
+                        <select name='isTop' class="form-control" id="isTop">
+                            <option value='0' {{ $alumni->is_top == 0 ? 'selected' : ''}}>Tidak</option>
+                            <option value='1' {{ $alumni->is_top == 1 ? 'selected' : ''}}>Ya</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="">Thumbnail</label>
+                        @isset($alumni->thumbnail)
+                        <img src="{{ Storage::url($alumni->thumbnail) }}" class='mb-2' style="width: 100%;" />
+                        @endisset
+                        <input type="file" name="thumbnail" id="" class="form-control" required>
+                        <span style="font-size: 16px">Maksimal file 300kb</span>
                     </div>
                 </div>
             </div>

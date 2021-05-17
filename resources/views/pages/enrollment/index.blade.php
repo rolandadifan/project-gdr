@@ -23,23 +23,25 @@
               <ul>
                 <li>
                   <div class="app__stepGuide-1">
-                    <h5>STEP 1</h5>
-                    <h6>Application (Select Type)</h6>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis debitis labore culpa esse voluptatum expedita quae excepturi beatae necessitatibus ducimus iusto, itaque voluptatibus distinctio eius ratione officiis et hic natus!</p>
+                    @php
+                        $step1 = strtoupper($step_ones->title);
+                        $step2 = strtoupper( $step_twos->title);
+                        $step3 = strtoupper( $step_threes->title);
+                    @endphp
+                    <h5>{{ $step_ones ? $step1 : 'STEP 1' }}</h5>
+                    <p>{!! $step_ones ? $step_ones->content : 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis debitis labore culpa esse voluptatum expedita quae excepturi beatae necessitatibus ducimus iusto, itaque voluptatibus distinctio eius ratione officiis et hic natus!' !!}</p>
                   </div>
                 </li>
                 <li>
                   <div class="app__stepGuide-2">
-                    <h5>STEP 2</h5>
-                    <h6>Personal Details (Fill the Form)</h6>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis debitis labore culpa esse voluptatum expedita quae excepturi beatae necessitatibus ducimus iusto, itaque voluptatibus distinctio eius ratione officiis et hic natus!</p>
+                    <h5>{{ $step_twos ? $step2  : 'STEP 2' }}</h5>
+                    <p>{!! $step_twos ? $step_twos->content : 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis debitis labore culpa esse voluptatum expedita quae excepturi beatae necessitatibus ducimus iusto, itaque voluptatibus distinctio eius ratione officiis et hic natus!' !!}</p>
                   </div>
                 </li>
                 <li>
                   <div class="app__stepGuide-3">
-                    <h5>STEP 3</h5>
-                    <h6>Verification (Review and Submit)</h6>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis debitis labore culpa esse voluptatum expedita quae excepturi beatae necessitatibus ducimus iusto, itaque voluptatibus distinctio eius ratione officiis et hic natus!</p>
+                    <h5>{{ $step_threes ? $step3  : 'STEP 3' }}</h5>
+                    <p>{!! $step_threes ? $step_threes->content : 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis debitis labore culpa esse voluptatum expedita quae excepturi beatae necessitatibus ducimus iusto, itaque voluptatibus distinctio eius ratione officiis et hic natus!' !!}</p>
                   </div>
                 </li>
               </ul>
