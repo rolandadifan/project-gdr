@@ -1,469 +1,469 @@
-<<<<<<< HEAD
-header{
-    .info-gundar{
-=======
 header {
-    .no-after:after {
-        background: none !important;
-    }
-    .info-gundar {
->>>>>>> 9d9d9be98246dc6d2c0dad53e72d25617e5223e1
-        background: $primaryColor;
-        padding: 22px 80px 22px 0;
-        text-align: right;
-        font-weight: 500;
-        width: 100%;
+  .info-gundar {
+    background: $primaryColor;
+    padding: 22px 80px 22px 0;
+    text-align: right;
+    font-weight: 500;
+    width: 100%;
 
-        a{
-            color: $Color7;
-<<<<<<< HEAD
-            font-size: 19px;
-            margin-right: 50px;
-=======
-            font-size: 12px;
-            letter-spacing: 0.5px;
-            margin-right: 2rem;
->>>>>>> 9d9d9be98246dc6d2c0dad53e72d25617e5223e1
-            position: relative;
+    a {
+      color: $Color7;
+      font-size: 19px;
+      margin-right: 50px;
+      position: relative;
 
-            &::after{
-                content: url('./../images/icons/foreign.png');
-                width: 15px;
-                height: 15px;
-                position: absolute;
-                top: 2px;
-                margin-left: 3px;
-                line-height: 0;
-            }
-        }
-    }
-    .videoWrapper {
-        position: relative;
-        padding-bottom: 56.25%;
-        /* 16:9 */
-        padding-top: 25px;
-        height: 0;
-    }
-
-<<<<<<< HEAD
-    .nav-bar{
-        padding: 5px;
-
-        .nav-bar__menus{
-            display: flex;
-=======
-    .videoWrapper iframe {
+      &::after {
+        content: url("./../images/icons/foreign.png");
+        width: 15px;
+        height: 15px;
         position: absolute;
-        top: -10rem;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -99;
+        top: 2px;
+        margin-left: 8px;
+        line-height: 0;
+      }
     }
-    .nav-bar {
-        padding: 5px;
+  }
 
-        .nav-bar__menus {
-            display: flex !important;
->>>>>>> 9d9d9be98246dc6d2c0dad53e72d25617e5223e1
-            justify-content: space-evenly;
-            align-items: center;
-            list-style: none;
+  .nav-bar {
+    padding: 5px;
+
+    .nav-bar__menus {
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      list-style: none;
+      font-weight: 600;
+
+      .nav-bar__menu {
+        margin-bottom: 0;
+        &:nth-child(1) {
+          flex-basis: 30%;
+          font-size: 20px;
+          color: $Color10;
+          cursor: pointer;
+
+          &::before {
+            content: "";
+            background-image: url("./../images/icons/menu-bar.png");
+            background-size: 40px 12px;
+            object-fit: contain;
+            display: inline-block;
+            width: 40px;
+            height: 12px;
+            margin-right: 5px;
+            cursor: pointer;
+          }
+        }
+
+        &:nth-child(2) {
+          margin-bottom: 0;
+          img {
+            object-fit: contain;
+            width: 200px;
+            height: 80px;
+          }
+        }
+
+        &:nth-child(3) {
+          display: flex;
+          align-items: center;
+
+          &::before {
+            @include addIconBefore(
+              "./../images/icons/phone-call.png",
+              28px,
+              28px
+            );
+          }
+        }
+
+        &:nth-child(4) {
+          display: flex;
+          align-items: center;
+
+          p:nth-child(1) {
+            font-size: 14px;
+          }
+
+          &::before {
+            @include addIconBefore(
+              "./../images/icons/placeholder.png",
+              20px,
+              28px
+            );
+          }
+        }
+
+        p {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+
+  .sidebar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    overflow-x: hidden;
+    transition: 0.5s ease-in-out;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    .row {
+      min-height: 100vh;
+    }
+
+    .sidebar__left {
+      position: relative;
+      background: $Color7;
+      padding: 30px 0 20px 8px;
+
+      // &::after {
+      //     content: "x";
+      //     position: absolute;
+      //     top: 0;
+      //     right: 20px;
+      //     font-size: 30px;
+      // }
+
+      .btn-login > a {
+        color: $primaryColor;
+        font-size: 1em;
+      }
+
+      .box__afterLogin {
+        .boxAvatar {
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          position: relative;
+          overflow: hidden;
+          margin: 10px auto;
+          img {
+            height: 100%;
+            width: auto;
+            object-fit: contain;
+            object-position: center right;
+          }
+        }
+
+        .profile__name {
+          font-size: 1.1em;
+          font-weight: 700;
+        }
+      }
+
+      .sidebar__closeBtn {
+        position: absolute;
+        top: 15px;
+        right: 20px;
+        font-size: 20px;
+        cursor: pointer;
+      }
+
+      .sidebar__logo {
+        text-align: center;
+        margin-bottom: 20px;
+
+        img {
+          object-fit: contain;
+          width: 250px;
+          height: 100px;
+        }
+      }
+
+      .sidebar__menu {
+        .accordion-item {
+          margin-bottom: 10px;
+
+          a {
+            text-decoration: none;
+          }
+
+          &:nth-child(2) .accordion-button:after,
+          &:nth-child(5) .accordion-button:after,
+          &:nth-child(6) .accordion-button:after {
+            background: none;
+          }
+
+          .accordion-body {
+            padding: 1rem 0 0 0.8rem;
+          }
+
+          .accordion-button {
+            border: none;
             font-weight: 600;
+            color: $Color10;
 
-            .nav-bar__menu{
-                margin-bottom: 0;
-                &:nth-child(1) {
-                    flex-basis: 30%;
-                    font-size: 20px;
-                    color: $Color10;
-                    cursor: pointer;
-
-                    &::before{
-                        content: "";
-                        background-image: url('./../images/icons/menu-bar.png');
-                        background-size: 40px 12px;
-                        object-fit: contain;
-                        display: inline-block;
-                        width: 40px;
-                        height: 12px;
-                        margin-right: 5px;
-                        cursor: pointer;
-                    }
-                }
-
-                &:nth-child(2){
-                    margin-bottom: 0;
-                    img{
-                    object-fit: contain;
-                    width: 200px;
-                    height: 80px;
-                    }
-                }
-
-                &:nth-child(3){
-                    display: flex;
-                    align-items: center;
-
-                    &::before{
-                        @include addIconBefore("./../images/icons/phone-call.png",28px ,28px)
-                    }
-                }
-
-                &:nth-child(4){
-                    display: flex;
-                    align-items: center;
-
-                    p:nth-child(1){
-                        font-size: 14px;
-                    }
-
-                    &::before{
-                        @include addIconBefore("./../images/icons/placeholder.png",20px ,28px)
-                    }
-                }
-
-                p{
-                    margin-bottom: 0;
-                }
+            &:focus {
+              outline: none;
+              box-shadow: none;
             }
-        }
-    }
+          }
 
-    .sidebar{
-        height: 100%;
-        width: 0;
-        position: fixed;
-        top: 0;
-        left: 0;
-        z-index: 10;
-        overflow-x: hidden;
-        transition: 0.5s ease-in-out;
+          .accordion-button:not(.collapsed) {
+            border-top-left-radius: 25px;
+            border-bottom-left-radius: 25px;
+            background: $Color5;
+            font-weight: 700;
+          }
 
-        &::-webkit-scrollbar{
-            display: none;
-        }
-
-        .row{
-            min-height: 100vh;
-        }
-
-        .sidebar__left{
-            position: relative;
-            background: $Color7;
-            padding: 30px 0 20px 8px;
-
-            // &::after {
-            //     content: "x";
-            //     position: absolute;
-            //     top: 0;
-            //     right: 20px;
-            //     font-size: 30px;
-            // }
-            .sidebar__closeBtn{
-                position: absolute;
-                top: 15px;
-                right: 20px;
-                font-size: 20px;
-                cursor: pointer;
+          .accordion__child-menu {
+            .accordion__subMenu:after {
+              background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23212529'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e") !important;
             }
 
-            .sidebar__logo{
-                text-align: center;
-                margin-bottom: 20px;
-
-                img{
-                    object-fit: contain;
-                    width: 250px;
-                    height: 100px;
-                }
+            .accordion-button:not(.collapsed) {
+              background: transparent;
+              border-left: 5px solid $Color3;
+              border-radius: 0;
             }
 
-            .sidebar__menu{
-                .accordion-item{
-                    margin-bottom: 10px;
-
-                    a{
-                        text-decoration: none;
-                    }
-
-                    &:nth-child(2) .accordion-button:after,&:nth-child(5) .accordion-button:after,&:nth-child(6) .accordion-button:after,{
-                        background: none;
-                    }
-
-                    .accordion-body{
-                        padding: 1rem 0 0 0.8rem;
-                    }
-
-                    .accordion-button{
-                        border: none;
-                        color: $Color10;
-
-                        &:focus{
-                            outline: none;
-                            box-shadow: none;
-                        }
-                    }
-
-                    .accordion-button:not(.collapsed){
-                        border-top-left-radius: 25px;
-                        border-bottom-left-radius: 25px;
-                        background: $Color5;
-                        font-weight: 700;
-                    }
-
-                    .accordion__child-menu{
-                        .accordion__subMenu:after{
-                            background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23212529'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e") !important;
-                        }
-
-                        .accordion-button:not(.collapsed){
-                            background: transparent;
-                            border-left: 5px solid $Color3;
-                            border-radius: 0;
-                        }
-
-                        .accordion-button.collapsed{
-                            &:hover,&:active{
-                                border-left: 5px solid #EF7B39;
-                                border-radius: 0;
-                            }
-                        }
-
-                        .accordion-button{
-                            color: #000;
-                        }
-
-                        ul{
-                            list-style: none;
-                            padding-left: 10px;
-
-                            li{
-                                padding: 15px;
-                                transition: 0.8s;
-                                
-                                &:hover{
-                                    background: $Color3;
-
-                                    a {
-                                        color: $Color7;
-                                    }
-                                }
-                            }
-                        }
-
-                        a{
-                            color: #000;
-                            text-decoration: none;
-                        }
-
-                        .accordion-item{
-                            &:nth-child(3) .accordion-button:after, &:nth-child(4) .accordion-button:after, &:nth-child(5) .accordion-button:after{
-                                background: none;
-                            }
-                        }
-                    }
-                }
-                
-                .show{
-                    background: #fff;
-                }
+            .accordion-button.collapsed {
+              &:hover,
+              &:active {
+                border-left: 5px solid #ef7b39;
+                border-radius: 0;
+              }
             }
-        }
 
-        .sidebar__right{
-            background: rgba(0,0,0,.4);
-        }
-    }
-}
-
-<<<<<<< HEAD
-@media(max-width:992px){
-    header{
-        .info-gundar{
-            padding: 20px 10px;
-=======
-@media (max-width: 992px) {
-    header {
-        .info-gundar {
-            padding: 5px;
->>>>>>> 9d9d9be98246dc6d2c0dad53e72d25617e5223e1
-            display: flex;
-            justify-content: center;
-            align-items: flex-end;
-            flex-direction: column;
-    
-            a{
-                font-size: 12px;
-                position: relative;
-    
-                &::after{
-                    top: 0;
-                }
+            .accordion-button {
+              color: #000;
             }
-        }
 
-        .nav-bar{
+            ul {
+              list-style: none;
+              padding-left: 10px;
 
-            .nav-bar__menus{
-                padding: 0;
-    
-                .nav-bar__menu{
-                    &:nth-child(1) {
-                        flex: 0 1 auto;
-                        &::before{
-                            background-size: 25px 10px;
-                            width: 25px;
-                            height: 10px;
-                        }
-                    }
-    
-                    &:nth-child(2){
-                        flex: 0 1 auto;
-                        img{
-                        width: 150px;
-                        }
-                    }
-    
-                    &:nth-child(3){
-                        flex: 0 1 auto;
-                        p{
-                            font-size:12px;
-                        }
-    
-                        &::before{
-                            @include addIconBefore("./../images/icons/phone-call.png",20px ,20px)
-                        }
-                    }
-    
-                    &:nth-child(4){
-                        flex: 0 1 auto;
-
-                        p{
-                            font-size: 12px;
-                        }
-    
-                        &::before{
-                            @include addIconBefore("./../images/icons/placeholder.png",20px ,25px);
-                        }
-                    }
-                }
-            }
-        }
-    
-
-        .sidebar{
-            .sidebar__left{
+              li {
                 padding: 15px;
+                transition: 0.8s;
 
-                .sidebar__logo{
-                    margin-bottom: 10px;
-    
-                    img{
-                        object-fit: contain;
-                        width: 200px;
-                        height: 100px;
-                    }
+                &:hover {
+                  background: $Color3;
+
+                  a {
+                    color: $Color7;
+                  }
                 }
-
-                .sidebar__menu{
-                    
-                    .accordion__child-menu{
-                        .accordion-button:not(.collapsed){
-                            background: transparent;
-                            border-left: 5px solid #EF7B39;
-                            border-radius: 0;
-                        }
-
-                        .accordion-button{
-                            font-size: 14px;
-                        }
-
-                        ul{
-
-                            li{
-                                font-size: 12px;
-                                
-                                &:hover, &:active{
-                                    background: #EF7B39;
-
-                                    a {
-                                        color: #fff;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
+              }
             }
+
+            a {
+              color: #000;
+              text-decoration: none;
+            }
+
+            .accordion-item {
+              &:nth-child(3) .accordion-button:after,
+              &:nth-child(4) .accordion-button:after,
+              &:nth-child(5) .accordion-button:after {
+                background: none;
+              }
+            }
+          }
         }
+
+        .show {
+          background: #fff;
+        }
+      }
     }
+
+    .sidebar__right {
+      background: rgba(0, 0, 0, 0.4);
+    }
+  }
 }
 
-<<<<<<< HEAD
-@media(max-width:576px){
-    header{
+@media (max-width: 992px) {
+  header {
+    .info-gundar {
+      padding: 20px 10px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      flex-direction: column;
 
-        .nav-bar{
-=======
-@media (max-width: 576px) {
-    header {
-        .info-gundar a {
-            margin-right: 8.7vw;
+      a {
+        font-size: 12px;
+        position: relative;
+
+        &::after {
+          top: 0;
+          margin-left: 8px;
         }
-
-        .nav-bar {
->>>>>>> 9d9d9be98246dc6d2c0dad53e72d25617e5223e1
-            padding: 10px;
-            .nav-bar__menus{
-                // justify-content: flex-start;
-                align-items: center !important;
-                flex-flow: column-reverse;
-                padding: 0;
-
-                .nav-bar__menu{
-                    &:nth-child(1) {
-
-                        &::before{
-                            background-size: 25px 10px;
-                            width: 25px;
-                            height: 10px;
-                        }
-                    }
-
-                    &:nth-child(2){
-                        margin-bottom: 10px;
-                        img{
-                        width: 160px;
-                        }
-                    }
-
-                    &:nth-child(3){
-                        align-self: flex-start;
-                        margin-bottom: 10px;
-                        p{
-                            font-size:13px;
-                        }
-
-                        &::before{
-                            @include addIconBefore("./../images/icons/phone-call.png",20px ,20px)
-                        }
-                    }
-
-                    &:nth-child(4){
-                        align-self: flex-start;
-                        margin-bottom: 10px;
-
-                        p{
-                            font-size: 13px;
-                        }
-
-                        &::before{
-                            @include addIconBefore("./../images/icons/placeholder.png",20px ,25px)
-                        }
-                    }
-                }
-            }
-        }
+      }
     }
+
+    .nav-bar {
+      .nav-bar__menus {
+        padding: 0;
+
+        .nav-bar__menu {
+          &:nth-child(1) {
+            flex: 0 1 auto;
+            &::before {
+              background-size: 25px 10px;
+              width: 25px;
+              height: 10px;
+            }
+          }
+
+          &:nth-child(2) {
+            flex: 0 1 auto;
+            img {
+              width: 150px;
+            }
+          }
+
+          &:nth-child(3) {
+            flex: 0 1 auto;
+            p {
+              font-size: 12px;
+            }
+
+            &::before {
+              @include addIconBefore(
+                "./../images/icons/phone-call.png",
+                20px,
+                20px
+              );
+            }
+          }
+
+          &:nth-child(4) {
+            flex: 0 1 auto;
+
+            p {
+              font-size: 12px;
+            }
+
+            &::before {
+              @include addIconBefore(
+                "./../images/icons/placeholder.png",
+                20px,
+                25px
+              );
+            }
+          }
+        }
+      }
+    }
+
+    .sidebar {
+      .sidebar__left {
+        padding: 15px;
+
+        .sidebar__logo {
+          margin-bottom: 10px;
+
+          img {
+            object-fit: contain;
+            width: 200px;
+            height: 100px;
+          }
+        }
+
+        .sidebar__menu {
+          .accordion__child-menu {
+            .accordion-button:not(.collapsed) {
+              background: transparent;
+              border-left: 5px solid #ef7b39;
+              border-radius: 0;
+            }
+
+            .accordion-button {
+              font-size: 14px;
+            }
+
+            ul {
+              li {
+                font-size: 12px;
+
+                &:hover,
+                &:active {
+                  background: #ef7b39;
+
+                  a {
+                    color: #fff;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  header {
+    .nav-bar {
+      padding: 10px;
+      .nav-bar__menus {
+        // justify-content: flex-start;
+        align-items: center !important;
+        flex-flow: column-reverse;
+        padding: 0;
+
+        .nav-bar__menu {
+          &:nth-child(1) {
+            &::before {
+              background-size: 25px 10px;
+              width: 25px;
+              height: 10px;
+            }
+          }
+
+          &:nth-child(2) {
+            margin-bottom: 10px;
+            img {
+              width: 160px;
+            }
+          }
+
+          &:nth-child(3) {
+            align-self: flex-start;
+            margin-bottom: 10px;
+            p {
+              font-size: 13px;
+            }
+
+            &::before {
+              @include addIconBefore(
+                "./../images/icons/phone-call.png",
+                20px,
+                20px
+              );
+            }
+          }
+
+          &:nth-child(4) {
+            align-self: flex-start;
+            margin-bottom: 10px;
+
+            p {
+              font-size: 13px;
+            }
+
+            &::before {
+              @include addIconBefore(
+                "./../images/icons/placeholder.png",
+                20px,
+                25px
+              );
+            }
+          }
+        }
+      }
+    }
+  }
 }

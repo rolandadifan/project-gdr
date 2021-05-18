@@ -234,3 +234,7 @@ Route::get('/abouts', [\App\Http\Controllers\AboutController::class, 'abouts'])-
 Route::get('/news', [\App\Http\Controllers\AboutController::class, 'news'])->name('page.news');
 Route::get('/events', [\App\Http\Controllers\AboutController::class, 'event'])->name('page.event');
 Route::get('/artikel/{id}', [\App\Http\Controllers\AboutController::class, 'detail'])->name('page.detail');
+
+
+//key dates
+Route::get('/key-dates',[\App\Http\Controllers\KeyDateController::class, 'index'])->name('key.index');

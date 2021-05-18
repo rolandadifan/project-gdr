@@ -10,11 +10,16 @@ class ResearchController extends Controller
 {
     public function index()
     {
-         $article = Article::with(['articleDetail'])->where('status_id', '1')->whereHas('articleType', function (Builder $query) {
+        //  $article = Article::with(['articleDetail'])->where('status_id', '1')->whereHas('articleType', function (Builder $query) {
+        //     $query->where('name', 'research');
+        // })->get();
+        $researchs = Article::whereHas('articleType', function (Builder $query) {
             $query->where('name', 'research');
-        })->get();
+        })->with('status', 'articleType', 'articleDetail')->get();
+        $rgroups = Article::select('group')->distinct()->get();
         return view('pages.research.index')->with([
-            'article' =>  $article
+            'researchs' =>  $researchs,
+            'rgroups' =>  $rgroups
         ]);
     }
 }

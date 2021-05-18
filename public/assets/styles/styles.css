@@ -13,16 +13,10 @@ html::-webkit-scrollbar {
   display: none;
 }
 
-@media (max-width: 992px) {
-  .d-none-sm {
-    display: none !important;
-  }
-}
-
 .jumbotron {
-  margin-top: 0;
+  margin-top: -22px;
   width: 100%;
-  height: 18rem;
+  min-height: 400px;
   position: relative;
 }
 
@@ -51,7 +45,7 @@ html::-webkit-scrollbar {
 
 .jumbotron .jumbotron__content {
   position: absolute;
-  top: 30px;
+  top: 35%;
   left: 10%;
   width: 80%;
   text-align: center;
@@ -61,7 +55,7 @@ html::-webkit-scrollbar {
 .jumbotron .jumbotron__content h2 {
   color: #FFF;
   font-size: 32px;
-  font-family: "Playfair Display", sans-serif;
+  font-family: "Playfair Display",sans-serif;
   text-transform: uppercase;
   letter-spacing: 1rem;
   margin-bottom: 20px;
@@ -102,8 +96,7 @@ html::-webkit-scrollbar {
   padding: 0;
 }
 
-.jumbotron__studentEnrollment .jumbotron__breadcrumb,
-.jumbotron__studentEnrollment .jumbotron__preview {
+.jumbotron__studentEnrollment .jumbotron__breadcrumb, .jumbotron__studentEnrollment .jumbotron__preview {
   padding: 40px 50px;
 }
 
@@ -152,9 +145,7 @@ html::-webkit-scrollbar {
   padding: 0;
 }
 
-.jumbotron__courses .jumbotron__breadcrumb,
-.jumbotron__courses .jumbotron__preview,
-.jumbotron__courses .jumbotron__button--primary {
+.jumbotron__courses .jumbotron__breadcrumb, .jumbotron__courses .jumbotron__preview, .jumbotron__courses .jumbotron__button--primary {
   padding: 40px 50px;
 }
 
@@ -229,10 +220,10 @@ html::-webkit-scrollbar {
 
 @media (max-width: 576px) {
   .jumbotron {
-    height: 24rem;
+    margin-top: -12px;
   }
   .jumbotron .jumbotron__content {
-    top: 30px;
+    top: 20%;
   }
   .jumbotron .jumbotron__content h2 {
     font-size: 28px;
@@ -256,8 +247,7 @@ html::-webkit-scrollbar {
   .jumbotron .jumbotron__content .jumbotron__button .secondary__button {
     padding: 9px;
   }
-  .jumbotron__studentEnrollment .jumbotron__image-preview,
-  .jumbotron__courses .jumbotron__image-preview {
+  .jumbotron__studentEnrollment .jumbotron__image-preview, .jumbotron__courses .jumbotron__image-preview {
     -webkit-clip-path: none;
             clip-path: none;
     height: 100%;
@@ -267,7 +257,7 @@ html::-webkit-scrollbar {
     height: 75px;
   }
   .jumbotron__profile .jumbotron__profileContent {
-    padding: 0.5rem !important;
+    padding: .5rem !important;
   }
 }
 
@@ -782,10 +772,6 @@ html::-webkit-scrollbar {
   font-size: 16px;
 }
 
-header .no-after:after {
-  background: none !important;
-}
-
 header .info-gundar {
   background: #885A89;
   padding: 22px 80px 22px 0;
@@ -796,14 +782,8 @@ header .info-gundar {
 
 header .info-gundar a {
   color: #FFF;
-<<<<<<< HEAD
   font-size: 19px;
   margin-right: 50px;
-=======
-  font-size: 12px;
-  letter-spacing: 0.5px;
-  margin-right: 2rem;
->>>>>>> 9d9d9be98246dc6d2c0dad53e72d25617e5223e1
   position: relative;
 }
 
@@ -813,25 +793,8 @@ header .info-gundar a::after {
   height: 15px;
   position: absolute;
   top: 2px;
-  margin-left: 3px;
+  margin-left: 8px;
   line-height: 0;
-}
-
-header .videoWrapper {
-  position: relative;
-  padding-bottom: 56.25%;
-  /* 16:9 */
-  padding-top: 25px;
-  height: 0;
-}
-
-header .videoWrapper iframe {
-  position: absolute;
-  top: -10rem;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -99;
 }
 
 header .nav-bar {
@@ -839,9 +802,9 @@ header .nav-bar {
 }
 
 header .nav-bar .nav-bar__menus {
-  display: -webkit-box !important;
-  display: -ms-flexbox !important;
-  display: flex !important;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-box-pack: space-evenly;
       -ms-flex-pack: space-evenly;
           justify-content: space-evenly;
@@ -960,6 +923,34 @@ header .sidebar .sidebar__left {
   padding: 30px 0 20px 8px;
 }
 
+header .sidebar .sidebar__left .btn-login > a {
+  color: #885A89;
+  font-size: 1em;
+}
+
+header .sidebar .sidebar__left .box__afterLogin .boxAvatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  position: relative;
+  overflow: hidden;
+  margin: 10px auto;
+}
+
+header .sidebar .sidebar__left .box__afterLogin .boxAvatar img {
+  height: 100%;
+  width: auto;
+  -o-object-fit: contain;
+     object-fit: contain;
+  -o-object-position: center right;
+     object-position: center right;
+}
+
+header .sidebar .sidebar__left .box__afterLogin .profile__name {
+  font-size: 1.1em;
+  font-weight: 700;
+}
+
 header .sidebar .sidebar__left .sidebar__closeBtn {
   position: absolute;
   top: 15px;
@@ -988,7 +979,9 @@ header .sidebar .sidebar__left .sidebar__menu .accordion-item a {
   text-decoration: none;
 }
 
-header .sidebar .sidebar__left .sidebar__menu .accordion-item:nth-child(2) .accordion-button:after, header .sidebar .sidebar__left .sidebar__menu .accordion-item:nth-child(5) .accordion-button:after, header .sidebar .sidebar__left .sidebar__menu .accordion-item:nth-child(6) .accordion-button:after {
+header .sidebar .sidebar__left .sidebar__menu .accordion-item:nth-child(2) .accordion-button:after,
+header .sidebar .sidebar__left .sidebar__menu .accordion-item:nth-child(5) .accordion-button:after,
+header .sidebar .sidebar__left .sidebar__menu .accordion-item:nth-child(6) .accordion-button:after {
   background: none;
 }
 
@@ -998,6 +991,7 @@ header .sidebar .sidebar__left .sidebar__menu .accordion-item .accordion-body {
 
 header .sidebar .sidebar__left .sidebar__menu .accordion-item .accordion-button {
   border: none;
+  font-weight: 600;
   color: #7E3485;
 }
 
@@ -1025,7 +1019,7 @@ header .sidebar .sidebar__left .sidebar__menu .accordion-item .accordion__child-
 }
 
 header .sidebar .sidebar__left .sidebar__menu .accordion-item .accordion__child-menu .accordion-button.collapsed:hover, header .sidebar .sidebar__left .sidebar__menu .accordion-item .accordion__child-menu .accordion-button.collapsed:active {
-  border-left: 5px solid #EF7B39;
+  border-left: 5px solid #ef7b39;
   border-radius: 0;
 }
 
@@ -1057,7 +1051,9 @@ header .sidebar .sidebar__left .sidebar__menu .accordion-item .accordion__child-
   text-decoration: none;
 }
 
-header .sidebar .sidebar__left .sidebar__menu .accordion-item .accordion__child-menu .accordion-item:nth-child(3) .accordion-button:after, header .sidebar .sidebar__left .sidebar__menu .accordion-item .accordion__child-menu .accordion-item:nth-child(4) .accordion-button:after, header .sidebar .sidebar__left .sidebar__menu .accordion-item .accordion__child-menu .accordion-item:nth-child(5) .accordion-button:after {
+header .sidebar .sidebar__left .sidebar__menu .accordion-item .accordion__child-menu .accordion-item:nth-child(3) .accordion-button:after,
+header .sidebar .sidebar__left .sidebar__menu .accordion-item .accordion__child-menu .accordion-item:nth-child(4) .accordion-button:after,
+header .sidebar .sidebar__left .sidebar__menu .accordion-item .accordion__child-menu .accordion-item:nth-child(5) .accordion-button:after {
   background: none;
 }
 
@@ -1071,7 +1067,7 @@ header .sidebar .sidebar__right {
 
 @media (max-width: 992px) {
   header .info-gundar {
-    padding: 5px;
+    padding: 20px 10px;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -1092,6 +1088,7 @@ header .sidebar .sidebar__right {
   }
   header .info-gundar a::after {
     top: 0;
+    margin-left: 8px;
   }
   header .nav-bar .nav-bar__menus {
     padding: 0;
@@ -1162,7 +1159,7 @@ header .sidebar .sidebar__right {
   }
   header .sidebar .sidebar__left .sidebar__menu .accordion__child-menu .accordion-button:not(.collapsed) {
     background: transparent;
-    border-left: 5px solid #EF7B39;
+    border-left: 5px solid #ef7b39;
     border-radius: 0;
   }
   header .sidebar .sidebar__left .sidebar__menu .accordion__child-menu .accordion-button {
@@ -1172,7 +1169,7 @@ header .sidebar .sidebar__right {
     font-size: 12px;
   }
   header .sidebar .sidebar__left .sidebar__menu .accordion__child-menu ul li:hover, header .sidebar .sidebar__left .sidebar__menu .accordion__child-menu ul li:active {
-    background: #EF7B39;
+    background: #ef7b39;
   }
   header .sidebar .sidebar__left .sidebar__menu .accordion__child-menu ul li:hover a, header .sidebar .sidebar__left .sidebar__menu .accordion__child-menu ul li:active a {
     color: #fff;
@@ -1180,9 +1177,6 @@ header .sidebar .sidebar__right {
 }
 
 @media (max-width: 576px) {
-  header .info-gundar a {
-    margin-right: 8.7vw;
-  }
   header .nav-bar {
     padding: 10px;
   }
