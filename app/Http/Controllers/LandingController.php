@@ -41,18 +41,18 @@ class LandingController extends Controller
         $icon4 = Setting::where('key','landing-point-icon-4')->first();
         $content4 = Setting::where('key','landing-point-content-4')->first();
         // end
-        $shortCourse = Course::with('status')->whereHas('courseDetail', function (Builder $query) {
+        $shortCourses = Course::with('status')->whereHas('courseDetail', function (Builder $query) {
             $query->where('degree', 'non');
-        })->first();
-        $courses = Course::where('status_id', 1)->whereHas('courseDetail', function (Builder $query) {
-            $query->where('degree', 'non')->orderBy('created_at', 'DESC');
-        })->limit(3)->get();
+        })->take(3)->get();
+        $courses = Course::with('status')->whereHas('courseDetail', function (Builder $query) {
+            $query->where('degree', '!=', 'non');
+        })->take(3)->get();
         $researchs = Article::whereHas('articleType', function (Builder $query) {
             $query->where('name', 'research');
         })->with('status', 'articleType', 'articleDetail')->get();
         $rgroups = Article::select('group')->distinct()->get();
-         $about = Page::where('key', 'about')->first();
-         $sit = Page::where('key', 'sit')->first();
+        $about = Page::where('key', 'about')->first();
+        $sit = Page::where('key', 'sit')->first();
         return view('welcome')->with([
             'about' => $about,
             'sit' => $sit,
@@ -64,7 +64,7 @@ class LandingController extends Controller
             'rgroups'           => $rgroups,
             'researchs'         => $researchs,
             'about'             => $about,
-            'shortCourse'       => $shortCourse,
+            'shortCourses'       => $shortCourses,
             'courses'           => $courses,
             'title1'            => $title1,
             'icon1'             => $icon1,

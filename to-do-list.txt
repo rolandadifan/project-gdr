@@ -52,8 +52,8 @@ V_event
 V_about
 	V_event list
 	V_news list
-footer
-header
+V_footer
+V_header
 V_alumni
 	client
 	V_list

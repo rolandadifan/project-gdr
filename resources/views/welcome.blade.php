@@ -5,31 +5,16 @@
     <div class="jumbotron__overlay"></div>
     <div class="jumbotron__background">
         @if(isset($landingVidSection1->value))
-        <style>
-        .videoWrapper {
-            position: relative;
-            padding-bottom: 56.25%;
-            /* 16:9 */
-            padding-top: 25px;
-            height: 0;
-        }
-
-        .videoWrapper iframe {
-            position: absolute;
-            top: -10rem;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -99;
-        }
-        </style>
-        <div class="videoWrapper">
+        <div class="videoWrapper d-none d-sm-block">
             <iframe frameborder="0" style="width: 100vw;height: -webkit-fill-available;"
                 src="https://www.youtube.com/embed/{{$landingVidSection1->value}}?autoplay=1&mute=1&loop=1&rel=0&controls=0&showinfo=0&modestbranding=1&autohide=1&showinfo=0&playlist={{$landingVidSection1->value}}"
                 allowfullscreen>
                 Your browser does not support the video.
             </iframe>
         </div>
+        <img class="d-block d-sm-none"
+            src="{{$landingBgSection1->thumbnail == null ?  asset('assets/images/jumbotron-min.png') : Storage::url($landingBgSection1->thumbnail) }}"
+            alt="Jumbotron" />
         @else
         <img src="{{$landingBgSection1->thumbnail == null ?  asset('assets/images/jumbotron-min.png') : Storage::url($landingBgSection1->thumbnail) }}"
             alt="Jumbotron" />
@@ -65,7 +50,6 @@
     <div class="interProgram__context">
         <div class="container-fluid">
             <div class="row row-cols-lg-4 row-cols-1 row-cols-md-3 justify-content-center">
-                <!-- forloop di BE --> 
                 @forelse ($courses as $course)
                 <div class="col">
                     <a href="{{ route('scourse.detail', $course->slug) }}">
@@ -80,6 +64,22 @@
                 </div>
                 @empty
                 <p class="text-center">Course Not Available Right Now</p>
+                @endforelse
+
+                @forelse ($shortCourses as $shortCourse)
+                <div class="col">
+                    <a href="#">
+                        <div class="card">
+                            <img src="{{Storage::url($shortCourse->courseDetail->thumbnail)}}" class="card-img-top"
+                                alt="{{$shortCourse->slug}}" />
+                            <div class="card-body">
+                                <h5 class="card-title">{{$shortCourse->name}}</h5>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                @empty
+                <p class="text-center">Short Course Not Available Right Now</p>
                 @endforelse
                 <!-- end for loop -->
             </div>
@@ -287,13 +287,8 @@
                     </div>
                     @endforeach
                 </div>
-
                 <!-- Add Pagination -->
                 <div class="swiper-pagination"></div>
-
-                <!-- Add Arrows -->
-                <div class="swiper-button-prev"></div>
-                <div class="swiper-button-next"></div>
             </div>
         </div>
         <div class="gundarGraduates__join">
@@ -317,12 +312,6 @@
     </div>
 </section>
 
-<!-- contac
-t gunadarma -->
+<!-- contact gunadarma -->
 @include('include.contact')
-</div>
-
-
-
-
 @endsection

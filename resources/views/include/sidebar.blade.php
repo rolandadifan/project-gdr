@@ -5,8 +5,11 @@
                 <div class="sidebar__closeBtn">
                     <button type="button" class="btn-close" aria-label="Close"></button>
                 </div>
-                <div class="sidebar__logo">
+                <div class="sidebar__logo d-none d-sm-block">
                     <img src="{{ asset('assets/images/logo-gundar.png') }}" alt="gunadarma" />
+                </div>
+                <div class="sidebar__logo d-block d-sm-none" style="font-size: 32px; color: #7E3485; font-weight: 500;">
+                    Menu
                 </div>
                 <div class="sidebar__menu">
                     <div class="accordion accordion-flush" id="accordionCourse">
@@ -177,7 +180,7 @@
                         @forelse ($menu_detail as $item)
                         <div class="accordion-item">
                             <a href="" class="accordion-header" id="alumni">
-                                <button class="accordion-button collapsed" type="button">
+                                <button class="accordion-button collapsed no-after" type="button">
                                     {{  $item->title }}
                                 </button>
                             </a>
@@ -198,7 +201,7 @@
                         @else
                         <div class="accordion-item">
                             <a href="{{ route('login') }}" class="accordion-header" id="alumni">
-                                <button class="accordion-button collapsed" type="button">
+                                <button class="accordion-button collapsed no-after" type="button">
                                     Login
                                 </button>
                             </a>

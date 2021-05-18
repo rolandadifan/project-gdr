@@ -17,23 +17,14 @@
 <!-- swiper js -->
 <script>
 const swiper = new Swiper('.swiper-container', {
-    // slidesPerView:3,
+    slidesPerView: 3,
     // spaceBetween: 30,
-    // loop: true,
-    effect: 'coverflow',
     grabCursor: true,
     centeredSlides: true,
     slidesPerView: 'auto',
     autoplay: {
         delay: 3000,
         disableOnInteraction: false,
-    },
-    coverflowEffect: {
-        rotate: 50,
-        stretch: 0,
-        depth: 50,
-        modifier: 1,
-        slideShadows: true,
     },
     pagination: {
         el: '.swiper-pagination',

@@ -13,10 +13,16 @@ html::-webkit-scrollbar {
   display: none;
 }
 
+@media (max-width: 992px) {
+  .d-none-sm {
+    display: none !important;
+  }
+}
+
 .jumbotron {
-  margin-top: -22px;
+  margin-top: 0;
   width: 100%;
-  min-height: 400px;
+  height: 18rem;
   position: relative;
 }
 
@@ -45,7 +51,7 @@ html::-webkit-scrollbar {
 
 .jumbotron .jumbotron__content {
   position: absolute;
-  top: 35%;
+  top: 30px;
   left: 10%;
   width: 80%;
   text-align: center;
@@ -55,7 +61,7 @@ html::-webkit-scrollbar {
 .jumbotron .jumbotron__content h2 {
   color: #FFF;
   font-size: 32px;
-  font-family: "Playfair Display",sans-serif;
+  font-family: "Playfair Display", sans-serif;
   text-transform: uppercase;
   letter-spacing: 1rem;
   margin-bottom: 20px;
@@ -96,7 +102,8 @@ html::-webkit-scrollbar {
   padding: 0;
 }
 
-.jumbotron__studentEnrollment .jumbotron__breadcrumb, .jumbotron__studentEnrollment .jumbotron__preview {
+.jumbotron__studentEnrollment .jumbotron__breadcrumb,
+.jumbotron__studentEnrollment .jumbotron__preview {
   padding: 40px 50px;
 }
 
@@ -145,7 +152,9 @@ html::-webkit-scrollbar {
   padding: 0;
 }
 
-.jumbotron__courses .jumbotron__breadcrumb, .jumbotron__courses .jumbotron__preview, .jumbotron__courses .jumbotron__button--primary {
+.jumbotron__courses .jumbotron__breadcrumb,
+.jumbotron__courses .jumbotron__preview,
+.jumbotron__courses .jumbotron__button--primary {
   padding: 40px 50px;
 }
 
@@ -220,10 +229,10 @@ html::-webkit-scrollbar {
 
 @media (max-width: 576px) {
   .jumbotron {
-    margin-top: -12px;
+    height: 24rem;
   }
   .jumbotron .jumbotron__content {
-    top: 20%;
+    top: 30px;
   }
   .jumbotron .jumbotron__content h2 {
     font-size: 28px;
@@ -247,7 +256,8 @@ html::-webkit-scrollbar {
   .jumbotron .jumbotron__content .jumbotron__button .secondary__button {
     padding: 9px;
   }
-  .jumbotron__studentEnrollment .jumbotron__image-preview, .jumbotron__courses .jumbotron__image-preview {
+  .jumbotron__studentEnrollment .jumbotron__image-preview,
+  .jumbotron__courses .jumbotron__image-preview {
     -webkit-clip-path: none;
             clip-path: none;
     height: 100%;
@@ -257,7 +267,7 @@ html::-webkit-scrollbar {
     height: 75px;
   }
   .jumbotron__profile .jumbotron__profileContent {
-    padding: .5rem !important;
+    padding: 0.5rem !important;
   }
 }
 
@@ -772,6 +782,10 @@ html::-webkit-scrollbar {
   font-size: 16px;
 }
 
+header .no-after:after {
+  background: none !important;
+}
+
 header .info-gundar {
   background: #885A89;
   padding: 22px 80px 22px 0;
@@ -782,8 +796,14 @@ header .info-gundar {
 
 header .info-gundar a {
   color: #FFF;
+<<<<<<< HEAD
   font-size: 19px;
   margin-right: 50px;
+=======
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  margin-right: 2rem;
+>>>>>>> 9d9d9be98246dc6d2c0dad53e72d25617e5223e1
   position: relative;
 }
 
@@ -793,8 +813,25 @@ header .info-gundar a::after {
   height: 15px;
   position: absolute;
   top: 2px;
-  margin-left: 8px;
+  margin-left: 3px;
   line-height: 0;
+}
+
+header .videoWrapper {
+  position: relative;
+  padding-bottom: 56.25%;
+  /* 16:9 */
+  padding-top: 25px;
+  height: 0;
+}
+
+header .videoWrapper iframe {
+  position: absolute;
+  top: -10rem;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -99;
 }
 
 header .nav-bar {
@@ -802,9 +839,9 @@ header .nav-bar {
 }
 
 header .nav-bar .nav-bar__menus {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  display: -webkit-box !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
   -webkit-box-pack: space-evenly;
       -ms-flex-pack: space-evenly;
           justify-content: space-evenly;
@@ -961,7 +998,6 @@ header .sidebar .sidebar__left .sidebar__menu .accordion-item .accordion-body {
 
 header .sidebar .sidebar__left .sidebar__menu .accordion-item .accordion-button {
   border: none;
-  font-weight: 600;
   color: #7E3485;
 }
 
@@ -1035,7 +1071,7 @@ header .sidebar .sidebar__right {
 
 @media (max-width: 992px) {
   header .info-gundar {
-    padding: 20px 10px;
+    padding: 5px;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -1056,7 +1092,6 @@ header .sidebar .sidebar__right {
   }
   header .info-gundar a::after {
     top: 0;
-    margin-left: 8px;
   }
   header .nav-bar .nav-bar__menus {
     padding: 0;
@@ -1145,6 +1180,9 @@ header .sidebar .sidebar__right {
 }
 
 @media (max-width: 576px) {
+  header .info-gundar a {
+    margin-right: 8.7vw;
+  }
   header .nav-bar {
     padding: 10px;
   }
