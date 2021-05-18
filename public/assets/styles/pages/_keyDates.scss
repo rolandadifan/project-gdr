@@ -1,0 +1,16 @@
+#keyDates{
+    .keyDates__header{
+        @include sectionHeader();
+        text-align: center;
+    }
+    .keyDates__contents{
+        text-align: justify;
+
+        .keyDates__content__header{
+            h5{
+                font-size: 1.2rem;
+                font-weight: bold;
+            }
+        }
+    }
+}

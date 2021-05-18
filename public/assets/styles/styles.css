@@ -774,7 +774,7 @@ html::-webkit-scrollbar {
 
 header .info-gundar {
   background: #885A89;
-  padding: 5px 80px 5px 0;
+  padding: 22px 80px 22px 0;
   text-align: right;
   font-weight: 500;
   width: 100%;
@@ -782,17 +782,13 @@ header .info-gundar {
 
 header .info-gundar a {
   color: #FFF;
-  font-size: 12px;
-  letter-spacing: 1px;
+  font-size: 19px;
   margin-right: 50px;
   position: relative;
 }
 
 header .info-gundar a::after {
-  content: "";
-  background: url("./../images/icons/foreign.png");
-  background-repeat: no-repeat;
-  background-size: contain;
+  content: url("./../images/icons/foreign.png");
   width: 15px;
   height: 15px;
   position: absolute;
@@ -824,8 +820,8 @@ header .nav-bar .nav-bar__menus .nav-bar__menu {
 }
 
 header .nav-bar .nav-bar__menus .nav-bar__menu:nth-child(1) {
-  -ms-flex-preferred-size: 35%;
-      flex-basis: 35%;
+  -ms-flex-preferred-size: 30%;
+      flex-basis: 30%;
   font-size: 20px;
   color: #7E3485;
   cursor: pointer;
@@ -895,8 +891,6 @@ header .nav-bar .nav-bar__menus .nav-bar__menu:nth-child(4)::before {
   width: 20px;
   height: 28px;
   margin-right: 20px;
-  width: 40px;
-  background-repeat: no-repeat;
 }
 
 header .nav-bar .nav-bar__menus .nav-bar__menu p {
@@ -957,9 +951,7 @@ header .sidebar .sidebar__left .sidebar__menu .accordion-item a {
   text-decoration: none;
 }
 
-header .sidebar .sidebar__left .sidebar__menu .accordion-item:nth-child(2) .accordion-button:after,
-header .sidebar .sidebar__left .sidebar__menu .accordion-item:nth-child(5) .accordion-button:after,
-header .sidebar .sidebar__left .sidebar__menu .accordion-item:nth-child(6) .accordion-button:after {
+header .sidebar .sidebar__left .sidebar__menu .accordion-item:nth-child(2) .accordion-button:after, header .sidebar .sidebar__left .sidebar__menu .accordion-item:nth-child(5) .accordion-button:after, header .sidebar .sidebar__left .sidebar__menu .accordion-item:nth-child(6) .accordion-button:after {
   background: none;
 }
 
@@ -997,7 +989,7 @@ header .sidebar .sidebar__left .sidebar__menu .accordion-item .accordion__child-
 }
 
 header .sidebar .sidebar__left .sidebar__menu .accordion-item .accordion__child-menu .accordion-button.collapsed:hover, header .sidebar .sidebar__left .sidebar__menu .accordion-item .accordion__child-menu .accordion-button.collapsed:active {
-  border-left: 5px solid #ef7b39;
+  border-left: 5px solid #EF7B39;
   border-radius: 0;
 }
 
@@ -1029,9 +1021,7 @@ header .sidebar .sidebar__left .sidebar__menu .accordion-item .accordion__child-
   text-decoration: none;
 }
 
-header .sidebar .sidebar__left .sidebar__menu .accordion-item .accordion__child-menu .accordion-item:nth-child(3) .accordion-button:after,
-header .sidebar .sidebar__left .sidebar__menu .accordion-item .accordion__child-menu .accordion-item:nth-child(4) .accordion-button:after,
-header .sidebar .sidebar__left .sidebar__menu .accordion-item .accordion__child-menu .accordion-item:nth-child(5) .accordion-button:after {
+header .sidebar .sidebar__left .sidebar__menu .accordion-item .accordion__child-menu .accordion-item:nth-child(3) .accordion-button:after, header .sidebar .sidebar__left .sidebar__menu .accordion-item .accordion__child-menu .accordion-item:nth-child(4) .accordion-button:after, header .sidebar .sidebar__left .sidebar__menu .accordion-item .accordion__child-menu .accordion-item:nth-child(5) .accordion-button:after {
   background: none;
 }
 
@@ -1137,7 +1127,7 @@ header .sidebar .sidebar__right {
   }
   header .sidebar .sidebar__left .sidebar__menu .accordion__child-menu .accordion-button:not(.collapsed) {
     background: transparent;
-    border-left: 5px solid #ef7b39;
+    border-left: 5px solid #EF7B39;
     border-radius: 0;
   }
   header .sidebar .sidebar__left .sidebar__menu .accordion__child-menu .accordion-button {
@@ -1147,7 +1137,7 @@ header .sidebar .sidebar__right {
     font-size: 12px;
   }
   header .sidebar .sidebar__left .sidebar__menu .accordion__child-menu ul li:hover, header .sidebar .sidebar__left .sidebar__menu .accordion__child-menu ul li:active {
-    background: #ef7b39;
+    background: #EF7B39;
   }
   header .sidebar .sidebar__left .sidebar__menu .accordion__child-menu ul li:hover a, header .sidebar .sidebar__left .sidebar__menu .accordion__child-menu ul li:active a {
     color: #fff;
@@ -2083,54 +2073,54 @@ section .gundarGraduates__contents .gundarGraduates__slider::after {
   background: #885A89;
 }
 
-section .gundarGraduates__contents .gundarGraduates__slider .swiper-container {
+section .gundarGraduates__contents .gundarGraduates__slider .swiper-container.swiperGraduates {
   width: 100%;
   height: 100%;
   padding: 50px 0;
 }
 
-section .gundarGraduates__contents .gundarGraduates__slider .swiper-container .swiper-slide {
+section .gundarGraduates__contents .gundarGraduates__slider .swiper-container.swiperGraduates .swiper-slide {
   background-position: center;
   background-size: cover;
   width: 350px;
   height: 100%;
 }
 
-section .gundarGraduates__contents .gundarGraduates__slider .swiper-container .swiper-slide .card {
+section .gundarGraduates__contents .gundarGraduates__slider .swiper-container.swiperGraduates .swiper-slide .card {
   padding: 40px 0;
   text-align: center;
   border-radius: 12px;
   border: 2px solid rgba(0, 0, 0, 0.2);
 }
 
-section .gundarGraduates__contents .gundarGraduates__slider .swiper-container .swiper-slide .card .card__boxImg {
+section .gundarGraduates__contents .gundarGraduates__slider .swiper-container.swiperGraduates .swiper-slide .card .card__boxImg {
   width: 120px;
   height: 120px;
   border-radius: 50%;
   margin: 20px auto;
 }
 
-section .gundarGraduates__contents .gundarGraduates__slider .swiper-container .swiper-slide .card .card__boxImg img {
+section .gundarGraduates__contents .gundarGraduates__slider .swiper-container.swiperGraduates .swiper-slide .card .card__boxImg img {
   width: 100%;
   height: 100%;
   border-radius: 50%;
 }
 
-section .gundarGraduates__contents .gundarGraduates__slider .swiper-container .swiper-slide .card .card-title {
+section .gundarGraduates__contents .gundarGraduates__slider .swiper-container.swiperGraduates .swiper-slide .card .card-title {
   color: #071c4d;
   font-size: 20px;
 }
 
-section .gundarGraduates__contents .gundarGraduates__slider .swiper-container .swiper-slide .card .card-text {
+section .gundarGraduates__contents .gundarGraduates__slider .swiper-container.swiperGraduates .swiper-slide .card .card-text {
   font-size: 16px;
   font-weight: 300;
 }
 
-section .gundarGraduates__contents .gundarGraduates__slider .swiper-container .swiper-slide .card .card__course {
+section .gundarGraduates__contents .gundarGraduates__slider .swiper-container.swiperGraduates .swiper-slide .card .card__course {
   margin: 40px 0 0 0;
 }
 
-section .gundarGraduates__contents .gundarGraduates__slider .swiper-container .swiper-slide .swiper-slide-shadow-left, section .gundarGraduates__contents .gundarGraduates__slider .swiper-container .swiper-slide .swiper-slide-shadow-right {
+section .gundarGraduates__contents .gundarGraduates__slider .swiper-container.swiperGraduates .swiper-slide .swiper-slide-shadow-left, section .gundarGraduates__contents .gundarGraduates__slider .swiper-container.swiperGraduates .swiper-slide .swiper-slide-shadow-right {
   background-image: none;
 }
 
@@ -2864,7 +2854,7 @@ section .gundarGraduates__join .join__container .container .primary__button {
 }
 
 .login .row .login__gambar .login__gambarBox .login__gambarBox--content {
-  padding: 2rem 3rem 2rem 0;
+  padding: 60px 0;
 }
 
 .login .row .login__gambar .login__gambarBox .login__gambarBox--content .login__gambarBox--contentIllustration {
@@ -2884,18 +2874,18 @@ section .gundarGraduates__join .join__container .container .primary__button {
 .login .row .login__form .login__formHeader h5 {
   font-weight: 700;
   font-size: 30px;
-  font-family: "Merriweather", sans-serif;
+  font-family: 'Merriweather',sans-serif;
   color: #885A89;
 }
 
 .login .row .login__form .login__formHeader p {
-  color: #3b3b3b;
+  color: #3B3B3B;
   font-weight: normal;
   font-size: 16px;
 }
 
 .login .row .login__form .login__formHeader a {
-  color: #ef7b39;
+  color: #EF7B39;
 }
 
 .login .row .login__form input {
@@ -2916,7 +2906,7 @@ section .gundarGraduates__join .join__container .container .primary__button {
 .login .row .login__form label {
   font-size: 14px;
   font-weight: 300;
-  color: #6a6a6a;
+  color: #6A6A6A;
 }
 
 .login .row .login__form .btn__dropdown {
@@ -2965,7 +2955,7 @@ section .gundarGraduates__join .join__container .container .primary__button {
     font-size: 14px;
   }
   .login .row .login__form .login__formHeader a {
-    color: #ef7b39;
+    color: #EF7B39;
   }
   .login .row .login__form .btn__dropdown {
     border: none;
@@ -3003,7 +2993,7 @@ section .gundarGraduates__join .join__container .container .primary__button {
 }
 
 .registrasi .row .registrasi__gambar .registrasi__gambarBox .registrasi__gambarBox--content {
-  padding: 2rem 0 2rem 3rem;
+  padding: 60px 0;
 }
 
 .registrasi .row .registrasi__gambar .registrasi__gambarBox .registrasi__gambarBox--content .registrasi__gambarBox--contentIllustration {
@@ -3023,18 +3013,18 @@ section .gundarGraduates__join .join__container .container .primary__button {
 .registrasi .row .registrasi__form .registrasi__formHeader h5 {
   font-weight: 700;
   font-size: 30px;
-  font-family: "Merriweather", sans-serif;
+  font-family: 'Merriweather',sans-serif;
   color: #885A89;
 }
 
 .registrasi .row .registrasi__form .registrasi__formHeader p {
-  color: #3b3b3b;
+  color: #3B3B3B;
   font-weight: normal;
   font-size: 16px;
 }
 
 .registrasi .row .registrasi__form .registrasi__formHeader a {
-  color: #ef7b39;
+  color: #EF7B39;
 }
 
 .registrasi .row .registrasi__form input {
@@ -3055,7 +3045,7 @@ section .gundarGraduates__join .join__container .container .primary__button {
 .registrasi .row .registrasi__form label {
   font-size: 14px;
   font-weight: 300;
-  color: #6a6a6a;
+  color: #6A6A6A;
 }
 
 .registrasi .row .registrasi__form .btn__dropdown {
@@ -3114,7 +3104,7 @@ section .gundarGraduates__join .join__container .container .primary__button {
     font-size: 14px;
   }
   .registrasi .row .registrasi__form .registrasi__formHeader a {
-    color: #ef7b39;
+    color: #EF7B39;
   }
   .registrasi .row .registrasi__form .btn__dropdown {
     border: none;
@@ -3782,7 +3772,7 @@ section .gundarGraduates__join .join__container .container .primary__button {
   font-weight: normal;
 }
 
-#alumni .alumni__carouselContext .swiper-container {
+#alumni .alumni__carouselContext .swiper-container.swiperAlumni {
   width: 100%;
   height: 100%;
 }
@@ -3903,47 +3893,47 @@ section .gundarGraduates__join .join__container .container .primary__button {
   }
 }
 
-.alumni__testimonial .alumni__testimonialSlider .swiper-container-2 {
+.alumni__testimonial .alumni__testimonialSlider .swiper-container.swiperTestimonial {
   width: 100%;
   height: 100%;
   position: relative;
 }
 
-.alumni__testimonial .alumni__testimonialSlider .swiper-container-2 .swiper-slide {
+.alumni__testimonial .alumni__testimonialSlider .swiper-container.swiperTestimonial .swiper-slide {
   background-position: center;
   background-size: cover;
   padding: 10px 0;
 }
 
-.alumni__testimonial .alumni__testimonialSlider .swiper-container-2 .swiper-slide .card {
+.alumni__testimonial .alumni__testimonialSlider .swiper-container.swiperTestimonial .swiper-slide .card {
   text-align: center;
   border-radius: 12px;
   border: 2px solid rgba(0, 0, 0, 0.2);
 }
 
-.alumni__testimonial .alumni__testimonialSlider .swiper-container-2 .swiper-slide .card .card__boxImg {
+.alumni__testimonial .alumni__testimonialSlider .swiper-container.swiperTestimonial .swiper-slide .card .card__boxImg {
   width: 120px;
   height: 120px;
   margin: 20px auto;
 }
 
-.alumni__testimonial .alumni__testimonialSlider .swiper-container-2 .swiper-slide .card .card__boxImg img {
+.alumni__testimonial .alumni__testimonialSlider .swiper-container.swiperTestimonial .swiper-slide .card .card__boxImg img {
   width: 100%;
   height: 100%;
   border-radius: 50%;
 }
 
-.alumni__testimonial .alumni__testimonialSlider .swiper-container-2 .swiper-slide .card .card-title {
+.alumni__testimonial .alumni__testimonialSlider .swiper-container.swiperTestimonial .swiper-slide .card .card-title {
   color: #071c4d;
   font-size: 20px;
 }
 
-.alumni__testimonial .alumni__testimonialSlider .swiper-container-2 .swiper-slide .card .card-text {
+.alumni__testimonial .alumni__testimonialSlider .swiper-container.swiperTestimonial .swiper-slide .card .card-text {
   font-size: 16px;
   font-weight: 300;
 }
 
-.alumni__testimonial .alumni__testimonialSlider .swiper-container-2 .swiper-slide .card .card__course {
+.alumni__testimonial .alumni__testimonialSlider .swiper-container.swiperTestimonial .swiper-slide .card .card__course {
   margin: 40px 0 0 0;
 }
 
@@ -4056,7 +4046,7 @@ section .gundarGraduates__join .join__container .container .primary__button {
 }
 
 @media (max-width: 992px) {
-  .alumni__testimonial .alumni__testimonialSlider .swiper-container-2 .swiper-slide {
+  .alumni__testimonial .alumni__testimonialSlider .swiper-container.swiperTestimonial .swiper-slide {
     padding: 10px 1rem;
   }
   .alumni__testimonial .alumni__testimonialSlider .swiper-button-prev, .alumni__testimonial .alumni__testimonialSlider .swiper-button-next {
@@ -4473,14 +4463,14 @@ section .gundarGraduates__join .join__container .container .primary__button {
      object-fit: contain;
 }
 
-#news .news__body .swiper-container {
+#news .news__body .swiper-container.swiperNews {
   overflow: hidden;
   width: 100%;
   height: 100%;
   margin-bottom: 40px;
 }
 
-#news .news__body .swiper-container .swiper-wrapper .swiper-slide {
+#news .news__body .swiper-container.swiperNews .swiper-wrapper .swiper-slide {
   padding: 32px 16px;
   border: 1px solid #885A89;
   border-radius: 12px;
@@ -4501,17 +4491,17 @@ section .gundarGraduates__join .join__container .container .primary__button {
   gap: 10px;
 }
 
-#news .news__body .swiper-container .swiper-wrapper .swiper-slide .contentNews {
+#news .news__body .swiper-container.swiperNews .swiper-wrapper .swiper-slide .contentNews {
   text-align: justify;
 }
 
-#news .news__body .swiper-container .swiper-wrapper .swiper-slide .contentNews .newsContent__boxImage {
+#news .news__body .swiper-container.swiperNews .swiper-wrapper .swiper-slide .contentNews .newsContent__boxImage {
   width: 100%;
   height: 100vh;
   margin-bottom: 16px;
 }
 
-#news .news__body .swiper-container .swiper-wrapper .swiper-slide .contentNews .newsContent__boxImage img {
+#news .news__body .swiper-container.swiperNews .swiper-wrapper .swiper-slide .contentNews .newsContent__boxImage img {
   border-radius: 12px;
   width: 100%;
   height: 100%;
@@ -4620,5 +4610,220 @@ section .gundarGraduates__join .join__container .container .primary__button {
   padding: 6px;
   font-size: 16px;
   text-align: justify;
+}
+
+#location .location__header {
+  margin-top: 20px;
+  text-align: center;
+}
+
+#location .location__header h2 {
+  color: #D1B590;
+  font-size: 24px;
+  font-weight: bold;
+  font-family: 'Playfair Display', sans-serif;
+}
+
+#location .location__header h2::after {
+  content: "";
+  display: block;
+  width: 16%;
+  margin: 20px auto;
+  border-bottom: 2px solid #E3E3E3;
+}
+
+@media (max-width: 576px) {
+  #location .location__header h2 {
+    font-size: 20px;
+  }
+}
+
+#location .location__header h4 {
+  font-size: 32px;
+  margin-bottom: 15px;
+  font-weight: bold;
+  color: #885A89;
+  text-transform: uppercase;
+}
+
+@media (max-width: 576px) {
+  #location .location__header h4 {
+    font-size: 24px;
+  }
+}
+
+#location .location__header .text__header {
+  font-size: 0.75rem;
+}
+
+#location .location__mainContext .location__link-contact {
+  background: #F4F4F4;
+  border-radius: 15px;
+}
+
+#location .location__mainContext .location__link-contact .image__box {
+  width: 80%;
+  height: 100%;
+  margin-bottom: 1.5rem;
+}
+
+#location .location__mainContext .location__link-contact .image__box img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center center;
+     object-position: center center;
+}
+
+#location .location__mainContext .location__link-contact .link h5 {
+  color: #885A89;
+  font-size: 2rem;
+}
+
+#location .location__mainContext .location__link-contact .link .link__content ul {
+  list-style-type: square;
+}
+
+#location .location__mainContext .location__link-contact .link .link__content ul li {
+  margin: 8px 0;
+}
+
+#location .location__mainContext .location__link-contact .link .link__content ul li::marker {
+  color: #8AA7A2;
+}
+
+#location .location__mainContext .location__link-contact .link .link__content ul li a {
+  text-decoration: none;
+  position: relative;
+  font-size: 1.2rem;
+  color: #3b3b3b;
+}
+
+#location .location__mainContext .location__link-contact .link .link__content ul li a::after {
+  content: url("./../images/icons/foreign.png");
+  width: 10px;
+  height: 10px;
+  margin-left: 3px;
+  position: absolute;
+  -webkit-filter: invert(100);
+          filter: invert(100);
+}
+
+#location .location__mainContext .location__link-contact .email__gundar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+}
+
+#location .location__mainContext .location__link-contact .email__gundar .email__boxImg {
+  width: 50px;
+  height: 50px;
+  margin-right: 25px;
+}
+
+#location .location__mainContext .location__link-contact .email__gundar .email__boxImg img {
+  width: inherit;
+  height: inherit;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+#location .location__mainContext .location__link-contact .email__gundar .email__content h5 {
+  color: #885A89;
+  font-weight: bold;
+}
+
+#location .location__mainContext .location__link-contact .email__gundar .email__content p {
+  font-weight: 600;
+}
+
+#location .location__mainContext .location__link-contact .telephone__gundar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+}
+
+#location .location__mainContext .location__link-contact .telephone__gundar .telephone__boxImg {
+  width: 50px;
+  height: 50px;
+  margin-right: 25px;
+}
+
+#location .location__mainContext .location__link-contact .telephone__gundar .telephone__boxImg img {
+  width: inherit;
+  height: inherit;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+#location .location__mainContext .location__link-contact .telephone__gundar .telephone__content h5 {
+  color: #885A89;
+  font-weight: bold;
+}
+
+#location .location__mainContext .location__link-contact .telephone__gundar .telephone__content p {
+  font-weight: 600;
+}
+
+@media (max-width: 576px) {
+  #location .text__header {
+    font-size: 1.2rem;
+  }
+}
+
+#keyDates .keyDates__header {
+  margin-top: 20px;
+  text-align: center;
+}
+
+#keyDates .keyDates__header h2 {
+  color: #D1B590;
+  font-size: 24px;
+  font-weight: bold;
+  font-family: 'Playfair Display', sans-serif;
+}
+
+#keyDates .keyDates__header h2::after {
+  content: "";
+  display: block;
+  width: 16%;
+  margin: 20px auto;
+  border-bottom: 2px solid #E3E3E3;
+}
+
+@media (max-width: 576px) {
+  #keyDates .keyDates__header h2 {
+    font-size: 20px;
+  }
+}
+
+#keyDates .keyDates__header h4 {
+  font-size: 32px;
+  margin-bottom: 15px;
+  font-weight: bold;
+  color: #885A89;
+  text-transform: uppercase;
+}
+
+@media (max-width: 576px) {
+  #keyDates .keyDates__header h4 {
+    font-size: 24px;
+  }
+}
+
+#keyDates .keyDates__contents {
+  text-align: justify;
+}
+
+#keyDates .keyDates__contents .keyDates__content__header h5 {
+  font-size: 1.2rem;
+  font-weight: bold;
 }
 /*# sourceMappingURL=styles.css.map */
