@@ -6,7 +6,7 @@
     <div class="jumbotron__background">
         @if(isset($landingVidSection1->value))
         <div class="videoWrapper d-none d-sm-block">
-            <iframe frameborder="0" style="width: 100vw;height: -webkit-fill-available;"
+            <iframe frameborder="0" style="width: 100%;height: 100%"
                 src="https://www.youtube.com/embed/{{$landingVidSection1->value}}?autoplay=1&mute=1&loop=1&rel=0&controls=0&showinfo=0&modestbranding=1&autohide=1&showinfo=0&playlist={{$landingVidSection1->value}}"
                 allowfullscreen>
                 Your browser does not support the video.
