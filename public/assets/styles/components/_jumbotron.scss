@@ -213,10 +213,10 @@
 
 @media (max-width: 576px) {
     .jumbotron {
-        height: 24rem;
+        margin-top: -12px;
 
         .jumbotron__content {
-            top: 30px;
+            top: 20%;
 
             h2 {
                 font-size: 28px;

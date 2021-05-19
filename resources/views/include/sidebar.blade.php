@@ -13,7 +13,6 @@
                 </div>
                 <div class="sidebar__menu">
                     <div class="accordion accordion-flush" id="accordionCourse">
-
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="menuCourse">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -75,7 +74,7 @@
                                             </div>
 
                                             <div class="accordion-item">
-                                                <a href="#" class="accordion-header" id="keyDates">
+                                                <a href="{{ route('key.index') }}" class="accordion-header" id="keyDates">
                                                     <button class="accordion-button collapsed" type="button">
                                                         Key Dates
                                                     </button>

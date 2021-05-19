@@ -67,17 +67,18 @@ class CourseController extends Controller
 
     public function postGraduateIndex()
     {
-        $priceMaster = [];
-        $courseMaster = Course::with('courseDetail.prices')->where('status_id', 1)->whereHas('courseDetail', function (Builder $query) {
-            $query->where('degree', 'master');
-        })->get();
-        foreach ($courseMaster->courseDetail->prices as $priceArr) {
-            $priceMaster[$priceArr->name] = $priceArr->value;
-        };
-        return view('pages.course.postgraduate')->with([
-            'course' => $courseMaster,
-            'price' => $priceMaster
-        ]);
+        // $priceMaster = [];
+        // $courseMaster = Course::with('courseDetail.prices')->where('status_id', 1)->whereHas('courseDetail', function (Builder $query) {
+        //     $query->where('degree', 'master');
+        // })->get();
+        // foreach ($courseMaster->courseDetail->prices as $priceArr) {
+        //     $priceMaster[$priceArr->name] = $priceArr->value;
+        // };
+        // return view('pages.course.postgraduate')->with([
+        //     'course' => $courseMaster,
+        //     'price' => $priceMaster
+        // ]);
+        return view('pages.course.postgraduate');
     }
 
     public function underGraduateIndex()

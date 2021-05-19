@@ -5,7 +5,7 @@
 @section('s-title-jumbotron', 'Premium. Proven. Loved. Study at Gunadarma')
 @section('text-jumbotron', 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Culpa corrupti voluptas vel quisquam illum voluptate quod impedit ab nisi, esse mollitia ad aliquid delectus ea sit autem officiis. Reprehenderit, tenetur!')
 @include('icon')
-   <main>
+  <main>
         <div class="container-fluid">
             <div id="alumni" class="p-2">
                 <div class="alumni__header">
@@ -21,7 +21,7 @@
                 </div>
                 <div class="alumni__carouselContext mb-5">
                     <div class="container">
-                        <div class="swiper-container">
+                        <div class="swiper-container swiperAlumni">
                             <div class="swiper-wrapper">
                                 <div class="swiper-slide">
                                     <div class="card">
@@ -108,18 +108,18 @@
             </div>
         </div>
         
-        <div class="alumni__thumbnail">
+        <div class="thumbnailGundar">
             <div class="row row-cols-1 row-cols-md-2 gy-3 align-items-center">
-                <div class="col alumni__thumbnail-left">
-                    <div class="alumni__thumbnailWord">
-                        <h5>Ready for a simple future? <br> <span>Start a journey</span></h5>
+                <div class="col thumbnailGundar-left">
+                    <div class="thumbnailGundarWord">
+                        <h5>Ready for a simple future? <span>Start a journey</span></h5>
                     </div>
-                    <div class="alumni__thumbnailBtn">
+                    <div class="thumbnailGundarBtn">
                         <a href="#" class="btn">Start a Journey</a>
                     </div>
                 </div>
-                <div class="col alumni__thumbnail-right">
-                    <div class="alumni__imgBx">
+                <div class="col thumbnailGundar-right">
+                    <div class="thumbnailGundar__imgBx">
                         <img src="./../../assets/images/thumbnail-alumni-logo.png" alt="alumni logo">
                     </div>
                 </div>
@@ -135,7 +135,7 @@
         
             <div class="alumni__testimonialContents">
                 <div class="alumni__testimonialSlider">
-                    <div class="swiper-container-2">
+                    <div class="swiper-container swiperTestimonial">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
                         <div class="card">
@@ -197,6 +197,7 @@
             </div>
         </div>
     </main>
+
 
 @endsection
 @push('addon-script')

@@ -1,18 +1,18 @@
-.registrasi {
-    .row {
-        .registrasi__gambar {
-            .registrasi__gambarBox {
+.registrasi{
+    .row{
+        .registrasi__gambar{
+            .registrasi__gambarBox{
                 background: $Color6;
                 border-radius: 12px;
 
-                .registrasi__gambarBox--content {
-                    padding: 2rem 0 2rem 3rem;
+                .registrasi__gambarBox--content{
+                    padding: 60px 0;
 
-                    .registrasi__gambarBox--contentIllustration {
+                    .registrasi__gambarBox--contentIllustration{
                         width: 100%;
                         padding: 0 1rem;
 
-                        img {
+                        img{
                             width: 100%;
                             height: 100%;
                         }
@@ -21,88 +21,85 @@
             }
         }
 
-        .registrasi__form {
-            .registrasi__formHeader {
+        .registrasi__form{
+            .registrasi__formHeader{
                 margin-bottom: 50px;
-                h5 {
+                h5{
                     font-weight: 700;
-                    font-size: 30px;
-                    font-family: "Merriweather", sans-serif;
+                    font-size:30px;
+                    font-family: 'Merriweather',sans-serif;
                     color: $primaryColor;
                 }
 
-                p {
-                    color: #3b3b3b;
+                p{
+                    color: #3B3B3B;
                     font-weight: normal;
                     font-size: 16px;
                 }
-                a {
-                    color: #ef7b39;
+                a{
+                    color: #EF7B39;
                 }
             }
 
-            input {
+            input{
                 border: none;
                 border-bottom: 1px solid #f4f4f4;
 
-                &:disabled {
+                &:disabled{
                     background: transparent;
                 }
 
-                &:hover,
-                &:focus {
+                &:hover,&:focus{
                     outline: none;
                     box-shadow: none;
                 }
             }
 
-            label {
+            label{
                 font-size: 14px;
                 font-weight: 300;
-                color: #6a6a6a;
+                color: #6A6A6A;
             }
 
-            .btn__dropdown {
+            .btn__dropdown{
                 border: none;
                 border-bottom: 1px solid #f4f4f4;
 
-                &:hover,
-                &:focus {
+                &:hover,&:focus{
                     background: transparent;
                     outline: none;
                     box-shadow: none;
                 }
             }
 
-            .group__form {
-                .form-check-input {
-                    &:checked {
+            .group__form{
+                .form-check-input{
+                    &:checked{
                         background-color: $Color14;
                     }
                 }
-                label {
+                label{
                     font-weight: 500;
                     font-size: 0.85rem;
                 }
-                .forgot__password {
+                .forgot__password{
                     font-size: 0.85rem;
                     color: $Color4;
                 }
             }
 
-            .input-group-text {
+            .input-group-text{
                 border: none;
-                border-bottom: 1px solid #f4f4f4;
+                border-bottom:1px solid #f4f4f4;
                 background: transparent;
 
-                &:hover,
-                &:focus {
+                &:hover,&:focus{
                     outline: none;
                     box-shadow: none;
                 }
             }
 
-            .btn {
+            .btn{
                 border-top-left-radius: 0;
                 border-bottom-left-radius: 0;
                 font-size: 12px;
@@ -112,68 +109,67 @@
     }
 }
 
-@media (max-width: 576px) {
-    .registrasi {
-        .row {
-            .registrasi__form {
-                .registrasi__formHeader {
+@media (max-width:576px){
+    .registrasi{
+        .row{
+    
+            .registrasi__form{
+                .registrasi__formHeader{
                     margin-bottom: 20px;
-                    h5 {
-                        font-size: 24px;
+                    h5{
+                        font-size:24px;
                     }
-
-                    p {
+    
+                    p{
                         font-size: 14px;
                     }
-                    a {
-                        color: #ef7b39;
+                    a{
+                        color: #EF7B39;
                     }
                 }
-
-                .btn__dropdown {
+    
+                .btn__dropdown{
                     border: none;
                     border-bottom: 1px solid #f4f4f4;
-
-                    &:hover,
-                    &:focus {
+    
+                    &:hover,&:focus{
                         background: transparent;
                         outline: none;
                         box-shadow: none;
                     }
                 }
-
-                .group__form {
-                    label {
+    
+                .group__form{
+                    label{
                         font-weight: 500;
                         font-size: 0.7rem;
                     }
-                    .forgot__password {
+                    .forgot__password{
                         font-size: 0.7rem;
                         color: $Color4;
                     }
                 }
-
-                .input-group-text {
+    
+                .input-group-text{
                     border: none;
-                    border-bottom: 1px solid #f4f4f4;
+                    border-bottom:1px solid #f4f4f4;
                     background: transparent;
-
-                    &:hover,
-                    &:focus {
+    
+                    &:hover,&:focus{
                         outline: none;
                         box-shadow: none;
                     }
                 }
-
-                .btn {
+    
+                .btn{
                     border-top-left-radius: 0;
                     border-bottom-left-radius: 0;
                     font-size: 12px;
                 }
             }
 
-            .registrasi__gambar {
-                order: -1 !important;
+            .registrasi__gambar{
+                order: -1!important;
             }
         }
     }
