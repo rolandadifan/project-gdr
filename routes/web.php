@@ -203,6 +203,7 @@ Route::get('/short-course', [App\Http\Controllers\CourseController::class, 'inde
 Route::get('/post-graduate-course', [App\Http\Controllers\CourseController::class, 'postGraduateIndex'])->name('postgraduate.index');
 Route::get('/under-graduate-course', [App\Http\Controllers\CourseController::class, 'underGraduateIndex'])->name('undergraduate.index');
 Route::get('/short-course/{id}', [App\Http\Controllers\CourseController::class, 'detail'])->name('scourse.detail');
+Route::get('/post-graduate-course/filter', [App\Http\Controllers\CourseController::class, 'searchPost'])->name('course.filter-post');
 
 //scholarship
 Route::get('/scholarship', [\App\Http\Controllers\ScholarshipController::class, 'index'])->name('scholarship.index');

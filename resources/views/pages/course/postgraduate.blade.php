@@ -14,7 +14,7 @@
                 </div>
                 <div class="postgraduateCourse__context">
                     <div class="container">
-                        <nav>
+                        {{-- <nav>
                             <div class="nav nav-tabs" id="nav-tab" role="tablist">
                                 <button class="nav-link active" id="master-tab" data-bs-toggle="tab"
                                     data-bs-target="#master" type="button" role="tab" aria-controls="master"
@@ -27,7 +27,7 @@
                                     Doctor
                                 </button>
                             </div>
-                        </nav>
+                        </nav> --}}
                         <div class="tab-content" id="nav-tabContent">
                             <div class="tab-pane fade show active" id="master" role="tabpanel"
                                 aria-labelledby="master-tab">
@@ -151,29 +151,37 @@
                                 </div>
                                 <!-- form search undergraduate and postgraduate -->
                                 <div class="formSearch">
-                                    <form
+                                    <form  action="{{ route('course.filter-post') }}" method="GET" 
                                         class="row row-cols-lg-auto g-3 align-items-center justify-content-evenly py-5">
                                         <div class="col-12">
                                             <div class="row row-cols-lg-auto g-3 align-items-center">
                                                 <div class="col-12">
-                                                    <select class="form-select form-select-sm"
+                                                    <select name="name" class="form-select form-select-sm"
                                                         aria-label=".form-select-sm example">
-                                                        <option selected>Open this select menu</option>
-                                                        <option value="1">One</option>
-                                                        <option value="2">Two</option>
-                                                        <option value="3">Three</option>
+                                                        <option value="null">Course</option>
+                                                        @foreach ($d_name as $cn)
+                                                        <option value="{{ $cn->name }}">{{ $cn->name }}</option>
+                                                        @endforeach
                                                     </select>
                                                 </div>
                                                 <div class="col-12">
-                                                    <select class="form-select form-select-sm"
+                                                    <select name="degree" class="form-select form-select-sm"
                                                         aria-label=".form-select-sm example">
-                                                        <option selected>Open this select menu</option>
-                                                        <option value="1">One</option>
-                                                        <option value="2">Two</option>
-                                                        <option value="3">Three</option>
+                                                        <option value="null">Degree</option>
+                                                        <option value="{{ 'bachelor' }}">Bachelor</option>
+                                                        <option value="{{ 'diploma' }}">Diploma</option>
                                                     </select>
                                                 </div>
                                                 <div class="col-12">
+                                                    <select name="campus" class="form-select form-select-sm"
+                                                        aria-label=".form-select-sm example">
+                                                        <option value="null">Campus</option>
+                                                        @foreach ($d_campus as $c)
+                                                        <option value="{{ $c->campus }}">{{ ucfirst($c->campus) }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                                {{-- <div class="col-12">
                                                     <select class="form-select form-select-sm"
                                                         aria-label=".form-select-sm example">
                                                         <option selected>Open this select menu</option>
@@ -181,16 +189,7 @@
                                                         <option value="2">Two</option>
                                                         <option value="3">Three</option>
                                                     </select>
-                                                </div>
-                                                <div class="col-12">
-                                                    <select class="form-select form-select-sm"
-                                                        aria-label=".form-select-sm example">
-                                                        <option selected>Open this select menu</option>
-                                                        <option value="1">One</option>
-                                                        <option value="2">Two</option>
-                                                        <option value="3">Three</option>
-                                                    </select>
-                                                </div>
+                                                </div> --}}
                                             </div>
                                         </div>
 
@@ -202,7 +201,7 @@
                                 </div>
 
                                 <!-- list menu form -->
-                                <div class="menuSearch">
+                                {{-- <div class="menuSearch">
                                     <h2 class="menuSearch__title">Computer Science</h2>
                                     <div class="accordion" id="accordionExample">
                                         <!-- looping jika ada item lebih dari 1 -->
@@ -416,10 +415,10 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
                                 <!-- end list menu -->
                             </div>
-                            <div class="tab-pane fade" id="doctor" role="tabpanel"
+                            {{-- <div class="tab-pane fade" id="doctor" role="tabpanel"
                                 aria-labelledby="doctor-tab">
                                 <div class="card">
                                     <div class="cardBachelor__header">
@@ -808,7 +807,7 @@
                                     </div>
                                 </div>
                                 <!-- end list menu -->
-                            </div>
+                            </div> --}}
                             </div>
                         </div>
                     </div>
