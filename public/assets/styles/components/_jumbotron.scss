@@ -1,12 +1,12 @@
-.jumbotron{
-    margin-top: -22px;
+.jumbotron {
+    margin-top: -80px;
     width: 100%;
-    min-height: 400px;
+    height: 70vh;
     position: relative;
     // background-image: url("./../images/jumbotron2.png");
     // background-size: cover;
 
-    .jumbotron__overlay{
+    .jumbotron__overlay {
         width: 100%;
         height: 100%;
         position: absolute;
@@ -16,56 +16,55 @@
         z-index: 2;
     }
 
-    .jumbotron__background{
+    .jumbotron__background {
         max-width: 1500px;
         height: 520px;
         position: relative;
 
-        img{
+        img {
             object-fit: cover;
             width: 100%;
             height: 100%;
         }
     }
 
-    .jumbotron__content{
+    .jumbotron__content {
         position: absolute;
-        top: 35%;
+        top: calc(50% - 107px);
         left: 10%;
         width: 80%;
         text-align: center;
         z-index: 3;
         // background-color: royalblue;
 
-        h2{
+        h2 {
             color: $Color7;
             font-size: 32px;
-            font-family: "Playfair Display",sans-serif;
+            font-family: "Playfair Display", sans-serif;
             text-transform: uppercase;
             letter-spacing: 1rem;
             margin-bottom: 20px;
         }
 
-        p{
+        p {
             color: $primaryColor;
             font-size: 18px;
             font-weight: 600;
             margin-bottom: 20px;
         }
 
-        .jumbotron__button{
-
-            .primary__button{
+        .jumbotron__button {
+            .primary__button {
                 background-color: $Color3;
                 color: $Color7;
                 font-weight: bold;
                 font-size: 14px;
                 border-radius: 7px;
                 padding: 10px 20px;
-                margin-right:20px;
+                margin-right: 20px;
             }
 
-            .secondary__button{
+            .secondary__button {
                 background-color: transparent;
                 border: 2px solid $Color7;
                 color: $Color7;
@@ -79,49 +78,49 @@
 }
 
 // student Enrollment
-.jumbotron__studentEnrollment{
+.jumbotron__studentEnrollment {
     background: $Color11;
 
-    .row>*{
+    .row > * {
         padding: 0;
     }
-    
 
-    .jumbotron__breadcrumb, .jumbotron__preview{
+    .jumbotron__breadcrumb,
+    .jumbotron__preview {
         padding: 40px 50px;
     }
 
-    .jumbotron__preview{
-        h2{
+    .jumbotron__preview {
+        h2 {
             color: $primaryColor;
             font-size: 40px;
             font-weight: 500;
         }
 
-        h5{
+        h5 {
             font-size: 18px;
         }
-        
-        p{
+
+        p {
             font-size: 15px;
             text-align: justify;
         }
     }
 
-    .jumbotron__image-preview{
+    .jumbotron__image-preview {
         background: ivory;
         // clip-path: polygon(0% 100%, 98% 100%, 100% 0%, 10% 0%, 0% 75%);
         clip-path: polygon(0% 100%, 97% 100%, 100% 0%, 26% 0, 0 78%);
         height: 100%;
 
-        .jumbotron__boxImg{
+        .jumbotron__boxImg {
             width: 100%;
             height: 100%;
             position: relative;
             z-index: 1;
             background-color: $Color11;
 
-            img{
+            img {
                 width: inherit;
                 height: inherit;
                 object-fit: contain;
@@ -131,55 +130,56 @@
 }
 
 // courses
-.jumbotron__courses{
+.jumbotron__courses {
     background: $Color11;
 
-    .row>*{
+    .row > * {
         padding: 0;
     }
-    
 
-    .jumbotron__breadcrumb, .jumbotron__preview, .jumbotron__button--primary{
+    .jumbotron__breadcrumb,
+    .jumbotron__preview,
+    .jumbotron__button--primary {
         padding: 40px 50px;
     }
 
-    .jumbotron__preview{
-        h2{
+    .jumbotron__preview {
+        h2 {
             color: $primaryColor;
             font-size: 40px;
             font-weight: 500;
         }
 
-        h5{
+        h5 {
             font-size: 18px;
         }
-        
-        p{
+
+        p {
             font-size: 15px;
             text-align: justify;
         }
     }
 
-    .jumbotron__button--primary{
-        button{
+    .jumbotron__button--primary {
+        button {
             @include primaryButton();
         }
     }
 
-    .jumbotron__image-preview{
+    .jumbotron__image-preview {
         background: ivory;
         // clip-path: polygon(0% 100%, 98% 100%, 100% 0%, 10% 0%, 0% 75%);
         clip-path: polygon(0% 100%, 97% 100%, 100% 0%, 26% 0, 0 78%);
         height: 100%;
 
-        .jumbotron__boxImg{
+        .jumbotron__boxImg {
             width: 100%;
             height: 100%;
             position: relative;
             z-index: 1;
             background-color: $Color11;
 
-            img{
+            img {
                 width: inherit;
                 height: inherit;
                 object-fit: contain;
@@ -189,14 +189,14 @@
 }
 
 // jumbotron profile
-.jumbotron__profile{
+.jumbotron__profile {
     background: $Color11;
 
-    .jumbotron__preview{
-        .jumbotron__imgBx{
+    .jumbotron__preview {
+        .jumbotron__imgBx {
             width: 150px;
             height: 150px;
-            img{
+            img {
                 width: 100%;
                 height: 100%;
                 object-fit: cover;
@@ -204,40 +204,40 @@
             }
         }
 
-        .jumbotron__editProfileBtn{
+        .jumbotron__editProfileBtn {
             background: $Color3;
             color: $Color7;
         }
     }
 }
 
-@media(max-width: 576px){
-    .jumbotron{
-    margin-top: -12px;
+@media (max-width: 576px) {
+    .jumbotron {
+        margin-top: -12px;
 
-        .jumbotron__content{
+        .jumbotron__content {
             top: 20%;
-    
-            h2{
+
+            h2 {
                 font-size: 28px;
                 letter-spacing: 0.5rem;
             }
-    
-            p{
+
+            p {
                 font-size: 15px;
                 text-align: justify;
             }
-    
-            .jumbotron__button{
+
+            .jumbotron__button {
                 margin-top: 40px;
                 display: flex;
                 justify-content: space-around;
-    
-                .primary__button{
+
+                .primary__button {
                     padding: 9px;
                 }
-    
-                .secondary__button{
+
+                .secondary__button {
                     padding: 9px;
                 }
             }
@@ -245,24 +245,24 @@
     }
 
     // student Enrollment
-    .jumbotron__studentEnrollment, .jumbotron__courses{
-        .jumbotron__image-preview{
-            clip-path:none;
+    .jumbotron__studentEnrollment,
+    .jumbotron__courses {
+        .jumbotron__image-preview {
+            clip-path: none;
             height: 100%;
         }
     }
 
-    .jumbotron__profile{
-    
-        .jumbotron__preview{
-            .jumbotron__imgBx{
+    .jumbotron__profile {
+        .jumbotron__preview {
+            .jumbotron__imgBx {
                 width: 75px;
                 height: 75px;
             }
         }
 
-        .jumbotron__profileContent{
-            padding: .5rem !important;
+        .jumbotron__profileContent {
+            padding: 0.5rem !important;
         }
     }
 }
