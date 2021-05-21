@@ -64,6 +64,9 @@ Route::prefix('sadmin')->middleware(['auth', 'admin'])->group(function () {
     Route::delete('/course/{id}', [App\Http\Controllers\SuperAdmin\CourseController::class, 'destroy'])->name('course.destroy');
     Route::put('/course/status-active/{id}', [App\Http\Controllers\SuperAdmin\CourseController::class, 'active'])->name('course.status.active');
     Route::put('/course/status-inactive/{id}', [App\Http\Controllers\SuperAdmin\CourseController::class, 'inactive'])->name('course.status.inactive');
+    Route::get('/course/info/requirments', [App\Http\Controllers\SuperAdmin\CourseController::class, 'getInformation'])->name('course.requirment');
+    Route::post('/course/info/requirments/update-post', [App\Http\Controllers\SuperAdmin\CourseController::class, 'updateInformationPost'])->name('course.post-update');
+    Route::post('/course/info/requirments/update-under', [App\Http\Controllers\SuperAdmin\CourseController::class, 'updateInformationUnder'])->name('course.under-update');
 
     //short course
     Route::get('/create/short-course', [App\Http\Controllers\SuperAdmin\CourseController::class, 'create'])->name('short.create');
@@ -204,6 +207,7 @@ Route::get('/post-graduate-course', [App\Http\Controllers\CourseController::clas
 Route::get('/under-graduate-course', [App\Http\Controllers\CourseController::class, 'underGraduateIndex'])->name('undergraduate.index');
 Route::get('/short-course/{id}', [App\Http\Controllers\CourseController::class, 'detail'])->name('scourse.detail');
 Route::get('/post-graduate-course/filter', [App\Http\Controllers\CourseController::class, 'searchPost'])->name('course.filter-post');
+Route::get('/under-graduate-course/filter', [App\Http\Controllers\CourseController::class, 'searchUnder'])->name('course.filter-under');
 
 //scholarship
 Route::get('/scholarship', [\App\Http\Controllers\ScholarshipController::class, 'index'])->name('scholarship.index');
@@ -239,3 +243,6 @@ Route::get('/artikel/{id}', [\App\Http\Controllers\AboutController::class, 'deta
 
 //key dates
 Route::get('/key-dates',[\App\Http\Controllers\KeyDateController::class, 'index'])->name('key.index');
+
+//pages
+Route::get('/{id}', [\App\Http\Controllers\PageController::class, 'index'])->name('custome.page');

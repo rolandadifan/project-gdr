@@ -19,11 +19,11 @@
                             <div class="col">
                                 <div class="d-flex align-items-center">
                                     <div class="jumbotron__imgBx">
-                                         @if (!$user)
-                                         <img src="{{ asset('assets/images/avatar-default.png')}}" alt="profile">
-                                         @else
-                                         <img src="{{ Storage::url($user->avatar)}}" alt="profile">
-                                         @endif
+                                       @if (!auth()->user()->userDetail->avatar)
+                                            <img src="{{ asset('assets/images/avatar-default.png')}}" alt="profile">
+                                        @else
+                                            <img src="{{ Storage::url(auth()->user()->userDetail->avatar)}}" alt="profile">
+                                        @endif
                                     </div>
                                     <div class="jumbotron__profileContent px-4">
                                         <h4>Hello..</h4>

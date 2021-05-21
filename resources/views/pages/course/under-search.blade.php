@@ -10,7 +10,7 @@
             <div id="postgraduateCourse" class="p-2">
                 <div class="postgraduateCourse__header">
                     <h2>International Programs</h2>
-                    <h4>Postgraduate Courses</h4>
+                    <h4>UNDERGRADUATE COURSES</h4>
                 </div>
                 <div class="postgraduateCourse__context">
                     <div class="container">
@@ -31,9 +31,9 @@
                         <div class="tab-content" id="nav-tabContent">
                             <div class="tab-pane fade show active" id="master" role="tabpanel"
                                 aria-labelledby="master-tab">
-                                @php
-                                    if($posG){
-                                        $posts = json_decode($posG->value);
+                                 @php
+                                    if($underG){
+                                        $posts = json_decode($underG->value);
                                     }else {
                                         $posts = '';
                                     }
@@ -55,7 +55,7 @@
                                 </div>
                                 <!-- form search undergraduate and postgraduate -->
                                 <div class="formSearch">
-                                      <form  action="{{ route('course.filter-post') }}" method="GET" 
+                                      <form  action="{{ route('course.filter-under') }}" method="GET" 
                                         class="row row-cols-lg-auto g-3 align-items-center justify-content-evenly py-5">
                                         <div class="col-12">
                                             <div class="row row-cols-lg-auto g-3 align-items-center">
@@ -72,8 +72,8 @@
                                                     <select name="degree" class="form-select form-select-sm"
                                                         aria-label=".form-select-sm example">
                                                         <option value="null">Degree</option>
-                                                        <option value="{{ 'bachelor' }}">Bachelor</option>
-                                                        <option value="{{ 'diploma' }}">Diploma</option>
+                                                        <option value="{{ 'master' }}">Master</option>
+                                                        <option value="{{ 'doctor' }}">Doctor</option>
                                                     </select>
                                                 </div>
                                                 <div class="col-12">

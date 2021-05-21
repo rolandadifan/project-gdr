@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Models\MenuDetail;
 use App\Models\Setting;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 
@@ -27,6 +28,14 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Schema::defaultStringLength(191);
+       
+        // view()->composer('include.sidebar',function($sidebar){
+        //     $menus = MenuDetail::where('slug')->orWhere('status_id', 1)->select(['title', 'slug'])->get();
+        //     $param = App::make('request')->route()->getParameter('organisation');
+        //     $sidebar->with([
+        //         'menus' => $menus
+        //     ]);
+        // });
 
         view()->composer('include.contact', function($menu){
             $location = Setting::where('key','location')->first();

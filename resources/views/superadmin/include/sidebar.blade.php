@@ -60,10 +60,25 @@
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item" href="{{ route('short.create') }}">Short Course</a>
                         <a class="dropdown-item" href="{{ route('course.create') }}">Course</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
+                        {{-- <a class="dropdown-item" href="#">Something else here</a> --}}
                     </div>
                 </div>
-                <a class="collapse-item" href="utilities-border.html">Enrollment</a>
+                <a class="collapse-item" href="{{ route('course.requirment') }}">Course Requirment</a>
+            </div>
+        </div>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities2"
+            aria-expanded="true" aria-controls="collapseUtilities2">
+            <i class="fas fa-fw fa-pen-square"></i>
+            <span>Enrollment</span>
+        </a>
+        <div id="collapseUtilities2" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item" href="#">List</a>
+                {{-- <a class="collapse-item" href="utilities-border.html">Add</a> --}}
+                <a class="collapse-item" href="{{ route('requirment.index') }}">Enrollment Requirment</a>
 
             </div>
         </div>
@@ -127,7 +142,6 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item" href="{{ route('about.edit') }}">About</a>
                 <a class="collapse-item" href="{{ route('page.multi') }}">How To Apply</a>
-                <a class="collapse-item" href="{{ route('requirment.index') }}">Requirment</a>
             </div>
         </div>
     </li>

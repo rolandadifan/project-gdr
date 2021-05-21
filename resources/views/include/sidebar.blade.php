@@ -11,6 +11,29 @@
                 <div class="sidebar__logo d-block d-sm-none" style="font-size: 32px; color: #7E3485; font-weight: 500;">
                     Menu
                 </div>
+
+                @guest
+                     <!-- sebelum login -->
+                <div class="d-flex justify-content-end my-3 mx-3 btn-login">
+                    <a href="{{ route('login') }}">Login</a>
+                </div> 
+                @endguest
+                @auth
+                <div class="d-flex align-items-center justify-content-between box__afterLogin">
+                    <div class="d-flex align-items-center">
+                        <div class="boxAvatar mx-3">
+                            @if (!auth()->user()->userDetail->avatar)
+                                <img src="{{ asset('assets/images/avatar-default.png')}}" alt="profile">
+                            @else
+                                <img src="{{ Storage::url(auth()->user()->userDetail->avatar)}}" alt="profile">
+                             @endif
+                            {{-- <img src="{{ asset('assets/images/avatar-default.png') }}" alt="" /> --}}
+                        </div>
+                        <p class="profile__name mx-2 my-5">{{ auth()->user()->name }}</p>
+                    </div>
+                    <a class="mx-3" href="{{ route('profile') }}">Profile</a>
+                </div>
+                @endauth
                 <div class="sidebar__menu">
                     <div class="accordion accordion-flush" id="accordionCourse">
                         <div class="accordion-item">
@@ -197,15 +220,6 @@
                                 </form>
                             </a>
                         </div>
-                        @else
-                        <div class="accordion-item">
-                            <a href="{{ route('login') }}" class="accordion-header" id="alumni">
-                                <button class="accordion-button collapsed no-after" type="button">
-                                    Login
-                                </button>
-                            </a>
-                        </div>
-
                         @endauth
                     </div>
                 </div>

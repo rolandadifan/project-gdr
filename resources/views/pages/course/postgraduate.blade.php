@@ -31,117 +31,21 @@
                         <div class="tab-content" id="nav-tabContent">
                             <div class="tab-pane fade show active" id="master" role="tabpanel"
                                 aria-labelledby="master-tab">
+                                @php
+                                    if($posG){
+                                        $posts = json_decode($posG->value);
+                                    }else {
+                                        $posts = '';
+                                    }
+                                @endphp
                                 <div class="card">
                                     <div class="cardBachelor__header">
-                                        <h2>MASTER DEGREE (INTERNATIONAL)</h2>
-                                        <p>English as a medium instruction</p>
-                                    </div>
-                                    <div class="cardBachelor__content--1">
-                                        <h4>International Bachelor Categories:</h4>
-                                        <ol>
-                                            <li>Single Degree, student will be awarded a degree from UL</li>
-                                            <li>Double Degree, student will obtain one degree from UI and one more from
-                                                partner
-                                                university.</li>
-                                        </ol>
+                                        {!! $posts->header ?? 'ubah ini di admin site' !!}
                                     </div>
                                     <!-- accordion -->
                                     <div class="accordion__courseShow accordion__undergraduate">
                                         <div class="container">
-                                            <div class="row">
-                                                <div class="col">
-                                                    <h4>General Requirements</h4>
-                                                    <ul>
-                                                        <li>
-                                                            High school graduated or equivalent no longer than 5 years
-                                                            of
-                                                            the
-                                                            time registration (e.g. admission 2019 for high school
-                                                            graduates
-                                                            in
-                                                            2019,2018,2017,2016,2015)
-                                                        </li>
-                                                        <li>
-                                                            Foculty of Medicine applicant should be graduating from
-                                                            nationally
-                                                            accredited high schools/completing general certificate of
-                                                            education
-                                                            (A level) or graduate of Diploma Program of European
-                                                            Baccalaureate
-                                                            or Diploma Program of International Baccalaureate or Passing
-                                                            international education qualification equivalent to any of
-                                                            the
-                                                            above.
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col">
-                                                    <h4>Documents Required</h4>
-                                                    <ol>
-                                                        <li>Non Indonesian passport</li>
-                                                        <li>Latest color photo (full face without
-                                                            hat/glasses/accessories)
-                                                        </li>
-                                                        <li>High school diploma or equivalent</li>
-                                                        <li>High school academic transcript or equivalent</li>
-                                                        <li>English Proficiency certificate: International TOEFL
-                                                            (www.ets.org)
-                                                            with minimum score of 173(CBT), or 61(iBT) or IELTS
-                                                            (http://ielts.org) with minimum score of 5.5 TOEFL/IELTS
-                                                            score
-                                                            are
-                                                            valid for two years from the test date. If you have or will
-                                                            have
-                                                            received a degree from an institution where English is the
-                                                            primary
-                                                            language of instruction, you do not need to submit
-                                                            TOEFL/IELTS
-                                                            certificate. <br> For Faculty of Medicine applicant,
-                                                            International
-                                                            TOEFL score must above 80(iBT) or IELTS score must above 7.
-                                                            <br>
-                                                            For
-                                                            Faculty of Economics and Business applicant, International
-                                                            TOEFL
-                                                            score must above 213(CBT), or 70 (iBT) or IELTS score must
-                                                            above
-                                                            6.
-                                                            <br> For Faculty of Law applicant, International TOEFL score
-                                                            must
-                                                            above 213 (CBT), or 80(iBT) or IELTS score must above 6.
-                                                        </li>
-                                                        <li>Faculty of Medicine and Faculty of Law applicant required to
-                                                            hold
-                                                            Indonesia language proficiency test (TIBA) certificate is
-                                                            mandatory
-                                                            document for Faculty of Medicine applicant, except those
-                                                            from
-                                                            high
-                                                            school with entirely the class in Bahasa Indonesia </li>
-                                                        <li>Motivation Statement</li>
-                                                        <li>Health Certificate</li>
-                                                    </ol>
-                                                </div>
-                                            </div>
-                                            <div class="row important__notice">
-                                                <div class="col">
-                                                    <h4>Important Notice:</h4>
-                                                    <ul>
-                                                        <li>All of the documents are submitted online on the
-                                                            registration
-                                                            account.</li>
-                                                        <li>The faculty may apply higher specific requirements</li>
-                                                        <li>Re-check your online application status to ensure all of the
-                                                            form
-                                                            completely filled and all of the documents successfully
-                                                            submitted.
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-
+                                            {!! $posts->content ?? 'ubah ini di admin site' !!}
                                         </div>
                                     </div>
                                     <button class="accordion__course">

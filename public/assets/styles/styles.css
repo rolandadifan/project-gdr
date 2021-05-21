@@ -14,15 +14,9 @@ html::-webkit-scrollbar {
 }
 
 .jumbotron {
-<<<<<<< HEAD
-  margin-top: -80px;
-  width: 100%;
-  height: 70vh;
-=======
   margin-top: -22px;
   width: 100%;
   min-height: 400px;
->>>>>>> 78f5c10714eafac02dbaa81f2e3ef24d9f778804
   position: relative;
 }
 
@@ -51,11 +45,7 @@ html::-webkit-scrollbar {
 
 .jumbotron .jumbotron__content {
   position: absolute;
-<<<<<<< HEAD
-  top: calc(50% - 107px);
-=======
   top: 35%;
->>>>>>> 78f5c10714eafac02dbaa81f2e3ef24d9f778804
   left: 10%;
   width: 80%;
   text-align: center;
@@ -807,27 +797,6 @@ header .info-gundar a::after {
   line-height: 0;
 }
 
-<<<<<<< HEAD
-header .videoWrapper {
-  position: relative;
-  padding-bottom: 56.25%;
-  /* 16:9 */
-  padding-top: 0;
-  width: 100vw;
-  height: 0;
-}
-
-header .videoWrapper iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -99;
-}
-
-=======
->>>>>>> 78f5c10714eafac02dbaa81f2e3ef24d9f778804
 header .nav-bar {
   padding: 5px;
 }
@@ -1013,6 +982,10 @@ header .sidebar .sidebar__left .sidebar__menu .accordion-item a {
 header .sidebar .sidebar__left .sidebar__menu .accordion-item:nth-child(2) .accordion-button:after,
 header .sidebar .sidebar__left .sidebar__menu .accordion-item:nth-child(5) .accordion-button:after,
 header .sidebar .sidebar__left .sidebar__menu .accordion-item:nth-child(6) .accordion-button:after {
+  background: none;
+}
+
+header .sidebar .sidebar__left .sidebar__menu .accordion-item .login:after {
   background: none;
 }
 

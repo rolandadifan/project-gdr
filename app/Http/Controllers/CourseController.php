@@ -6,6 +6,7 @@ use App\Models\Course;
 use App\Models\CourseDetail;
 use App\Models\CourseInfo;
 use App\Models\CoursePrice;
+use App\Models\Page;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 
@@ -84,10 +85,14 @@ class CourseController extends Controller
         $d_name = Course::with('courseDetail')->whereHas('courseDetail', function (Builder $query) {
             $query->where('degree', 'bachelor')->orWhere('degree', 'diploma')->orderBy('created_at', 'DESC');
         })->get();
+
+        $d_campus = CourseDetail::where('degree', '!=', 'non')->select('campus')->distinct()->get();
+        $posG = Page::where('key', 'postg')->first();
+        $underG = Page::where('key', 'underg')->first();
         
-        $d_campus = Course::with('courseDetail')->whereHas('courseDetail', function (Builder $query) {
-            $query->select('campus')->orderBy('created_at', 'DESC');
-        })->get();
+        // $d_campus = Course::with('courseDetail')->whereHas('courseDetail', function (Builder $query) {
+        //     $query->select('campus')->orderBy('created_at', 'DESC');
+        // })->get();
 
         // $course = Course::with('courseDetail')->where('name', $request->name)->where(function ($query) use ($request){
         //     return $request->campus ? $query->from('courseDetail')->where('campus', $request->campus) : '';
@@ -104,6 +109,8 @@ class CourseController extends Controller
             // 'select' => $select,
             'd_name' => $d_name,
             'd_campus' => $d_campus,
+            'posG' => $posG,
+            'underG' => $underG,
         ]);
     }
 
@@ -186,7 +193,8 @@ class CourseController extends Controller
         });
         }
 
-
+        $posG = Page::where('key', 'postg')->first();
+        $underG = Page::where('key', 'underg')->first();
 
         // $sql = $course->toSql();
         // dd($sql);
@@ -195,11 +203,74 @@ class CourseController extends Controller
             'course' => $course->get(),
              'd_name' => $d_name,
             'd_campus' => $d_campus,
+            'posG' => $posG,
+            'underG' => $underG,
         ]);
     }
 
     public function underGraduateIndex()
     {
-        return view('pages.course.udergraduate');
+         $d_name = Course::with('courseDetail')->whereHas('courseDetail', function (Builder $query) {
+            $query->where('degree', 'master')->orWhere('degree', 'doctor')->orderBy('created_at', 'DESC');
+        })->get();
+        
+        $d_campus = CourseDetail::where('degree', '!=', 'non')->select('campus')->distinct()->get();
+        $posG = Page::where('key', 'postg')->first();
+        $underG = Page::where('key', 'underg')->first();
+        return view('pages.course.udergraduate')->with([
+            // 'course' => $course,
+            // 'select' => $select,
+            'd_name' => $d_name,
+            'd_campus' => $d_campus,
+            'posG' => $posG,
+            'underG' => $underG,
+        ]);
+    }
+
+    public function searchUnder(Request $request)
+    {
+         $d_name = Course::with('courseDetail')->whereHas('courseDetail', function (Builder $query) {
+            $query->where('degree', 'master')->orWhere('degree', 'doctor')->orderBy('created_at', 'DESC');
+        })->get();
+                
+        // $d_campus = Course::with('courseDetail')->whereHas('courseDetail', function (Builder $query) {
+        //     $query->distinct()->count('campus');
+        // })->get();
+
+        $d_campus = CourseDetail::where('degree', '!=', 'non')->select('campus')->distinct()->get();
+        // dd($d_campus);
+
+        
+        $course = Course::query()->whereHas('courseDetail', function (Builder $query){
+            $query->with('prices')->Where('degree', 'master')->orWhere('degree', 'doctor');
+        });
+
+        if($request->filled('campus') && $request->campus != 'null'){
+            $course->whereHas('courseDetail', function (Builder $query) use ($request) {
+            $query->where('campus', $request->campus);
+        });
+        }
+        if($request->filled('name') && $request->name != 'null'){
+            $course->where('name', $request->name);
+        }
+        if($request->filled('degree') && $request->degree != 'null'){
+            $course->whereHas('courseDetail', function (Builder $query) use ($request) {
+            $query->where('degree', $request->degree);
+        });
+        }
+
+
+
+        // $sql = $course->toSql();
+        // dd($sql);
+        $posG = Page::where('key', 'postg')->first();
+        $underG = Page::where('key', 'underg')->first();
+        return view('pages.course.under-search')->with([
+            'course' => $course->get(),
+             'd_name' => $d_name,
+            'd_campus' => $d_campus,
+            'posG' => $posG,
+            'underG' => $underG,
+        ]);
     }
 }

@@ -8,6 +8,7 @@ use App\Models\Course;
 use App\Models\CourseDetail;
 use App\Models\CourseInfo;
 use App\Models\CoursePrice;
+use App\Models\Page;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
@@ -536,6 +537,58 @@ class CourseController extends Controller
             $course->delete();
         }
         return back()->with('status', 'Course Successfuly Deleted');
+    }
+
+    public function getInformation()
+    {
+        $posG = Page::where('key', 'postg')->first();
+        $underG = Page::where('key', 'underg')->first();
+        return view('superadmin.pages.course.info.requirment')->with([
+            'posG' => $posG,
+            'underG' => $underG,
+        ]);
+    }
+
+    public function updateInformationPost(Request $request)
+    {
+        $data = [
+            'header' => $request->cheader,
+            'content' => $request->content,
+        ];
+        $info = Page::where('key', 'postg')->first();
+        if(!$info){
+            Page::create([
+                'key' => 'postg',
+                'value' => json_encode($data)
+            ]);
+        }else{
+            $info->update([
+                'value' => json_encode($data)
+            ]);
+        }
+
+        return back()->with('status', 'Success Update');
+    }
+
+    public function updateInformationUnder(Request $request)
+    {
+         $data = [
+            'header' => $request->cheader,
+            'content' => $request->content,
+        ];
+        $info = Page::where('key', 'underg')->first();
+        if(!$info){
+            Page::create([
+                'key' => 'underg',
+                'value' => json_encode($data)
+            ]);
+        }else{
+            $info->update([
+                'value' => json_encode($data)
+            ]);
+        }
+
+        return back()->with('status', 'Success Update');
     }
 
     public function active($id)
