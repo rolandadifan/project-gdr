@@ -16,9 +16,9 @@ class CreateLocationsTable extends Migration
         Schema::create('locations', function (Blueprint $table) {
             $table->id();
             $table->string('campus', 200);
-            $table->string('thumbnail',255);
+            $table->string('thumbnail',255)->nullable();
             $table->string('address');
-            $table->string('phone', 255)->nullable();
+            $table->string('phone', 20);
             $table->string('ext', 255)->nullable();
             $table->string('fax', 255)->nullable();
             $table->timestamps();

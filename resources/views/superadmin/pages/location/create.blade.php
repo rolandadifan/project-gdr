@@ -24,14 +24,19 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="form-group">
-                        <label for="campus">Campus name</label>
-                        <input name='campus' type="text" class="form-control">
+                        <label for="campus">Campus Location</label>
+                        <select class="form-control" name="ext" id="exampleFormControlSelect1">
+                            <option value="jakarta">Jakarta</option>
+                            <option value="depok">Depok</option>
+                            <option value="bekasi">Bekasi</option>
+                            <option value="tangerang">tangerang</option>
+                        </select>
                     </div>
                 </div>
                 <div class="col-md-12">
                     <div class="form-group">
-                        <label for="address">Address</label>
-                        <textarea name='address' type="text" class="form-control"></textarea>
+                        <label for="campus">Campus name</label>
+                        <input name='campus' type="text" class="form-control">
                     </div>
                 </div>
                 <div class="col-md-12">
@@ -42,21 +47,8 @@
                 </div>
                 <div class="col-md-12">
                     <div class="form-group">
-                        <label for="ext">Extension</label>
-                        <input name='ext' type="text" class="form-control">
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="form-group">
-                        <label for="fax">Fax</label>
-                        <input name='fax' type="text" class="form-control">
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="form-group">
-                        <label for="">Thumbnail</label>
-                        <input type="file" name="thumbnail" id="" class="form-control" required>
-                        <span style="font-size: 16px">Maksimal file 300kb</span>
+                        <label for="address">Address</label>
+                        <textarea name='address' type="text" class="form-control"></textarea>
                     </div>
                 </div>
             </div>

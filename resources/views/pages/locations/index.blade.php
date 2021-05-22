@@ -19,58 +19,39 @@ tenetur!')
                     
                     <div class="row row-cols-1 row-cols-md-2 align-items-start">
                         <div class="col">
-                            <ul class="nav nav-tabs">
-                                <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="#">Bekasi</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Depok</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Jakarta</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Tangerang</a>
-                                </li>
-                            </ul>
-                            <div class="tab-content" id="nav-tabContent">
-                                <div>
-                                    <div class="container-fluid">
-                                        <div class="card my-3">
-                                            <div class="row align-items-center p-3">
-                                                <div class="col">
-                                                    <h5>Campus J1</h5>
-                                                    <p>(021) 88860117</p>
-                                                    <p>Jl. KH. Noer Ali, RT.005/RW.006A, Jakasampurna, Kec. Bekasi Bar, Kota Bks, Jawa Barat 17145 Indonesia</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="card my-3">
-                                            <div class="row align-items-center p-3">
-                                                <div class="col">
-                                                    <h5>Campus J2</h5>
-                                                    <p>(021) 88954184</p>
-                                                    <p>Jl. Cemara Raya No.57, RT.006/RW.006A, Jakasampurna Kec. Bekasi Bar., Kota Bks, Jawa Barat 17145 Indonesia</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="card my-3">
-                                            <div class="row align-items-center p-3">
-                                                <div class="col">
-                                                    <h5>Campus J3</h5>
-                                                    <p>(021) 88357935</p>
-                                                    <p>Jalan Cempaka - Margahayu No., Jatimulya Kec. Tambun Sel., Bekasi, Jawa Barat 17510 Indonesia. </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="jakarta-tab" data-bs-toggle="tab" data-bs-target="#jakarta" type="button" role="tab" aria-controls="jakarta" aria-selected="true">Jakarta</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="depok-tab" data-bs-toggle="tab" data-bs-target="#depok" type="button" role="tab" aria-controls="depok" aria-selected="false">Depok</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="bekasi-tab" data-bs-toggle="tab" data-bs-target="#bekasi" type="button" role="tab" aria-controls="bekasi" aria-selected="false">Bekasi</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="tangerang-tab" data-bs-toggle="tab" data-bs-target="#tangerang" type="button" role="tab" aria-controls="tangerang" aria-selected="false">Tangerang</button>
+                            </li>
+                        </ul>
+                            <div class="tab-content" id="myTabContent">
+                                <div class="tab-pane fade show active" id="jakarta" role="tabpanel" aria-labelledby="home-tab">
+                                    @include('pages.locations.city.jakarta', ['jakarta' => $jakarta])
                                 </div>
-                            </div>
+                                <div class="tab-pane fade" id="depok" role="tabpanel" aria-labelledby="depok-tab">
+                                     @include('pages.locations.city.depok', ['depok' => $depok])
+                                </div>
+                                <div class="tab-pane fade" id="bekasi" role="tabpanel" aria-labelledby="bekasi-tab">
+                                     @include('pages.locations.city.bekasi', ['bekasi' => $bekasi])
+                                </div>
+                                <div class="tab-pane fade" id="tangerang" role="tabpanel" aria-labelledby="tangerang-tab">
+                                     @include('pages.locations.city.tangerang', ['tangerangs' => $tangerangs])
+                                </div>
+                            </div>                 
                         </div>
                         <div class="col">
                             <div class="card location__link-contact px-5 py-3">
                                 <div class="image__box">
-                                    <img src="./../../assets/images/gundar-new-logo.png" alt="">
+                                    <img src="{{ asset('assets/images/gundar-new-logo.png') }}" alt="">
                                 </div>
                                 <div class="link mx-auto">
                                     <h5>Link</h5>
@@ -95,7 +76,7 @@ tenetur!')
                                 </div>
                                 <div class="email__gundar mx-auto">
                                     <div class="email__boxImg">
-                                        <img src="./../../../assets/images/icons/email.png" alt="">
+                                        <img src="{{ asset('assets/images/icons/email.png') }}" alt="">
                                     </div>
                                     <div class="email__content">
                                         <h5>Email</h5>
@@ -104,7 +85,7 @@ tenetur!')
                                 </div>
                                 <div class="telephone__gundar mx-auto">
                                     <div class="telephone__boxImg">
-                                        <img src="./../../../assets/images/icons/phone-call.png" alt="Telephone">
+                                        <img src="{{ asset('assets/images/icons/phone-call.png') }}" alt="Telephone">
                                     </div>
                                     <div class="telephone__content">
                                         <h5>Telephone</h5>
@@ -123,5 +104,6 @@ tenetur!')
 @push('addon-script')
 
 <script>
+  
 </script>
 @endpush

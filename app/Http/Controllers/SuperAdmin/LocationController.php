@@ -28,11 +28,7 @@ class LocationController extends Controller
             $location['address'] = $request->address;
             $location['phone'] = $request->phone;
             $location['ext'] = $request->ext;
-            $location['fax'] = $request->fax;
-            if ($request->thumbnail || $request->thumbnail != null) {
-                $location['thumbnail'] = $request->file('thumbnail')->store('locations', 'public');
-            }
-            $saveLocation = Location::create($location);
+            Location::create($location);
             return back()->with('status', 'Location successfuly added');
         } catch (Exception $th) {
             return back()->with('error', $th->getMessage());
@@ -55,17 +51,16 @@ class LocationController extends Controller
             $location['address'] = $request->address;
             $location['phone'] = $request->phone;
             $location['ext'] = $request->ext;
-            $location['fax'] = $request->fax;
-            if ($request->thumbnail || $request->thumbnail != null) {
-                if(isset($locationDB->thumbnail)){
-                    $file_path = Storage::url($locationDB->thumbnail);
-                    $path = str_replace('\\', '/', public_path());
-                    if (file_exists($path . $file_path)) {
-                        unlink($path . $file_path);
-                    }
-                }
-                $location['thumbnail'] = $request->file('thumbnail')->store('locations', 'public');
-            }
+            // if ($request->thumbnail || $request->thumbnail != null) {
+            //     if(isset($locationDB->thumbnail)){
+            //         $file_path = Storage::url($locationDB->thumbnail);
+            //         $path = str_replace('\\', '/', public_path());
+            //         if (file_exists($path . $file_path)) {
+            //             unlink($path . $file_path);
+            //         }
+            //     }
+            //     $location['thumbnail'] = $request->file('thumbnail')->store('locations', 'public');
+            // }
             $locationDB->update($location);
             return back()->with('status', 'Location successfuly updated');
         } catch (Exception $th) {
@@ -76,13 +71,13 @@ class LocationController extends Controller
     public function destroy($id)
     {
         $location = Location::findOrFail($id);
-        if ($location->thumbnail || $location->thumbnail != null) {
-            $file_path = Storage::url($location->thumbnail);
-            $path = str_replace('\\', '/', public_path());
-            if (file_exists($path . $file_path)) {
-                unlink($path . $file_path);
-            }
-        }
+        // if ($location->thumbnail || $location->thumbnail != null) {
+        //     $file_path = Storage::url($location->thumbnail);
+        //     $path = str_replace('\\', '/', public_path());
+        //     if (file_exists($path . $file_path)) {
+        //         unlink($path . $file_path);
+        //     }
+        // }
         $location->delete();
         return back()->with('status', 'Location Successfuly Deleted');
     }

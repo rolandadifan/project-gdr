@@ -294,7 +294,7 @@
         <div class="gundarGraduates__join">
             <div class="join__container">
                 <div class="join__background">
-                    <img src="./assets/images/Group 4149.png" />
+                    <img src="{{ asset('assets/images/Group 4149.png') }}" />
                 </div>
                 <div class="container">
                     <div class="row justify-content-around align-items-center">

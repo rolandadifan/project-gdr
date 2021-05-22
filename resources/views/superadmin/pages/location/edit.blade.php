@@ -24,14 +24,21 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="form-group">
-                        <label for="campus">Campus name</label>
-                        <input name='campus' type="text" class="form-control" value="{{$location->campus}}">
+                        <label for="ext">Location</label>
+                        {{-- <input name='ext' type="text" class="form-control" value="{{$location->ext}}"> --}}
+                        <select class="form-control" name="ext" id="exampleFormControlSelect1">
+                            <option value="{{$location->ext}}">{{ucfirst($location->ext)}}</option>
+                            <option value="jakarta">Jakarta</option>
+                            <option value="depok">Depok</option>
+                            <option value="bekasi">Bekasi</option>
+                            <option value="tangerang">Tangerang</option>
+                        </select>
                     </div>
                 </div>
                 <div class="col-md-12">
                     <div class="form-group">
-                        <label for="address">Address</label>
-                        <textarea name='address' type="text" class="form-control">{{$location->address}}</textarea>
+                        <label for="campus">Campus name</label>
+                        <input name='campus' type="text" class="form-control" value="{{$location->campus}}">
                     </div>
                 </div>
                 <div class="col-md-12">
@@ -42,25 +49,8 @@
                 </div>
                 <div class="col-md-12">
                     <div class="form-group">
-                        <label for="ext">Extension</label>
-                        <input name='ext' type="text" class="form-control" value="{{$location->ext}}">
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="form-group">
-                        <label for="fax">Fax</label>
-                        <input name='fax' type="text" class="form-control" value="{{$location->fax}}">
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="form-group">
-                        <label for="">Thumbnail</label>
-                        @isset($location->thumbnail)
-                        <br />
-                        <img src="{{ Storage::url($location->thumbnail) }}" class='mb-2' style="width: 200px;" />
-                        @endisset
-                        <input type="file" name="thumbnail" id="" class="form-control">
-                        <span style="font-size: 16px">Maksimal file 300kb</span>
+                        <label for="address">Address</label>
+                        <textarea name='address' type="text" class="form-control">{{$location->address}}</textarea>
                     </div>
                 </div>
             </div>
