@@ -23,81 +23,61 @@
                     <div class="container">
                         <div class="swiper-container swiperAlumni">
                             <div class="swiper-wrapper">
+                                @forelse ($top as $tp)
                                 <div class="swiper-slide">
                                     <div class="card">
                                         <div class="row align-items-center justify-content-center gy-4 justify-content-center">
                                             <div class="col-md-4 col-12">
                                                 <div class="alumni__boxImg">
-                                                    <img src="./../../assets/images/profile-image-alumni.png">
+                                                     @if ($tp->thumbnail == null)
+                                                        <img src="{{ asset('assets/images/avatar-default.png') }}" alt="">
+                                                    @else
+                                                        <img src="{{ Storage::url($tp->thumbnail) }}" />
+                                                    @endif
                                                 </div>
                                             </div>
                                             <div class="col-md-8 col-12">
                                                 <div class="alumni__profileContent text-left">
                                                     <div class="alumni__quotes">
                                                         <p>
-                                                            <q>It was glorious and I could Not stop 
-                                                                to say who for Every single moment Thank you</q>
+                                                            <q>{{$tp->review}}</q>
                                                         </p>
                                                     </div>
                                                     <div class="alumni__profile">
-                                                        <h5>Anggie Febi Yaditha</h5>
-                                                        <h6>COMMUNICATIONS</h6>
+                                                        <h5>{{ $tp->user->name ?? 'no name' }}</h5>
+                                                        <h6>{{ $tp->course->name ?? 'no course' }}</h6>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="swiper-slide">
+                                @empty
+                                    <div class="swiper-slide">
                                     <div class="card">
                                         <div class="row align-items-center justify-content-center gy-4 justify-content-center">
                                             <div class="col-md-4 col-12">
                                                 <div class="alumni__boxImg">
-                                                    <img src="./../../assets/images/profile-image-alumni.png">
+                                                        <img src="{{ asset('assets/images/avatar-default.png') }}" />
                                                 </div>
                                             </div>
                                             <div class="col-md-8 col-12">
                                                 <div class="alumni__profileContent text-left">
                                                     <div class="alumni__quotes">
                                                         <p>
-                                                            <q>It was glorious and I could Not stop 
-                                                                to say who for Every single moment Thank you</q>
+                                                            <q>no data</q>
                                                         </p>
                                                     </div>
                                                     <div class="alumni__profile">
-                                                        <h5>Anggie Febi Yaditha</h5>
-                                                        <h6>COMMUNICATIONS</h6>
+                                                        <h5>no data</h5>
+                                                        <h6>no data</h6>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="swiper-slide">
-                                    <div class="card">
-                                        <div class="row align-items-center justify-content-center gy-4 justify-content-center">
-                                            <div class="col-md-4 col-12">
-                                                <div class="alumni__boxImg">
-                                                    <img src="./../../assets/images/profile-image-alumni.png">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-8 col-12">
-                                                <div class="alumni__profileContent text-left">
-                                                    <div class="alumni__quotes">
-                                                        <p>
-                                                            <q>It was glorious and I could Not stop 
-                                                                to say who for Every single moment Thank you</q>
-                                                        </p>
-                                                    </div>
-                                                    <div class="alumni__profile">
-                                                        <h5>Anggie Febi Yaditha</h5>
-                                                        <h6>COMMUNICATIONS</h6>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                @endforelse
                             </div>
                             <!-- Add Arrows -->
                             <div class="swiper-button-next"></div>
@@ -120,7 +100,7 @@
                 </div>
                 <div class="col thumbnailGundar-right">
                     <div class="thumbnailGundar__imgBx">
-                        <img src="./../../assets/images/thumbnail-alumni-logo.png" alt="alumni logo">
+                        <img src="{{ asset('assets/images/thumbnail-alumni-logo.png') }}" alt="alumni logo">
                     </div>
                 </div>
             </div>
@@ -137,54 +117,44 @@
                 <div class="alumni__testimonialSlider">
                     <div class="swiper-container swiperTestimonial">
                     <div class="swiper-wrapper">
+                        @forelse ($testimonies as $alumni)
                         <div class="swiper-slide">
+                        <div class="card">
+                            <div class="card__boxImg">
+                                @if ($alumni->thumbnail == null)
+                                    <img src="{{ asset('assets/images/avatar-default.png') }}" alt="">
+                                @else
+                                    <img src="{{ Storage::url($alumni->thumbnail) }}" />
+                                @endif
+                            </div>
+                            <div class="card-body">
+                            <h5 class="card-title">{{ $alumni->user->name ?? 'no name' }}</h5>
+                            <p class="card-text">
+                                "{{ $alumni->review ?? 'aaaaaaaaaaaaaa' }}"
+                            </p>
+                            <hr />
+                            <p class="card__course">{{ $alumni->course->name ?? 'no course' }}</p>
+                            </div>
+                        </div>
+                        </div>
+                        @empty
+                             <div class="swiper-slide">
                         <div class="card">
                             <div class="card__boxImg">
                             <img src="./../../assets/images/Mask Group 10.png" />
                             </div>
                             <div class="card-body">
-                            <h5 class="card-title">Kim Taehyun</h5>
+                            <h5 class="card-title">No Data</h5>
                             <p class="card-text">
-                                "It was glorious and i could Not stop to say who for Every
-                                single moment, Thank you"
+                                "No data"
                             </p>
                             <hr />
-                            <p class="card__course">COMMUNICATIONS</p>
+                            <p class="card__course">No data</p>
                             </div>
                         </div>
                         </div>
-                        <div class="swiper-slide">
-                        <div class="card">
-                            <div class="card__boxImg">
-                            <img src="./../../assets/images/Mask Group 10.png" />
-                            </div>
-                            <div class="card-body">
-                            <h5 class="card-title">Kim Namjoon</h5>
-                            <p class="card-text">
-                                "It was glorious and i could Not stop to say who for Every
-                                single moment, Thank you"
-                            </p>
-                            <hr />
-                            <p class="card__course">COMPUTER SCIENCE</p>
-                            </div>
-                        </div>
-                        </div>
-                        <div class="swiper-slide">
-                        <div class="card">
-                            <div class="card__boxImg">
-                            <img src="./../../assets/images/Mask Group 10.png" />
-                            </div>
-                            <div class="card-body">
-                            <h5 class="card-title">Fernando</h5>
-                            <p class="card-text">
-                                "It was glorious and i could Not stop to say who for Every
-                                single moment, Thank you"
-                            </p>
-                            <hr />
-                            <p class="card__course">INDUSTRIAL ENGINEERING</p>
-                            </div>
-                        </div>
-                        </div>
+                        @endforelse
+
                     </div>
         
                     <!-- Add Pagination -->

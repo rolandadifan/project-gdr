@@ -46,12 +46,12 @@
                         </select>
                     </div>
                 </div>
-                <div class="col-md-6">
+                {{-- <div class="col-md-6">
                     <div class="form-group">
                         <label for="name">Name</label>
                         <input name='name' type="text" class="form-control" value={{$alumni->name}}>
                     </div>
-                </div>
+                </div> --}}
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="predicate">Predicate</label>
@@ -71,9 +71,9 @@
                     <div class="form-group">
                         <label for="">Thumbnail</label>
                         @isset($alumni->thumbnail)
-                        <img src="{{ Storage::url($alumni->thumbnail) }}" class='mb-2' style="width: 100%;" />
+                        <img src="{{ Storage::url($alumni->thumbnail) }}" class='mb-2' style="max-width: 100%; width:150px" />
                         @endisset
-                        <input type="file" name="thumbnail" id="" class="form-control" required>
+                        <input type="file" name="thumbnail" id="" class="form-control">
                         <span style="font-size: 16px">Maksimal file 300kb</span>
                     </div>
                 </div>

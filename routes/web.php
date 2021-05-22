@@ -256,5 +256,8 @@ Route::get('/artikel/{id}', [\App\Http\Controllers\AboutController::class, 'deta
 //key dates
 Route::get('/key-dates',[\App\Http\Controllers\KeyDateController::class, 'index'])->name('key.index');
 
+//location
+Route::get('/location-gunadarma', [App\Http\Controllers\LocController::class, 'index'])->name('loc-gundarma.index');
+
 //pages
-Route::get('/{id}', [\App\Http\Controllers\PageController::class, 'index'])->name('custome.page');
+// Route::get('/{id}', [\App\Http\Controllers\PageController::class, 'index'])->name('custome.page');

@@ -119,7 +119,7 @@
                         </div>
 
                         <div class="accordion-item">
-                            <a href="#" class="accordion-header" id="location">
+                            <a href="{{ route('loc-gundarma.index') }}" class="accordion-header" id="location">
                                 <button class="accordion-button collapsed" type="button">
                                     Location
                                 </button>

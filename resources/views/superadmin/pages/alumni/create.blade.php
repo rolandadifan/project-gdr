@@ -44,12 +44,12 @@
                         </select>
                     </div>
                 </div>
-                <div class="col-md-6">
+                {{-- <div class="col-md-6">
                     <div class="form-group">
                         <label for="name">Name</label>
                         <input name='name' type="text" class="form-control">
                     </div>
-                </div>
+                </div> --}}
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="predicate">Predicate</label>

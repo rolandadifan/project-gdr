@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Alumni;
 use App\Models\User;
 use App\Models\Course;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -32,7 +33,7 @@ class AlumniController extends Controller
         try {
             $alumnus['user_id'] = $request->alumnusName == 'null' ? null : $request->alumnusName;
             $alumnus['course_id'] = $request->courseName == 'null' ? null : $request->courseName;
-            $alumnus['name'] = $request->name;
+            // $alumnus['name'] = $request->name;
             $alumnus['predicate'] = $request->predicate;
             $alumnus['review'] = $request->testimony;
             $alumnus['is_top'] = $request->isTop;
