@@ -56,33 +56,38 @@ tenetur!')
                                     <div class="mb-3">
                                         <label for="name" class="form-label">Name<span>*</span></label>
                                         <input type="text" class="form-control" id="name" name="name"
-                                            value="{{ auth()->user()->name }}" readonly>
+                                            value="{{ $user->name }}" readonly>
                                     </div>
                                     <div class="mb-3">
                                         <label for="placeBorn" class="form-label">Place of birth<span>*</span></label>
                                         <input type="text" class="form-control" id="placeBorn" name="placeBorn"
-                                            value="{{ auth()->user()->userDetail->place_birth }}" readonly>
+                                            value="{{ $user->userDetail->place_birth }}" readonly>
                                     </div>
                                     <div class="mb-3">
                                         <label for="dateBorn" class="form-label">Date of birth<span>*</span></label>
                                         <input type="date" class="form-control" id="dateBorn" name="dateBorn"
-                                            value="{{ auth()->user()->userDetail->date_birth }}" readonly>
+                                            value="{{ $user->userDetail->date_birth }}" readonly>
                                     </div>
                                     <div class="mb-3">
                                         <label for="gender" class="form-label">Gender<span>*</span></label>
-                                        <select class="form-select" id="gender">
-                                            <option selected value="{{ auth()->user()->userDetail->gender }}">
-                                                {{ auth()->user()->userDetail->gender == "F" ? "Women" : "Men" }}
-                                            </option>
-                                            {{-- <option>Select Gender</option> --}}
-                                            <option value="M">Men</option>
-                                            <option value="F">Women</option>
-                                        </select>
+                                        <input type="text" class="form-control" id="gender" name="gender"
+                                            value="{{ $user->userDetail->gender == "F" ? "Women" : "Men" }}" readonly>
                                     </div>
                                     <div class="mb-3">
                                         <label for="nationality" class="form-label">Nationality<span>*</span></label>
                                         <input type="text" class="form-control" id="nationality" name="dateBorn"
-                                            value="{{ auth()->user()->userDetail->nationality }}">
+                                            value="{{ $user->userDetail->nationality }}" readonly>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="email" class="form-label">Email<span>*</span></label>
+                                        <input type="email" class="form-control" id="email" name="email"
+                                            value="{{ $user->email }}" readonly>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="numberTelephone" class="form-label">No.
+                                            Telephone<span>*</span></label>
+                                        <input type="text" class="form-control" id="numberTelephone"
+                                            name="numberTelephone" value="{{ $user->telephone }}" readonly>
                                     </div>
                                 </div>
 
@@ -167,7 +172,8 @@ tenetur!')
                                     <h4>Residence</h4>
                                     <div class="mb-3">
                                         <label for="homeAddress" class="form-label">Home address<span>*</span></label>
-                                        <input type="text" class="form-control" id="homeAddress" name="homeAddress">
+                                        <textarea type="text" class="form-control" id="homeAddress" name="homeAddress"
+                                            readonly>{{ $user->userDetail->address }}</textarea>
                                     </div>
                                     <div class="mb-3">
                                         <label for="city" class="form-label">City<span>*</span></label>
@@ -221,16 +227,6 @@ tenetur!')
                                             Code<span>*</span></label>
                                         <input type="text" class="form-control" id="postCodeIndonesia"
                                             name="postCodeIndonesia">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="email" class="form-label">Email<span>*</span></label>
-                                        <input type="email" class="form-control" id="email" name="email">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="numberTelephone" class="form-label">No.
-                                            Telephone<span>*</span></label>
-                                        <input type="text" class="form-control" id="numberTelephone"
-                                            name="numberTelephone">
                                     </div>
                                 </div>
 

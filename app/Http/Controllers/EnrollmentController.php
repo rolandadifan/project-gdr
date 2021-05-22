@@ -37,12 +37,18 @@ class EnrollmentController extends Controller
 
     public function phase1store(Request $request){
         session(['selected-scource' => $request->scourse ?? '']);
-        return redirect()->route('enrollment.input');
+        return redirect()->route('enrollment.input')->with([
+            'user' => $user,
+        ]);
     }
 
     public function input()
     {
-        return view('pages.enrollment.dagree.input')->with(['scourse' => session('selected-scource')]);
+        $user = User::with('userDetail')->findOrFail(auth()->user()->id);
+        return view('pages.enrollment.dagree.input')->with([
+            'user' => $user,
+            'scourse' => session('selected-scource'
+        )]);
     }
 
     public function verifi()
