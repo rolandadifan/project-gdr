@@ -13,21 +13,25 @@
                 </div>
 
                 @guest
-                     <!-- sebelum login -->
+                <!-- sebelum login -->
                 <div class="d-flex justify-content-end my-3 mx-3 btn-login">
                     <a href="{{ route('login') }}">Login</a>
-                </div> 
+                </div>
                 @endguest
                 @auth
                 <div class="d-flex align-items-center justify-content-between box__afterLogin">
                     <div class="d-flex align-items-center">
                         <div class="boxAvatar mx-3">
-                            @if (!auth()->user()->userDetail->avatar)
-                                <img src="{{ asset('assets/images/avatar-default.png')}}" alt="profile">
+                            @if (!isset(auth()->user()->userDetail->avatar))
+                            <img src="{{ asset('assets/images/avatar-default.png')}}" alt="profile">
                             @else
-                                <img src="{{ Storage::url(auth()->user()->userDetail->avatar)}}" alt="profile">
-                             @endif
-                            {{-- <img src="{{ asset('assets/images/avatar-default.png') }}" alt="" /> --}}
+                            <div style="
+                                background-image: url({{ Storage::url(auth()->user()->userDetail->avatar)}});
+                                background-position: center;
+                                background-size: cover;
+                                width: 50px;
+                                height: 50px;" alt="profile"></div>
+                            @endif
                         </div>
                         <p class="profile__name mx-2 my-5">{{ auth()->user()->name }}</p>
                     </div>
@@ -97,7 +101,8 @@
                                             </div>
 
                                             <div class="accordion-item">
-                                                <a href="{{ route('key.index') }}" class="accordion-header" id="keyDates">
+                                                <a href="{{ route('key.index') }}" class="accordion-header"
+                                                    id="keyDates">
                                                     <button class="accordion-button collapsed" type="button">
                                                         Key Dates
                                                     </button>
