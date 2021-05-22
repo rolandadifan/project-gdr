@@ -25,7 +25,6 @@
                     <th>No</th>
                     <th>Campus</th>
                     <th>Phone</th>
-                    <th>Location</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -35,7 +34,6 @@
                     <td>{{$loop->iteration }}</td>
                     <td>{{$location->campus}}</td>
                     <td>{{$location->phone}}</td>
-                    <td>{{ucfirst($location->ext)}}</td>
                     <td>
                         <a href="{{ route('location.edit', $location->id) }}" class="btn btn-warning btn-sm">
                             <i class="fas fa-fw fa-edit"></i>

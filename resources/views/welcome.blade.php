@@ -272,9 +272,14 @@
                     @foreach($testimonies as $testimony)
                     <div class="swiper-slide">
                         <div class="card" style='width: 350px;'>
-                            <div class="card__boxImg">
-                                <img
-                                    src="{{Storage::url($testimony->thumbnail ?? $testimony->user->userDetail->avatar)}}" />
+                            <div class="card__boxImg" style="
+                                background-image:url({{Storage::url($testimony->thumbnail ?? $testimony->user->userDetail->avatar)}});
+                                background-position: center;
+                                background-repeat: no-repeat;
+                                background-size: cover;
+                                height: 300px;
+                                border-radius: 4px 4px 0 0;
+                            ">
                             </div>
                             <div class="card-body">
                                 <h5 class="card-title">{{$testimony->name ?? $testimony->user->name}}</h5>
@@ -291,7 +296,7 @@
                 <div class="swiper-pagination"></div>
             </div>
         </div>
-        <div class="gundarGraduates__join">
+        <div class="gundarGraduates__join mt-5">
             <div class="join__container">
                 <div class="join__background">
                     <img src="{{ asset('assets/images/Group 4149.png') }}" />

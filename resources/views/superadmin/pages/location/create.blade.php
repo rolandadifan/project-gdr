@@ -14,7 +14,7 @@
     <div class="card py-3 px-3">
         @include('flashmessage.validation')
         @include('flashmessage.flash')
-        <h1 class="mb-5">Alumni Review Create</h1>
+        <h1 class="mb-5">Location Create</h1>
 
         <button class="btn btn-primary" style="width: 200px;margin-bottom:4rem"
             onclick="location.href = '/sadmin/location'">Back to
@@ -22,17 +22,6 @@
         <form action="{{ route('location.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="row">
-                <div class="col-md-12">
-                    <div class="form-group">
-                        <label for="campus">Campus Location</label>
-                        <select class="form-control" name="ext" id="exampleFormControlSelect1">
-                            <option value="jakarta">Jakarta</option>
-                            <option value="depok">Depok</option>
-                            <option value="bekasi">Bekasi</option>
-                            <option value="tangerang">tangerang</option>
-                        </select>
-                    </div>
-                </div>
                 <div class="col-md-12">
                     <div class="form-group">
                         <label for="campus">Campus name</label>
@@ -43,6 +32,19 @@
                     <div class="form-group">
                         <label for="phone">Phone</label>
                         <input name='phone' type="text" class="form-control">
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="ext">Phone extensions</label>
+                        <input name='ext' type="text" class="form-control">
+                        <!-- <select class="form-control" name="ext" id="exampleFormControlSelect1">
+                            <option value="{{--$location->ext--}}">{{--ucfirst($location->ext)--}}</option>
+                            <option value="jakarta">Jakarta</option>
+                            <option value="depok">Depok</option>
+                            <option value="bekasi">Bekasi</option>
+                            <option value="tangerang">Tangerang</option>
+                        </select> -->
                     </div>
                 </div>
                 <div class="col-md-12">

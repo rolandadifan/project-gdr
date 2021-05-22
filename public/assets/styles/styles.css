@@ -13,6 +13,24 @@ html::-webkit-scrollbar {
   display: none;
 }
 
+.videoWrapper {
+  position: relative;
+  padding-bottom: 56.25%;
+  /* 16:9 */
+  padding-top: 0;
+  width: 100vw;
+  height: 0;
+}
+
+.videoWrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -99;
+}
+
 .jumbotron {
   margin-top: -22px;
   width: 100%;
