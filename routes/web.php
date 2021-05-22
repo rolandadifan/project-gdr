@@ -182,6 +182,7 @@ Route::prefix('sadmin')->middleware(['auth', 'admin'])->group(function () {
     //schedules
     Route::get('/schedules-info', [App\Http\Controllers\SuperAdmin\SchedulesController::class, 'index'])->name('schedules.index');
     Route::post('/schedules-info', [App\Http\Controllers\SuperAdmin\SchedulesController::class, 'store'])->name('schedules.store');
+    Route::get('/schedules-info/create', [App\Http\Controllers\SuperAdmin\SchedulesController::class, 'create'])->name('schedules.create');
     Route::get('/schedules-info/{id}', [App\Http\Controllers\SuperAdmin\SchedulesController::class, 'edit'])->name('schedules.edit');
     Route::put('/schedules-info/{id}', [App\Http\Controllers\SuperAdmin\SchedulesController::class, 'update'])->name('schedules.update');
     Route::delete('/schedules-info/{id}', [App\Http\Controllers\SuperAdmin\SchedulesController::class, 'destroy'])->name('schedules.destroy');
@@ -191,6 +192,17 @@ Route::prefix('sadmin')->middleware(['auth', 'admin'])->group(function () {
     Route::post('/requirment-info/step-1', [App\Http\Controllers\SuperAdmin\AboutController::class, 'reqirmentStoreStepOne'])->name('requirment.step-one');
     Route::post('/requirment-info/step-2', [App\Http\Controllers\SuperAdmin\AboutController::class, 'reqirmentStoreStepTwo'])->name('requirment.step-two');
     Route::post('/requirment-info/step-3', [App\Http\Controllers\SuperAdmin\AboutController::class, 'reqirmentStoreStepThree'])->name('requirment.step-three');
+
+    //key-dates
+    Route::get('/key-date-info', [App\Http\Controllers\SuperAdmin\KeyDateController::class, 'index'])->name('key-date.index');
+    Route::get('/key-date-info/create', [App\Http\Controllers\SuperAdmin\KeyDateController::class, 'create'])->name('key-date.create');
+    Route::post('/key-date-info/store', [App\Http\Controllers\SuperAdmin\KeyDateController::class, 'store'])->name('key-date.store');
+    Route::get('/key-date-info/{id}', [App\Http\Controllers\SuperAdmin\KeyDateController::class, 'edit'])->name('key-date.edit');
+    Route::put('/key-date-info/{id}', [App\Http\Controllers\SuperAdmin\KeyDateController::class, 'update'])->name('key-date.update');
+    Route::post('/key-date-detail', [App\Http\Controllers\SuperAdmin\KeyDateController::class, 'createInfo'])->name('key-date.createInfo');
+    Route::post('/key-date-detail/update-info', [App\Http\Controllers\SuperAdmin\KeyDateController::class, 'editInfo'])->name('key-date.editInfo');
+    Route::delete('/key-date-detail/delete-info/{id}', [App\Http\Controllers\SuperAdmin\KeyDateController::class, 'deleteInfo'])->name('key-date.deleteInfo');
+    Route::delete('/key-date/delete/{id}', [App\Http\Controllers\SuperAdmin\KeyDateController::class, 'destroy'])->name('key-date.destroy');
 
 });
 

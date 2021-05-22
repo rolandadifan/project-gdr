@@ -49,10 +49,10 @@ class AboutController extends Controller
         $event = Article::with(['articleDetail'])->where('status_id', '1')->orderBy('created_at', 'DESC')->whereHas('articleType', function (Builder $query) {
             $query->where('name', 'event');
         })->limit(3)->get();
-        $eventAll = Article::with(['articleDetail'])->where('status_id', '1')->whereHas('articleType', function (Builder $query) {
+        $eventAll = Article::with(['articleDetail'])->where('status_id', '1')->orderBy('created_at', 'DESC')->whereHas('articleType', function (Builder $query) {
             $query->where('name', 'event');
         })->paginate(3);
-         $article = Article::with(['articleDetail'])->where('status_id', '1')->whereHas('articleType', function (Builder $query) {
+         $article = Article::with(['articleDetail'])->where('status_id', '1')->orderBy('created_at', 'DESC')->whereHas('articleType', function (Builder $query) {
             $query->where('name', 'research');
         })->limit(2)->get();
         return view('pages.artikel.event')->with([
@@ -64,7 +64,7 @@ class AboutController extends Controller
 
     public function detail($id)
     {
-        $article = Article::with(['articleType'])->where('status_id', '1')->whereHas('articleDetail', function (Builder $query) use($id) {
+        $article = Article::with(['articleType'])->where('status_id', '1')->orderBy('created_at', 'DESC')->whereHas('articleDetail', function (Builder $query) use($id) {
             $query->where('slug', $id);
         })->firstOrFail();
         $news = Article::with(['articleDetail'])->where('status_id', '1')->orderBy('created_at', 'DESC')->whereHas('articleType', function (Builder $query) {

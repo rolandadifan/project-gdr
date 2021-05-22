@@ -84,6 +84,22 @@
         </div>
     </li>
 
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#key-dates"
+            aria-expanded="true" aria-controls="key-dates">
+            <i class="fas fa-fw fa-key"></i>
+            <span>Key Dates</span>
+        </a>
+        <div id="key-dates" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item" href="{{ route('key-date.index') }}">List</a>
+                {{-- <a class="collapse-item" href="utilities-border.html">Add</a> --}}
+                <a class="collapse-item" href="{{ route('key-date.create') }}">Add</a>
+
+            </div>
+        </div>
+    </li>
+
     <!-- Divider -->
     <hr class="sidebar-divider">
 

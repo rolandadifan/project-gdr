@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
-@section('breadcrumb-title', 'Research')
-@section('title-jumbotron', 'Research')
+@section('breadcrumb-title', 'Key Dates')
+@section('title-jumbotron', 'Key Dates')
 @section('s-title-jumbotron', 'Premium. Proven. Loved. Study at Gunadarma')
 @section('text-jumbotron', 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Culpa corrupti voluptas vel
 quisquam illum voluptate quod impedit ab nisi, esse mollitia ad aliquid delectus ea sit autem officiis. Reprehenderit,
@@ -38,7 +38,7 @@ tenetur!')
                                                             <p>Application Dates</p>
                                                         </div>
                                                         <div class="table-responsive">
-                                                            <table class="table text-center">
+                                                            <table id="table-key-date" class="table text-center">
                                                                 <thead>
                                                                     <tr>
                                                                         <th scope="col">Study Period</th>
@@ -47,25 +47,17 @@ tenetur!')
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody>
-                                                                    <!-- <tr>
-                                                <td colspan="5">You have not yet started an
-                                                    application using this account.</td>
-                                            </tr> -->
+                                                                    @forelse ($keys as $item)
                                                                     <tr>
-                                                                        <td class="first__td">Trimester 1, 2021</td>
-                                                                        <td>Closed</td>
-                                                                        <td>17/02/2021</td>
+                                                                        <td class="first__td">{{ $item->period }}</td>
+                                                                        <td>{{ ucfirst($item->open_status) }}</td>
+                                                                        <td>{{ date('d/m/Y', strtotime($item->close_date)) }}</td>
                                                                     </tr>
-                                                                    <tr>
-                                                                        <td class="first__td">Trimester 2, 2021</td>
-                                                                        <td>Now Open</td>
-                                                                        <td>27/06/2021</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td class="first__td">Trimester 3, 2021</td>
-                                                                        <td>Now Open</td>
-                                                                        <td>11/09/2021</td>
-                                                                    </tr>
+                                                                    @empty
+                                                                        <tr>
+                                                                            <td>No Data Here</td>
+                                                                        </tr>
+                                                                    @endforelse
                                                                 </tbody>
                                                             </table>
                                                         </div>
@@ -83,14 +75,15 @@ tenetur!')
                                     </p>
                                 </div>
                                 <!-- table looping sejumlah db di trimester berada -->
-                                <div class="tableApplication my-5">
+                                @forelse ($keys as $data)
+                                    <div class="tableApplication my-5">
                                     <div class="app__content">
                                         <div class="container">
                                             <div class="row align-items-center p-0">
                                                 <div class="col">
                                                     <div class="app__table">
                                                         <div class="table__app">
-                                                            <p>Trimester 1, 2021</p>
+                                                            <p>{{ $data->period }}</p>
                                                         </div>
                                                         <div class="table-responsive">
                                                             <table class="table text-center">
@@ -102,36 +95,21 @@ tenetur!')
                                                                 </thead>
                                                                 <tbody>
                                                                     <!-- looping data from db -->
+                                                                    @forelse ($data->KeyDetail as $info)
                                                                     <tr>
-                                                                        <td class="first__td">Orientation week – all students</td>
-                                                                        <td>Monday 1 March-Friday 5 March</td>
+                                                                        <td class="first__td">{{ $info->activities }}</td>
+                                                                        <td>{{ $info->date }}</td>
                                                                     </tr>
-                                                                    <tr>
-                                                                        <td class="first__td">11 teaching period begins</td>
-                                                                        <td>Monday 8 March</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td class="first__td">11 teaching period ends</td>
-                                                                        <td>Friday 28 May</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td class="first__td">Exams Begin</td>
-                                                                        <td>Monday 7 June</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td class="first__td">Exams End</td>
-                                                                        <td>Friday 18 June</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td class="first__td">11 results released</td>
-                                                                        <td>Thursday 8 July</td>
-                                                                    </tr>
+                                                                    @empty
+                                                                        <tr>
+                                                                            <td class="bg-light" colspan="2">Coming Soon</td>
+                                                                        </tr>
+                                                                    @endforelse
                                                                     <!-- end looping -->
-
-                                                                    <!-- check jika key actives, application open, else if application close, else coming soon  -->
                                                                     <tr>
-                                                                        <td class="bg-light" colspan="2">Applications now closed </td>
+                                                                        <td class="bg-light" colspan="2">Applications now {{ $data->open_status }} </td>
                                                                     </tr>
+                                                                    <!-- check jika key actives, application open, else if application close, else coming soon  -->
                                                                 </tbody>
                                                             </table>
                                                         </div>
@@ -141,65 +119,13 @@ tenetur!')
                                         </div>
                                     </div>
                                 </div>
-                                <div class="tableApplication my-5">
-                                    <div class="app__content">
-                                        <div class="container">
-                                            <div class="row align-items-center p-0">
-                                                <div class="col">
-                                                    <div class="app__table">
-                                                        <div class="table__app">
-                                                            <p>Trimester 2, 2021</p>
-                                                        </div>
-                                                        <div class="table-responsive">
-                                                            <table class="table text-center">
-                                                                <thead>
-                                                                    <tr>
-                                                                        <th scope="col">Activities</th>
-                                                                        <th scope="col">Dates</th>
-                                                                    </tr>
-                                                                </thead>
-                                                                <tbody>
-                                                                    <!-- looping data from db -->
-                                                                    <tr>
-                                                                        <td class="first__td">Orientation week – all students</td>
-                                                                        <td>Monday 1 March-Friday 5 March</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td class="first__td">11 teaching period begins</td>
-                                                                        <td>Monday 8 March</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td class="first__td">11 teaching period ends</td>
-                                                                        <td>Friday 28 May</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td class="first__td">Exams Begin</td>
-                                                                        <td>Monday 7 June</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td class="first__td">Exams End</td>
-                                                                        <td>Friday 18 June</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td class="first__td">11 results released</td>
-                                                                        <td>Thursday 8 July</td>
-                                                                    </tr>
-                                                                    <!-- end looping -->
-
-                                                                    <!-- check jika key actives, application open, else if application close, else coming soon  -->
-                                                                    <tr>
-                                                                        <td class="bg-light" colspan="2">Applications now open </td>
-                                                                    </tr>
-                                                                </tbody>
-                                                            </table>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="tableApplication my-5">
+                                @empty
+                                    <p class="text-center">No Data Here</p>
+                                @endforelse
+                                
+                            
+                                  
+                                {{-- <div class="tableApplication my-5">
                                     <div class="app__content">
                                         <div class="container">
                                             <div class="row align-items-center p-0">
@@ -232,7 +158,7 @@ tenetur!')
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
                                 <!-- end looping -->
                             </div>
                         </div>
@@ -247,28 +173,35 @@ tenetur!')
             <h4>Latest Event</h4>
         </div>
         <div class="row rows-cols-1 rows-cols-md-2 latestNews__content">
+            @forelse ($article as $ar)
             <div class="col">
                 <div class="latestNews__col--header">
-                    <h6>COVID-19</h6>
-                    <p>The Importance of Implementing Social Distancing to Prevent COVID-19</p>
+                    <h6>{{ $ar->group }}</h6>
+                    <p>{{ $ar->articleDetail->title }}</p>
                 </div>
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quod a sint nobis corrupti nesciunt,
-                    minus voluptas labore error! Autem quia rem in cumque eaque excepturi ipsum veritatis,
-                    distinctio soluta nemo!</p>
+                <p>{{$ar->articleDetail->excerpt}}</p>
 
-                <a href="#">Read more..</a>
+                <a href="{{ route('page.detail',$ar->articleDetail->slug ) }}">Read more..</a>
             </div>
-            <div class="col">
-                <div class="latestNews__col--header">
-                    <h6>University</h6>
-                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed m. </p>
-                </div>
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quod a sint nobis corrupti nesciunt,
-                    minus voluptas labore error! Autem quia rem in cumque eaque excepturi ipsum veritatis,
-                    distinctio soluta nemo!</p>
-
-                <a href="#">Read more..</a>
-            </div>
+            @empty
+                 <p class="text-center">No Data Found</p>
+            @endforelse
+           
         </div>
     </div>
 @endsection
+@push('addon-script')
+{{-- data table --}}
+  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js">
+  </script>
+
+<script>
+// data table
+$('#table-key-date').DataTable({
+    responsive: true,
+    searching: false,
+    lengthChange: false
+});
+
+</script>
+@endpush
