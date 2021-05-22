@@ -1,51 +1,51 @@
-section{
+section {
     width: 90%;
     margin: 35px auto;
     // background-color: burlywood;
     min-height: 500px;
     text-align: center;
 
-    .interProgram__header{
+    .interProgram__header {
         @include sectionHeader();
     }
 
-    .interProgram__context{
-    
-        .row{
+    .interProgram__context {
+        .row {
             row-gap: 20px;
             column-gap: 20px;
         }
 
-        a{
+        a {
             text-decoration: none;
         }
 
-        .card{
+        .card {
             border-radius: 7px;
-            
-            .card-body{
+
+            .card-body {
                 text-align: center;
                 background: $Color6;
                 color: $primaryColor;
                 transition: 0.4s ease-in-out;
 
-                .card-title{
+                .card-title {
                     font-weight: 600;
                     font-size: 18px;
                 }
             }
 
-            &:hover .card-body, &:active .card-body{
+            &:hover .card-body,
+            &:active .card-body {
                 background: $primaryColor;
                 color: $Color6;
             }
         }
 
-        .interProgram__allCourse{
+        .interProgram__allCourse {
             text-align: center;
             margin-top: 20px;
 
-            .primary__button{
+            .primary__button {
                 @include primaryButton();
             }
         }
@@ -134,81 +134,79 @@ section{
         //         }
         //     }
         // }
-            
-
     }
 
-    .about__header{
+    .about__header {
         @include sectionHeader();
     }
 
-    .about__content{
+    .about__content {
         margin-top: 20px;
         text-align: justify;
 
-        p{
+        p {
             font-size: 16px;
         }
 
-        a{
+        a {
             color: $Color3;
             font-weight: 600;
         }
 
-        .about__boxImg{
+        .about__boxImg {
             width: 100%;
             height: 100%;
             text-align: right;
 
-            img{
+            img {
                 width: 95%;
                 object-fit: contain;
             }
         }
     }
 
-    .lifeGunadarma__header{
+    .lifeGunadarma__header {
         @include sectionHeader();
     }
 
-    .lifeGunadarma__contents{
+    .lifeGunadarma__contents {
         margin-top: 30px;
-        .card{
+        .card {
             border-radius: 10px;
             box-shadow: 2px 1px 6px #000;
 
-            .lifeGunadarma__boxImg{
+            .lifeGunadarma__boxImg {
                 width: 100%;
                 height: 100%;
                 border-radius: 10px;
-    
-                img{
+
+                img {
                     width: 100%;
                     height: 100%;
                     object-fit: contain;
                 }
             }
-    
-            .lifeGunadarma__content{
+
+            .lifeGunadarma__content {
                 width: 80%;
                 margin: 50px auto 0;
                 line-height: 2rem;
-                text-align: right;    
-    
-                h2{
+                text-align: right;
+
+                h2 {
                     text-align: center;
                     color: $Color2;
                     font-size: 32px;
                     margin-bottom: 20px;
                     font-weight: 500;
                 }
-        
-                p{
-                text-align: justify;
+
+                p {
+                    text-align: justify;
                     font-size: 16px;
                 }
-        
-                .primary__button{
+
+                .primary__button {
                     @include primaryButton();
                     margin-bottom: 10px;
                 }
@@ -216,59 +214,59 @@ section{
         }
     }
 
-    .research__header{
+    .research__header {
         @include sectionHeader();
     }
 
-    .research__contents{
-        .card{
+    .research__contents {
+        .card {
             border-radius: 20px;
             margin: 5px 0;
             box-shadow: 2px 2px 2px #000;
 
-            .research__boxImg{
+            .research__boxImg {
                 padding: 5px;
                 width: 100%;
                 height: 100%;
 
-                img{
+                img {
                     width: 100%;
                     height: 100%;
                     object-fit: contain;
                 }
             }
 
-            .research__content{
+            .research__content {
                 padding: 20px;
                 text-align: left;
-                
-                h3{
+
+                h3 {
                     font-size: 19px;
                     font-weight: bold;
                 }
 
-                p{
+                p {
                     font-size: 14px;
                     text-align: justify;
                 }
-                a{
-                    color:$Color3;
+                a {
+                    color: $Color3;
                 }
             }
         }
     }
 
-    .gundarGraduates__header{
+    .gundarGraduates__header {
         @include sectionHeader();
     }
 
-    .gundarGraduates__contents{
-        .gundarGraduates__slider{
+    .gundarGraduates__contents {
+        .gundarGraduates__slider {
             position: relative;
 
-            &::before{
+            &::before {
                 content: "";
-                background: #AC85AD;
+                background: #ac85ad;
                 width: 600px;
                 height: 600px;
                 border-radius: 50%;
@@ -279,7 +277,7 @@ section{
                 border: 1px solid rgba($color: #000000, $alpha: 0.2);
             }
 
-            &::after{
+            &::after {
                 content: "";
                 display: block;
                 height: 100px;
@@ -295,48 +293,48 @@ section{
                 height: 100%;
                 padding: 50px 0;
 
-
                 .swiper-slide {
                     background-position: center;
                     background-size: cover;
                     width: 350px;
                     height: 100%;
 
-                    .card{
+                    .card {
                         padding: 40px 0;
                         text-align: center;
                         border-radius: 12px;
-                        border: 2px solid rgba($color: #000000, $alpha: .2);
+                        border: 2px solid rgba($color: #000000, $alpha: 0.2);
 
-                        .card__boxImg{
+                        .card__boxImg {
                             width: 120px;
                             height: 120px;
                             border-radius: 50%;
                             margin: 20px auto;
 
-                            img{
+                            img {
                                 width: 100%;
                                 height: 100%;
                                 border-radius: 50%;
                             }
                         }
 
-                        .card-title{
+                        .card-title {
                             color: #071c4d;
                             font-size: 20px;
                         }
 
-                        .card-text{
+                        .card-text {
                             font-size: 16px;
                             font-weight: 300;
                         }
 
-                        .card__course{
+                        .card__course {
                             margin: 40px 0 0 0;
                         }
                     }
 
-                    .swiper-slide-shadow-left, .swiper-slide-shadow-right{
+                    .swiper-slide-shadow-left,
+                    .swiper-slide-shadow-right {
                         background-image: none;
                     }
                 }
@@ -344,9 +342,9 @@ section{
         }
     }
 
-    .gundarGraduates__join{
+    .gundarGraduates__join {
         position: relative;
-        &::after{
+        &::after {
             content: "";
             position: absolute;
             top: -200px;
@@ -357,7 +355,7 @@ section{
             border: 1px solid rgba($color: #000000, $alpha: 0.4);
         }
 
-        .join__container{
+        .join__container {
             border-radius: 12px;
             height: 120px;
             width: 80%;
@@ -367,14 +365,14 @@ section{
             // background: violet;
             // background-image: url('./../../images/computer-science.png');
 
-            .join__background{
+            .join__background {
                 width: 100%;
                 height: 100%;
                 position: absolute;
                 top: 0;
                 left: 0;
 
-                img{
+                img {
                     border-radius: 18px;
                     width: inherit;
                     height: inherit;
@@ -382,7 +380,7 @@ section{
                 }
             }
 
-            .container{
+            .container {
                 position: absolute;
                 z-index: 2;
                 top: 20%;
@@ -390,43 +388,42 @@ section{
                 color: $Color7;
                 text-align: left;
 
-                p{
+                p {
                     margin-left: 30px;
-                    font-size:20px;
+                    font-size: 20px;
                 }
-                p:nth-child(2){
+                p:nth-child(2) {
                     color: $Color4;
                 }
 
-                .primary__button{
+                .primary__button {
                     background-color: $Color3;
                     color: $Color7;
                     font-weight: bold;
                     font-size: 14px;
                     border-radius: 7px;
                     padding: 10px 30px;
-                    margin-right:20px;
+                    margin-right: 20px;
                 }
             }
         }
     }
 }
 
-#gundarGraduates{
+#gundarGraduates {
     width: 100%;
 }
 
-.gunadarma__icons{
+.gunadarma__icons {
     width: 100%;
     min-height: 450px;
     background-color: $Color6;
-    margin-top: -15%;
 
-    .gunadarma__icon{
+    .gunadarma__icon {
         text-align: center;
-        margin-top: calc(100% - 20px);
+        margin-top: 10vh;
 
-        p:nth-child(1){
+        p:nth-child(1) {
             color: $primaryColor;
         }
 
@@ -437,29 +434,22 @@ section{
     }
 }
 
-@media(min-width:1600px){
-    .gunadarma__icons{
-        margin-top: -10%;
-    }
-}
-
-@media(max-width:992px){
-    section{
-        .gundarGraduates__join{
-            .join__container{
-    
-                .container{
+@media (max-width: 992px) {
+    section {
+        .gundarGraduates__join {
+            .join__container {
+                .container {
                     top: 20px;
                     left: 10px;
                     text-align: right;
-    
-                    p{
+
+                    p {
                         text-align: left;
                         margin: 0;
-                        font-size:16px;
+                        font-size: 16px;
                     }
-    
-                    .primary__button{
+
+                    .primary__button {
                         padding: 5px 30px;
                         margin-top: 10px;
                     }
@@ -468,69 +458,69 @@ section{
         }
     }
 
-    .gunadarma__icons{
-        .gunadarma__icon{
+    .gunadarma__icons {
+        .gunadarma__icon {
             margin-top: 130px;
         }
     }
 
-    .contact__gunadarma{
+    .contact__gunadarma {
         margin-top: 20px;
         padding: 20px;
         background: $Color6;
-    
-        h5{
-            color: $primaryColor
+
+        h5 {
+            color: $primaryColor;
         }
-    
+
         .location {
             p {
                 font-size: 13px;
             }
-    
-            a{
+
+            a {
                 color: $Color3;
                 font-size: 15px;
             }
         }
-    
-        .link{
+
+        .link {
             margin: 20px;
         }
     }
 }
 
-@media(max-width:576px){
-    section{
-        .about__content{
-            .about__boxImg{
+@media (max-width: 576px) {
+    section {
+        .about__content {
+            .about__boxImg {
                 text-align: center;
-    
-                img{
+
+                img {
                     width: 100%;
                 }
             }
         }
 
-        .lifeGunadarma__contents{
+        .lifeGunadarma__contents {
             margin-top: 30px;
-            .card{
+            .card {
                 border-radius: 10px;
                 box-shadow: 2px 1px 6px #000;
-        
-                .lifeGunadarma__content{
+
+                .lifeGunadarma__content {
                     margin: 20px auto 0;
-            
-                    .primary__button{
+
+                    .primary__button {
                         margin-bottom: 20px;
                     }
                 }
             }
         }
 
-        .gundarGraduates__contents{
-            .gundarGraduates__slider{
-                &::before{
+        .gundarGraduates__contents {
+            .gundarGraduates__slider {
+                &::before {
                     width: 300px;
                     height: 300px;
                     top: 28%;
@@ -538,20 +528,19 @@ section{
             }
         }
 
-        .gundarGraduates__join{
-            .join__container{
-    
-                .container{
+        .gundarGraduates__join {
+            .join__container {
+                .container {
                     top: 10px;
                     text-align: right;
-    
-                    p{
+
+                    p {
                         text-align: left;
                         margin: 0;
-                        font-size:16px;
+                        font-size: 16px;
                     }
-    
-                    .primary__button{
+
+                    .primary__button {
                         padding: 5px 30px;
                         margin-top: 10px;
                     }
@@ -560,12 +549,9 @@ section{
         }
     }
 
-    .gunadarma__icons{
-        margin-top: -125px;
-
-        .gunadarma__icon{
+    .gunadarma__icons {
+        .gunadarma__icon {
             margin-top: 150px;
         }
-
     }
 }

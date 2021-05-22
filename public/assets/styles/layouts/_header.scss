@@ -1,24 +1,31 @@
 header {
+    .no-after:after {
+        background: none !important;
+    }
     .info-gundar {
         background: $primaryColor;
-        padding: 22px 80px 22px 0;
+        padding: 5px 80px 5px 0;
         text-align: right;
         font-weight: 500;
         width: 100%;
 
         a {
             color: $Color7;
-            font-size: 19px;
-            margin-right: 50px;
+            font-size: 12px;
+            letter-spacing: 0.5px;
+            margin-right: 2rem;
             position: relative;
 
             &::after {
-                content: url("./../images/icons/foreign.png");
+                content: "";
+                background: url("./../images/icons/foreign.png");
+                background-repeat: no-repeat;
+                background-size: contain;
                 width: 15px;
                 height: 15px;
                 position: absolute;
                 top: 2px;
-                margin-left: 8px;
+                margin-left: 3px;
                 line-height: 0;
             }
         }
@@ -36,7 +43,7 @@ header {
             .nav-bar__menu {
                 margin-bottom: 0;
                 &:nth-child(1) {
-                    flex-basis: 30%;
+                    flex-basis: 35%;
                     font-size: 20px;
                     color: $Color10;
                     cursor: pointer;
@@ -90,6 +97,8 @@ header {
                             20px,
                             28px
                         );
+                        width: 40px;
+                        background-repeat: no-repeat;
                     }
                 }
 
@@ -287,7 +296,7 @@ header {
 @media (max-width: 992px) {
     header {
         .info-gundar {
-            padding: 20px 10px;
+            padding: 5px;
             display: flex;
             justify-content: center;
             align-items: flex-end;
@@ -408,6 +417,9 @@ header {
 
 @media (max-width: 576px) {
     header {
+        .info-gundar a {
+            margin-right: 8.7vw;
+        }
         .nav-bar {
             padding: 10px;
             .nav-bar__menus {

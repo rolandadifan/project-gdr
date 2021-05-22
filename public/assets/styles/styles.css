@@ -24,7 +24,7 @@ html::-webkit-scrollbar {
 
 .videoWrapper iframe {
   position: absolute;
-  top: 0;
+  top: -70px;
   left: 0;
   width: 100%;
   height: 100%;
@@ -790,9 +790,13 @@ html::-webkit-scrollbar {
   font-size: 16px;
 }
 
+header .no-after:after {
+  background: none !important;
+}
+
 header .info-gundar {
   background: #885A89;
-  padding: 22px 80px 22px 0;
+  padding: 5px 80px 5px 0;
   text-align: right;
   font-weight: 500;
   width: 100%;
@@ -800,18 +804,22 @@ header .info-gundar {
 
 header .info-gundar a {
   color: #FFF;
-  font-size: 19px;
-  margin-right: 50px;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  margin-right: 2rem;
   position: relative;
 }
 
 header .info-gundar a::after {
-  content: url("./../images/icons/foreign.png");
+  content: "";
+  background: url("./../images/icons/foreign.png");
+  background-repeat: no-repeat;
+  background-size: contain;
   width: 15px;
   height: 15px;
   position: absolute;
   top: 2px;
-  margin-left: 8px;
+  margin-left: 3px;
   line-height: 0;
 }
 
@@ -838,8 +846,8 @@ header .nav-bar .nav-bar__menus .nav-bar__menu {
 }
 
 header .nav-bar .nav-bar__menus .nav-bar__menu:nth-child(1) {
-  -ms-flex-preferred-size: 30%;
-      flex-basis: 30%;
+  -ms-flex-preferred-size: 35%;
+      flex-basis: 35%;
   font-size: 20px;
   color: #7E3485;
   cursor: pointer;
@@ -909,6 +917,8 @@ header .nav-bar .nav-bar__menus .nav-bar__menu:nth-child(4)::before {
   width: 20px;
   height: 28px;
   margin-right: 20px;
+  width: 40px;
+  background-repeat: no-repeat;
 }
 
 header .nav-bar .nav-bar__menus .nav-bar__menu p {
@@ -1089,7 +1099,7 @@ header .sidebar .sidebar__right {
 
 @media (max-width: 992px) {
   header .info-gundar {
-    padding: 20px 10px;
+    padding: 5px;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -1199,6 +1209,9 @@ header .sidebar .sidebar__right {
 }
 
 @media (max-width: 576px) {
+  header .info-gundar a {
+    margin-right: 8.7vw;
+  }
   header .nav-bar {
     padding: 10px;
   }
@@ -1804,7 +1817,8 @@ section .interProgram__context .card .card-body .card-title {
   font-size: 18px;
 }
 
-section .interProgram__context .card:hover .card-body, section .interProgram__context .card:active .card-body {
+section .interProgram__context .card:hover .card-body,
+section .interProgram__context .card:active .card-body {
   background: #885A89;
   color: #F4F4F4;
 }
@@ -2105,7 +2119,7 @@ section .gundarGraduates__contents .gundarGraduates__slider {
 
 section .gundarGraduates__contents .gundarGraduates__slider::before {
   content: "";
-  background: #AC85AD;
+  background: #ac85ad;
   width: 600px;
   height: 600px;
   border-radius: 50%;
@@ -2174,7 +2188,8 @@ section .gundarGraduates__contents .gundarGraduates__slider .swiper-container.sw
   margin: 40px 0 0 0;
 }
 
-section .gundarGraduates__contents .gundarGraduates__slider .swiper-container.swiperGraduates .swiper-slide .swiper-slide-shadow-left, section .gundarGraduates__contents .gundarGraduates__slider .swiper-container.swiperGraduates .swiper-slide .swiper-slide-shadow-right {
+section .gundarGraduates__contents .gundarGraduates__slider .swiper-container.swiperGraduates .swiper-slide .swiper-slide-shadow-left,
+section .gundarGraduates__contents .gundarGraduates__slider .swiper-container.swiperGraduates .swiper-slide .swiper-slide-shadow-right {
   background-image: none;
 }
 
@@ -2254,12 +2269,11 @@ section .gundarGraduates__join .join__container .container .primary__button {
   width: 100%;
   min-height: 450px;
   background-color: #F4F4F4;
-  margin-top: -15%;
 }
 
 .gunadarma__icons .gunadarma__icon {
   text-align: center;
-  margin-top: calc(100% - 20px);
+  margin-top: 10vh;
 }
 
 .gunadarma__icons .gunadarma__icon p:nth-child(1) {
@@ -2269,12 +2283,6 @@ section .gundarGraduates__join .join__container .container .primary__button {
 .gunadarma__icons .gunadarma__icon p:nth-child(2) {
   text-align: justify;
   font-size: 15px;
-}
-
-@media (min-width: 1600px) {
-  .gunadarma__icons {
-    margin-top: -10%;
-  }
 }
 
 @media (max-width: 992px) {
@@ -2353,9 +2361,6 @@ section .gundarGraduates__join .join__container .container .primary__button {
   section .gundarGraduates__join .join__container .container .primary__button {
     padding: 5px 30px;
     margin-top: 10px;
-  }
-  .gunadarma__icons {
-    margin-top: -125px;
   }
   .gunadarma__icons .gunadarma__icon {
     margin-top: 150px;
