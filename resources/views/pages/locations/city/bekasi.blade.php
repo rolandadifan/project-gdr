@@ -25,3 +25,8 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <nav aria-label="paginationCourses" class="mt-3">
+                                        <ul class="pagination justify-content-center">
+                                        {{ $bekasi->links('vendor.pagination.bootstrap-4') }}
+                                        </ul>   
+                                    </nav>
