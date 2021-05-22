@@ -19,12 +19,12 @@
                 <p>Select Type</p>
               </div>
               <div class="col active">
-                <h6>Applications</h6>
-                <p>Select Type</p>
+                <h6>Personal Details</h6>
+                <p>Fill the Form</p>
               </div>
               <div class="col active">
-                <h6>Applications</h6>
-                <p>Select Type</p>
+                <h6>Verification</h6>
+                <p>Review and Submit</p>
               </div>
             </div>
           </div>

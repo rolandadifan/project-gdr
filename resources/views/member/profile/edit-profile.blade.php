@@ -47,9 +47,14 @@
                                     <input type="email" disabled class="form-control" id="email"
                                         placeholder="{{ Auth()->user()->email }}">
                                 </div>
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Place Of Birth</label>
+                                    <input type="text" name="place_birth" value="{{ !$user ? '' : $user->place_birth }}"  class="form-control" id="place_birth"
+                                        placeholder="Place Of birth">
+                                </div>
                                 <div class="row">
                                     <div class="col">
-                                        <label for="date" class="form-label">DD/MM/YYYY</label>
+                                        <label for="date" class="form-label">Date of Birth</label>
                                         <input type="date" class="form-control" id="date" value="{{ !$user ? '' : $user->date_birth  }}" name="date_birth">
                                     </div>
                                     <div class="col">

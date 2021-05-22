@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
-@section('breadcrumb-title', '')
-@section('title-jumbotron', '$article->articleDetail->title')
+@section('breadcrumb-title', $page->title)
+@section('title-jumbotron',  $page->title)
 @section('s-title-jumbotron', 'Premium. Proven. Loved. Study at Gunadarma')
 @section('text-jumbotron', 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Culpa corrupti voluptas vel
 quisquam illum voluptate quod impedit ab nisi, esse mollitia ad aliquid delectus ea sit autem officiis. Reprehenderit,
@@ -23,7 +23,7 @@ tenetur!')
                             </div> --}}
                             <div class="card__body">
                 
-                                <p>test</p>
+                                <p>{!! $page->content !!}</p>
                             </div>
                         </div>
                     </div>

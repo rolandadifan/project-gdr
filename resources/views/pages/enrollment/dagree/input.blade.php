@@ -18,12 +18,12 @@
                 <p>Select Type</p>
               </div>
               <div class="col active">
-                <h6>Applications</h6>
-                <p>Select Type</p>
+                <h6>Personal Details</h6>
+                <p>Fill the Form</p>
               </div>
               <div class="col">
-                <h6>Applications</h6>
-                <p>Select Type</p>
+                <h6>Verification</h6>
+                <p>Review and Submit</p>
               </div>
             </div>
           </div>
@@ -49,31 +49,28 @@
                       <h4>Identity</h4>
                       <div class="mb-3">
                         <label for="name" class="form-label">Name<span>*</span></label>
-                        <input type="text" class="form-control" id="name" name="name">
+                        <input type="text" class="form-control" id="name" name="name" value="{{ auth()->user()->name }}">
                       </div>
                       <div class="mb-3">
                         <label for="placeBorn" class="form-label">Place of birth<span>*</span></label>
-                        <input type="text" class="form-control" id="placeBorn" name="placeBorn">
+                        <input type="text" class="form-control" id="placeBorn" name="placeBorn" value="{{ auth()->user()->userDetail->place_birth }}">
                       </div>
                       <div class="mb-3">
                         <label for="dateBorn" class="form-label">Date of birth<span>*</span></label>
-                        <input type="date" class="form-control" id="dateBorn" name="dateBorn">
+                        <input type="date" class="form-control" id="dateBorn" name="dateBorn" value="{{ auth()->user()->userDetail->date_birth }}">
                       </div>
                       <div class="mb-3">
                         <label for="gender" class="form-label">Gender<span>*</span></label>
                         <select class="form-select" id="gender">
-                          <option selected>Select Gender</option>
-                          <option value="men">Men</option>
-                          <option value="women">Women</option>
+                          <option selected value="{{ auth()->user()->userDetail->gender }}">{{ auth()->user()->userDetail->gender == "F" ? "Women" : "Men" }}</option>
+                          {{-- <option>Select Gender</option> --}}
+                          <option value="M">Men</option>
+                          <option value="F">Women</option>
                         </select>
                       </div>
                       <div class="mb-3">
                         <label for="nationality" class="form-label">Nationality<span>*</span></label>
-                        <select class="form-select" id="nationality">
-                          <option selected>Select Nationality</option>
-                          <option value="1">-</option>
-                          <option value="2">-</option>
-                        </select>
+                        <input type="text" class="form-control" id="nationality" name="dateBorn" value="{{ auth()->user()->userDetail->nationality }}">
                       </div>
                     </div>
 

@@ -236,8 +236,8 @@ Route::get('/alumni', [\App\Http\Controllers\AlumniController::class, 'index'])-
 
 //enrollment
 Route::get('/student-enrollment', [\App\Http\Controllers\EnrollmentController::class, 'index'])->name('enrollment.index');
-Route::get('/student-enrollment/register-data', [\App\Http\Controllers\EnrollmentController::class, 'input'])->name('enrollment.input');
-Route::get('/student-enrollment/verifi-data', [\App\Http\Controllers\EnrollmentController::class, 'verifi'])->name('enrollment.verifi');
+Route::get('/student-enrollment/register-data', [\App\Http\Controllers\EnrollmentController::class, 'input'])->name('enrollment.input')->middleware('auth');
+Route::get('/student-enrollment/verifi-data', [\App\Http\Controllers\EnrollmentController::class, 'verifi'])->name('enrollment.verifi')->middleware('auth');
 
 
 // life campuses
@@ -260,4 +260,4 @@ Route::get('/key-dates',[\App\Http\Controllers\KeyDateController::class, 'index'
 Route::get('/location-gunadarma', [App\Http\Controllers\LocController::class, 'index'])->name('loc-gundarma.index');
 
 //pages
-// Route::get('/{id}', [\App\Http\Controllers\PageController::class, 'index'])->name('custome.page');
+Route::get('/{slug}', [\App\Http\Controllers\PageController::class, 'show']);

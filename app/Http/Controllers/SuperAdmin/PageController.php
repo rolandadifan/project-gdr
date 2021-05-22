@@ -40,7 +40,7 @@ class PageController extends Controller
     public function menuStore(Request $request)
     {
         $title = $request->title;
-        $status = 1;
+        $status = 2;
         $slug = Str::slug($title);
         $content = $request->content;
 

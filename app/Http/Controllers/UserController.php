@@ -48,6 +48,7 @@ class UserController extends Controller
                     UserDetail::create([
                         'user_id' => Auth()->user()->id,
                         'status_id' => 1,
+                        'place_birth' => $request->input('place_birth'),
                         'date_birth' => $request->input('date_birth'),
                         'address' => $request->input('address'),
                         'gender' => $request->input('gender'),
@@ -67,6 +68,7 @@ class UserController extends Controller
                     $user_detail->update([
                        'user_id' => Auth()->user()->id,
                         'status_id' => 1,
+                        'place_birth' => $request->input('place_birth'),
                         'date_birth' => $request->input('date_birth'),
                         'address' => $request->input('address'),
                         'gender' => $request->input('gender'),
@@ -79,6 +81,7 @@ class UserController extends Controller
                      $user_detail->update([
                        'user_id' => Auth()->user()->id,
                         'status_id' => 1,
+                        'place_birth' => $request->input('place_birth'),
                         'date_birth' => $request->input('date_birth'),
                         'address' => $request->input('address'),
                         'gender' => $request->input('gender'),
@@ -106,6 +109,7 @@ class UserController extends Controller
                     UserDetail::create([
                         'user_id' => Auth()->user()->id,
                         'status_id' => 1,
+                        'place_birth' => $request->input('place_birth'),
                         'date_birth' => $request->input('date_birth'),
                         'address' => $request->input('address'),
                         'gender' => $request->input('gender'),
@@ -125,6 +129,7 @@ class UserController extends Controller
                     $user_detail->update([
                        'user_id' => Auth()->user()->id,
                         'status_id' => 1,
+                        'place_birth' => $request->input('place_birth'),
                         'date_birth' => $request->input('date_birth'),
                         'address' => $request->input('address'),
                         'gender' => $request->input('gender'),
@@ -137,6 +142,7 @@ class UserController extends Controller
                      $user_detail->update([
                        'user_id' => Auth()->user()->id,
                         'status_id' => 1,
+                        'place_birth' => $request->input('place_birth'),
                         'date_birth' => $request->input('date_birth'),
                         'address' => $request->input('address'),
                         'gender' => $request->input('gender'),

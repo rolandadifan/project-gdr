@@ -201,7 +201,7 @@
 
                         @forelse ($menu_detail as $item)
                         <div class="accordion-item">
-                            <a href="" class="accordion-header" id="alumni">
+                            <a href="{{ url($item->slug) }}" class="accordion-header" id="alumni">
                                 <button class="accordion-button collapsed no-after" type="button">
                                     {{  $item->title }}
                                 </button>
