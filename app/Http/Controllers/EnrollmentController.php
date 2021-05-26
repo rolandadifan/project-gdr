@@ -37,9 +37,7 @@ class EnrollmentController extends Controller
 
     public function phase1store(Request $request){
         session(['selected-scource' => $request->scourse ?? '']);
-        return redirect()->route('enrollment.input')->with([
-            'user' => $user,
-        ]);
+        return redirect()->route('enrollment.input');
     }
 
     public function input()
@@ -49,6 +47,11 @@ class EnrollmentController extends Controller
             'user' => $user,
             'scourse' => session('selected-scource'
         )]);
+    }
+
+    public function phase2store(Request $request){
+        dd($request->all());
+        return redirect()->route('enrollment.verifi');
     }
 
     public function verifi()

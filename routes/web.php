@@ -240,6 +240,7 @@ Route::get('/student-enrollment/register-data', [\App\Http\Controllers\Enrollmen
 Route::post('/student-enrollment/register-data', [App\Http\Controllers\EnrollmentController::class, 'store'])->name('enrollment.store');
 Route::get('/student-enrollment/verifi-data', [\App\Http\Controllers\EnrollmentController::class, 'verifi'])->name('enrollment.verifi')->middleware('auth');
 Route::post('/student-enrollment', [App\Http\Controllers\EnrollmentController::class, 'phase1store'])->name('enrollment.phase1store');
+Route::post('/student-enrollment/save', [App\Http\Controllers\EnrollmentController::class, 'phase2store'])->name('enrollment.phase2store');
 
 // life campuses
 Route::get('/graduations', [\App\Http\Controllers\LifeCampussController::class, 'graduations'])->name('life.graduation');
