@@ -8,7 +8,7 @@ quisquam illum voluptate quod impedit ab nisi, esse mollitia ad aliquid delectus
 tenetur!')
 @include('icon')
 <section id="startNewApp">
-    <form action="{{ route('enrollment.phase2store') }}" method="POST">
+    <form action="{{ route('enrollment.storeAllData') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="container">
             <h5>Start New Application</h5>
@@ -35,6 +35,15 @@ tenetur!')
 
             <!-- tabs form and document -->
             <h5>Input Form and Documents Degree Program</h5>
+            @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+            @endif
             <ul class="nav nav-tabs" id="myTab" role="tablist">
                 <li class="nav-item" role="presentation">
                     <button class="nav-link active" id="form-tab" data-bs-toggle="tab" data-bs-target="#form"
@@ -95,24 +104,37 @@ tenetur!')
                                     <h4>Study Information</h4>
                                     <div class="mb-3">
                                         <label for="studyUniversity" class="form-label">University<span>*</span></label>
-                                        <select class="form-select" name="studyUniversity" id="studyUniversity" required
+                                        <input type="text" class="form-control" id="idTelephone" value="{{ $enrollment->university }}" name="university"
+                                            value="" required>
+                                        {{-- <select class="form-select" name="studyUniversity" id="studyUniversity" required
                                             placeholder="Select University">
                                             <option value="-">-</option>
                                             <option value="-">-</option>
-                                        </select>
+                                        </select> --}}
                                     </div>
                                     <div class="mb-3">
                                         <label for="studyLevel" class="form-label">Program / Study
                                             Level<span>*</span></label>
-                                        <select class="form-select" name="studyLevel" id="studyLevel" required
-                                            placeholder="Select Program / Study Level">
-                                            <option value="-">-</option>
-                                            <option value="-">-</option>
-                                        </select>
+                                            @if (!$course)
+                                                <select class="form-select" name="studyLevel" id="studyLevel" required
+                                                placeholder="Select Program / Study Level" disabled>
+                                                <option value="-">No Course Available</option>
+                                            </select>
+                                            @else
+                                            <select class="form-select" name="course_id" id="studyLevel" required
+                                                placeholder="Select Program / Study Level">
+                                                <option value="{{ $enrollment->course->id }}">{{ $enrollment->course->name }}</option>
+                                                @forelse ($course as $cs)
+                                                <option value="{{ $cs->id }}">{{ $cs->name }}</option>
+                                                @empty
+                                                    <option value="-">No Course Available</option>
+                                                @endforelse
+                                            </select>
+                                            @endif
                                     </div>
                                 </div>
 
-                                <div class="form__study--permitPeriod">
+                                {{-- <div class="form__study--permitPeriod">
                                     <h4>Submission of Study Permit Period</h4>
                                     <div class="mb-3">
                                         <label for="studyStartLearning" class="form-label">Start
@@ -142,14 +164,15 @@ tenetur!')
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
 
                                 <div class="form__funding">
                                     <h4>Funding</h4>
                                     <div class="mb-3">
                                         <label for="funding" class="form-label">Funding Type<span>*</span></label>
-                                        <select class="form-select" id="funding" name="funding" required
+                                        <select class="form-select" id="funding" name="type" required
                                             placeholder="Select Funding Type">
+                                            <option value="{{ $enrollment->user->userDetail->userFunding->type ?? '-' }}">{{ $enrollment->user->userDetail->userFunding->type ?? '-' }}</option>
                                             <option value="-">-</option>
                                             <option value="-">-</option>
                                         </select>
@@ -158,7 +181,7 @@ tenetur!')
                                         <label for="fundingScholarshipProvided" class="form-label">Scholarship
                                             Provided<span>*</span></label>
                                         <input type="text" class="form-control" id="fundingScholarshipProvided"
-                                            name="fundingScholarshipProvided" required>
+                                            name="provider" value="{{ $enrollment->user->userDetail->userFunding->provider ?? '' }}" required>
                                         <div id="scholarshipHelp" class="form-text">For example: Parents, Government,
                                             Campus, etc.</div>
                                     </div>
@@ -166,7 +189,7 @@ tenetur!')
                                         <label for="fundingPositionGuarantor" class="form-label">Position
                                             Guarantor<span>*</span></label>
                                         <input type="text" class="form-control" id="fundingPositionGuarantor"
-                                            name="fundingPositionGuarantor" required>
+                                            name="guarantor" value="{{ $enrollment->user->userDetail->userFunding->guarantor ?? '' }}" required>
                                         <div id="scholarshipHelp" class="form-text">For example: Chancellor, Director,
                                             Head of Study Program.</div>
                                     </div>
@@ -183,28 +206,25 @@ tenetur!')
                                     </div>
                                     <div class="mb-3">
                                         <label for="residenceCity" class="form-label">City<span>*</span></label>
-                                        <input type="text" class="form-control" id="residenceCity" name="residenceCity"
-                                            required>
+                                        <input type="text" class="form-control" id="residenceCity" value="{{ $user->userDetail->city }}" readonly name="residenceCity"
+                                            >
                                     </div>
                                     <div class="mb-3">
                                         <label for="residenceProvince" class="form-label">Province /
                                             State<span>*</span></label>
                                         <input type="text" class="form-control" id="residenceProvince"
-                                            name="residenceProvince" required>
+                                            name="residenceProvince" value="{{$user->userDetail->province }}" readonly>
                                     </div>
                                     <div class="mb-3">
                                         <label for="residenceCountry" class="form-label">Country<span>*</span></label>
-                                        <select class="form-select" id="residenceCountry" name="residenceCountry"
-                                            required placeholder="Select Country">
-                                            <option value="-">-</option>
-                                            <option value="-">-</option>
-                                        </select>
+                                        <input type="text" class="form-control" id="residenceProvince"
+                                            name="residenceProvince" value="{{ $user->userDetail->country }}" readonly>
                                     </div>
                                     <div class="mb-3">
                                         <label for="residencePostCode" class="form-label">Post
                                             Code<span>*</span></label>
                                         <input type="text" class="form-control" id="residencePostCode"
-                                            name="residencePostCode" required>
+                                            name="residencePostCode" value="{{ $user->userDetail->post_code }}" readonly>
                                     </div>
                                 </div>
 
@@ -213,31 +233,28 @@ tenetur!')
                                     <div class="mb-3">
                                         <label for="currAddress" class="form-label">Current
                                             Address<span>*</span></label>
-                                        <input type="text" class="form-control" id="currAddress" name="currAddress"
+                                        <input type="text" class="form-control" id="currAddress" value="{{ $enrollment->user->userDetail->userResidance->address ?? '' }}" name="address"
                                             required>
                                     </div>
                                     <div class="mb-3">
                                         <label for="currCity" class="form-label">City<span>*</span></label>
-                                        <input type="text" class="form-control" id="currCity" name="currCity" required>
+                                        <input type="text" class="form-control" id="currCity" name="current_city" value="{{ $enrollment->user->userDetail->userResidance->current_city ?? '' }}" required>
                                     </div>
                                     <div class="mb-3">
                                         <label for="currProvince" class="form-label">Province /
                                             State<span>*</span></label>
-                                        <input type="text" class="form-control" id="currProvince" name="currProvince"
+                                        <input type="text" class="form-control" id="currProvince" value="{{ $enrollment->user->userDetail->userResidance->current_prov ?? '' }}" name="current_prov"
                                             required>
                                     </div>
                                     <div class="mb-3">
                                         <label for="currCountry" class="form-label">Country<span>*</span></label>
-                                        <select class="form-select" name="currCountry" id="currCountry" required
-                                            placeholder="Select Country">
-                                            <option value="-">-</option>
-                                            <option value="-">-</option>
-                                        </select>
+                                        <input type="text" class="form-control" id="currPostCode" value="{{ $enrollment->user->userDetail->userResidance->current_country ?? '' }}" name="current_country"
+                                            required>
                                     </div>
                                     <div class="mb-3">
                                         <label for="currPostCode" class="form-label">Post
                                             Code<span>*</span></label>
-                                        <input type="text" class="form-control" id="currPostCode" name="currPostCode"
+                                        <input type="text" class="form-control" id="currPostCode" value="{{ $enrollment->user->userDetail->userResidance->current_postcode ?? '' }}" name="current_postcode"
                                             required>
                                     </div>
                                 </div>
@@ -246,7 +263,7 @@ tenetur!')
                                     <h4>Passport</h4>
                                     <div class="mb-3">
                                         <label for="passportNo" class="form-label">No. Passport<span>*</span></label>
-                                        <input type="text" class="form-control" id="passportNo" name="passportNo"
+                                        <input type="text" class="form-control" id="passportNo" value="{{ $enrollment->user->userDetail->userPasport->nomor ?? '' }}" name="nomor"
                                             required>
                                     </div>
                                     <div class="mb-3">
@@ -255,13 +272,13 @@ tenetur!')
                                                 <label for="passportDateOfFilling" class="form-label">Date of
                                                     filling<span>*</span></label>
                                                 <input type="date" class="form-control" aria-label="First name"
-                                                    id="passportDateOfFilling" name="passportDateOfFilling" required>
+                                                    id="passportDateOfFilling" value="{{ $enrollment->user->userDetail->userPasport->filling ?? '' }}" name="filling" required>
                                             </div>
                                             <div class="col">
                                                 <label for="passportExpDate" class="form-label">Expiration
                                                     Date<span>*</span></label>
                                                 <input type="date" class="form-control" id="passportExpDate"
-                                                    name="passportExpDate" required>
+                                                    name="expired" value="{{ $enrollment->user->userDetail->userPasport->expired ?? '' }}" required>
                                             </div>
                                         </div>
                                     </div>
@@ -281,72 +298,61 @@ tenetur!')
                         <div class="row row-cols-md-2 row-cols-1">
                             <div class="col">
                                 <div class="mb-3">
-                                    <label for="formFile" class="form-label">Default file input
-                                        example<span>*</span></label>
-                                    <input required name="file1" class="form-control" type="file" id="formFile"
+                                    <label for="formFile" class="form-label">Formal Photo<span>*</span></label>
+                                    <input  name="photo_formal" class="form-control" type="file" id="formFile"
                                         accept=".pdf">
                                     <div id="fileHelp" class="form-text">Type file:PDF Max file 300kb</div>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="formFile" class="form-label">Default file input
-                                        example<span>*</span></label>
-                                    <input required name="file2" class="form-control" type="file" id="formFile">
+                                    <label for="formFile" class="form-label">Passport<span>*</span></label>
+                                    <input  name="photo_passport" class="form-control" type="file" id="formFile"  accept=".pdf">
                                     <div id="fileHelp" class="form-text">Type file:PDF Max file 300kb</div>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="formFile" class="form-label">Default file input
-                                        example<span>*</span></label>
-                                    <input required name="file3" class="form-control" type="file" id="formFile">
+                                    <label for="formFile" class="form-label">Passport Cover<span>*</span></label>
+                                    <input  name="photo_cover_passport" class="form-control" type="file" id="formFile"  accept=".pdf">
                                     <div id="fileHelp" class="form-text">Type file:PDF Max file 300kb</div>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="formFile" class="form-label">Default file input
-                                        example<span>*</span></label>
-                                    <input required name="file4" class="form-control" type="file" id="formFile">
+                                    <label for="formFile" class="form-label">Statement Letter<span>*</span></label>
+                                    <input  name="statment_letter" class="form-control" type="file" id="formFile"  accept=".pdf">
                                     <div id="fileHelp" class="form-text">Type file:PDF Max file 300kb</div>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="formFile" class="form-label">Default file input
-                                        example<span>*</span></label>
-                                    <input required name="file5" class="form-control" type="file" id="formFile">
+                                    <label for="formFile" class="form-label">Sponsor Letter<span>*</span></label>
+                                    <input  name="sponsor_letter" class="form-control" type="file" id="formFile"  accept=".pdf">
                                     <div id="fileHelp" class="form-text">Type file:PDF Max file 300kb</div>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="formFile" class="form-label">Default file input
-                                        example<span>*</span></label>
-                                    <input required name="file6" class="form-control" type="file" id="formFile">
+                                    <label for="formFile" class="form-label">Sponsor Letter which has been signed<span>*</span></label>
+                                    <input  name="sponsor_letter_sign_id" class="form-control" type="file" id="formFile"  accept=".pdf">
                                     <div id="fileHelp" class="form-text">Type file:PDF Max file 300kb</div>
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="mb-3">
-                                    <label for="formFile" class="form-label">Default file input
-                                        example<span>*</span></label>
-                                    <input required name="file7" class="form-control" type="file" id="formFile">
+                                    <label for="formFile" class="form-label">Letter of Acceptance<span>*</span></label>
+                                    <input  name="letter_accept" class="form-control" type="file" id="formFile" accept=".pdf">
                                     <div id="fileHelp" class="form-text">Type file:PDF Max file 300kb</div>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="formFile" class="form-label">Default file input
-                                        example<span>*</span></label>
-                                    <input required name="file8" class="form-control" type="file" id="formFile">
+                                    <label for="formFile" class="form-label">Financial Statement<span>*</span></label>
+                                    <input  name="financial" class="form-control" type="file" id="formFile" accept=".pdf">
                                     <div id="fileHelp" class="form-text">Type file:PDF Max file 300kb</div>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="formFile" class="form-label">Default file input
-                                        example<span>*</span></label>
-                                    <input required name="file9" class="form-control" type="file" id="formFile">
+                                    <label for="formFile" class="form-label">Medical Statement<span>*</span></label>
+                                    <input  name="medical" class="form-control" type="file" id="formFile" accept=".pdf">
                                     <div id="fileHelp" class="form-text">Type file:PDF Max file 300kb</div>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="formFile" class="form-label">Default file input
-                                        example<span>*</span></label>
-                                    <input required name="file10" class="form-control" type="file" id="formFile">
+                                    <label for="formFile" class="form-label">Copy of Academic Transacript<span>*</span></label>
+                                    <input  name="academic_transkip" class="form-control" type="file" id="formFile" accept=".pdf">
                                     <div id="fileHelp" class="form-text">Type file:PDF Max file 300kb</div>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="formFile" class="form-label">Default file input
-                                        example<span>*</span></label>
-                                    <input required name="file11" class="form-control" type="file" id="formFile">
+                                    <label for="formFile" class="form-label">Last Certificate/Diploma<span>*</span></label>
+                                    <input  name="last_certificate" class="form-control" type="file" id="formFile" accept=".pdf">
                                     <div id="fileHelp" class="form-text">Type file:PDF Max file 300kb</div>
                                 </div>
                             </div>

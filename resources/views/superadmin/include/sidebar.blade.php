@@ -76,7 +76,7 @@
         </a>
         <div id="collapseUtilities2" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="#">List</a>
+                <a class="collapse-item" href="{{ route('enroll.index') }}">List</a>
                 {{-- <a class="collapse-item" href="utilities-border.html">Add</a> --}}
                 <a class="collapse-item" href="{{ route('requirment.index') }}">Enrollment Requirment</a>
 

@@ -47,57 +47,59 @@
                   <div class="col">
                     <div class="form__identity">
                       <h4>Identity</h4>
-                      <div class="mb-3">
-                        <label for="name" class="form-label">Name<span>*</span></label>
-                        <input disabled type="text" class="form-control" id="name" name="name">
-                      </div>
-                      <div class="mb-3">
-                        <label for="placeBorn" class="form-label">Place of birth<span>*</span></label>
-                        <input disabled type="text" class="form-control" id="placeBorn" name="placeBorn">
-                      </div>
-                      <div class="mb-3">
-                        <label for="dateBorn" class="form-label">Date of birth<span>*</span></label>
-                        <input disabled type="date" class="form-control" id="dateBorn" name="dateBorn">
-                      </div>
-                      <div class="mb-3">
-                        <label for="gender" class="form-label">Gender<span>*</span></label>
-                        <select disabled class="form-select" id="gender">
-                          <option selected>Select Gender</option>
-                          <option value="men">Men</option>
-                          <option value="women">Women</option>
-                        </select>
-                      </div>
-                      <div class="mb-3">
-                        <label for="nationality" class="form-label">Nationality<span>*</span></label>
-                        <select disabled class="form-select" id="nationality">
-                          <option selected>Select Nationality</option>
-                          <option value="1">-</option>
-                          <option value="2">-</option>
-                        </select>
-                      </div>
-                    </div>
+                                    <div class="mb-3">
+                                        <label for="idName" class="form-label">Name<span>*</span></label>
+                                        <input type="text" class="form-control" id="idName" name="idName"
+                                            value="{{ $user->name }}" readonly>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="idPlaceBorn" class="form-label">Place of birth<span>*</span></label>
+                                        <input type="text" class="form-control" id="idPlaceBorn" name="idPlaceBorn"
+                                            value="{{ $user->userDetail->place_birth }}" readonly>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="idDateBorn" class="form-label">Date of birth<span>*</span></label>
+                                        <input type="date" class="form-control" id="idDateBorn" name="idDateBorn"
+                                            value="{{ $user->userDetail->date_birth }}" readonly>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="idGender" class="form-label">Gender<span>*</span></label>
+                                        <input type="text" class="form-control" id="idGender" name="idGender"
+                                            value="{{ $user->userDetail->gender == "F" ? "Women" : "Men" }}" readonly>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="idNationality" class="form-label">Nationality<span>*</span></label>
+                                        <input type="text" class="form-control" id="idNationality" name="idNationality"
+                                            value="{{ $user->userDetail->nationality }}" readonly>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="idEmail" class="form-label">Email<span>*</span></label>
+                                        <input type="email" class="form-control" id="idEmail" name="idEmail"
+                                            value="{{ $user->email }}" readonly>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="idTelephone" class="form-label">No.
+                                            Telephone<span>*</span></label>
+                                        <input type="text" class="form-control" id="idTelephone" name="idTelephone"
+                                            value="{{ $user->telephone }}" readonly>
+                                    </div>
+                                </div>
 
                     <div class="form__study--information">
                       <h4>Study Information</h4>
                       <div class="mb-3">
                         <label for="university" class="form-label">University<span>*</span></label>
-                        <select disabled class="form-select" id="university">
-                          <option selected>Select University/option>
-                          <option value="-">-</option>
-                          <option value="-">-</option>
-                        </select>
+                        <input type="text" class="form-control" id="idTelephone" value="{{ $enrollment->university }}" name="university"
+                                            value="" disabled>
                       </div>
                       <div class="mb-3">
                         <label for="studyLevel" class="form-label">Program / Study Level<span>*</span></label>
-                        <select disabled class="form-select" id="studyLevel">
-                          <option selected>Select Program / Study Level</option>
-                          <option value="-">-</option>
-                          <option value="-">-</option>
-                        </select>
+                        <input type="text" class="form-control" id="idTelephone" value="{{ $enrollment->course->name }}" name="university"
+                                            value="" disabled>
                       </div>
                     </div>
 
-                    <div class="form__study--permitPeriod">
+                    {{-- <div class="form__study--permitPeriod">
                       <h4>Submission of Study Permit Period</h4>
                       <div class="mb-3">
                         <label for="startLearning" class="form-label">Start Learning<span>*</span></label>
@@ -119,92 +121,87 @@
                           </div>
                         </div>
                       </div>
-                    </div>
+                    </div> --}}
 
                     <div class="form__funding">
                       <h4>Funding</h4>
                       <div class="mb-3">
                         <label for="funding" class="form-label">Funding Type<span>*</span></label>
-                        <select disabled class="form-select" id="funding">
-                          <option selected>Select Funding Type</option>
-                          <option value="-">-</option>
-                          <option value="-">-</option>
-                        </select>
+                         <input type="text" class="form-control" id="fundingScholarshipProvided"
+                                            name="provider" value="{{ $enrollment->user->userDetail->userFunding->type ?? '' }}" disabled>
                       </div>
                       <div class="mb-3">
                         <label for="scholarshipProvided" class="form-label">Scholarship Provided<span>*</span></label>
-                        <input disabled type="text" class="form-control" id="scholarshipProvided" name="scholarshipProvided">
+                         <input type="text" class="form-control" id="fundingScholarshipProvided"
+                                            name="provider" value="{{ $enrollment->user->userDetail->userFunding->provider ?? '' }}" disabled>
                         <div id="scholarshipHelp" class="form-text">For example: Parents, Government, Campus, etc.</div>
                       </div>
                       <div class="mb-3">
                         <label for="positionGuarantor" class="form-label">Position Guarantor<span>*</span></label>
-                        <input disabled type="text" class="form-control" id="positionGuarantor" name="positionGuarantor">
+                         <input type="text" class="form-control" id="fundingScholarshipProvided"
+                                            name="provider" value="{{ $enrollment->user->userDetail->userFunding->guarantor ?? '' }}" disabled>
                         <div id="scholarshipHelp" class="form-text">For example: Chancellor, Director, Head of Study Program.</div>
                       </div>
                     </div>
                   </div>
                   <div class="col">
-                    <div class="form__residence">
-                      <h4>Residence</h4>
-                      <div class="mb-3">
-                        <label for="homeAddress" class="form-label">Home address<span>*</span></label>
-                        <input disabled type="text" class="form-control" id="homeAddress" name="homeAddress">
-                      </div>
-                      <div class="mb-3">
-                        <label for="city" class="form-label">City<span>*</span></label>
-                        <input disabled type="text" class="form-control" id="city" name="city">
-                      </div>
-                      <div class="mb-3">
-                        <label for="province" class="form-label">Province / State<span>*</span></label>
-                        <input disabled type="text" class="form-control" id="province" name="province">
-                      </div>
-                      <div class="mb-3">
-                        <label for="country" class="form-label">Country<span>*</span></label>
-                        <select disabled class="form-select" id="country">
-                          <option selected>Select Country</option>
-                          <option value="-">-</option>
-                          <option value="-">-</option>
-                        </select>
-                      </div>
-                      <div class="mb-3">
-                        <label for="postCode" class="form-label">Post Code<span>*</span></label>
-                        <input disabled type="text" class="form-control" id="postCode" name="postCode">
-                      </div>
-                    </div>
+                     <div class="form__residence">
+                                    <h4>Residence</h4>
+                                    <div class="mb-3">
+                                        <label for="residenceAddress" class="form-label">Home
+                                            address<span>*</span></label>
+                                        <textarea type="text" class="form-control" id="residenceAddress"
+                                            name="residenceAddress" readonly>{{ $user->userDetail->address }}</textarea>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="residenceCity" class="form-label">City<span>*</span></label>
+                                        <input type="text" class="form-control" id="residenceCity" value="{{ $user->userDetail->city }}" readonly name="residenceCity"
+                                            >
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="residenceProvince" class="form-label">Province /
+                                            State<span>*</span></label>
+                                        <input type="text" class="form-control" id="residenceProvince"
+                                            name="residenceProvince" value="{{$user->userDetail->province }}" readonly>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="residenceCountry" class="form-label">Country<span>*</span></label>
+                                        <input type="text" class="form-control" id="residenceProvince"
+                                            name="residenceProvince" value="{{ $user->userDetail->country }}" readonly>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="residencePostCode" class="form-label">Post
+                                            Code<span>*</span></label>
+                                        <input type="text" class="form-control" id="residencePostCode"
+                                            name="residencePostCode" value="{{ $user->userDetail->post_code }}" readonly>
+                                    </div>
+                                </div>
 
                     <div class="form__placeResidenceIndonesia">
                       <h4>Place of Residence in Indonesia</h4>
                       <div class="mb-3">
                         <label for="currAddress" class="form-label">Current Address<span>*</span></label>
-                        <input disabled type="text" class="form-control" id="currAddress" name="currAddress">
+                         <input type="text" class="form-control" id="currAddress" value="{{ $enrollment->user->userDetail->userResidance->address ?? '' }}" name="address"
+                                            disabled>
                       </div>
                       <div class="mb-3">
                         <label for="cityIndonesia" class="form-label">City<span>*</span></label>
-                        <input disabled type="text" class="form-control" id="cityIndonesia" name="cityIndonesia">
+                         <input type="text" class="form-control" id="currCity" name="current_city" value="{{ $enrollment->user->userDetail->userResidance->current_city ?? '' }}" disabled>
                       </div>
                       <div class="mb-3">
                         <label for="provinceIndonesia" class="form-label">Province / State<span>*</span></label>
-                        <input disabled type="text" class="form-control" id="provinceIndonesia" name="provinceIndonesia">
+                        <input type="text" class="form-control" id="currProvince" value="{{ $enrollment->user->userDetail->userResidance->current_prov ?? '' }}" name="current_prov"
+                                            disabled>
                       </div>
                       <div class="mb-3">
                         <label for="countryIndonesia" class="form-label">Country<span>*</span></label>
-                        <select disabled class="form-select" id="countryIndonesia">
-                          <option selected>Select Country</option>
-                          <option value="-">-</option>
-                          <option value="-">-</option>
-                        </select>
+                       <input type="text" class="form-control" id="currPostCode" value="{{ $enrollment->user->userDetail->userResidance->current_country ?? '' }}" name="current_country"
+                                            disabled>
                       </div>
                       <div class="mb-3">
                         <label for="postCodeIndonesia" class="form-label">Post Code<span>*</span></label>
-                        <input disabled type="text" class="form-control" id="postCodeIndonesia" name="postCodeIndonesia">
-                      </div>
-                      <div class="mb-3">
-                        <label for="email" class="form-label">Email<span>*</span></label>
-                        <input disabled type="email" class="form-control" id="email" name="email">
-                      </div>
-                      <div class="mb-3">
-                        <label for="numberTelephone" class="form-label">No. Telephone<span>*</span></label>
-                        <input disabled type="text" class="form-control" id="numberTelephone" name="numberTelephone">
+                         <input type="text" class="form-control" id="currPostCode" value="{{ $enrollment->user->userDetail->userResidance->current_postcode ?? '' }}" name="current_postcode"
+                                            disabled>
                       </div>
                     </div>
 
@@ -212,17 +209,20 @@
                       <h4>Passport</h4>
                       <div class="mb-3">
                         <label for="noPassport" class="form-label">No. Passport<span>*</span></label>
-                        <input disabled type="text" class="form-control" id="noPassport" name="noPassport">
+                        <input type="text" class="form-control" id="passportNo" value="{{ $enrollment->user->userDetail->userPasport->nomor ?? '' }}" name="nomor"
+                                            disabled>
                       </div>
                       <div class="mb-3">
                         <div class="row row-cols-md-2 row-cols-1">
                           <div class="col">
                             <label for="dateOfFilling" class="form-label">Date of filling<span>*</span></label>
-                            <input disabled type="date" class="form-control" placeholder="First name" aria-label="First name" id="dateOfFilling" name="dateOfFilling">
+                            <input type="date" class="form-control" aria-label="First name"
+                                                    id="passportDateOfFilling" value="{{ $enrollment->user->userDetail->userPasport->filling ?? '' }}" name="filling" disabled>
                           </div>
                           <div class="col">
                             <label for="expDate" class="form-label">Expiration Date<span>*</span></label>
-                            <input disabled type="date" class="form-control" id="expDate" name="expDate">
+                            <input type="date" class="form-control" id="passportExpDate"
+                                                    name="expired" value="{{ $enrollment->user->userDetail->userPasport->expired ?? '' }}" disabled>
                           </div>
                         </div>
                       </div>

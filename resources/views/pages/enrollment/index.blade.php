@@ -104,7 +104,9 @@ tenetur!')
         isset($user->name)&&
         isset($user->userDetail->place_birth)&&
         isset($user->userDetail->date_birth)&&
-        isset($user->userDetail->gender))
+        isset($user->userDetail->gender)&&
+        isset($user->telephone)
+        )
         <form action="{{ route('enrollment.phase1store') }}" method="POST">
             @csrf
             <!-- checkbox for degree on non degree -->

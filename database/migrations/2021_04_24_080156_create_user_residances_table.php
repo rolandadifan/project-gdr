@@ -16,15 +16,15 @@ class CreateUserResidancesTable extends Migration
         Schema::create('user_residances', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_detail_id')->constrained('user_details');
-            $table->foreignId('city_id')->constrained('cities');
-            $table->foreignId('prov_id')->constrained('provinces');
-            $table->foreignId('country_id')->constrained('countries');
-            $table->foreignId('postcode_id')->constrained('post_codes');
-            $table->integer('current_city')->constrained('cities');
-            $table->integer('current_prov')->constrained('provinces');
-            $table->integer('current_country')->constrained('countries');
-            $table->integer('current_postcode')->constrained('post_codes');
-            $table->text('address');
+            $table->foreignId('city_id')->constrained('cities')->nullable();
+            $table->foreignId('prov_id')->constrained('provinces')->nullable();
+            $table->foreignId('country_id')->constrained('countries')->nullable();
+            $table->foreignId('postcode_id')->constrained('post_codes')->nullable();
+            $table->integer('current_city')->constrained('cities')->nullable();
+            $table->integer('current_prov')->constrained('provinces')->nullable();
+            $table->integer('current_country')->constrained('countries')->nullable();
+            $table->integer('current_postcode')->constrained('post_codes')->nullable();
+            $table->text('address')->nullable();
             $table->timestamps();
         });
     }

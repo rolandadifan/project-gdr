@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class UserPassport extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['user_detail_id', 'nomor', 'filling', 'expired'];
 }

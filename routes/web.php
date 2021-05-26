@@ -102,6 +102,10 @@ Route::prefix('sadmin')->middleware(['auth', 'admin'])->group(function () {
     // Route::post('/pages-post-create', [PageController::class, 'postg'])->name('page.postg');
 
 
+    //enrollment
+    Route::get('/enrollment-list', [App\Http\Controllers\SuperAdmin\EnrollmentController::class, 'index'])->name('enroll.index');
+    Route::get('/enrollment-detail/{id}', [App\Http\Controllers\SuperAdmin\EnrollmentController::class, 'detail'])->name('enroll.detail');
+
     //pages
     Route::get('/pages-info', [PageController::class, 'index'])->name('page.index');
     Route::post('/pages-menu', [PageController::class, 'menuStore'])->name('page.menu');
@@ -241,6 +245,8 @@ Route::post('/student-enrollment/register-data', [App\Http\Controllers\Enrollmen
 Route::get('/student-enrollment/verifi-data', [\App\Http\Controllers\EnrollmentController::class, 'verifi'])->name('enrollment.verifi')->middleware('auth');
 Route::post('/student-enrollment', [App\Http\Controllers\EnrollmentController::class, 'phase1store'])->name('enrollment.phase1store');
 Route::post('/student-enrollment/save', [App\Http\Controllers\EnrollmentController::class, 'phase2store'])->name('enrollment.phase2store');
+Route::post('/student-enrollment/store', [App\Http\Controllers\EnrollmentController::class, 'storeAllData'])->name('enrollment.storeAllData');
+
 
 // life campuses
 Route::get('/graduations', [\App\Http\Controllers\LifeCampussController::class, 'graduations'])->name('life.graduation');

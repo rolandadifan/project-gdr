@@ -17,7 +17,7 @@ class CreateUserPassportsTable extends Migration
             $table->id();
             $table->foreignId('user_detail_id')->constrained('user_details');
             $table->string('nomor');
-            $table->string('filling');
+            $table->date('filling');
             $table->date('expired');
             $table->timestamps();
         });

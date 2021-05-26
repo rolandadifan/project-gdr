@@ -159,11 +159,31 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="nationality" class="form-label">Nationality</label>
-                                    <input type="text" class="form-control" id="nationality" placeholder="Indonesia"
+                                    <input type="text" class="form-control" id="nationality"
                                         name="nationality" value="{{ !$user ? '' : $user->nationality }}">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="nationality" class="form-label">Province</label>
+                                    <input type="text" class="form-control" id="nationality"
+                                        name="province" value="{{ !$user ? '' : $user->province }}">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="nationality" class="form-label">City</label>
+                                    <input type="text" class="form-control" id="nationality"
+                                        name="city" value="{{ !$user ? '' : $user->city }}">
                                 </div>
                             </div>
                             <div class="col">
+                                <div class="mb-3">
+                                    <label for="nationality" class="form-label">Country</label>
+                                    <input type="text" class="form-control" id="nationality"
+                                        name="country" value="{{ !$user ? '' : $user->country }}">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="nationality" class="form-label">Post Code</label>
+                                    <input type="number" class="form-control" id="nationality"
+                                        name="post_code" value="{{ !$user ? '' : $user->post_code }}">
+                                </div>
                                 <div class="mb-3">
                                     <label for="address">Address</label>
                                     <textarea class="form-control" id="address" style="height: 130px" name="address"
