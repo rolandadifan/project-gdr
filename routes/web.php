@@ -235,7 +235,7 @@ Route::get('/research', [\App\Http\Controllers\ResearchController::class, 'index
 Route::get('/alumni', [\App\Http\Controllers\AlumniController::class, 'index'])->name('alumni.index');
 
 //enrollment
-Route::get('/student-enrollment', [\App\Http\Controllers\EnrollmentController::class, 'index'])->name('enrollment.index');
+Route::get('/student-enrollment', [\App\Http\Controllers\EnrollmentController::class, 'index'])->name('enrollment.index')->middleware('auth');
 Route::get('/student-enrollment/register-data', [\App\Http\Controllers\EnrollmentController::class, 'input'])->name('enrollment.input')->middleware('auth');
 Route::post('/student-enrollment/register-data', [App\Http\Controllers\EnrollmentController::class, 'store'])->name('enrollment.store');
 Route::get('/student-enrollment/verifi-data', [\App\Http\Controllers\EnrollmentController::class, 'verifi'])->name('enrollment.verifi')->middleware('auth');

@@ -58,13 +58,13 @@
                         <div class="mb-3">
                             <label for="email" class="form-label">Place Of Birth</label>
                             <input type="text" name="place_birth" value="{{ !$user ? '' : $user->place_birth }}"
-                                class="form-control" id="place_birth" placeholder="Place Of birth" required>
+                                class="form-control" id="place_birth" placeholder="Place Of birth">
                         </div>
                         <div class="row">
                             <div class="col">
                                 <label for="date" class="form-label">Date of Birth</label>
                                 <input type="date" class="form-control" id="date"
-                                    value="{{ !$user ? '' : $user->date_birth  }}" name="date_birth" required>
+                                    value="{{ !$user ? '' : $user->date_birth  }}" name="date_birth">
                             </div>
                             <div class="col">
                                 <label for="gender" class="form-label">Gender</label>
@@ -72,13 +72,13 @@
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input"
                                             {{ ( !$user ? '' : $user->gender=="F")? "checked" : "" }} type="radio"
-                                            name="gender" id="female" value="F" required>
+                                            name="gender" id="female" value="F">
                                         <label class="form-check-label" for="female">Female</label>
                                     </div>
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input"
                                             {{ ( !$user ? '' : $user->gender=="M")? "checked" : "" }} type="radio"
-                                            name="gender" id="male" value="M" required>
+                                            name="gender" id="male" value="M">
                                         <label class="form-check-label" for="male">Male</label>
                                     </div>
                                 </div>
@@ -167,7 +167,7 @@
                                 <div class="mb-3">
                                     <label for="address">Address</label>
                                     <textarea class="form-control" id="address" style="height: 130px" name="address"
-                                        rows="3" required>{{!$user ? '' : $user->address}}</textarea>
+                                        rows="3" >{{!$user ? '' : $user->address}}</textarea>
                                 </div>
                             </div>
                         </div>
