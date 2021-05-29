@@ -9,16 +9,12 @@
 <!-- Begin Page Content -->
 
 <div class="container-fluid">
-
+<a class="btn btn-primary mb-3" href="{{ route('location.index') }}">Back To List</a>
     <!-- Content Row -->
     <div class="card py-3 px-3">
         @include('flashmessage.validation')
         @include('flashmessage.flash')
         <h1 class="mb-5">Location Create</h1>
-
-        <button class="btn btn-primary" style="width: 200px;margin-bottom:4rem"
-            onclick="location.href = '/sadmin/location'">Back to
-            List</button>
         <form action="{{ route('location.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="row">

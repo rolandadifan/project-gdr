@@ -41,7 +41,7 @@ class LandingController extends Controller
         $icon4 = Setting::where('key','landing-point-icon-4')->first();
         $content4 = Setting::where('key','landing-point-content-4')->first();
         // end
-        $shortCourses = Course::with('status')->whereHas('courseDetail', function (Builder $query) {
+        $shortCourses = Course::with('status')->where('status_id', 1)->orderBy('created_at', 'DESC')->whereHas('courseDetail', function (Builder $query) {
             $query->where('degree', 'non');
         })->take(3)->get();
         $courses = Course::with('status')->whereHas('courseDetail', function (Builder $query) {

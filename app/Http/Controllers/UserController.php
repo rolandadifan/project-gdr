@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Article;
+use App\Models\Enrollment;
 use App\Models\User;
 use App\Models\UserDetail;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -20,8 +23,22 @@ class UserController extends Controller
     public function profile()
     {
         $user = UserDetail::where('user_id', Auth()->user()->id)->first();
+        $userEnroll = Enrollment::with(['user', 'course'])->Where('user_id', auth()->user()->id)->orderBy('created_at', 'DESC')->get();
+        $article = Article::with(['articleDetail'])->where('status_id', '1')->orderBy('created_at', 'DESC')->whereHas('articleType', function (Builder $query) {
+            $query->where('name', 'research');
+        })->limit(2)->get();
+        $news1 = Article::with(['articleDetail'])->where('status_id', '1')->orderBy('created_at', 'DESC')->whereHas('articleType', function (Builder $query) {
+            $query->where('name', 'news');
+        })->limit(1)->get();
+        $news2 = Article::with(['articleDetail'])->where('status_id', '1')->orderBy('created_at', 'DESC')->whereHas('articleType', function (Builder $query) {
+            $query->where('name', 'news');
+        })->offset(2)->limit(1)->get();
         return view('member.profile.profile')->with([
-            'user' => $user
+            'user' => $user,
+            'userEnroll' => $userEnroll,
+            'article' => $article,
+            'news1' => $news1,
+            'news2' => $news2,
         ]);
     }
 

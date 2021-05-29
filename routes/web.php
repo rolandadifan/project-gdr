@@ -31,11 +31,11 @@ Route::get('/', [LandingController::class, 'index'])->name('landing');
 
 Auth::routes();
 
-Route::prefix('admin')->group(function () {
-    Route::get('/dashboard', [DashboardAdminController::class, 'index'])->name('dashboard.admin');
-});
+// Route::prefix('admin')->group(function () {
+//     Route::get('/dashboard', [DashboardAdminController::class, 'index'])->name('dashboard.admin');
+// });
 
-Route::prefix('sadmin')->middleware(['auth', 'admin'])->group(function () {
+Route::prefix('web/admin')->middleware(['auth', 'admin'])->group(function () {
 
     Route::get('/', [DashboardSuperAdminController::class, 'index'])->name('dashboard.sadmin');
 
@@ -241,11 +241,11 @@ Route::get('/alumni', [\App\Http\Controllers\AlumniController::class, 'index'])-
 //enrollment
 Route::get('/student-enrollment', [\App\Http\Controllers\EnrollmentController::class, 'index'])->name('enrollment.index')->middleware('auth');
 Route::get('/student-enrollment/register-data', [\App\Http\Controllers\EnrollmentController::class, 'input'])->name('enrollment.input')->middleware('auth');
-Route::post('/student-enrollment/register-data', [App\Http\Controllers\EnrollmentController::class, 'store'])->name('enrollment.store');
 Route::get('/student-enrollment/verifi-data', [\App\Http\Controllers\EnrollmentController::class, 'verifi'])->name('enrollment.verifi')->middleware('auth');
-Route::post('/student-enrollment', [App\Http\Controllers\EnrollmentController::class, 'phase1store'])->name('enrollment.phase1store');
-Route::post('/student-enrollment/save', [App\Http\Controllers\EnrollmentController::class, 'phase2store'])->name('enrollment.phase2store');
-Route::post('/student-enrollment/store', [App\Http\Controllers\EnrollmentController::class, 'storeAllData'])->name('enrollment.storeAllData');
+Route::get('/student-enrollment/edit', [\App\Http\Controllers\EnrollmentController::class, 'edit'])->name('enrollment.edit')->middleware('auth');
+Route::post('/student-enrollment', [App\Http\Controllers\EnrollmentController::class, 'phase1store'])->name('enrollment.phase1store')->middleware('auth');
+Route::post('/student-enrollment/store', [App\Http\Controllers\EnrollmentController::class, 'storeAllData'])->name('enrollment.storeAllData')->middleware('auth');
+Route::post('/student-enrollment/update', [App\Http\Controllers\EnrollmentController::class, 'editAllData'])->name('enrollment.update')->middleware('auth');
 
 
 // life campuses

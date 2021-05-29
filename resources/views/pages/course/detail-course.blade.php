@@ -75,7 +75,7 @@
                   @endforeach
                   </div>
 
-                  <button class="primary__button btn">Apply</button>
+                  <a href="{{ route('enrollment.index') }}" class="primary__button btn">Apply</a>
                 </div>
                 </div>
                 <button class="accordion__course">

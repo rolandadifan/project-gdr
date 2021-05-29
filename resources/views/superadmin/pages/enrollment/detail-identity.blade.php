@@ -166,7 +166,7 @@
             </div>
         </section>
 
-        <section id="funding" class="mt-5">
+        {{-- <section id="funding" class="mt-5">
             <h4>Funding</h4>
             <div class="card pl-3 pr-3 pt-3">
                 <div class="row">
@@ -190,7 +190,7 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> --}}
 
         <section id="passport" class="mt-5">
             <h4>Passport</h4>

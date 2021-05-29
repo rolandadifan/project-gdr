@@ -70,28 +70,35 @@
                                                                 <tr>
                                                                     <th width="47%" scope="col">Type</th>
                                                                     <th scope="col">Status</th>
-                                                                    <th scope="col">Started</th>
+                                                                    {{-- <th scope="col">Started</th> --}}
                                                                     <th scope="col">Submitted</th>
                                                                     <th scope="col">Action</th>
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
-                                                                <!-- <tr>
-                                                                        <td colspan="5">You have not yet started an
-                                                                            application using this account.</td>
-                                                                    </tr> -->
-                                                                <tr>
-                                                                    <td class="first__td">Study permit for more than 3
-                                                                        months</td>
-                                                                    <td>In Progress</td>
-                                                                    <td>02/17/2021</td>
-                                                                    <td>02/18/2021</td>
-                                                                    <td>
-                                                                        <button class="btn btn__editAction">
-                                                                            Edit
-                                                                        </button>
-                                                                    </td>
-                                                                </tr>
+                                                                    @forelse ($userEnroll as $enrol)
+                                                                    <tr>
+                                                                        <td class="first__td">{{$enrol->course->name}}</td>
+                                                                        <td>{{$enrol->status_id == 4 ? 'Submitted' : 'In Progress'}}</td>
+                                                                        {{-- <td>02/17/2021</td> --}}
+                                                                        <td>{{ date('d/m/Y', strtotime($enrol->created_at))}}</td>
+                                                                        <td>
+                                                                            @if ($enrol->status_id == 3)
+                                                                                <a href="{{ route('enrollment.edit') }}" class="btn btn__editAction">
+                                                                                    Edit
+                                                                                </a>
+                                                                            @else
+                                                                                <button disabled class="btn btn__editAction">
+                                                                                    Done
+                                                                                </button>
+                                                                            @endif
+                                                                        </td>
+                                                                    </tr>
+                                                                    @empty
+                                                                        <tr class="text-center">
+                                                                            No Data Here
+                                                                        </tr>
+                                                                    @endforelse
                                                             </tbody>
                                                         </table>
                                                     </div>
@@ -108,56 +115,54 @@
                         <div class="col">
                             <h4>Events</h4>
                             <div class="event__contents">
+                                @forelse ($news1 as $n1)
                                 <div class="card my-2">
                                     <div class="row row-cols-md-2 align-items-center">
                                         <div class="col-md-7">
                                             <div class="event__content">
                                                 <h3>
-                                                    The Importance of Implementing Social Distancing to
-                                                    Prevent COVID-19
+                                                   {{$n1->articleDetail->title}}
                                                 </h3>
                                                 <p>
-                                                    Lorem ipsum, dolor sit amet consectetur adipisicing
-                                                    elit. Saepe et blanditiis quia earum alias quisquam,
-                                                    molestias totam consectetur illo similique aliquam
-                                                    quidem illum consequatur nobis repudiandae sapiente,
-                                                    fuga veritatis. Minima.
+                                                    {{$n1->articleDetail->excerpt}}
                                                 </p>
-                                                <a href="#">Read More...</a>
+                                                <a href="{{ route('page.detail', $n1->articleDetail->slug) }}">Read More...</a>
                                             </div>
                                         </div>
                                         <div class="col-md-5">
                                             <div class="event__boxImg">
-                                                <img src="./../../assets/images/Mask Group 13.png" />
+                                                <img src="{{ Storage::url($n1->articleDetail->thumbnail) }}" />
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                                @empty
+                                    <p class="text-center">No Data Here</p>
+                                @endforelse
+                                @forelse ($news2 as $n2)
                                 <div class="card my-2">
                                     <div class="row row-cols-md-2 align-items-center">
                                         <div class="col-md-5">
                                             <div class="event__boxImg">
-                                                <img src="./../../assets/images/Mask Group 11.png" />
+                                                <img src="{{ Storage::url($n2->articleDetail->thumbnail) }}" />
                                             </div>
                                         </div>
                                         <div class="col-md-7">
                                             <div class="event__content">
                                                 <h3>
-                                                    The Importance of Implementing Social Distancing to
-                                                    Prevent COVID-19
+                                                    {{$n2->articleDetail->title}}
                                                 </h3>
                                                 <p>
-                                                    Lorem ipsum, dolor sit amet consectetur adipisicing
-                                                    elit. Saepe et blanditiis quia earum alias quisquam,
-                                                    molestias totam consectetur illo similique aliquam
-                                                    quidem illum consequatur nobis repudiandae sapiente,
-                                                    fuga veritatis. Minima.
+                                                   {{$n2->articleDetail->excerpt}}
                                                 </p>
-                                                <a href="#">Read More...</a>
+                                                <a href="{{ route('page.detail', $n2->articleDetail->slug) }}">Read More...</a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                                @empty
+                                    <p class="text-center">No Data Here</p>
+                                @endforelse
                             </div>
 
                         </div>
@@ -168,33 +173,26 @@
     </div>
 
     <!-- latest news -->
-    <div class="container latestNews__profile p-4">
+    <!-- latest event -->
+     <div class="container-fluid my-5 latestNews p-4">
         <div class="latestNews__header mb-3">
-            <h4>Latest News</h4>
+            <h4>Latest Event</h4>
         </div>
         <div class="row rows-cols-1 rows-cols-md-2 latestNews__content">
+            @forelse ($article as $ar)
             <div class="col">
                 <div class="latestNews__col--header">
-                    <h6>COVID-19</h6>
-                    <p>The Importance of Implementing Social Distancing to Prevent COVID-19</p>
+                    <h6>{{ $ar->group }}</h6>
+                    <p>{{ $ar->articleDetail->title }}</p>
                 </div>
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quod a sint nobis corrupti nesciunt,
-                    minus voluptas labore error! Autem quia rem in cumque eaque excepturi ipsum veritatis,
-                    distinctio soluta nemo!</p>
+                <p>{{$ar->articleDetail->excerpt}}</p>
 
-                <a href="#">Read more..</a>
+                <a href="{{ route('page.detail',$ar->articleDetail->slug ) }}">Read more..</a>
             </div>
-            <div class="col">
-                <div class="latestNews__col--header">
-                    <h6>University</h6>
-                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed m. </p>
-                </div>
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quod a sint nobis corrupti nesciunt,
-                    minus voluptas labore error! Autem quia rem in cumque eaque excepturi ipsum veritatis,
-                    distinctio soluta nemo!</p>
-
-                <a href="#">Read more..</a>
-            </div>
+            @empty
+                 <p class="text-center">No Data Found</p>
+            @endforelse
+           
         </div>
     </div>
 </main>

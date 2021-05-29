@@ -230,11 +230,11 @@
                   </div>
                 </div>
 
-                <div class="row">
+                {{-- <div class="row">
                   <div class="col">
                     <button type="submit" class="btn btn__save">Save</button>
                   </div>
-                </div>
+                </div> --}}
               </div>
             </form>
           </div>
@@ -249,71 +249,71 @@
                 <div class="row row-cols-md-2 row-cols-1">
                   <div class="col">
                     <div class="mb-3">
-                      <label for="formFile" class="form-label">Default file input disabled example<span>*</span></label>
+                      <label for="formFile" class="form-label">Formal Photo<span>*</span></label>
                       <input disabled class="form-control" type="file" id="formFile" accept=".pdf">
-                      <div id="fileHelp" class="form-text">Type file:PDF Max file 300kb</div>
+                      <a href="{{ Storage::url($enrollment->user->userDetail->userDocument->photo_formal) ?? '' }}">Check Document</a>
                     </div>
                     <div class="mb-3">
-                      <label for="formFile" class="form-label">Default file input disabled example<span>*</span></label>
+                      <label for="formFile" class="form-label">Passport<span>*</span></label>
                       <input disabled class="form-control" type="file" id="formFile">
-                      <div id="fileHelp" class="form-text">Type file:PDF Max file 300kb</div>
+                      <a href="{{ Storage::url($enrollment->user->userDetail->userDocument->photo_passport) ?? '' }}">Check Document</a>
                     </div>
                     <div class="mb-3">
-                      <label for="formFile" class="form-label">Default file input disabled example<span>*</span></label>
+                      <label for="formFile" class="form-label">Passport Cover<span>*</span></label>
                       <input disabled class="form-control" type="file" id="formFile">
-                      <div id="fileHelp" class="form-text">Type file:PDF Max file 300kb</div>
+                      <a href="{{ Storage::url($enrollment->user->userDetail->userDocument->photo_cover_passport) ?? '' }}">Check Document</a>
                     </div>
                     <div class="mb-3">
-                      <label for="formFile" class="form-label">Default file input disabled example<span>*</span></label>
+                      <label for="formFile" class="form-label">Statement Letter<span>*</span></label>
                       <input disabled class="form-control" type="file" id="formFile">
-                      <div id="fileHelp" class="form-text">Type file:PDF Max file 300kb</div>
+                      <a href="{{ Storage::url($enrollment->user->userDetail->userDocument->statment_letter) ?? '' }}">Check Document</a>
                     </div>
                     <div class="mb-3">
-                      <label for="formFile" class="form-label">Default file input disabled example<span>*</span></label>
+                      <label for="formFile" class="form-label">Sponsor Letter<span>*</span></label>
                       <input disabled class="form-control" type="file" id="formFile">
-                      <div id="fileHelp" class="form-text">Type file:PDF Max file 300kb</div>
+                      <a href="{{ Storage::url($enrollment->user->userDetail->userDocument->sponsor_letter) ?? '' }}">Check Document</a>
                     </div>
                     <div class="mb-3">
-                      <label for="formFile" class="form-label">Default file input disabled example<span>*</span></label>
+                      <label for="formFile" class="form-label">Sponsor Letter which has been signed<span>*</span></label>
                       <input disabled class="form-control" type="file" id="formFile">
-                      <div id="fileHelp" class="form-text">Type file:PDF Max file 300kb</div>
+                      <a href="{{ Storage::url($enrollment->user->userDetail->userDocument->sponsor_letter_sign_id) ?? '' }}">Check Document</a>
                     </div>
                   </div>
                   <div class="col">
                     <div class="mb-3">
-                      <label for="formFile" class="form-label">Default file input disabled example<span>*</span></label>
+                      <label for="formFile" class="form-label">Letter of Acceptance<span>*</span></label>
                       <input disabled class="form-control" type="file" id="formFile">
-                      <div id="fileHelp" class="form-text">Type file:PDF Max file 300kb</div>
+                      <a href="{{ Storage::url($enrollment->user->userDetail->userDocument->letter_accept) ?? '' }}">Check Document</a>
                     </div>
                     <div class="mb-3">
-                      <label for="formFile" class="form-label">Default file input disabled example<span>*</span></label>
+                      <label for="formFile" class="form-label">Financial Statement<span>*</span></label>
                       <input disabled class="form-control" type="file" id="formFile">
-                      <div id="fileHelp" class="form-text">Type file:PDF Max file 300kb</div>
+                      <a href="{{ Storage::url($enrollment->user->userDetail->userDocument->financial) ?? '' }}">Check Document</a>
                     </div>
                     <div class="mb-3">
-                      <label for="formFile" class="form-label">Default file input disabled example<span>*</span></label>
+                      <label for="formFile" class="form-label">Medical Statement<span>*</span></label>
                       <input disabled class="form-control" type="file" id="formFile">
-                      <div id="fileHelp" class="form-text">Type file:PDF Max file 300kb</div>
+                      <a href="{{ Storage::url($enrollment->user->userDetail->userDocument->medical) ?? '' }}">Check Document</a>
                     </div>
                     <div class="mb-3">
-                      <label for="formFile" class="form-label">Default file input disabled example<span>*</span></label>
+                      <label for="formFile" class="form-label">Copy of Academic Transacript<span>*</span></label>
                       <input disabled class="form-control" type="file" id="formFile">
-                      <div id="fileHelp" class="form-text">Type file:PDF Max file 300kb</div>
+                      <a href="{{ Storage::url($enrollment->user->userDetail->userDocument->academic_transkip) ?? '' }}">Check Document</a>
                     </div>
                     <div class="mb-3">
-                      <label for="formFile" class="form-label">Default file input disabled example<span>*</span></label>
+                      <label for="formFile" class="form-label">Last Certificate/Diploma<span>*</span></label>
                       <input disabled class="form-control" type="file" id="formFile">
-                      <div id="fileHelp" class="form-text">Type file:PDF Max file 300kb</div>
+                      <a href="{{ Storage::url($enrollment->user->userDetail->userDocument->last_certificate) ?? '' }}">Check Document</a>
                     </div>
                   </div>
                 </div>
 
-                <div class="row">
+                {{-- <div class="row">
                   <div class="col">
                     <button type="submit" class="btn btn__save">Save</button>
                   </div>
                 </div>
-              </div>
+              </div> --}}
             </form>
 
             <div class="disclaimer__content">
@@ -329,8 +329,10 @@
 
         <div class="confirm__button mt-2">
           <p>Please click "SUBMIT" after all data is correct.</p>
-          <button class="btn secondary__button" id="backStep1">Previous</button>
-          <button class="btn primary__button" id="nextStep3">SUBMIT</button>
+          <a href="{{ route('enrollment.edit') }}" class="btn secondary__button" id="backStep1">Previous</a>
+          <form action="" class="d-inline">
+            <button type="submit" class="btn primary__button" id="nextStep3">SUBMIT</button>
+          </form>
         </div>
     </section> 
 

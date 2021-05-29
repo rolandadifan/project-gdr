@@ -4,6 +4,7 @@
   <div class="container-fluid">
 
       <!-- Content Row -->
+      <a class="btn btn-primary mb-3" href="{{ route('user.index') }}">Back To List</a>
       <div class="card py-3 px-3">
           <h1 class="my-3">Profile {{ $user->name }}</h1>
           <form action="{{ route('user.update', $user->id) }}" method="POST" class="profile-data" enctype="multipart/form-data">

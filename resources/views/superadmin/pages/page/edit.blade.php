@@ -9,7 +9,7 @@
     <!-- Begin Page Content -->
     
     <div class="container-fluid">
-
+      <a class="btn btn-primary mb-3" href="{{ route('page.index') }}">Back To List</a>
       <!-- Content Row -->
       <div class="card py-3 px-3">
         <h1 class="mb-5">Edit Menu {{ $menu->title }}</h1>

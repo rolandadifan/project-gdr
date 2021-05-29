@@ -50,25 +50,9 @@
     <div class="interProgram__context">
         <div class="container-fluid">
             <div class="row row-cols-lg-4 row-cols-1 row-cols-md-3 justify-content-center">
-                @forelse ($courses as $course)
-                <div class="col">
-                    <a href="{{ route('scourse.detail', $course->slug) }}">
-                        <div class="card">
-                            <img src="{{Storage::url($course->courseDetail->thumbnail)}}" class="card-img-top"
-                                alt="{{$course->slug}}" />
-                            <div class="card-body">
-                                <h5 class="card-title">{{$course->name}}</h5>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                @empty
-                <p class="text-center">Course Not Available Right Now</p>
-                @endforelse
-
                 @forelse ($shortCourses as $shortCourse)
                 <div class="col">
-                    <a href="#">
+                    <a href="{{ route('scourse.detail', $shortCourse->slug) }}">
                         <div class="card">
                             <img src="{{Storage::url($shortCourse->courseDetail->thumbnail)}}" class="card-img-top"
                                 alt="{{$shortCourse->slug}}" />
@@ -221,7 +205,7 @@
                                         <p>
                                             {{$research->articleDetail->excerpt}}
                                         </p>
-                                        <a href="#">Read More...</a>
+                                        <a href="{{ route('page.detail', $research->articleDetail->slug) }}">Read More...</a>
                                     </div>
                                 </div>
                                 @endif
@@ -240,7 +224,7 @@
                                         <p>
                                             {{$research->articleDetail->excerpt}}
                                         </p>
-                                        <a href="#">Read More...</a>
+                                        <a href="{{ route('page.detail', $research->articleDetail->slug) }}">Read More...</a>
                                     </div>
                                 </div>
                                 @endif

@@ -9,15 +9,12 @@
 <!-- Begin Page Content -->
 
 <div class="container-fluid">
-
+    <a class="btn btn-primary mb-3" href="{{ route('alumni-info.index') }}">Back To List</a>
     <!-- Content Row -->
     <div class="card py-3 px-3">
         @include('flashmessage.validation')
         @include('flashmessage.flash')
         <h1 class="mb-5">Alumni Review Update</h1>
-        <button class="btn btn-primary" style="width: 200px;margin-bottom:4rem"
-            onclick="location.href = '/sadmin/alumni-info'">Back to
-            List</button>
         <form action="{{ route('alumni-info.update', $alumni->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('put')

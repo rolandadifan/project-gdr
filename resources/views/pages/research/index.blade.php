@@ -84,7 +84,7 @@ tenetur!')
                                         <p>
                                             {{$research->articleDetail->excerpt}}
                                         </p>
-                                        <a href="#">Read More...</a>
+                                        <a href="{{ route('page.detail', $research->articleDetail->slug) }}">Read More...</a>
                                     </div>
                                 </div>
                                 @endif
@@ -103,7 +103,7 @@ tenetur!')
                                         <p>
                                             {{$research->articleDetail->excerpt}}
                                         </p>
-                                        <a href="#">Read More...</a>
+                                        <a href="{{ route('page.detail', $research->articleDetail->slug) }}">Read More...</a>
                                     </div>
                                 </div>
                                 @endif

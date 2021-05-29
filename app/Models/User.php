@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Models\UserDetail;
+use App\Models\Enrollment;
 use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
@@ -50,8 +51,8 @@ class User extends Authenticatable
        return $this->hasOne(UserDetail::class);
     }
 
-    // public function userDetails()
-    // {
-    //     $this->hasOne(UserDetail::class);
-    // }
+    public function userEnroll()
+    {
+        $this->hasMany(Enrollment::class);
+    }
 }

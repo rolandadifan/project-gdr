@@ -8,7 +8,7 @@ quisquam illum voluptate quod impedit ab nisi, esse mollitia ad aliquid delectus
 tenetur!')
 @include('icon')
 <section id="startNewApp">
-    <form action="{{ route('enrollment.storeAllData') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('enrollment.update') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="container">
             <h5>Start New Application</h5>
@@ -300,34 +300,43 @@ tenetur!')
                                 <div class="mb-3">
                                     <label for="formFile" class="form-label">Formal Photo<span>*</span></label>
                                     <input  name="photo_formal" class="form-control" type="file" id="formFile"
-                                        accept=".pdf" value="{{ $enrollment->user->userDetail->userDocument->photo_formal ?? '' }}">
+                                        accept=".pdf">
                                     <div id="fileHelp" class="form-text">Type file:PDF Max file 300kb</div>
+                                    <a href="{{ Storage::url($enrollment->user->userDetail->userDocument->photo_formal) ?? '' }}">Check Document</a>
                                 </div>
                                 <div class="mb-3">
                                     <label for="formFile" class="form-label">Passport<span>*</span></label>
-                                    <input  name="photo_passport" class="form-control" type="file" id="formFile" value="{{ $enrollment->user->userDetail->userDocument->photo_passport ?? '' }}"  accept=".pdf" >
+                                    <input  name="photo_passport" class="form-control" type="file" id="formFile" accept=".pdf" >
                                     <div id="fileHelp" class="form-text">Type file:PDF Max file 300kb</div>
-                                    {{-- <a href="{{ Storage::url($enrollment->user->userDetail->userDocument->photo_passport) ?? '' }}">test download</a> --}}
+                                    <a href="{{ Storage::url($enrollment->user->userDetail->userDocument->photo_passport) ?? '' }}">Check Document</a>
                                 </div>
                                 <div class="mb-3">
                                     <label for="formFile" class="form-label">Passport Cover<span>*</span></label>
                                     <input  name="photo_cover_passport" class="form-control" type="file" id="formFile"  accept=".pdf">
                                     <div id="fileHelp" class="form-text">Type file:PDF Max file 300kb</div>
+                                    <a href="{{ Storage::url($enrollment->user->userDetail->userDocument->photo_cover_passport) ?? '' }}">Check Document</a>
+
                                 </div>
                                 <div class="mb-3">
                                     <label for="formFile" class="form-label">Statement Letter<span>*</span></label>
                                     <input  name="statment_letter" class="form-control" type="file" id="formFile"  accept=".pdf">
                                     <div id="fileHelp" class="form-text">Type file:PDF Max file 300kb</div>
+                                    <a href="{{ Storage::url($enrollment->user->userDetail->userDocument->statment_letter) ?? '' }}">Check Document</a>
+
                                 </div>
                                 <div class="mb-3">
                                     <label for="formFile" class="form-label">Sponsor Letter<span>*</span></label>
                                     <input  name="sponsor_letter" class="form-control" type="file" id="formFile"  accept=".pdf">
                                     <div id="fileHelp" class="form-text">Type file:PDF Max file 300kb</div>
+                                    <a href="{{ Storage::url($enrollment->user->userDetail->userDocument->sponsor_letter) ?? '' }}">Check Document</a>
+
                                 </div>
                                 <div class="mb-3">
                                     <label for="formFile" class="form-label">Sponsor Letter which has been signed<span>*</span></label>
                                     <input  name="sponsor_letter_sign_id" class="form-control" type="file" id="formFile"  accept=".pdf">
                                     <div id="fileHelp" class="form-text">Type file:PDF Max file 300kb</div>
+                                    <a href="{{ Storage::url($enrollment->user->userDetail->userDocument->sponsor_letter_sign_id) ?? '' }}">Check Document</a>
+
                                 </div>
                             </div>
                             <div class="col">
@@ -335,26 +344,36 @@ tenetur!')
                                     <label for="formFile" class="form-label">Letter of Acceptance<span>*</span></label>
                                     <input  name="letter_accept" class="form-control" type="file" id="formFile" accept=".pdf">
                                     <div id="fileHelp" class="form-text">Type file:PDF Max file 300kb</div>
+                                    <a href="{{ Storage::url($enrollment->user->userDetail->userDocument->letter_accept) ?? '' }}">Check Document</a>
+
                                 </div>
                                 <div class="mb-3">
                                     <label for="formFile" class="form-label">Financial Statement<span>*</span></label>
                                     <input  name="financial" class="form-control" type="file" id="formFile" accept=".pdf">
                                     <div id="fileHelp" class="form-text">Type file:PDF Max file 300kb</div>
+                                    <a href="{{ Storage::url($enrollment->user->userDetail->userDocument->financial) ?? '' }}">Check Document</a>
+
                                 </div>
                                 <div class="mb-3">
                                     <label for="formFile" class="form-label">Medical Statement<span>*</span></label>
                                     <input  name="medical" class="form-control" type="file" id="formFile" accept=".pdf">
                                     <div id="fileHelp" class="form-text">Type file:PDF Max file 300kb</div>
+                                    <a href="{{ Storage::url($enrollment->user->userDetail->userDocument->medical) ?? '' }}">Check Document</a>
+
                                 </div>
                                 <div class="mb-3">
                                     <label for="formFile" class="form-label">Copy of Academic Transacript<span>*</span></label>
                                     <input  name="academic_transkip" class="form-control" type="file" id="formFile" accept=".pdf">
                                     <div id="fileHelp" class="form-text">Type file:PDF Max file 300kb</div>
+                                    <a href="{{ Storage::url($enrollment->user->userDetail->userDocument->academic_transkip) ?? '' }}">Check Document</a>
+
                                 </div>
                                 <div class="mb-3">
                                     <label for="formFile" class="form-label">Last Certificate/Diploma<span>*</span></label>
                                     <input  name="last_certificate" class="form-control" type="file" id="formFile" accept=".pdf">
                                     <div id="fileHelp" class="form-text">Type file:PDF Max file 300kb</div>
+                                    <a href="{{ Storage::url($enrollment->user->userDetail->userDocument->last_certificate) ?? '' }}">Check Document</a>
+
                                 </div>
                             </div>
                         </div>

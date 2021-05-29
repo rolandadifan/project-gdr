@@ -259,7 +259,7 @@
                                                         </div>
 
                                                         <div class="button__apply">
-                                                            <button class="btn btn__primary">Apply</button>
+                                                            <a href="{{ route('enrollment.index') }}" class="btn btn__primary">Apply</a>
                                                         </div>
                                                     </div>
                                                 </div>
