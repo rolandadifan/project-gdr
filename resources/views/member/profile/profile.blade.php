@@ -48,6 +48,11 @@
             <div class="profile__header">
                 <h2>International Programs</h2>
                 <h4>PROFILE</h4>
+                @if (session('status'))
+                    <div class="alert alert-success">
+                        {{ session('status') }}
+                    </div>    
+                @endif
             </div>
             <div class="profile__context">
                 <div class="container-fluid">

@@ -17,6 +17,8 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class EnrollmentController extends Controller
 {
@@ -32,35 +34,42 @@ class EnrollmentController extends Controller
             $query->where('degree', 'non')->orderBy('created_at', 'DESC');
         })->get();
         $user = User::with('userDetail')->findOrFail(auth()->user()->id);
-
+        $enrollment = Enrollment::where('user_id', auth()->user()->id)->where('status_id', 3)->first();
         return view('pages.enrollment.index')->with([
             'step_ones' => $step_ones,
             'step_twos' => $step_twos,
             'step_threes' => $step_threes,
             'scourses' => $scourses,
             'user' => $user,
+            'enrollment' => $enrollment,
         ]);
     }
 
     public function phase1store(Request $request){
-        session(['selected-scource' => $request->scourse ?? '']);
+        $selected_scourse = null;
+        if(isset($request->scourse)){
+            $course = Course::where('id', $request->scourse)->select(['id', 'name'])->first();
+            $selected_scourse = $course;
+        }
+        session(['selected-scource' => $selected_scourse]);
+        // dd(session('selected-scource'));
         return redirect()->route('enrollment.input');
     }
 
     public function input()
     {
         $course= Course::with('courseDetail')->select(['id', 'name'])->whereHas('courseDetail', function (Builder $query) {
-            $query->where('degree','!=', 'no')->orderBy('created_at', 'DESC');
+            $query->where('degree','!=', 'non')->orderBy('created_at', 'DESC');
         })->get();
         $user = User::with('userDetail')->findOrFail(auth()->user()->id);
         $enrollment = Enrollment::where('user_id', auth()->user()->id)->with(['user.userDetail.userFunding','user.userDetail.userDocument','user.userDetail.userResidance','user.userDetail.userPasport', 'course'])->orWhere('status_id', 3)->first();
-        // dd($enrollment);
+        // dd(session('selected-scource'));
         return view('pages.enrollment.dagree.input')->with([
             'user' => $user,
             'course' => $course,
             'enrollment' => $enrollment,
-            'scourse' => session('selected-scource'
-        )]);
+            'scourse' => session('selected-scource')
+        ]);
     }
 
     // public function phase2store(Request $request){
@@ -70,8 +79,8 @@ class EnrollmentController extends Controller
 
     public function verifi()
     {
-         $enrollment = Enrollment::where('user_id', auth()->user()->id)->with(['user.userDetail.userFunding','user.userDetail.userDocument','user.userDetail.userResidance','user.userDetail.userPasport', 'course'])->orWhere('status_id', 3)->first();
-          $user = User::with('userDetail')->findOrFail(auth()->user()->id);
+        $enrollment = Enrollment::where('user_id', auth()->user()->id)->with(['user.userDetail.userFunding','user.userDetail.userDocument','user.userDetail.userResidance','user.userDetail.userPasport', 'course'])->orWhere('status_id', 3)->first();
+        $user = User::with('userDetail')->findOrFail(auth()->user()->id);
         return view('pages.enrollment.dagree.verifi')->with([
             'enrollment' => $enrollment,
             'user' => $user,
@@ -91,6 +100,19 @@ class EnrollmentController extends Controller
             'enrollment' => $enrollment,
             'scourse' => session('selected-scource'
         )]);
+    }
+
+    public function submit()
+    {
+        $enrollment = Enrollment::where('user_id', auth()->user()->id)->first();
+        $enrollment->update([
+            'status_id' => 4
+        ]);
+        // Alert::success('Success', 'Your Data Has Been Registered');
+        // toast('Your Post as been submited!','success');
+        // return back();
+        // alert()->success('Title','Lorem Lorem Lorem');
+        return redirect()->route('profile')->with('status', 'Your Data Has Been Registered');
     }
 
     public function storeAllData(Request $request)
@@ -211,17 +233,17 @@ class EnrollmentController extends Controller
         $validateDocument['academic_transkip']    = $request->file('academic_transkip');
         $validateDocument['last_certificate']    = $request->file('last_certificate');
 
-        $fileNamePassport = date("Y-m-d"). '-'. rand(1, 999).'-' . $validateDocument['photo_passport'] ->getClientOriginalName();
-        $fileNameForlmal = date("Y-m-d"). '-'. rand(1, 999).'-' . $validateDocument['photo_formal'] ->getClientOriginalName();
-        $fileNameStatement = date("Y-m-d"). '-'. rand(1, 999).'-' . $validateDocument['statment_letter'] ->getClientOriginalName();
-        $fileNameSponsor = date("Y-m-d"). '-'. rand(1, 999).'-' . $validateDocument['sponsor_letter'] ->getClientOriginalName();
-        $fileNameCover = date("Y-m-d"). '-'. rand(1, 999).'-' . $validateDocument['photo_cover_passport'] ->getClientOriginalName();
-        $fileNameSponsorLeter = date("Y-m-d"). '-'. rand(1, 999).'-' . $validateDocument['sponsor_letter_sign_id'] ->getClientOriginalName();
-        $fileNameAccept = date("Y-m-d"). '-'. rand(1, 999).'-' . $validateDocument['letter_accept'] ->getClientOriginalName();
-        $fileNameFinancial = date("Y-m-d"). '-'. rand(1, 999).'-' . $validateDocument['financial'] ->getClientOriginalName();
-        $fileNameMedical = date("Y-m-d"). '-'. rand(1, 999).'-' . $validateDocument['medical'] ->getClientOriginalName();
-        $fileNameTranscipt = date("Y-m-d"). '-'. rand(1, 999).'-' . $validateDocument['academic_transkip'] ->getClientOriginalName();
-        $fileNameCertificate = date("Y-m-d"). '-'. rand(1, 999).'-' . $validateDocument['last_certificate'] ->getClientOriginalName();
+        $fileNamePassport = date("Y-m-d"). '-'. rand(1, 999999).'-' . $validateDocument['photo_passport'] ->getClientOriginalName();
+        $fileNameForlmal = date("Y-m-d"). '-'. rand(1, 999999).'-' . $validateDocument['photo_formal'] ->getClientOriginalName();
+        $fileNameStatement = date("Y-m-d"). '-'. rand(1, 999999).'-' . $validateDocument['statment_letter'] ->getClientOriginalName();
+        $fileNameSponsor = date("Y-m-d"). '-'. rand(1, 999999).'-' . $validateDocument['sponsor_letter'] ->getClientOriginalName();
+        $fileNameCover = date("Y-m-d"). '-'. rand(1, 999999).'-' . $validateDocument['photo_cover_passport'] ->getClientOriginalName();
+        $fileNameSponsorLeter = date("Y-m-d"). '-'. rand(1, 999999).'-' . $validateDocument['sponsor_letter_sign_id'] ->getClientOriginalName();
+        $fileNameAccept = date("Y-m-d"). '-'. rand(1, 999999).'-' . $validateDocument['letter_accept'] ->getClientOriginalName();
+        $fileNameFinancial = date("Y-m-d"). '-'. rand(1, 999999).'-' . $validateDocument['financial'] ->getClientOriginalName();
+        $fileNameMedical = date("Y-m-d"). '-'. rand(1, 999999).'-' . $validateDocument['medical'] ->getClientOriginalName();
+        $fileNameTranscipt = date("Y-m-d"). '-'. rand(1, 999999).'-' . $validateDocument['academic_transkip'] ->getClientOriginalName();
+        $fileNameCertificate = date("Y-m-d"). '-'. rand(1, 999999).'-' . $validateDocument['last_certificate'] ->getClientOriginalName();
 
         $validateDocument['photo_passport']->storeAs('document', $fileNamePassport, 'public');
         $validateDocument['photo_formal']->storeAs('document', $fileNameForlmal, 'public');
@@ -252,37 +274,162 @@ class EnrollmentController extends Controller
                     'academic_transkip' => 'document/' .$fileNameTranscipt,
                     'last_certificate' => 'document/' .$fileNameCertificate,
                 ]);
-        }else{
-            $user_document->update([
-                'photo_passport' => $validateDocument['photo_passport'],
-                'photo_formal' => $validateDocument['photo_formal'],
-                'statment_letter' => $validateDocument['statment_letter'],
-                'photo_cover_passport' => $validateDocument['photo_cover_passport'],
-                'sponsor_letter' => $validateDocument['sponsor_letter'],
-                'sponsor_letter_sign_id' => $validateDocument['sponsor_letter_sign_id'],
-                'letter_accept' => $validateDocument['letter_accept'],
-                'financial' => $validateDocument['financial'],
-                'medical' => $validateDocument['medical'],
-                'academic_transkip' => $validateDocument['academic_transkip'],
-                'last_certificate' => $validateDocument['last_certificate'],
-            ]);
+            }else {
+                if(isset($validateDocument['photo_passport'])){
+            $fileNamePassport = date("Y-m-d"). '-'. rand(1, 999999).'-' . $validateDocument['photo_passport'] ->getClientOriginalName();
+            $validateDocument['photo_passport']->storeAs('document', $fileNamePassport, 'public');
+                $file_path = Storage::url($user_document->photo_passport);
+                $path = str_replace('\\', '/', public_path());
+                if (file_exists($path . $file_path)) {
+                    unlink($path . $file_path);
+                }
+                $user_document->update([
+                    'photo_passport' => 'document/' .$fileNamePassport,
+                ]);  
         }
+        if(isset($validateDocument['photo_formal'])){
+             $fileNameForlmal = date("Y-m-d"). '-'. rand(1, 999999).'-' . $validateDocument['photo_formal'] ->getClientOriginalName();
+             $validateDocument['photo_formal']->storeAs('document', $fileNameForlmal, 'public');
+                $file_path = Storage::url($user_document->photo_formal);
+                $path = str_replace('\\', '/', public_path());
+                if (file_exists($path . $file_path)) {
+                    unlink($path . $file_path);
+                }
+                $user_document->update([
+                    'photo_formal' => 'document/' .$fileNameForlmal,
+                ]);
+            
+        }
+        if(isset($validateDocument['statment_letter'])){
+             $fileNameStatement = date("Y-m-d"). '-'. rand(1, 999999).'-' . $validateDocument['statment_letter'] ->getClientOriginalName();
+             $validateDocument['statment_letter']->storeAs('document', $fileNameStatement, 'public');
+                $file_path = Storage::url($user_document->statment_letter);
+                $path = str_replace('\\', '/', public_path());
+                if (file_exists($path . $file_path)) {
+                    unlink($path . $file_path);
+                }
+                $user_document->update([
+                    'statment_letter' => 'document/' .$fileNameStatement,
+                ]);
+                
+        }
+        if(isset($validateDocument['sponsor_letter'])){
+            $fileNameSponsor = date("Y-m-d"). '-'. rand(1, 999999).'-' . $validateDocument['sponsor_letter'] ->getClientOriginalName();
+             $validateDocument['sponsor_letter']->storeAs('document', $fileNameSponsor, 'public');
+
+                    $file_path = Storage::url($user_document->sponsor_letter);
+                    $path = str_replace('\\', '/', public_path());
+                    if (file_exists($path . $file_path)) {
+                        unlink($path . $file_path);
+                    }
+                    $user_document->update([
+                        'sponsor_letter' => 'document/' .$fileNameSponsor,
+                    ]);
+                
+        }
+        if(isset($validateDocument['photo_cover_passport'])){
+           $fileNameCover = date("Y-m-d"). '-'. rand(1, 999999).'-' . $validateDocument['photo_cover_passport'] ->getClientOriginalName();
+            $validateDocument['photo_cover_passport']->storeAs('document', $fileNameCover, 'public');
+                    $file_path = Storage::url($user_document->photo_cover_passport);
+                    $path = str_replace('\\', '/', public_path());
+                    if (file_exists($path . $file_path)) {
+                        unlink($path . $file_path);
+                    }
+                $user_document->update([
+                    'photo_cover_passport' =>'document/' .$fileNameCover,
+                ]);
+            
+        }
+        if(isset($validateDocument['sponsor_letter_sign_id'])){
+            $fileNameSponsorLeter = date("Y-m-d"). '-'. rand(1, 999999).'-' . $validateDocument['sponsor_letter_sign_id'] ->getClientOriginalName();
+            $validateDocument['sponsor_letter_sign_id']->storeAs('document', $fileNameSponsorLeter, 'public');
+                $file_path = Storage::url($user_document->sponsor_letter_sign_id);
+                    $path = str_replace('\\', '/', public_path());
+                    if (file_exists($path . $file_path)) {
+                        unlink($path . $file_path);
+                    }
+                $user_document->update([
+                    'sponsor_letter_sign_id' =>'document/' .$fileNameSponsorLeter,
+                ]);
+            
+        }
+        if(isset($validateDocument['letter_accept'])){
+            $fileNameAccept = date("Y-m-d"). '-'. rand(1, 999999).'-' . $validateDocument['letter_accept'] ->getClientOriginalName();
+            $validateDocument['letter_accept']->storeAs('document', $fileNameAccept, 'public');
+                $file_path = Storage::url($user_document->letter_accept);
+                    $path = str_replace('\\', '/', public_path());
+                    if (file_exists($path . $file_path)) {
+                        unlink($path . $file_path);
+                    }
+                $user_document->update([
+                    'letter_accept' => 'document/' .$fileNameAccept,
+                ]);
+            
+        }
+        if(isset($validateDocument['financial'])){
+            $fileNameFinancial = date("Y-m-d"). '-'. rand(1, 999999).'-' . $validateDocument['financial'] ->getClientOriginalName();
+            $validateDocument['financial']->storeAs('document', $fileNameFinancial, 'public');
+            
+                $file_path = Storage::url($user_document->financial);
+                    $path = str_replace('\\', '/', public_path());
+                    if (file_exists($path . $file_path)) {
+                        unlink($path . $file_path);
+                    }
+                $user_document->update([
+                    'financial' => 'document/' .$fileNameFinancial,
+                ]);
+            
+        }
+        if(isset($validateDocument['medical'])){
+            $fileNameMedical = date("Y-m-d"). '-'. rand(1, 999999).'-' . $validateDocument['medical'] ->getClientOriginalName();
+            $validateDocument['medical']->storeAs('document', $fileNameMedical, 'public');
+            
+                $file_path = Storage::url($user_document->medical);
+                    $path = str_replace('\\', '/', public_path());
+                    if (file_exists($path . $file_path)) {
+                        unlink($path . $file_path);
+                    }
+                $user_document->update([
+                    'medical' => 'document/' .$fileNameMedical,
+                ]);
+            
+        }
+        if(isset($validateDocument['academic_transkip'])){
+            $fileNameTranscipt = date("Y-m-d"). '-'. rand(1, 999999).'-' . $validateDocument['academic_transkip'] ->getClientOriginalName();
+            $validateDocument['academic_transkip']->storeAs('document', $fileNameTranscipt, 'public');
+                $file_path = Storage::url($user_document->academic_transkip);
+                    $path = str_replace('\\', '/', public_path());
+                    if (file_exists($path . $file_path)) {
+                        unlink($path . $file_path);
+                    }
+                $user_document->update([
+                    'academic_transkip' => 'document/' .$fileNameTranscipt,
+                ]);
+            
+        }
+        if(isset($validateDocument['last_certificate'])){
+            $fileNameCertificate = date("Y-m-d"). '-'. rand(1, 999999).'-' . $validateDocument['last_certificate'] ->getClientOriginalName();
+            $validateDocument['last_certificate']->storeAs('document', $fileNameCertificate, 'public');
+                $file_path = Storage::url($user_document->last_certificate);
+                    $path = str_replace('\\', '/', public_path());
+                    if (file_exists($path . $file_path)) {
+                        unlink($path . $file_path);
+                    }
+                $user_document->update([
+                    'last_certificate' => 'document/' .$fileNameCertificate,
+                ]);
+        }
+            }
         
 
-        $enrol = Enrollment::where('user_id', auth()->user()->id)->first();
-        if(!$enrol){
+        
             Enrollment::create([
                 'user_id' => auth()->user()->id,
                 'course_id' => $validateEnrollment['course_id'],
                 'university' => $validateEnrollment['university'],
                 'status_id' => 3
             ]);
-        }else{
-            $enrol->update([
-                'course_id' => $validateEnrollment['course_id'],
-                'university' => $validateEnrollment['university'],
-            ]);
-        }
+        
 
 
         return redirect()->route('enrollment.verifi');
@@ -374,114 +521,158 @@ class EnrollmentController extends Controller
         $validateDocument['last_certificate']    = $request->file('last_certificate');
 
         if(isset($validateDocument['photo_passport'])){
-            $fileNamePassport = date("Y-m-d"). '-'. rand(1, 999).'-' . $validateDocument['photo_passport'] ->getClientOriginalName();
+            $fileNamePassport = date("Y-m-d"). '-'. rand(1, 999999).'-' . $validateDocument['photo_passport'] ->getClientOriginalName();
             $validateDocument['photo_passport']->storeAs('document', $fileNamePassport, 'public');
                 $user_document = UserUpload::where('user_detail_id', auth()->user()->userDetail->id)->first();
-                {
-                    $user_document->update([
-                        'photo_passport' => 'document/' .$fileNamePassport,
-                    ]);
+                $file_path = Storage::url($user_document->photo_passport);
+                $path = str_replace('\\', '/', public_path());
+                if (file_exists($path . $file_path)) {
+                    unlink($path . $file_path);
                 }
+                $user_document->update([
+                    'photo_passport' => 'document/' .$fileNamePassport,
+                ]);  
         }
         if(isset($validateDocument['photo_formal'])){
-             $fileNameForlmal = date("Y-m-d"). '-'. rand(1, 999).'-' . $validateDocument['photo_formal'] ->getClientOriginalName();
+             $fileNameForlmal = date("Y-m-d"). '-'. rand(1, 999999).'-' . $validateDocument['photo_formal'] ->getClientOriginalName();
              $validateDocument['photo_formal']->storeAs('document', $fileNameForlmal, 'public');
                 $user_document = UserUpload::where('user_detail_id', auth()->user()->userDetail->id)->first();
-            {
+                $file_path = Storage::url($user_document->photo_formal);
+                $path = str_replace('\\', '/', public_path());
+                if (file_exists($path . $file_path)) {
+                    unlink($path . $file_path);
+                }
                 $user_document->update([
                     'photo_formal' => 'document/' .$fileNameForlmal,
                 ]);
-            }
+            
         }
         if(isset($validateDocument['statment_letter'])){
-             $fileNameStatement = date("Y-m-d"). '-'. rand(1, 999).'-' . $validateDocument['statment_letter'] ->getClientOriginalName();
+             $fileNameStatement = date("Y-m-d"). '-'. rand(1, 999999).'-' . $validateDocument['statment_letter'] ->getClientOriginalName();
              $validateDocument['statment_letter']->storeAs('document', $fileNameStatement, 'public');
                 $user_document = UserUpload::where('user_detail_id', auth()->user()->userDetail->id)->first();
-                {
+                $file_path = Storage::url($user_document->statment_letter);
+                $path = str_replace('\\', '/', public_path());
+                if (file_exists($path . $file_path)) {
+                    unlink($path . $file_path);
+                }
                 $user_document->update([
                     'statment_letter' => 'document/' .$fileNameStatement,
                 ]);
-                }
+                
         }
         if(isset($validateDocument['sponsor_letter'])){
-            $fileNameSponsor = date("Y-m-d"). '-'. rand(1, 999).'-' . $validateDocument['sponsor_letter'] ->getClientOriginalName();
+            $fileNameSponsor = date("Y-m-d"). '-'. rand(1, 999999).'-' . $validateDocument['sponsor_letter'] ->getClientOriginalName();
              $validateDocument['sponsor_letter']->storeAs('document', $fileNameSponsor, 'public');
                     $user_document = UserUpload::where('user_detail_id', auth()->user()->userDetail->id)->first();
-                {
+                    $file_path = Storage::url($user_document->sponsor_letter);
+                    $path = str_replace('\\', '/', public_path());
+                    if (file_exists($path . $file_path)) {
+                        unlink($path . $file_path);
+                    }
                     $user_document->update([
                         'sponsor_letter' => 'document/' .$fileNameSponsor,
                     ]);
-                }
+                
         }
         if(isset($validateDocument['photo_cover_passport'])){
-           $fileNameCover = date("Y-m-d"). '-'. rand(1, 999).'-' . $validateDocument['photo_cover_passport'] ->getClientOriginalName();
+           $fileNameCover = date("Y-m-d"). '-'. rand(1, 999999).'-' . $validateDocument['photo_cover_passport'] ->getClientOriginalName();
             $validateDocument['photo_cover_passport']->storeAs('document', $fileNameCover, 'public');
                 $user_document = UserUpload::where('user_detail_id', auth()->user()->userDetail->id)->first();
-            {
+                    $file_path = Storage::url($user_document->photo_cover_passport);
+                    $path = str_replace('\\', '/', public_path());
+                    if (file_exists($path . $file_path)) {
+                        unlink($path . $file_path);
+                    }
                 $user_document->update([
                     'photo_cover_passport' =>'document/' .$fileNameCover,
                 ]);
-            }
+            
         }
         if(isset($validateDocument['sponsor_letter_sign_id'])){
-            $fileNameSponsorLeter = date("Y-m-d"). '-'. rand(1, 999).'-' . $validateDocument['sponsor_letter_sign_id'] ->getClientOriginalName();
+            $fileNameSponsorLeter = date("Y-m-d"). '-'. rand(1, 999999).'-' . $validateDocument['sponsor_letter_sign_id'] ->getClientOriginalName();
             $validateDocument['sponsor_letter_sign_id']->storeAs('document', $fileNameSponsorLeter, 'public');
                 $user_document = UserUpload::where('user_detail_id', auth()->user()->userDetail->id)->first();
-            {
+                $file_path = Storage::url($user_document->sponsor_letter_sign_id);
+                    $path = str_replace('\\', '/', public_path());
+                    if (file_exists($path . $file_path)) {
+                        unlink($path . $file_path);
+                    }
                 $user_document->update([
                     'sponsor_letter_sign_id' =>'document/' .$fileNameSponsorLeter,
                 ]);
-            }
+            
         }
         if(isset($validateDocument['letter_accept'])){
-            $fileNameAccept = date("Y-m-d"). '-'. rand(1, 999).'-' . $validateDocument['letter_accept'] ->getClientOriginalName();
+            $fileNameAccept = date("Y-m-d"). '-'. rand(1, 999999).'-' . $validateDocument['letter_accept'] ->getClientOriginalName();
             $validateDocument['letter_accept']->storeAs('document', $fileNameAccept, 'public');
                 $user_document = UserUpload::where('user_detail_id', auth()->user()->userDetail->id)->first();
-            {
+                $file_path = Storage::url($user_document->letter_accept);
+                    $path = str_replace('\\', '/', public_path());
+                    if (file_exists($path . $file_path)) {
+                        unlink($path . $file_path);
+                    }
                 $user_document->update([
                     'letter_accept' => 'document/' .$fileNameAccept,
                 ]);
-            }
+            
         }
         if(isset($validateDocument['financial'])){
-            $fileNameFinancial = date("Y-m-d"). '-'. rand(1, 999).'-' . $validateDocument['financial'] ->getClientOriginalName();
+            $fileNameFinancial = date("Y-m-d"). '-'. rand(1, 999999).'-' . $validateDocument['financial'] ->getClientOriginalName();
             $validateDocument['financial']->storeAs('document', $fileNameFinancial, 'public');
                 $user_document = UserUpload::where('user_detail_id', auth()->user()->userDetail->id)->first();
-            {
+            
+                $file_path = Storage::url($user_document->financial);
+                    $path = str_replace('\\', '/', public_path());
+                    if (file_exists($path . $file_path)) {
+                        unlink($path . $file_path);
+                    }
                 $user_document->update([
                     'financial' => 'document/' .$fileNameFinancial,
                 ]);
-            }
+            
         }
         if(isset($validateDocument['medical'])){
-            $fileNameMedical = date("Y-m-d"). '-'. rand(1, 999).'-' . $validateDocument['medical'] ->getClientOriginalName();
+            $fileNameMedical = date("Y-m-d"). '-'. rand(1, 999999).'-' . $validateDocument['medical'] ->getClientOriginalName();
             $validateDocument['medical']->storeAs('document', $fileNameMedical, 'public');
                 $user_document = UserUpload::where('user_detail_id', auth()->user()->userDetail->id)->first();
-            {
+            
+                $file_path = Storage::url($user_document->medical);
+                    $path = str_replace('\\', '/', public_path());
+                    if (file_exists($path . $file_path)) {
+                        unlink($path . $file_path);
+                    }
                 $user_document->update([
                     'medical' => 'document/' .$fileNameMedical,
                 ]);
-            }
+            
         }
         if(isset($validateDocument['academic_transkip'])){
-            $fileNameTranscipt = date("Y-m-d"). '-'. rand(1, 999).'-' . $validateDocument['academic_transkip'] ->getClientOriginalName();
+            $fileNameTranscipt = date("Y-m-d"). '-'. rand(1, 999999).'-' . $validateDocument['academic_transkip'] ->getClientOriginalName();
             $validateDocument['academic_transkip']->storeAs('document', $fileNameTranscipt, 'public');
                 $user_document = UserUpload::where('user_detail_id', auth()->user()->userDetail->id)->first();
-            {
+                $file_path = Storage::url($user_document->academic_transkip);
+                    $path = str_replace('\\', '/', public_path());
+                    if (file_exists($path . $file_path)) {
+                        unlink($path . $file_path);
+                    }
                 $user_document->update([
                     'academic_transkip' => 'document/' .$fileNameTranscipt,
                 ]);
-            }
+            
         }
         if(isset($validateDocument['last_certificate'])){
-            $fileNameCertificate = date("Y-m-d"). '-'. rand(1, 999).'-' . $validateDocument['last_certificate'] ->getClientOriginalName();
+            $fileNameCertificate = date("Y-m-d"). '-'. rand(1, 999999).'-' . $validateDocument['last_certificate'] ->getClientOriginalName();
             $validateDocument['last_certificate']->storeAs('document', $fileNameCertificate, 'public');
                 $user_document = UserUpload::where('user_detail_id', auth()->user()->userDetail->id)->first();
-            {
+                $file_path = Storage::url($user_document->last_certificate);
+                    $path = str_replace('\\', '/', public_path());
+                    if (file_exists($path . $file_path)) {
+                        unlink($path . $file_path);
+                    }
                 $user_document->update([
                     'last_certificate' => 'document/' .$fileNameCertificate,
                 ]);
-            }
         }
         
         $enrol = Enrollment::where('user_id', auth()->user()->id)->first();
@@ -557,8 +748,7 @@ class EnrollmentController extends Controller
 
         
      }
-
-
+        // return back();
         return redirect()->route('enrollment.verifi');
     }
 }

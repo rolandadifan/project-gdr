@@ -182,15 +182,15 @@
                                                                     <h6>Grade AA</h6>
                                                                 </div>
                                                                 <div class="col">
-                                                                    <p>Rp{{ (int)$price = ['AA_BPP'] }}</p>
-                                                                </div>
+                                                                    <p>Rp {{ number_format($price['AA'], 2) == 0 ? '-' : number_format($price['AA'], 2) }}</p>
+                                                           </div>
                                                             </div>
                                                             <div class="row rows-cols-1">
                                                                 <div class="col">
                                                                     <h6>BPP</h6>
                                                                 </div>
                                                                 <div class="col">
-                                                                    <p>Rp99</p>
+                                                                    <p>Rp {{ number_format($price['AA_BPP'], 2) == 0 ? '-' :  number_format($price['AA_BPP'], 2) }}</p>
                                                                 </div>
                                                             </div>
                                                             <div class="row rows-cols-1">
@@ -198,7 +198,7 @@
                                                                     <h6>SKS</h6>
                                                                 </div>
                                                                 <div class="col">
-                                                                    <p>Rp250.000</p>
+                                                                    <p>Rp {{ number_format($price['AA_SKS'], 2) == 0 ? '-' :  number_format($price['AA_SKS'], 2)}}</p>
                                                                 </div>
                                                             </div>
                                                             <!-- end forloop -->
@@ -207,10 +207,10 @@
                                                             class="col-12 col-md-4 px-md-4 px-2 py-md-0 py-3 tuitionFee__content">
                                                             <div class="row rows-cols-1">
                                                                 <div class="col">
-                                                                    <h6>Grade AA</h6>
+                                                                    <h6>Grade A</h6>
                                                                 </div>
                                                                 <div class="col">
-                                                                    <p>Rp22.000.000</p>
+                                                                    <p>Rp {{ number_format($price['A'], 2) == 0 ? '-' :  number_format($price['A'], 2) }}</p>
                                                                 </div>
                                                             </div>
                                                             <div class="row rows-cols-1">
@@ -218,7 +218,7 @@
                                                                     <h6>BPP</h6>
                                                                 </div>
                                                                 <div class="col">
-                                                                    <p>Rp3.500.000</p>
+                                                                    <p>Rp {{ number_format($price['A_BPP'], 2) == 0 ? '-' :  number_format($price['A_BPP'], 2) }} </p>
                                                                 </div>
                                                             </div>
                                                             <div class="row rows-cols-1">
@@ -226,7 +226,7 @@
                                                                     <h6>SKS</h6>
                                                                 </div>
                                                                 <div class="col">
-                                                                    <p>Rp250.000</p>
+                                                                    <p>Rp {{ number_format($price['A_SKS'], 2) == 0 ? '-' :  number_format($price['A_SKS'], 2) }}</p>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -234,10 +234,10 @@
                                                             class="col-12 col-md-4 px-md-4 px-2 py-md-0 py-3 tuitionFee__content">
                                                             <div class="row rows-cols-1">
                                                                 <div class="col">
-                                                                    <h6>Grade AA</h6>
+                                                                    <h6>Grade B</h6>
                                                                 </div>
                                                                 <div class="col">
-                                                                    <p>Rp22.000.000</p>
+                                                                    <p>Rp {{ number_format($price['B'], 2) == 0 ? '-' :  number_format($price['B'], 2) }}</p>
                                                                 </div>
                                                             </div>
                                                             <div class="row rows-cols-1">
@@ -245,7 +245,7 @@
                                                                     <h6>BPP</h6>
                                                                 </div>
                                                                 <div class="col">
-                                                                    <p>Rp3.500.000</p>
+                                                                    <p>Rp {{ number_format($price['B_BPP'], 2) == 0 ? '-' :  number_format($price['B_BPP'], 2) }}</p>
                                                                 </div>
                                                             </div>
                                                             <div class="row rows-cols-1">
@@ -253,7 +253,7 @@
                                                                     <h6>SKS</h6>
                                                                 </div>
                                                                 <div class="col">
-                                                                    <p>Rp250.000</p>
+                                                                    <p>Rp {{ number_format($price['B_SKS'], 2) == 0 ? '-' :  number_format($price['B_SKS'], 2) }}</p>
                                                                 </div>
                                                             </div>
                                                         </div>

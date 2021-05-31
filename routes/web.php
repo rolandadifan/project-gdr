@@ -75,15 +75,15 @@ Route::prefix('web/admin')->middleware(['auth', 'admin'])->group(function () {
     Route::post('/store-short-course-update/{id}', [App\Http\Controllers\SuperAdmin\CourseController::class, 'updateShortCourse'])->name('short.update');
 
     //artikel
-    Route::get('/article/news', [ArticleController::class, 'NewsIndex'])->name('artikel.news');
-    Route::get('/article/event', [ArticleController::class, 'EventIndex'])->name('artikel.event');
-    Route::get('/article/scholarship', [ArticleController::class, 'ScholarshipIndex'])->name('artikel.scholarship');
-    Route::get('/article/research', [ArticleController::class, 'researchIndex'])->name('artikel.research');
-    Route::get('/article/add', [ArticleController::class, 'create'])->name('artikel.create');
-    Route::post('/article', [ArticleController::class, 'store'])->name('artikel.store');
-    Route::get('/article/edit/{id}', [ArticleController::class, 'edit'])->name('artikel.edit');
-    Route::put('/article/{id}', [ArticleController::class, 'update'])->name('artikel.update');
-    Route::delete('/article/{id}', [ArticleController::class, 'destroy'])->name('artikel.destroy');
+    Route::get('/article/news', [App\Http\Controllers\SuperAdmin\ArticleController::class, 'NewsIndex'])->name('artikel.news');
+    Route::get('/article/event', [App\Http\Controllers\SuperAdmin\ArticleController::class, 'EventIndex'])->name('artikel.event');
+    Route::get('/article/scholarship', [App\Http\Controllers\SuperAdmin\ArticleController::class, 'ScholarshipIndex'])->name('artikel.scholarship');
+    Route::get('/article/research', [App\Http\Controllers\SuperAdmin\ArticleController::class, 'researchIndex'])->name('artikel.research');
+    Route::get('/article/add', [App\Http\Controllers\SuperAdmin\ArticleController::class, 'create'])->name('artikel.create');
+    Route::post('/article', [App\Http\Controllers\SuperAdmin\ArticleController::class, 'store'])->name('artikel.store');
+    Route::get('/article/edit/{id}', [App\Http\Controllers\SuperAdmin\ArticleController::class, 'edit'])->name('artikel.edit');
+    Route::put('/article/{id}', [App\Http\Controllers\SuperAdmin\ArticleController::class, 'update'])->name('artikel.update');
+    Route::delete('/article/{id}', [App\Http\Controllers\SuperAdmin\ArticleController::class, 'destroy'])->name('artikel.destroy');
     Route::put('/articles/status-active/{id}', [App\Http\Controllers\SuperAdmin\ArticleController::class, 'active'])->name('artikel.status.active');
     Route::put('/articles/status-inactive/{id}', [App\Http\Controllers\SuperAdmin\ArticleController::class, 'inactive'])->name('artikel.status.inactive');
 
@@ -95,8 +95,8 @@ Route::prefix('web/admin')->middleware(['auth', 'admin'])->group(function () {
     Route::put('/setting/{id}', [SettingController::class, 'update'])->name('setting.update');
 
     //pages
-    Route::get('/pages-info', [PageController::class, 'index'])->name('page.index');
-    Route::get('/pages-multi-info', [App\Http\Controllers\Superadmin\PageController::class, 'submenu'])->name('page.multi');
+    Route::get('/pages-info', [App\Http\Controllers\SuperAdmin\PageController::class, 'index'])->name('page.index');
+    Route::get('/pages-multi-info', [App\Http\Controllers\SuperAdmin\App\Http\Controllers\Superadmin\PageController::class, 'submenu'])->name('page.multi');
     Route::get('/pages-setting', [PageController::class, 'create'])->name('page.create');
     // Route::post('/pages-single-create', [PageController::class, 'single'])->name('page.single');
     // Route::post('/pages-post-create', [PageController::class, 'postg'])->name('page.postg');
@@ -246,6 +246,7 @@ Route::get('/student-enrollment/edit', [\App\Http\Controllers\EnrollmentControll
 Route::post('/student-enrollment', [App\Http\Controllers\EnrollmentController::class, 'phase1store'])->name('enrollment.phase1store')->middleware('auth');
 Route::post('/student-enrollment/store', [App\Http\Controllers\EnrollmentController::class, 'storeAllData'])->name('enrollment.storeAllData')->middleware('auth');
 Route::post('/student-enrollment/update', [App\Http\Controllers\EnrollmentController::class, 'editAllData'])->name('enrollment.update')->middleware('auth');
+Route::post('/student-enrollment/submit', [App\Http\Controllers\EnrollmentController::class, 'submit'])->name('enrollment.submit')->middleware('auth');
 
 
 // life campuses

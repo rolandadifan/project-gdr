@@ -1,5 +1,6 @@
 @extends('layouts.app-2')
 @section('content')
+{{-- @include('sweetalert::alert') --}}
 @section('breadcrumb-title', 'Student Enrollment')
 @section('title-jumbotron', 'Student Enrollment')
 @section('s-title-jumbotron', 'Premium. Proven. Loved. Study at Gunadarma')
@@ -330,7 +331,8 @@
         <div class="confirm__button mt-2">
           <p>Please click "SUBMIT" after all data is correct.</p>
           <a href="{{ route('enrollment.edit') }}" class="btn secondary__button" id="backStep1">Previous</a>
-          <form action="" class="d-inline">
+          <form action="{{ route('enrollment.submit') }}" method="POST" class="d-inline">
+            @csrf
             <button type="submit" class="btn primary__button" id="nextStep3">SUBMIT</button>
           </form>
         </div>

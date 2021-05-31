@@ -115,22 +115,30 @@ tenetur!')
                                     <div class="mb-3">
                                         <label for="studyLevel" class="form-label">Program / Study
                                             Level<span>*</span></label>
-                                            @if (!$course)
+                                            @if(isset($scourse))
+                                                <select class="form-select" name="course_id" id="studyLevel" required
+                                                placeholder="Select Program / Study Level" readonly>
+                                                    <option value="{{ $scourse->id }}">{{ $scourse->name }}</option>
+                                                </select>
+                                            @elseif (!$course)
                                                 <select class="form-select" name="studyLevel" id="studyLevel" required
                                                 placeholder="Select Program / Study Level" disabled>
-                                                <option value="-">No Course Available</option>
-                                            </select>
-                                            @else
-                                            <select class="form-select" name="course_id" id="studyLevel" required
-                                                placeholder="Select Program / Study Level">
-                                                <option value="{{ $enrollment->course->id }}">{{ $enrollment->course->name }}</option>
-                                                @forelse ($course as $cs)
-                                                <option value="{{ $cs->id }}">{{ $cs->name }}</option>
-                                                @empty
                                                     <option value="-">No Course Available</option>
-                                                @endforelse
-                                            </select>
+                                                </select>
+                                            @else
+                                                <select class="form-select" name="course_id" id="studyLevel" required
+                                                    placeholder="Select Program / Study Level">
+                                                    <option value="{{ $enrollment->course->id }}">{{ $enrollment->course->name }}</option>
+                                                    @forelse ($course as $cs)
+                                                    <option value="{{ $cs->id }}">{{ $cs->name }}</option>
+                                                    @empty
+                                                    <option value="-">No Course Available</option>
+                                                    @endforelse
+                                                </select>
                                             @endif
+                                            {{-- @php
+                                                dd($scourse)
+                                            @endphp --}}
                                     </div>
                                 </div>
 

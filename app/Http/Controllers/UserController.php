@@ -23,15 +23,15 @@ class UserController extends Controller
     public function profile()
     {
         $user = UserDetail::where('user_id', Auth()->user()->id)->first();
-        $userEnroll = Enrollment::with(['user', 'course'])->Where('user_id', auth()->user()->id)->orderBy('created_at', 'DESC')->get();
+        $userEnroll = Enrollment::with(['user', 'course'])->Where('user_id', auth()->user()->id)->orderBy('created_at', 'DESC')->limit(8)->get();
         $article = Article::with(['articleDetail'])->where('status_id', '1')->orderBy('created_at', 'DESC')->whereHas('articleType', function (Builder $query) {
             $query->where('name', 'research');
         })->limit(2)->get();
         $news1 = Article::with(['articleDetail'])->where('status_id', '1')->orderBy('created_at', 'DESC')->whereHas('articleType', function (Builder $query) {
-            $query->where('name', 'news');
+            $query->where('name', 'event');
         })->limit(1)->get();
         $news2 = Article::with(['articleDetail'])->where('status_id', '1')->orderBy('created_at', 'DESC')->whereHas('articleType', function (Builder $query) {
-            $query->where('name', 'news');
+            $query->where('name', 'event');
         })->offset(2)->limit(1)->get();
         return view('member.profile.profile')->with([
             'user' => $user,

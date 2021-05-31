@@ -119,7 +119,7 @@ class ArticleController extends Controller
             $article_detail->update($article_dtl);
 
             return back()->with('status', 'Article Successfuly Updated');
-        } else {
+        } else if($request->file('thumbnail')) {
             $artikel = Article::findOrFail($id);
             $article_detail = ArticleDetail::where('article_id',$id)->first();
             $file_path = Storage::url($article_detail->thumbnail);
@@ -127,21 +127,20 @@ class ArticleController extends Controller
             if (file_exists($path . $file_path)) {
                 unlink($path . $file_path);
                 // master
-                $article['type_id'] = $request->type;
-                $article['status_id'] = 2;
-                $article_master = Article::findOrFail($id);
-                $article_master->update($article);
-
-                // detail;
-                $article_dtl['title'] = $request->artikelName;
-                $article_dtl['slug'] = Str::slug($request->artikelName);
-                $article_dtl['excerpt'] = $request->excerpt;
-                $article_dtl['content'] = $request->content;
-                $article_dtl['thumbnail'] = $request->file('thumbnail')->store('artikel', 'public');
-                $article_detail = ArticleDetail::where('article_id',$id)->first();
-                $article_detail->update($article_dtl);
-                return back()->with('status', 'Article Successfuly Updated');
             }
+            $article['type_id'] = $request->type;
+            $article['status_id'] = 2;
+            $article_master = Article::findOrFail($id);
+            $article_master->update($article);
+            // detail;
+            $article_dtl['title'] = $request->artikelName;
+            $article_dtl['slug'] = Str::slug($request->artikelName);
+            $article_dtl['excerpt'] = $request->excerpt;
+            $article_dtl['content'] = $request->content;
+            $article_dtl['thumbnail'] = $request->file('thumbnail')->store('artikel', 'public');
+            $article_detail = ArticleDetail::where('article_id',$id)->first();
+            $article_detail->update($article_dtl);
+            return back()->with('status', 'Article Successfuly Updated');
         }
     }
 

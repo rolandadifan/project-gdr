@@ -68,10 +68,15 @@ tenetur!')
                 </div>
             </div>
         </div>
-
+        @if(!$enrollment)
         <div class="app__button" id="btnNewApp">
             <button class="btn button__primary">Start New Application</button>
         </div>
+        @else
+        <div class="app__button">
+            <a href="{{ route('enrollment.edit') }}" class="btn btn-warning btn-md">Continue Application Progress</a>
+        </div>
+        @endif
     </div>
 </section>
 

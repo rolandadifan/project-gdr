@@ -36,11 +36,11 @@ class SettingController extends Controller
             $path = str_replace('\\', '/', public_path());
             if (file_exists($path . $file_path)) {
                 unlink($path . $file_path);
-                $setting['value'] = $request->input('value');
-                $settingDB = Setting::where('key',$key)->first();
-                $settingDB->update($setting);
-                return back()->with('status', 'Setting Successfuly Updated');
             }
+            $setting['value'] = $request->input('value');
+            $settingDB = Setting::where('key',$key)->first();
+            $settingDB->update($setting);
+            return back()->with('status', 'Setting Successfuly Updated');
         }
     }
 }
