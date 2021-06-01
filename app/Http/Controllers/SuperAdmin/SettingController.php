@@ -32,14 +32,23 @@ class SettingController extends Controller
             return back()->with('status', 'Setting Successfuly Updated');
         } else {
             $settingDB = Setting::where('key',$key)->first();
-            $file_path = Storage::url($settingDB->thumbnail);
-            $path = str_replace('\\', '/', public_path());
-            if (file_exists($path . $file_path)) {
-                unlink($path . $file_path);
+
+            if($settingDB->thumbnail == null){
+                $setting['value'] = $request->input('value');
+                $setting['thumbnail'] = $request->file('thumbnail')->store('setting', 'public');;
+                $settingDB = Setting::where('key',$key)->first();
+                $settingDB->update($setting);
+            }else{
+                $file_path = Storage::url($settingDB->thumbnail);
+                $path = str_replace('\\', '/', public_path());
+                if (file_exists($path . $file_path)) {
+                    unlink($path . $file_path);
+                }
+                $setting['value'] = $request->input('value');
+                $setting['thumbnail'] = $request->file('thumbnail')->store('setting', 'public');;
+                $settingDB = Setting::where('key',$key)->first();
+                $settingDB->update($setting);
             }
-            $setting['value'] = $request->input('value');
-            $settingDB = Setting::where('key',$key)->first();
-            $settingDB->update($setting);
             return back()->with('status', 'Setting Successfuly Updated');
         }
     }

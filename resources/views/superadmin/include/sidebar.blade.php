@@ -28,19 +28,31 @@
     </div>
 
     <!-- Nav Item - Pages Collapse Menu -->
+
+    {{-- admin list menu --}}
+    @if (auth()->user()->role != 'sadmin')
+        
+    @else
     <li class="nav-item">
         <a class="nav-link" href="{{ route('admin.index') }}">
             <i class="fas fa-fw fa-users"></i>
             <span>Admin</span></a>
     </li>
+    @endif
 
+    {{-- student info menu --}}
+    @if (auth()->user()->role != 'sadmin')
+        
+    @else
     <li class="nav-item">
         <a class="nav-link" href="{{ route('user.index') }}">
             <i class="fas fa-fw fa-user"></i>
             <span>Students Info</span></a>
     </li>
+    @endif
 
-    <!-- Nav Item - Utilities Collapse Menu -->
+    
+    {{-- course menu --}}
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
             aria-expanded="true" aria-controls="collapseUtilities">
@@ -76,7 +88,11 @@
         </a>
         <div id="collapseUtilities2" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
+                @if (auth()->user()->role != 'sadmin')
+            
+                @else
                 <a class="collapse-item" href="{{ route('enroll.index') }}">List</a>
+                @endif
                 {{-- <a class="collapse-item" href="utilities-border.html">Add</a> --}}
                 <a class="collapse-item" href="{{ route('requirment.index') }}">Enrollment Requirment</a>
 
@@ -168,11 +184,15 @@
             <span>Graduation Schedule</span></a>
     </li>
 
+    @if (auth()->user()->role != 'sadmin')
+        
+    @else
     <li class="nav-item">
         <a class="nav-link" href="{{ route('alumni-info.index') }}">
             <i class="fas fa-fw fa-comment"></i>
             <span>Alumni</span></a>
     </li>
+    @endif
 
     <li class="nav-item">
         <a class="nav-link" href="{{ route('location.index') }}">

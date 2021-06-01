@@ -23,7 +23,7 @@
 
   {{-- cdn datatable --}}
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
-
+  <meta name="csrf-token" content="{{ csrf_token() }}" />
 </head>
 
 <body id="page-top">

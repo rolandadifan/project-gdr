@@ -66,6 +66,13 @@ class AppServiceProvider extends ServiceProvider
             ]);
         });
 
+        view()->composer(('superadmin.include.nav'),function($notif){
+            $notification = auth()->user()->unreadNotifications;
+            $notif->with([
+                'notification' => $notification
+            ]);
+        });
+
         view()->composer('icon', function($view){
         // landing points
         $title1 = Setting::where('key','landing-point-title-1')->first();

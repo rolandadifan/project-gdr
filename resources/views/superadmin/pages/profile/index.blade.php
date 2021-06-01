@@ -45,7 +45,7 @@
                     <div class="form-group">
                         <label for="name">Address</label>
                         <textarea type="text" class="form-control profile-input" name="address"
-                            id="">{{ Auth()->user()->userDetail->address }}</textarea>
+                            id="">{{ Auth()->user()->userDetail->address ?? '' }}</textarea>
                     </div>
                     <div class="form-group">
                         <label for="name">Password</label>

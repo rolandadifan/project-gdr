@@ -6,55 +6,47 @@
     </button>
 
     <!-- Topbar Navbar -->
-    <ul class="navbar-nav ml-auto">
+    <ul class="navbar-nav ml-auto" id="result">
+      @if (auth()->user()->role != 'sadmin')
+          
+      @else
       <!-- Nav Item - Alerts -->
-      <li class="nav-item dropdown no-arrow mx-1">
+      <li class="nav-item dropdown no-arrow mx-1" onclick="test()" >
         <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <i class="fas fa-bell fa-fw"></i>
           <!-- Counter - Alerts -->
-          <span class="badge badge-danger badge-counter">3+</span>
+          <span class="badge badge-danger badge-counter">{{ $notification->count() }}</span>
         </a>
         <!-- Dropdown - Alerts -->
         <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
-          <h6 class="dropdown-header">
+          <h6 class="dropdown-header" style="background-color: #885A89 !important">
             Alerts Center
           </h6>
-          <a class="dropdown-item d-flex align-items-center" href="#">
+          @forelse ($notification as $notif)
+          <a class="dropdown-item d-flex align-items-center" href="{{ route('enroll.index') }}">
             <div class="mr-3">
-              <div class="icon-circle bg-primary">
+              <div class="icon-circle" style="background-color: #885A89 !important">
                 <i class="fas fa-file-alt text-white"></i>
               </div>
             </div>
             <div>
-              <div class="small text-gray-500">December 12, 2019</div>
-              <span class="font-weight-bold">A new monthly report is ready to download!</span>
+              <div class="small text-gray-500">{{ date('M d, Y', strtotime($notif->created_at)) }}</div>
+              <span class="font-weight-bold">{{ $notif->data['user'] }} hast Submit Enrollment</span>
             </div>
           </a>
-          <a class="dropdown-item d-flex align-items-center" href="#">
-            <div class="mr-3">
-              <div class="icon-circle bg-success">
-                <i class="fas fa-donate text-white"></i>
-              </div>
-            </div>
-            <div>
-              <div class="small text-gray-500">December 7, 2019</div>
-              $290.29 has been deposited into your account!
-            </div>
-          </a>
-          <a class="dropdown-item d-flex align-items-center" href="#">
-            <div class="mr-3">
-              <div class="icon-circle bg-warning">
-                <i class="fas fa-exclamation-triangle text-white"></i>
-              </div>
-            </div>
-            <div>
-              <div class="small text-gray-500">December 2, 2019</div>
-              Spending Alert: We've noticed unusually high spending for your account.
-            </div>
-          </a>
-          <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
+          @empty
+              <p class="text-center">There are no new notifications</p>
+          @endforelse
+          
+           
+          {{-- <form action="{{ route('markRead') }}" method="POST">
+            @csrf
+            <button type="submit">Mark As Read</button>
+          </form> --}}
+          <a class="dropdown-item text-center small text-gray-500" href="{{ route('enroll.index') }}">Show All</a>
         </div>
       </li>
+      @endif
 
 
       <div class="topbar-divider d-none d-sm-block"></div>
@@ -63,10 +55,10 @@
       <li class="nav-item dropdown no-arrow">
         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth()->user()->name }}</span>
-          @if (Auth()->user()->userDetail->avatar == null )
-            <img class="img-profile rounded-circle" src="{{ asset('assets/images/avatar-default.png') }}">
+          @if (isset(auth()->user()->userDetail->avatar))
+          <img class="img-profile rounded-circle" src="{{ Storage::url(Auth()->user()->userDetail->avatar) }}">
           @else
-            <img class="img-profile rounded-circle" src="{{ Storage::url(Auth()->user()->userDetail->avatar) }}">
+          <img class="img-profile rounded-circle" src="{{ asset('assets/images/avatar-default.png') }}">
           @endif
         </a>
         <!-- Dropdown - User Information -->
@@ -85,3 +77,22 @@
     </ul>
 
   </nav>
+
+  @push('addon-script')
+<script>
+  function test(){
+    var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+    $.ajax({
+        /* the route pointing to the post function */
+        url: '/maskAsRead',
+        type: 'POST',
+        /* send the csrf-token and the input to the controller */
+        data: {_token: CSRF_TOKEN,},
+        /* remind that 'data' is the response of the AjaxController */
+        success: function (data) { 
+            $("#result").load($(this).attr('href'));
+        }
+    }); 
+  }
+</script>
+@endpush

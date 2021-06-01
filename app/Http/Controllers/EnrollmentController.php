@@ -13,10 +13,12 @@ use App\Models\UserFunding;
 use App\Models\UserPassport;
 use App\Models\UserResidance;
 use App\Models\UserUpload;
+use App\Notifications\NewUserNotification;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Storage;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -58,7 +60,7 @@ class EnrollmentController extends Controller
 
     public function input()
     {
-        $course= Course::with('courseDetail')->select(['id', 'name'])->whereHas('courseDetail', function (Builder $query) {
+        $course= Course::with('courseDetail')->where('status_id', 1)->select(['id', 'name'])->whereHas('courseDetail', function (Builder $query) {
             $query->where('degree','!=', 'non')->orderBy('created_at', 'DESC');
         })->get();
         $user = User::with('userDetail')->findOrFail(auth()->user()->id);
@@ -89,7 +91,7 @@ class EnrollmentController extends Controller
 
     public function edit()
     {
-        $course= Course::with('courseDetail')->select(['id', 'name'])->whereHas('courseDetail', function (Builder $query) {
+        $course= Course::with('courseDetail')->where('status_id', 1)->select(['id', 'name'])->whereHas('courseDetail', function (Builder $query) {
             $query->where('degree','!=', 'no')->orderBy('created_at', 'DESC');
         })->get();
         $user = User::with('userDetail')->findOrFail(auth()->user()->id);
@@ -104,7 +106,7 @@ class EnrollmentController extends Controller
 
     public function submit()
     {
-        $enrollment = Enrollment::where('user_id', auth()->user()->id)->first();
+        $enrollment = Enrollment::where('user_id', auth()->user()->id)->where('status_id', 3)->first();
         $enrollment->update([
             'status_id' => 4
         ]);
@@ -112,6 +114,9 @@ class EnrollmentController extends Controller
         // toast('Your Post as been submited!','success');
         // return back();
         // alert()->success('Title','Lorem Lorem Lorem');
+
+        $admins = User::where('role', 'sadmin')->get();
+        Notification::send($admins, new NewUserNotification(auth()->user()->name));
         return redirect()->route('profile')->with('status', 'Your Data Has Been Registered');
     }
 

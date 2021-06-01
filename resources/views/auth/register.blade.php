@@ -42,8 +42,13 @@
                             <div class="mb-3" id="only-number">
                                 <label for="numberPhone" class="form-label">Mobile Number</label>
                                 <div class="input-group mb-3">
-                                    <button class="btn btn-outline-secondary dropdown-toggle btn__dropdown"
-                                        type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    {{-- <button class="btn btn-outline-secondary dropdown-toggle btn__dropdown"
+                                        type="button" data-bs-toggle="dropdown" aria-expanded="false" disabled>
+                                        <img id="selected-country" src="https://flagcdn.com/id.svg" width="30"
+                                            alt="indonesia">
+                                    </button> --}}
+                                    <button class="btn btn-outline-secondary btn__dropdown"
+                                        type="button" data-bs-toggle="dropdown" aria-expanded="false" disabled>
                                         <img id="selected-country" src="https://flagcdn.com/id.svg" width="30"
                                             alt="indonesia">
                                     </button>

@@ -15,7 +15,7 @@
             <div class="col">
                 <div class="gunadarma__icon">
                     <div class="iconBox">
-                        <img src="{{ Storage::url($icon2->thumbnail) }}" alt="medal" />
+                        <img src="{{ Storage::url($icon2->thumbnail) ?? asset('assets/images/icons/medal.png') }}" alt="medal" />
                     </div>
                     <div class="content">
                         <p>{{$title2->value}}</p>

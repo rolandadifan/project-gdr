@@ -44,16 +44,16 @@ Route::prefix('web/admin')->middleware(['auth', 'admin'])->group(function () {
     Route::put('/profile-update', [ProfileController::class, 'update'])->name('profile.admin.update');
 
     //admin create
-    Route::get('/admin-info', [AdminController::class, 'index'])->name('admin.index');
-    Route::post('/admin-create', [AdminController::class, 'store'])->name('admin.store');
-    Route::get('/admin-admin/{id}', [AdminController::class, 'edit'])->name('admin.edit');
-    Route::put('/admin-admin/{id}', [AdminController::class, 'update'])->name('admin.update');
-    Route::delete('/admin-admin/{id}', [AdminController::class, 'destroy'])->name('admin.destroy');
+    Route::get('/admin-info', [AdminController::class, 'index'])->name('admin.index')->middleware('superadmin');
+    Route::post('/admin-create', [AdminController::class, 'store'])->name('admin.store')->middleware('superadmin');
+    Route::get('/admin-admin/{id}', [AdminController::class, 'edit'])->name('admin.edit')->middleware('superadmin');
+    Route::put('/admin-admin/{id}', [AdminController::class, 'update'])->name('admin.update')->middleware('superadmin');
+    Route::delete('/admin-admin/{id}', [AdminController::class, 'destroy'])->name('admin.destroy')->middleware('superadmin');
 
     //user
-    Route::get('/user-info', [UserController::class, 'index'])->name('user.index');
-    Route::get('/user-info/detail/{id}', [UserController::class, 'edit'])->name('user.info');
-    Route::put('/user-info/update/{id}', [UserController::class, 'update'])->name('user.update');
+    Route::get('/user-info', [UserController::class, 'index'])->name('user.index')->middleware('superadmin');
+    Route::get('/user-info/detail/{id}', [UserController::class, 'edit'])->name('user.info')->middleware('superadmin');
+    Route::put('/user-info/update/{id}', [UserController::class, 'update'])->name('user.update')->middleware('superadmin');
 
     //course
     Route::get('/course/list', [App\Http\Controllers\SuperAdmin\CourseController::class, 'index'])->name('course.index');
@@ -103,7 +103,7 @@ Route::prefix('web/admin')->middleware(['auth', 'admin'])->group(function () {
 
 
     //enrollment
-    Route::get('/enrollment-list', [App\Http\Controllers\SuperAdmin\EnrollmentController::class, 'index'])->name('enroll.index');
+    Route::get('/enrollment-list', [App\Http\Controllers\SuperAdmin\EnrollmentController::class, 'index'])->name('enroll.index')->middleware('superadmin');
     Route::get('/enrollment-detail/{id}', [App\Http\Controllers\SuperAdmin\EnrollmentController::class, 'detail'])->name('enroll.detail');
 
     //pages
@@ -163,17 +163,17 @@ Route::prefix('web/admin')->middleware(['auth', 'admin'])->group(function () {
     Route::post('/student-life/student-info-nine', [App\Http\Controllers\SuperAdmin\LifeCampusController::class, 'sie'])->name('student.sie');
 
     //alumni
-    Route::get('/alumni-info', [App\Http\Controllers\SuperAdmin\AlumniController::class, 'index'])->name('alumni-info.index');
-    Route::post('/alumni-info', [App\Http\Controllers\SuperAdmin\AlumniController::class, 'store'])->name('alumni-info.store');
-    Route::get('/alumni-info-create', [App\Http\Controllers\SuperAdmin\AlumniController::class, 'create'])->name('alumni-info.create');
-    Route::get('/alumni-info/edit/{id}', [App\Http\Controllers\SuperAdmin\AlumniController::class, 'edit'])->name('alumni-info.edit');
-    Route::put('/alumni-info/{id}', [App\Http\Controllers\SuperAdmin\AlumniController::class, 'update'])->name('alumni-info.update');
-    Route::delete('/alumni-info/{id}', [App\Http\Controllers\SuperAdmin\AlumniController::class, 'destroy'])->name('alumni-info.destroy');
-    Route::post('/location', [App\Http\Controllers\SuperAdmin\LocationController::class, 'store'])->name('location.store');
-    Route::get('/location-create', [App\Http\Controllers\SuperAdmin\LocationController::class, 'create'])->name('location.create');
-    Route::get('/location/edit/{id}', [App\Http\Controllers\SuperAdmin\LocationController::class, 'edit'])->name('location.edit');
-    Route::put('/location/{id}', [App\Http\Controllers\SuperAdmin\LocationController::class, 'update'])->name('location.update');
-    Route::delete('/location/{id}', [App\Http\Controllers\SuperAdmin\LocationController::class, 'destroy'])->name('location.destroy');
+    Route::get('/alumni-info', [App\Http\Controllers\SuperAdmin\AlumniController::class, 'index'])->name('alumni-info.index')->middleware('superadmin');
+    Route::post('/alumni-info', [App\Http\Controllers\SuperAdmin\AlumniController::class, 'store'])->name('alumni-info.store')->middleware('superadmin');
+    Route::get('/alumni-info-create', [App\Http\Controllers\SuperAdmin\AlumniController::class, 'create'])->name('alumni-info.create')->middleware('superadmin');
+    Route::get('/alumni-info/edit/{id}', [App\Http\Controllers\SuperAdmin\AlumniController::class, 'edit'])->name('alumni-info.edit')->middleware('superadmin');
+    Route::put('/alumni-info/{id}', [App\Http\Controllers\SuperAdmin\AlumniController::class, 'update'])->name('alumni-info.update')->middleware('superadmin');
+    Route::delete('/alumni-info/{id}', [App\Http\Controllers\SuperAdmin\AlumniController::class, 'destroy'])->name('alumni-info.destroy')->middleware('superadmin');
+    Route::post('/location', [App\Http\Controllers\SuperAdmin\LocationController::class, 'store'])->name('location.store')->middleware('superadmin');
+    Route::get('/location-create', [App\Http\Controllers\SuperAdmin\LocationController::class, 'create'])->name('location.create')->middleware('superadmin');
+    Route::get('/location/edit/{id}', [App\Http\Controllers\SuperAdmin\LocationController::class, 'edit'])->name('location.edit')->middleware('superadmin');
+    Route::put('/location/{id}', [App\Http\Controllers\SuperAdmin\LocationController::class, 'update'])->name('location.update')->middleware('superadmin');
+    Route::delete('/location/{id}', [App\Http\Controllers\SuperAdmin\LocationController::class, 'destroy'])->name('location.destroy')->middleware('superadmin');
 
     //location
     Route::get('/location', [App\Http\Controllers\SuperAdmin\LocationController::class, 'index'])->name('location.index');
@@ -270,3 +270,7 @@ Route::get('/location-gunadarma', [App\Http\Controllers\LocController::class, 'i
 
 //pages
 Route::get('/{slug}', [\App\Http\Controllers\PageController::class, 'show']);
+
+Route::post('maskAsRead', function(){
+    auth()->user()->unreadNotifications->markAsRead();
+});
