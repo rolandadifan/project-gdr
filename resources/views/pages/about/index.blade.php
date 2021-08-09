@@ -38,7 +38,7 @@
                 <div class="row mt-3">
                     <div class="col">
                         <p>
-                           {!! $abouts ? $abouts->excerpt : ' Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi doloribus sunt tempore, quidem maiores porro expedita iste, quis ipsum, possimus saepe consectetur corporis temporibus reprehenderit cupiditate ducimus laboriosam optio voluptates.
+                           {!! $abouts ? $abouts->content : ' Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi doloribus sunt tempore, quidem maiores porro expedita iste, quis ipsum, possimus saepe consectetur corporis temporibus reprehenderit cupiditate ducimus laboriosam optio voluptates.
                             Iusto sunt rem aut commodi facilis in sit, officiis odio asperiores! Sapiente suscipit sequi consequuntur nam nulla illum possimus! Consequuntur consectetur quod ea, hic obcaecati totam alias quasi quam amet?
                             Quos ipsa iure totam, architecto minima ullam ut! Debitis placeat corrupti in explicabo asperiores, doloremque aut, aliquam, eius vitae error tempore aperiam ea reprehenderit impedit officia minus voluptatem eligendi! Animi?
                             Debitis architecto modi, placeat perferendis quo optio. Facilis ad aspernatur impedit nulla magni ex, molestias omnis sint, dolorum aperiam facere, fugiat nostrum nisi consequatur ipsa in! Aperiam accusantium distinctio earum?
