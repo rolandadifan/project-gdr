@@ -31,7 +31,7 @@
                     <label for="exampleInputEmail1">No Hp</label>
                     <div class="d-flex">
                       <div class="form-control enam-dua">+62</div>
-                      <input type="number" name="telephone" class="form-control" max="11" required>
+                      <input type="number" name="telephone" class="form-control"  required>
                     </div>
                   </div>
                   <div class="form-group">

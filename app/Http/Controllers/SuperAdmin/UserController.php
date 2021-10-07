@@ -53,4 +53,17 @@ class UserController extends Controller
 
      
     }
+
+    public function destroy($id)
+    {
+        try {
+            //code...
+            User::findOrFail($id)->delete();
+            return redirect()->back()->with('status', 'successfully delete');
+        } catch (\Throwable $th) {
+            //throw $th;
+            return redirect()->back()->with('status', 'oops there something wrong!!');
+        }
+    }
+    
 }

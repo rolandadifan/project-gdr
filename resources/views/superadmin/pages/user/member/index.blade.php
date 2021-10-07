@@ -61,7 +61,7 @@
     </div>
     <!-- /.container-fluid -->
 
- @include('superadmin.pages.user.member.delete')
+ @include('superadmin.pages.user.member.delete', ['id' => $item])
 
 @endsection
 

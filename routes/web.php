@@ -54,6 +54,7 @@ Route::prefix('web/admin')->middleware(['auth', 'admin'])->group(function () {
     Route::get('/user-info', [App\Http\Controllers\SuperAdmin\UserController::class, 'index'])->name('user.index')->middleware('superadmin');
     Route::get('/user-info/detail/{id}', [App\Http\Controllers\SuperAdmin\UserController::class, 'edit'])->name('user.info')->middleware('superadmin');
     Route::put('/user-info/update/{id}', [App\Http\Controllers\SuperAdmin\UserController::class, 'update'])->name('user.update')->middleware('superadmin');
+    Route::delete('/user-info/destroy/{id}', [App\Http\Controllers\SuperAdmin\UserController::class, 'destroy'])->name('user.destroy')->middleware('superadmin');
 
     //course
     Route::get('/course/list', [App\Http\Controllers\SuperAdmin\CourseController::class, 'index'])->name('course.index');
